@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 300px;width: 1000px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     option = {
+    title: {
+        text: '淮阳区污染物污染指数贡献率',
+        subtext: '纯属虚构',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+    },
+    legend: {
+        left: 'center',
+        top: 'bottom',
+        data: ['SO2', 'NO2', 'PM10', 'PM2.5', 'CO', 'O3']
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series: [
+        {
+            name: '半径模式',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            center: ['25%', '50%'],
+
+            avoidLabelOverlap: false,
+            label: {
+                formatter: '{b}: {@2012} ({d}%)'
+            },
+
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '10',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: true,
+            },
+            data: [
+                {value: 0.13, name: 'SO2'},
+                {value: 0.25, name: 'NO2'},
+                {value: 0.60, name: 'PM10'},
+                {value: 0.63, name: 'PM2.5'},
+                {value: 0.19, name: 'CO'},
+                {value: 0.71, name: 'O3'}
+            ]
+        },
+        {
+            name: '面积模式',
+            label: {
+                    formatter: '{b}: {@2012} ({d}%)'
+                },
+            type: 'pie',
+            radius: [0, 110],
+            center: ['75%', '50%'],
+            roseType: 'area',
+            data: [
+                {value: 0.13, name: 'SO2'},
+                {value: 0.25, name: 'NO2'},
+                {value: 0.60, name: 'PM10'},
+                {value: 0.63, name: 'PM2.5'},
+                {value: 0.19, name: 'CO'},
+                {value: 0.71, name: 'O3'}
+            ]
+        }
+    ]
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

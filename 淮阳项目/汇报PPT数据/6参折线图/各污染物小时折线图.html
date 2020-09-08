@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1200px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+    var colors = ['black', 'black', 'black'];
+     option = {
+     color: colors,
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data: ['AQI', 'SO2', 'NO2', 'PM10', 'PM2.5', 'CO', 'O3-8h']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    dataZoom : [ {
+                startValue : '2020-08-13 01'
+            }, {
+                type : 'inside'
+            } ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '其他污染物浓度',
+            min: 0,
+            max: 180,
+            position: 'left',
+            interval: 30,
+            axisLine: {
+                lineStyle: {
+                    color: colors[0]
+                }
+            },
+            axisLabel: {
+                formatter: '{value} μg/m3'
+            }
+        },
+        {
+            type: 'value',
+            name: 'CO浓度',
+            min: 0,
+            max: 1.8,
+            position: 'right',
+            interval: 0.3,
+            axisLine: {
+                lineStyle: {
+                    color: 'black',
+                }
+            },
+            axisLabel: {
+                formatter: '{value} mg/m3'
+            }
+        },
+<!--        {-->
+<!--            type: 'value',-->
+<!--            name: 'AQI',-->
+<!--            min: 0,-->
+<!--            max: 300,-->
+<!--            position: 'right',-->
+<!--            interval: 60,-->
+<!--            offset: 80,-->
+<!--            axisLine: {-->
+<!--                lineStyle: {-->
+<!--                    color: colors[2]-->
+<!--                }-->
+<!--            },-->
+<!--            axisLabel: {-->
+<!--                formatter: '{value}'-->
+<!--            }-->
+<!--        }-->
+    ],
+    series: [
+<!--        {-->
+<!--            name: 'AQI',-->
+<!--            type: 'bar',-->
+<!--            yAxisIndex: 2,-->
+<!--            color:'#D0D8E2',-->
+<!--            data: [114, 160, 222, 240, 160, 109, 77, 104, 153, 183, 268, 258, 264, 232, 183, 206, 192, 192, 113, 135, 234, 240, 144, 272, 196, 220, 200, 132, 160, 176, 173]-->
+<!--        },-->
+        {
+            name: 'SO2',
+            type: 'line',
+            color:'#99004C',
+            yAxisIndex: 0,
+            data: [9, 10, 9, 9, 9, 9, 10, 11, 11, 10, 9, 9, 8, 8, 8, 9, 7, 7, 7, 7, 7, 8, 8, 8],
+            },
+        {
+            name: 'NO2',
+            type: 'line',
+            color:'#FF7E00',
+            yAxisIndex: 0,
+            data: [14, 12, 12, 13, 12, 13, 14, 15, 14, 12, 10, 8, 8, 6, 6, 6, 7, 7, 8, 10, 12, 13, 14, 14],
+            },
+        {
+            name: 'PM10',
+            type: 'line',
+            color:'red',
+            yAxisIndex: 0,
+            data: [51, 48, 45, 42, 40, 38, 37, 39, 42, 42, 43, 41, 36, 37, 39, 39, 38, 36, 36, 39, 44, 52, 60, 59],
+            },
+        {
+            name: 'PM2.5',
+            type: 'line',
+             color:'green',
+            yAxisIndex: 0,
+            data: [24, 24, 25, 24, 24, 23, 23, 23, 23, 23, 24, 22, 21, 21, 22, 21, 21, 20, 21, 21, 23, 25, 27, 26],
+            },
+        {
+            name: 'CO',
+            type: 'line',
+            color:'blue',
+            yAxisIndex: 1,
+            data: [0.58, 0.58, 0.56, 0.57, 0.57, 0.58, 0.6, 0.63, 0.64, 0.61, 0.6, 0.57, 0.57, 0.55, 0.54, 0.54, 0.53, 0.54, 0.54, 0.55, 0.63, 0.62, 0.58, 0.58],
+            },
+        {
+            name: 'O3-8h',
+            type: 'line',
+            color:'red',
+            yAxisIndex: 0,
+            data: [73, 67, 61, 56, 53, 50, 47, 44, 43, 43, 46, 51, 57, 65, 74, 84, 92, 98, 102, 102, 99, 94, 88, 81],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+            },
+    ]
+};
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

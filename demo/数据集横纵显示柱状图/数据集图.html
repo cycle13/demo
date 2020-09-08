@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1000px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     option = {
+    title: {
+            text: '太原市2017-2020年全年空气质量柱状图',
+            left:'center'
+        },
+    legend: {
+            top:30,
+    },
+    tooltip: {},
+    dataset: {
+        source: [
+            ['product', '2017年', '2018年', '2019年', '2020年'],
+            ['优', 41.1, 30.4, 65.1, 53.3],
+            ['良', 86.5, 92.1, 85.7, 83.1],
+            ['轻度污染', 24.1, 67.2, 79.5, 86.4],
+            ['中度污染', 41.1, 30.4, 65.1, 53.3],
+            ['重度污染', 86.5, 92.1, 85.7, 83.1],
+            ['严重污染', 24.1, 67.2, 79.5, 86.4]
+        ]
+    },
+    color: [
+        "#00E400",
+        "#FFFF00",
+        "#FF7E00",
+        "#FF0000",
+        "#99004C",
+        "#7E0023",
+        "#FF7E00",
+        "#FF0000",
+        "#99004C",
+        "#7E0023"
+    ],
+    toolbox : {
+                left : 'right',
+                feature : {
+                    magicType: {
+                    type: ['line', 'bar',]
+                },
+                    restore : {},
+                    saveAsImage : {}
+                }
+            },
+    xAxis: [
+        {type: 'category', gridIndex: 0},
+        {type: 'category', gridIndex: 1}
+    ],
+    yAxis: [
+        {gridIndex: 0},
+        {gridIndex: 1}
+    ],
+    grid: [
+        {bottom: '55%'},
+        {top: '55%'}
+    ],
+    series: [
+        // These series are in the first grid.
+        {type: 'bar', seriesLayoutBy: 'row'},
+        {type: 'bar', seriesLayoutBy: 'row'},
+        {type: 'bar', seriesLayoutBy: 'row'},
+        {type: 'bar', seriesLayoutBy: 'row'},
+        {type: 'bar', seriesLayoutBy: 'row'},
+        {type: 'bar', seriesLayoutBy: 'row'},
+        // These series are in the second grid.
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+        {type: 'bar', xAxisIndex: 1, yAxisIndex: 1}
+    ]
+};
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

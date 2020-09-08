@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 300px;width: 600px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     $.get('beijing-pm10.json', function (data) {
+<!--     $.get('aqi-beijing.json', function (data) {-->
+        myChart.setOption({
+            title: {
+            text: '淮阳区第34周AQI等级柱状图',
+            top:20,
+            left:'center'
+        },
+            tooltip : {
+                trigger : 'axis'
+            },
+            xAxis : {
+<!--                name:'单位：日',-->
+                 data: data.map(function (item) {
+                return item[0];
+            })
+            },
+
+<!--            legend: {-->
+<!--            top:0,-->
+<!--            left:10,-->
+<!--        data: ['淮阳区', '淮阳县北关公园','淮阳县环保局自动站']-->
+<!--    },-->
+            yAxis : {
+<!--                name:'单位：μg/m3',-->
+                splitLine : {
+                    show : false
+                }
+            },
+            toolbox : {
+                left : 'center',
+                feature : {
+                    dataZoom : {
+                        yAxisIndex : 'none'
+                    },
+                    magicType: {
+                    type: ['line', 'bar',]
+                },
+                    restore : {},
+                    saveAsImage : {}
+                }
+            },
+            dataZoom : [ {
+                startValue : '2020-08-13 01'
+            }, {
+                type : 'inside'
+            } ],
+            visualMap: {
+            top: 10,
+            right: 0,
+            pieces: [{'min':0,'max':50,'label':'优','color':'#00E400'},
+                {'min':51,'max':100,'label':'良','color':'#FFFF00'},
+                {'min':101,'max':150,'label':'轻度污染','color':'#FF7E00'},
+                {'min':151,'max':200,'label':'中度污染','color':'#FF0000'},
+                {'min':201,'max':300,'label':'重度污染','color':'#99004C'},
+                {'min':300,'label':'严重污染','color':'#7E0023'},],
+            outOfRange: {
+                color: '#999'
+            }
+            },
+            series : {
+                name : '淮阳区',
+                type : 'line',
+
+                smooth: true,
+                data: data.map(function (item) {
+                return item[1];
+            }),
+                markLine: {
+                silent: true,
+                data: [{
+                    yAxis: 50,
+                }, {
+                    yAxis: 100
+                }, {
+                    yAxis: 150
+                }, {
+                    yAxis: 200
+                }, {
+                    yAxis: 300
+                }]
+                }
+            },
+        });
+        })
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

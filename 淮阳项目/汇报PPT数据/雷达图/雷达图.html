@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 600px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     option = {
+    title: {
+        text: '风向占比'
+    },
+    tooltip: {},
+    legend: {
+        data: ['风向占比','PM10风向贡献率','PM2.5风向贡献率'],
+        top:40,
+        left:10,
+    },
+    toolbox : {
+                left : 'center',
+                feature : {
+                    dataZoom : {
+                        yAxisIndex : 'none'
+                    },
+
+                    restore : {},
+                    saveAsImage : {}
+                }
+            },
+    radar: {
+        shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: 'black',
+                borderRadius: 3,
+                padding: [3, 5]
+            },
+
+        },
+        indicator: [
+            { name: '北风', max: 0.30},
+            { name: '西北风', max: 0.30},
+            { name: '西风', max: 0.30},
+            { name: '西南风', max: 0.30},
+            { name: '南风', max: 0.30},
+            { name: '东南风', max: 0.30},
+            { name: '东风', max: 0.30},
+            { name: '东北风', max: 0.30},
+        ]
+    },
+    series: [{
+        name: '风向贡献率',
+        color:'blue',
+        type: 'radar',
+        // areaStyle: {normal: {}},
+        data: [
+            {
+                value: [0.10, 0.12, 0.04, 0.08, 0.22, 0.20, 0.11, 0.12],
+                name: '风向占比',
+                label: {
+                        show: true,
+                        formatter: function(params) {
+                            return (params.value)*100+'%';
+                        }
+                    }
+
+            },
+<!--            {-->
+<!--                value: [0.50, 0.13, 0.25, 0.31, 0.42, 0.21, 0.50, 0.19],-->
+<!--                name: 'PM10风向贡献率',-->
+<!--                label: {-->
+<!--                        show: true,-->
+<!--                        formatter: function(params) {-->
+<!--                            return (params.value)*100+'%';-->
+<!--                        }-->
+<!--                    }-->
+<!--            },-->
+<!--            {-->
+<!--                value: [0.34, 0.18, 0.23, 0.11, 0.23, 0.37, 0.24, 0.44],-->
+<!--                name: 'PM2.5风向贡献率',-->
+<!--                label: {-->
+<!--                        show: true,-->
+<!--                        formatter: function(params) {-->
+<!--                            return (params.value)*100+'%';-->
+<!--                        }-->
+<!--                    }-->
+<!--            }-->
+        ]
+    }]
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

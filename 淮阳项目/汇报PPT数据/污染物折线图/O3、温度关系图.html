@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1000px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     option = {
+    title: {
+        text: 'O3-8h、日最高温度',
+<!--        subtext: '纯属虚构'-->
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+
+    legend: {
+        right:0,
+        data: ['O3-8h','日最高温度']
+    },
+    toolbox : {
+                left : 'center',
+                feature : {
+                    dataZoom : {
+                        yAxisIndex : 'none'
+                    },
+                    magicType: {
+                    type: ['line', 'bar',]
+                },
+                    restore : {},
+                    saveAsImage : {}
+                }
+            },
+    dataZoom : [ {
+                startValue : '2020-08-01'
+            }, {
+                type : 'inside'
+            } ],
+    calculable: true,
+    xAxis: [
+
+        {
+            name:'单位：日',
+            type: 'category',
+            data: ['2020-08-01', '2020-08-02', '2020-08-03', '2020-08-04', '2020-08-05', '2020-08-06', '2020-08-07', '2020-08-08', '2020-08-09', '2020-08-10', '2020-08-11', '2020-08-12', '2020-08-13', '2020-08-14', '2020-08-15', '2020-08-16', '2020-08-17', '2020-08-18', '2020-08-19', '2020-08-20', '2020-08-21', '2020-08-22', '2020-08-23', '2020-08-24', '2020-08-25', '2020-08-26', '2020-08-27', '2020-08-28', '2020-08-29', '2020-08-30', '2020-08-31'],
+            }
+    ],
+
+    yAxis: [
+        {
+            name:'O3-8h',
+            type: 'value',
+            min: 0,
+            max: 200,
+            position: 'left',
+            interval: 40,
+
+            axisLabel: {
+                formatter: '{value} μg/m3'
+            }
+        },
+        {
+            name:'日最高温度',
+            type: 'value',
+            min: 0,
+            max: 40,
+            position: 'right',
+            interval: 8,
+
+            axisLabel: {
+                formatter: '{value} ℃'
+            }
+        }
+    ],
+    series: [
+
+        {
+            name: 'O3-8h',
+            type: 'bar',
+            smooth: true,
+            data: [90, 78, 86, 76, 110, 88, 40, 80, 152, 122, 104, 77, 90, 94, 98, 102, 78, 92, 102, 40, 38, 75, 106, 97, 112, 149, 126, 142, 158, 173, 154],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: 'average', name: '平均值'}
+                ]
+            }
+        },
+        {
+            name: '日最高温度',
+            type: 'bar',
+            smooth: true,
+            data:[33, 32, 34, 35, 33, 33, 29, 27, 32, 33, 32, 32, 33, 33, 34, 35, 35, 35, 31, 23, 24, 27, 30, 31, 30, 31, 31, 32, 31, 31, 26],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: 'average', name: '平均值'}
+                ]
+            }
+        },
+
+    ]
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
