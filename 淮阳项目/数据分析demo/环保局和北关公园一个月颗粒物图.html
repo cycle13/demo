@@ -40,11 +40,33 @@
                     saveAsImage : {}
                 }
             },
-    dataZoom : [ {
-                startValue : '2020-08-13 01'
-            }, {
-                type : 'inside'
-            } ],
+<!--    dataZoom : [ {-->
+<!--                startValue : '2020-08-13 01'-->
+<!--            }, {-->
+<!--                type : 'inside'-->
+<!--            } ],-->
+    dataZoom: [
+        {
+            type: 'slider',
+            xAxisIndex: 0,
+            filterMode: 'empty'
+        },
+        {
+            type: 'slider',
+            yAxisIndex: 0,
+            filterMode: 'empty'
+        },
+        {
+            type: 'inside',
+            xAxisIndex: 0,
+            filterMode: 'empty'
+        },
+        {
+            type: 'inside',
+            yAxisIndex: 0,
+            filterMode: 'empty'
+        }
+    ],
     calculable: true,
     xAxis: [
 

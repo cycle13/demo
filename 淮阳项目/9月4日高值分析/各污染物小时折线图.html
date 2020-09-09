@@ -50,19 +50,48 @@
             }
         }
     ],
-    dataZoom : [ {
-                startValue : '2020-08-13 01'
-            }, {
-                type : 'inside'
-            } ],
+    dataZoom: [
+        {
+            type: 'slider',
+            xAxisIndex: 0,
+            filterMode: 'empty'
+        },
+        {
+            type: 'slider',
+            yAxisIndex: 0,
+            filterMode: 'empty'
+        },
+        {
+            type: 'inside',
+            xAxisIndex: 0,
+            filterMode: 'empty'
+        },
+        {
+            type: 'inside',
+            yAxisIndex: 0,
+            filterMode: 'empty'
+        },
+                {
+            type: 'slider',
+            yAxisIndex: 1,
+            right:20,
+            filterMode: 'empty'
+        },
+        {
+            type: 'inside',
+            yAxisIndex: 1,
+            right:20,
+            filterMode: 'empty'
+        }
+    ],
     yAxis: [
         {
             type: 'value',
             name: '其他污染物浓度',
             min: 0,
-            max: 50,
+            max: 200,
             position: 'left',
-            interval: 10,
+            interval: 40,
             axisLine: {
                 lineStyle: {
                     color: colors[0]
