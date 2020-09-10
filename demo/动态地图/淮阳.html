@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+         <script src="china.js"></script>
+<!--         <script src="https://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>-->
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 800px;" id="main"></div>
+        <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("main"));
+    var days = ["1月20", "1月21"];
+    var province = ['新站镇', '鲁台镇', '四通镇', '临蔡镇', '安岭镇', '朱集乡', '豆门乡', '冯塘乡', '刘振屯乡', '王店乡', '大连乡', '葛店乡', '黄集乡', '齐老乡', '郑集乡', '曹河乡', '白楼乡', '城区'];
+    var news = ["",""]
+    var data = [
+        [270, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0],
+        [375, 26, 5, 1, 1, 0, 5, 1, 2, 2, 0, 10, 0, 6, 0, 0, 0, 1],
+    ];
+
+    var option = {
+        baseOption: {
+
+        timeline: {
+            axisType: 'category',
+            // realtime: false,
+            // loop: false,
+            autoPlay: true,
+            playInterval: 2000,
+            symbolSize: 12,
+            left: '5%',
+            right: '5%',
+            bottom: '0%',
+            width: '90%',
+            // controlStyle: {
+            //     position: 'left'
+            // },
+            data: days,
+            tooltip: {
+                formatter: days
+            },
+        },
+
+        tooltip: {
+            show: true,
+            formatter: function(params) {
+                return params.name + '：' + params.data['value']
+            },
+        },
+        visualMap: {
+            type: 'piecewise',
+            pieces: [{
+                    min: 420,
+                    color: '#7E0023'
+                },
+                {
+                    min: 351,
+                    max: 420,
+                    color: '#99004C'
+                },
+                {
+                    min: 251,
+                    max: 350,
+                    color: '#FF0000'
+                },
+                {
+                    min: 151,
+                    max: 250,
+                    color: '#FF7E00'
+                },
+                {
+                    min: 51,
+                    max: 150,
+                    color: '#FFFF00'
+                },
+                {
+                    min: 1,
+                    max: 50,
+                    color: '#00E400'
+                },
+<!--                {-->
+<!--                    value: 0,-->
+<!--                    color: 'white'-->
+<!--                }-->
+            ],
+            orient: 'vertical',
+            itemWidth: 25,
+            itemHeight: 15,
+            showLabel: true,
+            seriesIndex: [0],
+
+            textStyle: {
+                color: '#7B93A7'
+            },
+            bottom: '10%',
+            left: "5%",
+        },
+        grid: {
+            right: '5%',
+            top: '20%',
+            bottom: '10%',
+            width: '20%'
+        },
+        xAxis: {
+            min: 0,
+            max: 4000,
+            show: false
+        },
+        yAxis: [{
+            inverse: true,
+            offset: '2',
+            'type': 'category',
+            data: '',
+            nameTextStyle: {
+                color: '#fff'
+            },
+            axisTick: {
+                show: false,
+            },
+            axisLabel: {
+                //rotate:45,
+                textStyle: {
+                    fontSize: 14,
+                    color: '#000000',
+                },
+                interval: 0
+            },
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    color: '#333'
+                },
+            },
+            splitLine: {
+                show: false,
+                lineStyle: {
+                    color: '#333'
+                }
+            },
+        }],
+        geo: {
+            map: 'china',
+            aspectScale: 0.75,
+            zoom: 25,
+            roam: true,
+            center:[114.8933128488, 33.7394200203],
+            right: '35%',
+            left: '5%',
+            label: {
+                emphasis: {
+                    show: false,
+                }
+            },
+            itemStyle: {
+                emphasis: {
+                    areaColor: '#00FF00'
+                }
+            }
+        },
+        regions: [{
+            name: '南海诸岛',
+            itemStyle: {
+                areaColor: 'rgba(0, 10, 52, 1)',
+                borderColor: 'rgba(0, 10, 52, 1)',
+                normal: {
+                    opacity: 0,
+                    label: {
+                        show: false,
+                        color: "#009cc9",
+                    }
+                }
+            },
+        }],
+        series: [{
+                name: 'mapSer',
+                type: 'map',
+                map: 'china',
+                roam: false,
+                geoIndex: 0,
+                label: {
+                    show: false,
+                },
+            },
+            {
+                'name': '',
+                'type': 'bar',
+                zlevel: 2,
+                barWidth: '40%',
+                label: {
+                    normal: {
+                        show: true,
+                        fontSize: 14,
+                        position: 'right',
+                        formatter: '{c}'
+                    }
+                },
+            }
+        ],
+
+    },
+    animationDurationUpdate: 3000,
+    animationEasingUpdate: 'quinticInOut',
+    options: []
+};
+for (var n = 0; n < days.length; n++) {
+
+    var res = [];
+    for (j = 0; j < data[n].length; j++) {
+        res.push({
+            name: province[j],
+            value: data[n][j]
+        });
+    }
+    res.sort(function(a, b) {
+        return b.value - a.value;
+    }).slice(0, 6);
+
+    res.sort(function(a, b) {
+        return a.value - b.value;
+    });
+    var res1 = [];
+    var res2 = [];
+    for (t = 0; t < 10; t++) {
+        res1[t] = res[res.length - 1 - t].name;
+        res2[t] = res[res.length - 1 - t].value;
+    }
+    console.log(res1);
+    console.log("----------------");
+    console.log(province);
+    option.options.push({
+        title: [{
+                text: days[n] + "日  " + news[n],
+                textStyle: {
+                    color: '#2D3E53',
+                    fontSize: 28
+                },
+                left: 20,
+                top: 20,
+            },
+            {
+                show: true,
+                text: 'PM10浓度前十的乡镇',
+                textStyle: {
+                    color: '#2D3E53',
+                    fontSize: 18
+                },
+                right: '10%',
+                top: '15%'
+            }
+        ],
+        yAxis: {
+            data: res1,
+        },
+        series: [{
+            type: 'map',
+            data: res
+        }, {
+            type: 'bar',
+            data: res2,
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [{
+                                colorStops: [{
+                                    offset: 0,
+                                    color: '#FF0000' // 0% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: '#990000' // 100% 处的颜色
+                                }]
+                            },
+                            {
+                                colorStops: [{
+                                    offset: 0,
+                                    color: '#00C0FA' // 0% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: '#2F95FA' // 100% 处的颜色
+                                }]
+                            }
+                        ];
+                        if (params.dataIndex < 3) {
+                            return colorList[0]
+                        } else {
+                            return colorList[1]
+                        }
+                    },
+                }
+            },
+        }]
+    });
+}
+
+        myChart.setOption(option);
+
+        </script>
+    </body>
+</html>
