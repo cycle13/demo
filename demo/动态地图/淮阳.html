@@ -2,7 +2,7 @@
 <html>
      <head>
           <meta charset="utf-8">
-          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <title>淮阳区各乡镇PM10小时浓度变化图</title>
           <!-- 引入 echarts.js -->
           <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
          <script src="china.js"></script>
@@ -11,15 +11,45 @@
      </head>
     <body>
         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div style="height: 500px;width: 800px;" id="main"></div>
+        <div style="height: 550px;width: 900px;" id="main"></div>
         <script type="text/javascript">
     var myChart = echarts.init(document.getElementById("main"));
-    var days = ["1月20", "1月21"];
-    var province = ['新站镇', '鲁台镇', '四通镇', '临蔡镇', '安岭镇', '朱集乡', '豆门乡', '冯塘乡', '刘振屯乡', '王店乡', '大连乡', '葛店乡', '黄集乡', '齐老乡', '郑集乡', '曹河乡', '白楼乡', '城区'];
-    var news = ["",""]
+    var points = [
+                  {name:'齐老乡',value: [114.7673456406, 33.8556853640],itemStyle:{color:'#4ab2e5'}}
+                  , {name:'安岭镇',value: [114.8619113979, 33.8577170347],itemStyle:{color:'#4fb6d2'}}
+                  , {name:'临蔡镇',value: [114.9405742913, 33.8460605051],itemStyle:{color:'#52b9c7'}}
+                  , {name:'四通镇',value: [115.0313611624, 33.8876433484],itemStyle:{color:'#5abead'}}
+                  , {name:'黄集乡',value: [115.0445592514, 33.8220279168],itemStyle:{color:'#f34e2b'}}
+                  , {name:'葛店乡',value: [115.0183104268, 33.7600301652],itemStyle:{color:'#f56321'}}
+                  , {name:'白楼镇',value: [114.8840146961, 33.7889189614],itemStyle:{color:'#f56f1c'}}
+                  , {name:'郑集乡',value: [114.7880708088, 33.7296315408],itemStyle:{color:'#f58414'}}
+                  , {name:'曹河乡',value: [114.7141915316, 33.7283079533],itemStyle:{color:'#f58f0e'}}
+                  , {name:'大连乡',value: [114.9749021794, 33.7066800312],itemStyle:{color:'#f5a305'}}
+                  , {name:'王店乡',value: [114.8550179025, 33.6628176004],itemStyle:{color:'#e7ab0b'}}
+                  , {name:'刘振屯乡',value: [114.9253261969, 33.6183475856],itemStyle:{color:'#dfae10'}}
+                  , {name:'冯塘乡',value: [115.0116472325, 33.5826183864],itemStyle:{color:'#d5b314'}}
+                  , {name:'新站镇',value: [114.8778877286, 33.5432307520],itemStyle:{color:'#c1bb1f'}}
+                  , {name:'朱集乡',value: [114.9484521712, 33.5187274355],itemStyle:{color:'#b9be23'}}
+                  , {name:'鲁台镇',value: [115.0336627571, 33.4866178504],itemStyle:{color:'#a6c62c'}}
+                  , {name:'豆门乡',value: [114.9771647573, 33.4428670770],itemStyle:{color:'#96cc34'}}
+                  , {name:'城区',value: [114.8933128488, 33.7394200203],itemStyle:{color:'#96cc34'}}
+
+  ]
+    var days = ['2020/09/03 18:00:00', '2020/09/03 19:00:00', '2020/09/03 20:00:00', '2020/09/03 21:00:00', '2020/09/03 22:00:00', '2020/09/03 23:00:00', '2020/09/04 00:00:00', '2020/09/04 01:00:00', '2020/09/04 02:00:00', '2020/09/04 03:00:00', '2020/09/04 04:00:00'];
+    var province = ['新站镇', '鲁台镇', '四通镇', '临蔡镇', '安岭镇', '朱集乡', '豆门乡', '冯塘乡', '刘振屯乡', '王店乡', '大连乡', '葛店乡', '黄集乡', '齐老镇', '郑集乡', '曹河乡', '白楼镇', '城区'];
+<!--    var news = ["","","","","","","","","","",""]-->
     var data = [
-        [270, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0],
-        [375, 26, 5, 1, 1, 0, 5, 1, 2, 2, 0, 10, 0, 6, 0, 0, 0, 1],
+        [46, 37, 37, 47, 52, 56, 44, 125, 53, 62, 49, 43, 40, 55, 65, 97, 64, 41],
+        [46, 59, 130, 69, 69, 94, 48, 151, 55, 74, 119, 64, 73, 72, 85, 74, 85, 44],
+        [87, 79, 113, 109, 94, 117, 85, 350, 137, 102, 210, 112, 146, 77, 151, 101, 100, 56],
+        [87, 110, 89, 75, 124, 128, 86, 293, 170, 179, 193, 191, 130, 80, 122, 102, 88, 76],
+        [69, 78, 117, 70, 93, 106, 72, 206, 151, 122, 190, 167, 134, 85, 70, 83, 78, 103],
+        [69, 66, 117, 69, 67, 96, 90, 163, 100, 82, 223, 182, 135, 66, 73, 91, 56, 107],
+        [63, 65, 115, 42, 62, 73, 74, 108, 58, 82, 153, 135, 131, 57, 60, 54, 58, 91],
+        [55, 60, 101, 41, 60, 59, 71, 80, 53, 68, 86, 133, 81, 52, 52, 51, 55, 72],
+        [54, 65, 82, 31, 61, 59, 69, 85, 48, 58, 59, 103, 65, 50, 60, 53, 61, 62],
+        [56, 56, 80, 41, 43, 52, 57, 83, 45, 52, 55, 73, 57, 55, 58, 59, 65, 58],
+        [59, 47, 72, 34, 41, 65, 50, 60, 42, 56, 55, 59, 61, 50, 54, 49, 49, 60],
     ];
 
     var option = {
@@ -166,7 +196,7 @@
             left: '5%',
             label: {
                 emphasis: {
-                    show: false,
+                    show: true,
                 }
             },
             itemStyle: {
@@ -196,7 +226,7 @@
                 roam: false,
                 geoIndex: 0,
                 label: {
-                    show: false,
+                    show: true,
                 },
             },
             {
@@ -212,7 +242,37 @@
                         formatter: '{c}'
                     }
                 },
-            }
+            },
+            {
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                showEffectOn: 'render',
+                zlevel:1,
+                rippleEffect: {
+                    period: 15,
+                    scale: 4,
+                    brushType: 'fill'
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'left',
+                        offset: [15, 0],
+                        color: 'black',
+                        show: true
+                    },
+                },
+                itemStyle: {
+                    normal: {
+                       color:'#1DE9B6',
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                symbolSize: 5,
+                data: points
+            },
         ],
 
     },
@@ -238,7 +298,7 @@ for (var n = 0; n < days.length; n++) {
     });
     var res1 = [];
     var res2 = [];
-    for (t = 0; t < 10; t++) {
+    for (t = 0; t < 18; t++) {
         res1[t] = res[res.length - 1 - t].name;
         res2[t] = res[res.length - 1 - t].value;
     }
@@ -247,22 +307,23 @@ for (var n = 0; n < days.length; n++) {
     console.log(province);
     option.options.push({
         title: [{
-                text: days[n] + "日  " + news[n],
+<!--                text: days[n] + " " + news[n],-->
+                text: days[n],
                 textStyle: {
                     color: '#2D3E53',
-                    fontSize: 28
+                    fontSize: 15
                 },
                 left: 20,
                 top: 20,
             },
             {
                 show: true,
-                text: 'PM10浓度前十的乡镇',
+                text: '乡镇PM10浓度排名',
                 textStyle: {
                     color: '#2D3E53',
                     fontSize: 18
                 },
-                right: '10%',
+                right: '17%',
                 top: '15%'
             }
         ],
