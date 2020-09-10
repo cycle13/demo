@@ -83,36 +83,12 @@
         },
         visualMap: {
             type: 'piecewise',
-            pieces: [{
-                    min: 420,
-                    color: '#7E0023'
-                },
-                {
-                    min: 351,
-                    max: 420,
-                    color: '#99004C'
-                },
-                {
-                    min: 251,
-                    max: 350,
-                    color: '#FF0000'
-                },
-                {
-                    min: 151,
-                    max: 250,
-                    color: '#FF7E00'
-                },
-                {
-                    min: 51,
-                    max: 150,
-                    color: '#FFFF00'
-                },
-                {
-                    min: 1,
-                    max: 50,
-                    color: '#00E400'
-                },
-            ],
+            pieces: [{'min':0,'max':50,'label':'0-50μg/m3','color':'#00E400'},
+                {'min':51,'max':150,'label':'51-150μg/m3','color':'#FFFF00'},
+                {'min':151,'max':250,'label':'151-250μg/m3','color':'#FF7E00'},
+                {'min':251,'max':350,'label':'251-350μg/m3','color':'#FF0000'},
+                {'min':351,'max':420,'label':'351-420μg/m3','color':'#99004C'},
+                {'min':420,'label':'＞420μg/m3','color':'#7E0023'},],
             orient: 'vertical',
             itemWidth: 25,
             itemHeight: 15,
