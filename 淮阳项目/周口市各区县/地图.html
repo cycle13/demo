@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>周口市8月各区县图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 600px;width: 800px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     var uploadedDataURL = "zhoukoushi.geojson";
+function showProvince() {
+    var name = 'bj';
+
+    // myChart.showLoading();
+
+    $.get(uploadedDataURL, function(geoJson) {
+
+        // myChart.hideLoading();
+
+        echarts.registerMap(name, geoJson);
+
+        myChart.setOption(option = {
+            backgroundColor: '#FFFFFF',
+            title: {
+                text: "周口市8月各区县PM10浓度值",
+<!--                subtext: '郑集乡、临蔡镇目前缺失数据',-->
+                left: 'center',
+                textStyle: {
+                    color: '#000000'
+                }
+            },
+            visualMap: {
+                top: 10,
+            right: 10,
+            pieces: [{'min':0,'max':50,'label':'0-50μg/m3','color':'#00E400'},
+                {'min':51,'max':150,'label':'51-150μg/m3','color':'#FFFF00'},
+                {'min':151,'max':250,'label':'151-250μg/m3','color':'#FF7E00'},
+                {'min':251,'max':350,'label':'251-350μg/m3','color':'#FF0000'},
+                {'min':351,'max':420,'label':'351-420μg/m3','color':'#99004C'},
+                {'min':420,'label':'420μg/m3以上','color':'#7E0023'},],
+            outOfRange: {
+                color: '#999'
+            }
+            },
+            toolbox: {
+            left:20,
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+            series: [{
+                type: 'map',
+                mapType: name,
+                label: {
+                    normal: {
+                        show: true
+                    },
+                    emphasis: {
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                itemStyle: {
+
+                    normal: {
+                        borderColor: '#389BB7',
+                        areaColor: '#fff',
+                    },
+                    emphasis: {
+                        areaColor: '#389BB7',
+                        borderWidth: 0
+                    }
+                },
+
+                animation: false,
+                data: [{
+                            name: '川汇区',
+                            value: 112,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '淮阳区',
+                            value: 91,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '项城市',
+                            value: 71,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '扶沟县',
+                            value: 110,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '西华县',
+                            value: 111,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '商水县',
+                            value: 158,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '沈丘县',
+                            value: 104,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '郸城县',
+                            value: 128,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '太康县',
+                            value: 76,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        }, {
+                            name: '鹿邑县',
+                            value: 223,
+                            label:{
+                                normal:{
+                                    show:true,
+                                    formatter:function(params){
+                                        return params.name+"\n"+params.value
+                                    },
+                                },
+                            },
+                        },
+                    ]
+                    // animationDurationUpdate: 1000,
+                    // animationEasingUpdate: 'quinticInOut'
+            }]
+        });
+    });
+}
+
+var currentIdx = 0;
+
+showProvince();
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
