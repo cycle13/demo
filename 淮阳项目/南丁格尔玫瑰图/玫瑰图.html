@@ -17,7 +17,7 @@
      option = {
     title: {
         text: '淮阳区污染物污染指数贡献率',
-        subtext: '纯属虚构',
+<!--        subtext: '纯属虚构',-->
         left: 'center'
     },
     tooltip: {
@@ -27,7 +27,7 @@
     legend: {
         left: 'center',
         top: 'bottom',
-        data: ['SO2', 'NO2', 'PM10', 'PM2.5', 'CO', 'O3']
+        data: ['SO2', 'NO2', 'PM10', 'PM2.5', 'CO', 'O3-8h']
     },
     toolbox: {
         show: true,
@@ -51,7 +51,8 @@
 
             avoidLabelOverlap: false,
             label: {
-                formatter: '{b}: {@2012} ({d}%)'
+<!--                formatter: '{b}: {@2012} ({d}%)'-->
+                formatter: '{b}:  ({d}%)'
             },
 
             emphasis: {
@@ -65,30 +66,31 @@
                 show: true,
             },
             data: [
-                {value: 0.13, name: 'SO2'},
-                {value: 0.25, name: 'NO2'},
-                {value: 0.60, name: 'PM10'},
-                {value: 0.63, name: 'PM2.5'},
-                {value: 0.19, name: 'CO'},
-                {value: 0.71, name: 'O3'}
+                {value: 0.0356, name: 'SO2'},
+                {value: 0.12025, name: 'NO2'},
+                {value: 0.2367, name: 'PM10'},
+                {value: 0.2520, name: 'PM2.5'},
+                {value: 0.0448, name: 'CO'},
+                {value: 0.3107, name: 'O3-8h'}
             ]
         },
         {
             name: '面积模式',
             label: {
-                    formatter: '{b}: {@2012} ({d}%)'
+<!--                    formatter: '{b}: {@2012} ({d}%)'-->
+                    formatter: '{b}: ({d}%)'
                 },
             type: 'pie',
             radius: [0, 110],
             center: ['75%', '50%'],
             roseType: 'area',
             data: [
-                {value: 0.13, name: 'SO2'},
-                {value: 0.25, name: 'NO2'},
-                {value: 0.60, name: 'PM10'},
-                {value: 0.63, name: 'PM2.5'},
-                {value: 0.19, name: 'CO'},
-                {value: 0.71, name: 'O3'}
+                {value: 0.0356, name: 'SO2'},
+                {value: 0.12025, name: 'NO2'},
+                {value: 0.2367, name: 'PM10'},
+                {value: 0.2520, name: 'PM2.5'},
+                {value: 0.0448, name: 'CO'},
+                {value: 0.3107, name: 'O3-8h'}
             ]
         }
     ]
