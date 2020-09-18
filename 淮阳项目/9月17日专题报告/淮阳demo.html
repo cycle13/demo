@@ -89,7 +89,7 @@
             left: '5%',
             right: '5%',
             bottom: '0%',
-            width: '90%',
+            width: '70%',
             // controlStyle: {
             //     position: 'left'
             // },
@@ -282,7 +282,7 @@ for (var n = 0; n < days.length; n++) {
     for (j = 0; j < data[n].length; j++) {
         res.push({
             name: province[j],
-            value: data[n][j]
+            value: data[n][j],
         });
     }
     res.sort(function(a, b) {
@@ -294,7 +294,7 @@ for (var n = 0; n < days.length; n++) {
     });
     var res1 = [];
     var res2 = [];
-    for (t = 0; t < 18; t++) {
+    for (t = 0; t < 27; t++) {
         res1[t] = res[res.length - 1 - t].name;
         res2[t] = res[res.length - 1 - t].value;
     }
@@ -314,12 +314,12 @@ for (var n = 0; n < days.length; n++) {
             },
             {
                 show: true,
-                text: '乡镇PM10浓度排名',
+                text: 'PM10浓度',
                 textStyle: {
                     color: '#2D3E53',
                     fontSize: 18
                 },
-                right: '17%',
+                right: '22%',
                 top: '15%'
             }
         ],
