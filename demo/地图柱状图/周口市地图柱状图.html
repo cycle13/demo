@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区各乡镇PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+         <script src="china.js"></script>
+<!--         <script src="https://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>-->
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 550px;width: 900px;" id="main"></div>
+        <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("main"));
+    var rawData = [
+	{name:'保定',value:[10.6, 9.1, 7.1]},
+	{name:'沧州',value:[4.6, 13.1, 2.1]},
+	{name:'石家庄',value:[10.6, 9.1, 7.1]},
+	{name:'邢台',value:[10.6, 9.1, 7.1]},
+	{name:'邯郸',value:[10.6, 9.1, 7.1]},
+	{name:'衡水',value:[10.6, 9.1, 7.1]},
+	{name:'雄安',value:[10.6, 9.1, 7.1]},
+];
+
+var geoCoordMap = {
+    '保定': [114.7673456406, 33.8556853640],
+    '沧州': [114.8619113979, 33.8577170347],
+    '石家庄': [114.9405742913, 33.8460605051],
+    '邢台': [115.0313611624, 33.8876433484],
+    '邯郸': [115.0445592514, 33.8220279168],
+    '衡水': [115.0183104268, 33.7600301652],
+    '雄安': [114.8840146961, 33.7889189614]
+};
+var namearr = [ '1', '2', '3'];
+
+var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
+		'#ffe074', '#ffcbcb', '#cd8425' ];
+
+option = {
+        backgroundColor:'#010b43',
+		top : '-40%',
+		bottom : '-40%',
+		tooltip: {
+		    trigger: 'axis'
+		},
+		geo: {
+            map: 'china',
+            aspectScale: 0.75,
+            zoom: 25,
+            roam: true,
+            center:[114.8673128488, 33.6594200203],
+            right: '35%',
+            left: '5%',
+            label : {
+				normal : {
+					textStyle : {
+						color : '#fff'
+					},
+					show : false
+				},
+				emphasis : {
+					textStyle : {
+						color : '#C6A300'
+					},
+					show : false
+				}
+			},
+            itemStyle : {
+				normal : {
+					areaColor : "rgba(0,0,0,0)",
+					borderColor : "#126cc4",
+					borderWidth : 1.3
+				},
+				emphasis : {
+					areaColor : "rgba(233,0,200,0.3)"
+				}
+			}
+        },
+        regions: [{
+            name: '南海诸岛',
+            itemStyle: {
+                areaColor: 'rgba(0, 10, 52, 1)',
+                borderColor: 'rgba(0, 10, 52, 1)',
+                normal: {
+                    opacity: 0,
+                    label: {
+                        show: false,
+                        color: "#009cc9",
+                    }
+                }
+            },
+        }],
+		series : []
+	}
+
+function renderEachCity() {
+	var options = {
+		legend:[],
+		xAxis : [],
+		yAxis : [],
+		grid : [],
+		series : []
+	};
+
+	options.legend.push({
+        data : namearr,
+        left:'70%',
+        top:'85%',
+        itemWidth:25,
+        itemHeight:15,
+        textStyle:{
+            color:'#ddd',
+            fontSize:15
+        },
+
+    });
+
+	echarts.util.each(rawData, function(dataItem, idx) {
+		var geoCoord = geoCoordMap[dataItem.name];
+		var coord = myChart.convertToPixel('geo', geoCoord);
+		idx += '';
+
+		options.xAxis.push({
+			id : idx,
+			gridId : idx,
+			type : 'category',
+			name : dataItem.name,
+			nameTextStyle : {
+				color : '#fff',
+				fontSize : 14
+			},
+			nameLocation : 'middle',
+			nameGap : 3,
+			splitLine : {
+				show : false
+			},
+			axisTick : {
+				show : false
+			},
+			axisLabel : {
+				show : false
+			},
+			axisLine : {
+				show : false,
+				lineStyle : {
+					color : '#bbb'
+				}
+			},
+			data : [ dataItem.name ],
+		});
+		options.yAxis.push({
+			id : idx,
+			gridId : idx,
+			show : false
+		});
+		options.grid.push({
+			id : idx,
+			width : 50,
+			height : 40,
+			left : coord[0] - 15,
+			top : coord[1] - 35,
+		});
+
+		for (var i = 0; i < namearr.length; i++) {
+			options.series.push({
+				name : namearr[i],
+				type : 'bar',
+				xAxisId : idx,
+				yAxisId : idx,
+				barWidth: '20%',
+				itemStyle : {
+					normal : {
+						color : colorarr[i]
+					}
+				},
+				data : [ dataItem.value[i] ]
+			});
+		}
+
+	});
+	myChart.setOption(options);
+}
+setTimeout(function(){
+    renderEachCity();
+},1);
+
+        myChart.setOption(option);
+
+        </script>
+    </body>
+</html>
