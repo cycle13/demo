@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+            var data = [
+            [
+                1483488000000,
+                6.19,
+                0.9545
+            ],
+            [
+                1483574400000,
+                6.19,
+                0.2303
+            ],
+            [
+                1483660800000,
+                3.19,
+                0
+            ],
+            [
+                1483747200000,
+                6.19,
+                0
+            ],
+            [
+                1483833600000,
+                6.19,
+                4
+            ],
+            [
+                1483920000000,
+                11.19,
+                2
+            ],
+            [
+                1484006400000,
+                17.19,
+                4.7124
+            ]
+        ];
+        //数据参数顺序
+        var dims = {
+            time: 0,
+            windSpeed: 1,
+            R: 2
+        };
+        //箭头大小
+        var arrowSize = 12;
+        //方向绘制
+        function renderArrow(param, api) {
+            var point = api.coord([
+                api.value(dims.time),
+                api.value(dims.windSpeed)
+            ]);
+
+            return {
+                type: 'path',
+                shape: {
+                    pathData: 'M31 16l-15-15v9h-26v12h26v9z',
+                    x: -arrowSize / 2,
+                    y: -arrowSize / 2,
+                    width: arrowSize,
+                    height: arrowSize
+                },
+                rotation: api.value(dims.R),
+                position: point,
+                style: api.style({
+                    stroke: '#555',
+                    lineWidth: 1
+                })
+            };
+        }
+
+        var option = {
+            title: {
+                text: '风速风向数据分析图',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                formatter: function (params) {
+                    return [
+                        echarts.format.formatTime('yyyy-MM-dd', params[0].value[dims.time])
+                        + ' ' + echarts.format.formatTime('hh:mm', params[0].value[dims.time]),
+                        '风速：' + params[0].value[dims.windSpeed],
+                        '风向：' + params[0].value[dims.R]
+                    ].join('<br>');
+                }
+            },
+            grid: {
+                top: 40,
+                bottom: 60
+            },
+            xAxis: {
+                type: 'time'
+            },
+            yAxis: [{
+                name: '风速（节）',
+                nameLocation: 'middle',
+                nameGap: 35,
+                axisLine: {
+                    lineStyle: {
+                        color: '#666'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: '#ddd'
+                    }
+                }
+            }, {
+                axisLine: { show: false },
+                axisTick: { show: false },
+                axisLabel: { show: false },
+                splitLine: { show: false }
+            }],
+            visualMap: {
+                type: 'piecewise',
+                orient: 'horizontal',
+                left: 'center',
+                bottom: 10,
+                pieces: [{
+                    gte: 17,
+                    color: '#D33C3E',
+                    label: '大风（>=17节）'
+                }, {
+                    gte: 11,
+                    lt: 17,
+                    color: '#f4e9a3',
+                    label: '中风（11  ~ 17 节）'
+                }, {
+                    lt: 11,
+                    color: '#18BF12',
+                    label: '微风（小于 11 节）'
+                }],
+                seriesIndex: 0,
+                dimension: 1
+            },
+            dataZoom: [{
+                type: 'inside',
+                xAxisIndex: 0,
+                minSpan: 5
+            }],
+            series: [{
+                type: 'custom',
+                renderItem: renderArrow,
+                encode: {
+                    x: dims.time,
+                    y: dims.windSpeed
+                },
+                data: data,
+                z: 10
+            }, {
+                type: 'line',
+                symbol: 'none',
+                encode: {
+                    x: dims.time,
+                    y: dims.windSpeed
+                },
+                lineStyle: {
+                    normal: {
+                        color: '#aaa',
+                        type: 'dotted'
+                    }
+                },
+                data: data,
+                z: 1
+            }]
+        };
+
+        myChart.setOption(option);
+
+        //窗口变化更改Chart大小
+        window.onresize(function () {
+            myChart.resize();
+        });
+    </script>
+</body>
+</html>
