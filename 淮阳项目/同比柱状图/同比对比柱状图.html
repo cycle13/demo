@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1200px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+     option = {
+     title: {
+<!--                text: "淮阳区9月4日20时各乡镇PM10浓度值",-->
+                subtext: 'CO浓度单位：mg/m3',
+                left: 'center',
+                top:30,
+                textStyle: {
+                    color: '#000000'
+                }
+            },
+     color: colors,
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data: ['2019', '2020','增幅']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: [ 'SO2', 'NO2', 'PM10', 'PM2.5', 'CO', 'O3-8h'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    dataZoom : [ {
+                startValue : '2020-08-01'
+            }, {
+                type : 'inside'
+            } ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '污染物浓度',
+            min: -180,
+            max: 180,
+            position: 'left',
+            interval: 36,
+            axisLine: {
+                lineStyle: {
+                    color: 'black'
+                }
+            },
+            axisLabel: {
+                formatter: '{value} μg/m3'
+            }
+        },
+        {
+            type: 'value',
+            name: '增幅',
+            min: 100,
+            max: -100,
+            position: 'right',
+            interval: 25,
+            axisLine: {
+                lineStyle: {
+                    color: 'black'
+                }
+            },
+            axisLabel: {
+                formatter: '{value}%'
+            }
+        },
+
+    ],
+    series: [
+        {
+            name: '2019',
+            type: 'bar',
+            smooth: true,
+            color:'blue',
+            label: {
+                show: true,
+                position: 'top'
+            },
+            yAxisIndex: 0,
+            data: [7, 6,8,4,6,7],
+
+            },
+        {
+            name: '2020',
+            type: 'bar',
+            color:'green',
+            smooth: true,
+            yAxisIndex: 0,
+            label: {
+                show: true,
+                position: 'top'
+            },
+            data: [30, 26,34,34,23,45],
+
+            },
+
+
+        {
+            name: '增幅',
+            type: 'bar',
+            smooth: true,
+            color:'red',
+            yAxisIndex: 1,
+            label: {
+                show: true,
+                position: 'top'
+            },
+            data: [-90, -78,98,-34,-23,-12],
+
+            },
+    ]
+};
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
