@@ -2,7 +2,7 @@
 <html>
      <head>
           <meta charset="utf-8">
-          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <title>淮阳区2019年1月1日到2019年12月31日AQI变化图</title>
           <!-- 引入 echarts.js -->
           <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
           <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
@@ -14,8 +14,8 @@
 
       var myChart = echarts.init(document.getElementById("main"));
 
-     $.get('beijing-pm10.json', function (data) {
-<!--     $.get('aqi-beijing.json', function (data) {-->
+<!--     $.get('beijing-pm10.json', function (data) {-->
+     $.get('aqi-beijing.json', function (data) {
         myChart.setOption({
             title: {
             text: '淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图',

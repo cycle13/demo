@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 700px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+    var equipment = ['华为', '中兴', '爱立信', '索尼', '联想', '思科'];
+var project = ['华为', '中兴', '烽火', '阿尔卡特', '三星', 'tplink', '惠普', '戴尔'];
+var colorList = ['#00E400', '#FFFF00', '#FF7E00', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac', '#0090ff', '#06d3c4', '#ffbc32', '#2ccc44', '#ff3976', '#6173d6', '#914ce5', '#42b1cc', '#ff55ac']
+option = {
+    backgroundColor: '#fff',
+    tooltip: {
+        formatter: function(param) {
+            if (param.data.type == null) {
+
+                return param.data.name + ":" + param.value + '个';
+            } else {
+
+                return param.data.type + ":" + param.value + '个';
+            }
+        }
+    },
+
+    series: [{
+            name: '整体分类',
+            type: 'pie',
+            radius: [0, '30%'],
+            label: {
+                position: 'inner',
+
+            },
+            itemStyle: {
+                normal: {
+                    borderColor: '#fff',
+                    borderWidth: 2,
+                    color: function(params) {
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+
+            selectedMode: 'single',
+            data: [{
+                    value: 10,
+                    name: '优',
+
+
+                },
+                {
+                    value: 19,
+                    name: '良',
+
+                },
+                {
+                    value: 2,
+                    name: '轻度污染',
+
+                },
+            ]
+        },
+        {
+            name: '招标方式',
+            type: 'pie',
+            radius: ['40%', '55%'],
+
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+            label: {
+                formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                backgroundColor: '#eee',
+                borderColor: '#aaa',
+                borderWidth: 1,
+                borderRadius: 4,
+                shadowBlur:3,
+                shadowOffsetX: 2,
+                shadowOffsetY: 2,
+                shadowColor: '#999',
+                padding: [0, 7],
+                rich: {
+                    a: {
+                        color: 'yellow',
+                        lineHeight: 22,
+                        align: 'center'
+                    },
+                    abg: {
+                        backgroundColor: '#333',
+                        width: '100%',
+                        align: 'right',
+                        height: 22,
+                        borderRadius: [4, 4, 0, 0]
+                    },
+                    hr: {
+                        borderColor: 'yellow',
+                        width: '100%',
+                        borderWidth: 0.5,
+                        height: 0
+                    },
+                    b: {
+                        fontSize: 16,
+                        lineHeight: 33
+                    },
+                    per: {
+                        color: '#eee',
+                        backgroundColor: '#334455',
+                        padding: [2, 4],
+                        borderRadius: 2
+                    }
+                }
+            },
+
+            data: [{
+                    value: 10,
+                    name: '优',
+                    type: equipment[0],
+
+                },
+                {
+                    value: 19,
+                    name: 'O3-8h',
+                    type: equipment[1],
+
+                },
+                {
+                    value: 2,
+                    name: 'O3-8h',
+                    type: equipment[2],
+
+                },
+
+
+
+
+            ]
+        }
+    ]
+};
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
