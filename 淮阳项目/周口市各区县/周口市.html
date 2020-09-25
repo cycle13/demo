@@ -16,7 +16,7 @@
     var myChart = echarts.init(document.getElementById("main"));
     var points = [
                   {name:'淮阳区',value: [114.8500000000, 33.7000000000],itemStyle:{color:'#f5a305'}}
-                  , {name:'商水县',value: [114.4049181171, 33.4878678687],itemStyle:{color:'#f5a305'}}
+                  , {name:'商水县',value: [114.5049181171, 33.4878678687],itemStyle:{color:'#f5a305'}}
                   , {name:'太康县',value: [114.8495941438, 34.0650668112],itemStyle:{color:'#f5a305'}}
                   , {name:'项城市',value: [114.9012416144, 33.2940043446],itemStyle:{color:'#f5a305'}}
                   , {name:'西华县',value: [114.4971362733, 33.7266407975],itemStyle:{color:'#f5a305'}}
@@ -28,7 +28,7 @@
   ];
     var days = ['0时','1时','2时','3时','4时','5时','6时','7时','8时','9时','10时','11时','12时','13时','14时'];
     var province = ['川汇区', '扶沟县', '西华县', '商水县', '沈丘县', '郸城县', '淮阳区', '太康县', '鹿邑县', '项城市'];
-<!--    var news = ["","","","","","","","","","",""]-->
+    var news = ["东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风",]
     var data = [
         [111, '-', '-', '-', '-', '-', '-', '-', 83, '-'],
         [104, 102, 110, 135, 130, 80, 157, 124, 78, 108],
@@ -157,7 +157,7 @@
         geo: {
             map: 'china',
             aspectScale: 0.75,
-            zoom: 25,
+            zoom: 10,
             roam: true,
             center:[114.8673128488, 33.6594200203],
             right: '35%',
@@ -266,7 +266,7 @@ for (var n = 0; n < days.length; n++) {
     });
     var res1 = [];
     var res2 = [];
-    for (t = 0; t < 18; t++) {
+    for (t = 0; t < 10; t++) {
         res1[t] = res[res.length - 1 - t].name;
         res2[t] = res[res.length - 1 - t].value;
     }
@@ -275,8 +275,8 @@ for (var n = 0; n < days.length; n++) {
     console.log(province);
     option.options.push({
         title: [{
-<!--                text: days[n] + " " + news[n],-->
-                text: days[n],
+                text: days[n] + " " + news[n],
+<!--                text: days[n],-->
                 textStyle: {
                     color: '#2D3E53',
                     fontSize: 15
@@ -286,12 +286,12 @@ for (var n = 0; n < days.length; n++) {
             },
             {
                 show: true,
-                text: '乡镇PM10浓度排名',
+                text: '周口市各区县PM10浓度排名',
                 textStyle: {
                     color: '#2D3E53',
-                    fontSize: 18
+                    fontSize: 15
                 },
-                right: '17%',
+                right: '15%',
                 top: '15%'
             }
         ],
