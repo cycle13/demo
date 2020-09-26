@@ -32,7 +32,7 @@ sheet.write(0,2,'PM10')
 sheet.write(0,3,'PM2.5')
 
 for i in time_range:
-    for j in range(0,15):
+    for j in range(0,23):
         time.sleep(5)
         url = first_url+str(i)+'+'+str(j)+ '%3A00'
         response = session.get(url,headers = headers).text

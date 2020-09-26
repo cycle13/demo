@@ -13,8 +13,8 @@
         <script type="text/javascript">
 
       var myChart = echarts.init(document.getElementById("main"));
-<!--      var colorList = ['#00E400', '#FFFF00', '#FFFF00','#FF7E00' ]-->
-      var colorList = ['#00E400', '#FFFF00','#FF7E00' ]
+      var colorList2 = ['#00E400', '#FFFF00', '#FFFF00','#FF7E00' ]
+      var colorList1 = ['#00E400', '#FFFF00','#FF7E00' ]
       option = {
       backgroundColor: '#fff',
       tooltip: {
@@ -42,7 +42,7 @@
                     borderColor: '#fff',
                     borderWidth: 2,
                     color: function(params) {
-                        return colorList[params.dataIndex]
+                        return colorList1[params.dataIndex]
                     }
                 }
             },
@@ -74,7 +74,7 @@
             itemStyle: {
                 normal: {
                     color: function(params) {
-                        return colorList[params.dataIndex]
+                        return colorList2[params.dataIndex]
                     }
                 }
             },
@@ -128,17 +128,17 @@
 
                 },
                 {
-                    value: 19,
+                    value: 14,
                     name: 'O3-8h',
 
 
                 },
-<!--                {-->
-<!--                    value: 5,-->
-<!--                    name: 'PM10',-->
+                {
+                    value: 5,
+                    name: 'PM10',
 
 
-<!--                },-->
+                },
                 {
                     value: 2,
                     name: 'O3-8h',

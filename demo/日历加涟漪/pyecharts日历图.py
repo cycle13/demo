@@ -23,5 +23,5 @@ if __name__ == '__main__':
     dtat = []
     for i in range(0,len(data)):
         dtat.append([data[i],excel[i]])
-    with open('beijing.json', 'w') as file_obj:
+    with open('beijing1.json', 'w') as file_obj:
         json.dump(dtat, file_obj)

@@ -26,8 +26,3 @@ if __name__ == '__main__':
     with open("result.json", "w") as f:
         json.dump(result, f)
         print("加载入文件完成...")
-
-
-
-
-        ##获取的结果样式[[],[],[],[]]
