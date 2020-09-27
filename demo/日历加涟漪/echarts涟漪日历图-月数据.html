@@ -54,7 +54,7 @@
         calendar: [{
             top: 100,
             left: 'center',
-            range: ['2020-09-01', '2020-09-31'],
+            range: ['2020-08-01', '2020-08-31'],
             splitLine: {
                 show: true,
                 lineStyle: {
@@ -79,7 +79,7 @@
     {
         top: 280,
         left: 'center',
-        range: ['2019-09-01', '2019-09-31'],
+        range: ['2019-08-01', '2019-08-31'],
         splitLine: {
             show: true,
             lineStyle: {
@@ -124,7 +124,6 @@
                 return item;
             }),
             symbolSize: function (val) {
-<!--                return val[1] / 15;-->
                 return 15;
             },
             itemStyle: {
@@ -140,58 +139,12 @@
                 return item;
             }),
             symbolSize: function (val) {
-<!--                return val[1] / 15;-->
                 return 15;
             },
             itemStyle: {
                 color: '#ddb926'
             }
         },
-<!--        {-->
-<!--            name: 'Top 12',-->
-<!--            type: 'effectScatter',-->
-<!--            coordinateSystem: 'calendar',-->
-<!--            calendarIndex: 1,-->
-<!--            data: data.sort(function (a, b) {-->
-<!--                return b[1] - a[1];-->
-<!--            }).slice(0, 12),-->
-<!--            symbolSize: function (val) {-->
-<!--                return val[1] / 20;-->
-<!--            },-->
-<!--            showEffectOn: 'render',-->
-<!--            rippleEffect: {-->
-<!--                brushType: 'stroke'-->
-<!--            },-->
-<!--            hoverAnimation: true,-->
-<!--            itemStyle: {-->
-<!--                color: '#f4e925',-->
-<!--                shadowBlur: 10,-->
-<!--                shadowColor: '#333'-->
-<!--            },-->
-<!--            zlevel: 1-->
-<!--        },-->
-<!--        {-->
-<!--            name: 'Top 12',-->
-<!--            type: 'effectScatter',-->
-<!--            coordinateSystem: 'calendar',-->
-<!--            data: data.sort(function (a, b) {-->
-<!--                return b[1] - a[1];-->
-<!--            }).slice(0, 12),-->
-<!--            symbolSize: function (val) {-->
-<!--                return val[1] / 20;-->
-<!--            },-->
-<!--            showEffectOn: 'render',-->
-<!--            rippleEffect: {-->
-<!--                brushType: 'stroke'-->
-<!--            },-->
-<!--            hoverAnimation: true,-->
-<!--            itemStyle: {-->
-<!--                color: '#f4e925',-->
-<!--                shadowBlur: 10,-->
-<!--                shadowColor: '#333'-->
-<!--            },-->
-<!--            zlevel: 1-->
-<!--        }-->
     ]
     });
         })
