@@ -33,13 +33,13 @@ def month(url):
 def day(url):
     data = {
         'sort':'asc',
-        'time':'2020-01-22'
+        'time':'2020-09-27'
     }
     response = session.post(url= url,data=data,headers = headers).text
     return response
 
 
-l = year(first_url_year)
+l = day(first_url_day)
 data = json.loads(l)['data']
 book = xlwt.Workbook()
 sheet = book.add_sheet('周口市各区县数据')
@@ -51,7 +51,7 @@ sheet.write(0,3,'SO2')
 sheet.write(0,4,'NO2')
 sheet.write(0,5,'PM10')
 sheet.write(0,6,'PM2.5')
-sheet.write(0,7,'综合指数')
+# sheet.write(0,7,'综合指数')
 for k in data:
     if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市','港区',]:
         sheet.write(n, 0, k['city'])
@@ -61,10 +61,10 @@ for k in data:
         sheet.write(n, 4, k['no2'])
         sheet.write(n, 5, k['pm10'])
         sheet.write(n, 6, k['pm25'])
-        sheet.write(n, 7, k['zong'])
+        # sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('data.xls')
+book.save('daydata.xls')
 
 print(data)
 
