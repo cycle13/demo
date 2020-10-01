@@ -2,7 +2,7 @@
 <html>
      <head>
           <meta charset="utf-8">
-          <title>淮阳区各乡镇PM10小时浓度变化图</title>
+          <title>周口市各区县2019年与2020年1至9月份NO2浓度对比图</title>
           <!-- 引入 echarts.js -->
           <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
          <script src="china.js"></script>
@@ -15,16 +15,16 @@
         <script type="text/javascript">
     var myChart = echarts.init(document.getElementById("main"));
     var rawData = [
-	{name:'淮阳区',value:[42, 38]},
-	{name:'商水县',value:[41, 44]},
-	{name:'太康县',value:[40, 43]},
-	{name:'项城市',value:[51, 43]},
-	{name:'西华县',value:[38, 45]},
-	{name:'沈丘县',value:[48, 43]},
-	{name:'扶沟县',value:[36, 43]},
-	{name:'鹿邑县',value:[31, 34]},
-<!--	{name:'川汇区',value:[52, 55]},-->
-	{name:'郸城县',value:[40, 44]},
+	{name:'淮阳区',value:[20, 18]},
+	{name:'商水县',value:[23, 19]},
+	{name:'太康县',value:[19, 16]},
+	{name:'项城市',value:[20, 16]},
+	{name:'西华县',value:[21, 16]},
+	{name:'沈丘县',value:[18, 18]},
+	{name:'扶沟县',value:[21, 17]},
+	{name:'鹿邑县',value:[19, 15]},
+	{name:'川汇区',value:["-", "-"]},
+	{name:'郸城县',value:[19, 16]},
 ];
 
 var geoCoordMap = {
@@ -47,7 +47,7 @@ var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 option = {
         backgroundColor:'#010b43',
         title: {
-                text: "周口市各区县PM10浓度",
+                text: "周口市各区县2019年与2020年1至9月份NO2浓度对比图",
              subtext: '单位：μg/m3',
                 left: 'center',
                 textStyle: {

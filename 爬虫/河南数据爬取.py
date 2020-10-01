@@ -9,13 +9,14 @@ session = requests.Session()
 first_url_day = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/dayAqi2018_county'
 first_url_month = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county'
 first_url_year = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county '
+url_list = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/getCityStationDetail'
 headers = {
     'User-Agent':'Dalvik/2.1.0 (Linux; U; Android 7.1.2; LIO-AN00 Build/N2G48H)'
 }
 
 def year(url):
     data = {
-        'end':'2020-09-26',
+        'end':'2020-09-30',
         'sort':'asc',
         'start':'2020-01-01'
     }
@@ -25,7 +26,7 @@ def year(url):
 def month(url):
     data = {
         'sort':'asc',
-        'month':'2020-01'
+        'month':'2019-09'
     }
     response = session.post(url= url,data=data,headers = headers).text
     return response
@@ -39,7 +40,20 @@ def day(url):
     return response
 
 
-l = day(first_url_day)
+def real(url):
+    response = session.get(url= url_list,headers = headers).text
+    return response
+    data = json.loads(l)['detail']
+    for i in data:
+        print(i)
+
+
+# real(url_list)
+
+
+
+
+l = year(first_url_year)
 data = json.loads(l)['data']
 book = xlwt.Workbook()
 sheet = book.add_sheet('周口市各区县数据')
@@ -51,7 +65,7 @@ sheet.write(0,3,'SO2')
 sheet.write(0,4,'NO2')
 sheet.write(0,5,'PM10')
 sheet.write(0,6,'PM2.5')
-# sheet.write(0,7,'综合指数')
+sheet.write(0,7,'综合指数')
 for k in data:
     if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市','港区',]:
         sheet.write(n, 0, k['city'])
@@ -61,10 +75,10 @@ for k in data:
         sheet.write(n, 4, k['no2'])
         sheet.write(n, 5, k['pm10'])
         sheet.write(n, 6, k['pm25'])
-        # sheet.write(n, 7, k['zong'])
+        sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('daydata.xls')
+book.save('2020-01-01.xls')
 
 print(data)
 
