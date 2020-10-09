@@ -48,7 +48,7 @@ def real(url):
         print(i)
 
 
-# real(url_list)
+real(url_list)
 
 
 
