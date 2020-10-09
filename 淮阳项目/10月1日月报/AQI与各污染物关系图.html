@@ -109,6 +109,37 @@
             smooth: true,
             color:'#D0D8E2',
             data: [80, 80, 97, 94, 84, 105, 121, 120, 117, 60, 75, 64, 84, 79, 70, 62, 63, 99, 87, 111, 48, 70, 84, 99, 82, 126, 77, 66, 60, 92],
+            itemStyle: {
+            normal: {
+　　　　　　　　//这里是重点
+                color: function(params) {
+                    if(params.value>=0&&params.value<=50)
+                    {
+                    return '#00E400'
+                    }
+                    else if(params.value>=51&&params.value<=100)
+                    {
+                    return '#FFFF00'
+                    }
+                    else if(params.value>=101&&params.value<=150)
+                    {
+                    return '#FF7E00'
+                    }
+                    else if(params.value>=151&&params.value<=200)
+                    {
+                    return '#FF0000'
+                    }
+                    else if(params.value>=201&&params.value<=300)
+                    {
+                    return '#99004C'
+                    }
+                    else
+                    {
+                    return '#7E0023'
+                    }
+                }
+            }
+        }
             },
         {
             name: 'SO2',
