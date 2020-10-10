@@ -22,7 +22,7 @@ headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
 }
 
-time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2019-9-29', end='2019-9-29'))]
+time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2019-9-04', end='2019-9-04'))]
 book = xlwt.Workbook()
 sheet = book.add_sheet('周口市各区县数据')
 n = 1
@@ -32,7 +32,7 @@ sheet.write(0,2,'PM10')
 sheet.write(0,3,'PM2.5')
 
 for i in time_range:
-    for j in range(19,23):
+    for j in range(0,24):
         time.sleep(5)
         url = first_url+str(i)+'+'+str(j)+ '%3A00'
         response = session.get(url,headers = headers).text
@@ -48,4 +48,4 @@ for i in time_range:
                 print(k)
         # print(res)
 
-book.save('data.xls')
+book.save('hourdata4.xls')
