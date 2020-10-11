@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 600px;width: 500px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+var uploadedDataURL = "huaiyang.geojson";
+$.get(uploadedDataURL, function(geoJson) {
+    // console.log(geoJson)
+    echarts.registerMap('nanshan', geoJson);
+    let data = [
+        [114.7673456406, 33.8556853640,123],
+        [114.8619113979, 33.8577170347,156],
+        [114.9405742913, 33.8460605051,89],
+        [115.0313611624, 33.8876433484,79],
+        [115.0445592514, 33.8220279168,200],
+        [115.0183104268, 33.7600301652,43],
+        [114.8840146961, 33.7889189614,115],
+        [114.7880708088, 33.7296315408,98],
+        [114.7141915316, 33.7283079533,79],
+        [114.9749021794, 33.7066800312,167],
+        [114.8550179025, 33.6628176004,154],
+        [114.9253261969, 33.6183475856,116],
+        [115.0116472325, 33.5826183864,154],
+        [114.8778877286, 33.5432307520,131],
+        [114.9484521712, 33.5187274355,176],
+        [115.0336627571, 33.4866178504,134],
+        [114.9771647573, 33.4428670770,151],
+        [114.8933128488, 33.7394200203,112],
+    ];
+    let areaData = [];
+    data.map(item => { // 扩大热力图效果
+        areaData.push(...new Array(8).fill(item));
+    });
+    let mapMax = Math.max(...data.map(item => item[2]));
+    let mapMin = Math.min(...data.map(item => item[2]));
+    myChart.setOption(option = {
+    backgroundColor: '#ccc',
+    tooltip: {
+        show: false,
+        trigger: 'item',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+
+    visualMap: {
+        bottom: 20,
+        left: 20,
+        show: true,
+        color: ['#ff4601', '#fffc00', '#87cffa'],
+        min: mapMin,
+        max: mapMax,
+        calculable: true,
+        textStyle: {
+            color: '#fff',
+            fontSize: 12
+        }
+    },
+
+    grid: {
+        height: '100%',
+        width: '100%'
+    },
+
+    geo: {
+        map: 'nanshan',
+        label: {
+            show: true
+        },
+        top: 'center',
+        left: '0%',
+        roam: true,
+        width: '90%',
+        height: '95%',
+        zoom: 1,
+        label: {
+            normal: {
+                show: true,
+                color: '#fff'
+            },
+            emphasis: {
+                color: '#fff'
+            }
+        },
+        itemStyle: {
+            normal: {
+                areaColor: '#76b1ff',
+                borderColor: '#eee',
+                shadowColor: '#76b1ff',
+                shadowBlur: 10,
+                borderWidth: 1
+            },
+            emphasis: {
+                // 鼠标移入颜色
+                areaColor: '#409EFF',
+                borderWidth: 0
+            }
+        }
+    },
+
+    series: [{
+        mapType: 'nanshan',
+        top: 'center',
+        left: 'center',
+        width: '65%',
+        height: '95%',
+
+        name: 'AQI',
+        type: 'heatmap',
+        coordinateSystem: 'geo',
+        blurSize: 40,
+        data: areaData,
+        // 鼠标移入
+        emphasis: {
+            show: false,
+            itemStyle: {
+                areaColor: 'rgb(255,255,0,1)'
+            }
+        }
+    }]
+})
+})
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
