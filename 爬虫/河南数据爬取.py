@@ -16,11 +16,12 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2019-09-30',
+        'end':'2020-10-13',
         'sort':'asc',
-        'start':'2019-07-01'
+        'start':'2020-01-01'
     }
     response = session.post(url= url,data=data,headers = headers).text
+    print(response)
     return response
 
 def month(url):
@@ -48,12 +49,12 @@ def real(url):
         print(i)
 
 
-real(url_list)
+# real(url_list)
 
 
 
 
-l = month(first_url_month)
+l = year(first_url_year)
 data = json.loads(l)['data']
 book = xlwt.Workbook()
 sheet = book.add_sheet('周口市各区县数据')
@@ -78,7 +79,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('2020年7月.xls')
+book.save('2020年全年累计.xls')
 
 print(data)
 

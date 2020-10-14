@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1200px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+    var colors = ['#5793f3', '#d14a61', '#675bba'];
+     option = {
+     color: colors,
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data: ['AQI', 'SO2', 'NO2', 'PM10', 'PM2.5', 'CO', 'O3-8h']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: [ '2020/9/5', '2020/9/6', '2020/9/7', '2020/9/8', '2020/9/9', '2020/9/10', '2020/9/11'],
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    dataZoom : [ {
+                startValue : '2020-08-01'
+            }, {
+                type : 'inside'
+            } ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '其他污染物浓度',
+            min: 0,
+            max: 200,
+            position: 'left',
+            interval: 40,
+            axisLine: {
+                lineStyle: {
+                    color: 'black'
+                }
+            },
+            axisLabel: {
+                formatter: '{value} μg/m3'
+            }
+        },
+        {
+            type: 'value',
+            name: 'CO浓度',
+            min: 0,
+            max: 1,
+            position: 'right',
+            interval: 0.2,
+            axisLine: {
+                lineStyle: {
+                    color: 'black'
+                }
+            },
+            axisLabel: {
+                formatter: '{value} mg/m3'
+            }
+        },
+        {
+            type: 'value',
+            name: 'AQI',
+            min: 0,
+            max: 150,
+            position: 'right',
+            interval: 30,
+            offset: 80,
+            axisLine: {
+                lineStyle: {
+                    color: 'black'
+                }
+            },
+            axisLabel: {
+                formatter: '{value}'
+            }
+        }
+    ],
+    series: [
+        {
+            name: 'AQI',
+            type: 'bar',
+            yAxisIndex: 2,
+            barWidth: "50%",
+            smooth: true,
+            color:'#D0D8E2',
+            data: [80, 80, 97, 94, 84, 105, 121],
+            itemStyle: {
+            normal: {
+　　　　　　　　//这里是重点
+                color: function(params) {
+                    if(params.value>=0&&params.value<=50)
+                    {
+                    return '#00E400'
+                    }
+                    else if(params.value>=51&&params.value<=100)
+                    {
+                    return '#FFFF00'
+                    }
+                    else if(params.value>=101&&params.value<=150)
+                    {
+                    return '#FF7E00'
+                    }
+                    else if(params.value>=151&&params.value<=200)
+                    {
+                    return '#FF0000'
+                    }
+                    else if(params.value>=201&&params.value<=300)
+                    {
+                    return '#99004C'
+                    }
+                    else
+                    {
+                    return '#7E0023'
+                    }
+                }
+            }
+        }
+            },
+        {
+            name: 'SO2',
+            type: 'line',
+            smooth: true,
+            yAxisIndex: 0,
+            data: [8, 9, 8, 8, 8, 12, 8],
+            },
+        {
+            name: 'NO2',
+            type: 'line',
+            smooth: true,
+            color:'blue',
+            yAxisIndex: 0,
+            data: [16, 17, 18, 23, 24, 24, 26],
+<!--            markPoint: {-->
+<!--                data: [-->
+<!--                    {type: 'max', name: '最大值'},-->
+<!--                    {type: 'min', name: '最小值'}-->
+<!--                ]-->
+<!--            },-->
+<!--            markLine: {-->
+<!--                data: [-->
+<!--                    {type: 'average', name: '平均值'}-->
+<!--                ]-->
+<!--            }-->
+            },
+        {
+            name: 'PM10',
+            type: 'line',
+            smooth: true,
+            yAxisIndex: 0,
+            data: [54, 52, 56, 78, 82, 95, 80],
+            },
+        {
+            name: 'PM2.5',
+            type: 'line',
+            smooth: true,
+            yAxisIndex: 0,
+            data: [24, 24, 24, 28, 33, 44, 41],
+            },
+        {
+            name: 'CO',
+            type: 'line',
+            smooth: true,
+            yAxisIndex: 1,
+            data: [0.6, 0.4, 0.4, 0.4, 0.5, 0.6, 0.6],
+            },
+        {
+            name: 'O3-8h',
+            type: 'line',
+            smooth: true,
+            color:'red',
+            yAxisIndex: 0,
+            data: [136, 136, 156, 152, 140, 165, 183],
+<!--            markPoint: {-->
+<!--                data: [-->
+<!--                    {type: 'max', name: '最大值'},-->
+<!--                    {type: 'min', name: '最小值'}-->
+<!--                ]-->
+<!--            },-->
+<!--            markLine: {-->
+<!--                data: [-->
+<!--                    {type: 'average', name: '平均值'}-->
+<!--                ]-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+            },
+    ]
+};
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
