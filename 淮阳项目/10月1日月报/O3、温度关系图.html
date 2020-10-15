@@ -12,9 +12,9 @@
         <div style="height: 500px;width: 1000px;" id="main"></div>
         <script type="text/javascript">
 
-      var myChart = echarts.init(document.getElementById("main"));
+    var myChart = echarts.init(document.getElementById("main"));
 
-     option = {
+    option = {
     title: {
         text: 'O3-8h、日最高温度',
 <!--        subtext: '纯属虚构'-->
@@ -100,7 +100,38 @@
                 data: [
                     {type: 'average', name: '平均值'}
                 ]
+            },
+            itemStyle: {
+            normal: {
+　　　　　　　　//这里是重点
+                color: function(params) {
+                    if(params.value>=0&&params.value<=100)
+                    {
+                    return '#00E400'
+                    }
+                    else if(params.value>=101&&params.value<=160)
+                    {
+                    return '#FFFF00'
+                    }
+                    else if(params.value>=161&&params.value<=215)
+                    {
+                    return '#FF7E00'
+                    }
+                    else if(params.value>=216&&params.value<=265)
+                    {
+                    return '#FF0000'
+                    }
+                    else if(params.value>=266&&params.value<=800)
+                    {
+                    return '#99004C'
+                    }
+                    else
+                    {
+                    return '#7E0023'
+                    }
+                }
             }
+        }
         },
         {
             name: '日最高温度',

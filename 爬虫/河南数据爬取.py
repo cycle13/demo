@@ -16,7 +16,7 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2020-10-13',
+        'end':'2020-10-14',
         'sort':'asc',
         'start':'2020-01-01'
     }
@@ -79,7 +79,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('2020年全年累计.xls')
+book.save('2020年14日累计.xls')
 
 print(data)
 
