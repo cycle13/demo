@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2019年月2020年第三季度污染等级天数变化情况</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 600px;width: 1000px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+option = {
+    title: {
+        text: '2019年周口市各区县环境空气质量分级天数比例图'
+    },
+    "tooltip": {
+        "trigger": "axis"
+    },
+    "color": ["#37b70c", "#fae521", "#f29c00", "#dd3f36", "#b3013f", "#a00398"],
+    "legend": {
+        "top": "0",
+        'icon': 'circle',
+        x: 'right',
+        "data": ["优", "良", "轻度", "中度", "重度", "严重"],
+        "itemGap": 10,
+        "itemWidth": 15,
+        "itemHeight": 12
+    },
+    "xAxis": [{
+        // "name": "地区",
+        "type": "category",
+
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false,
+            "alignWithLabel": true
+        },
+        axisLabel: {
+            show: true
+        },
+        splitArea: {
+            show: false
+        },
+        splitLine: {
+            show: false
+        },
+        "data": ['郸城县', '扶沟县', '淮阳县', '鹿邑县', '商水县', '沈丘县', '太康县', '西华县', '项城市']
+    }],
+    "yAxis": [{
+        "type": "value",
+        "name": "天数",
+        axisLine: {
+            show: true
+        },
+        axisTick: {
+            show: false,
+            "alignWithLabel": true
+        },
+        axisLabel: {
+            show: true
+        },
+        splitArea: {
+            show: false
+        },
+        splitLine: {
+            show: true
+        }
+    }],
+    "series": [
+        //优天数
+        {
+            "data": [25, 25, 26, 17, 25, 21, 24, 22, 17],
+            "name": '优',
+            "stack": "one",
+            "type": "bar",
+            label: {
+                show: true,
+                color:'black',
+            },
+        },
+        //良天数
+        {
+            "data": [185, 154, 181, 179, 182, 201, 160, 171, 213],
+            "name": '良',
+            "stack": "one",
+            label: {
+                show: true,
+                color:'black',
+            },
+            "type": "bar"
+        },
+        //轻度天数
+        {
+            "data": [105, 123, 100, 132, 108, 107, 122, 115, 111],
+            "name": "轻度",
+            "stack": "one",
+            label: {
+                show: true,
+                color:'black',
+            },
+            "type": "bar"
+        },
+        //中度天数
+        {
+            "data": [26, 34, 33, 26, 31, 25, 34, 38, 19],
+            "name": "中度",
+            "stack": "one",
+            label: {
+                show: true,
+                color:'black',
+            },
+            "type": "bar"
+        },
+        //重度天数
+        {
+            "data": [23, 26, 24, 11, 17, 10, 23, 18, 5],
+            "name": "重度",
+            "stack": "one",
+            label: {
+                show: true,
+                color:'black',
+            },
+            "type": "bar"
+        },
+        //严重天数
+        {
+            "data": [1, 3, 1, 0, 2, 1, 2, 1, 0],
+            "name": "严重",
+            "stack": "one",
+            label: {
+                show: true,
+                color:'black',
+            },
+            itemStyle: {
+                normal: {
+                    barBorderRadius: [50, 50, 0, 0],
+                }
+            },
+            "type": "bar"
+        }
+    ]
+}
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
