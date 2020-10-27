@@ -23,6 +23,6 @@ class excel_read:
 
 if __name__ == '__main__':
     result = excel_read().get_data()
-    with open("demo.json", "w") as f:
+    with open("demoresult.json", "w") as f:
         json.dump(result, f)
         print("加载入文件完成...")
