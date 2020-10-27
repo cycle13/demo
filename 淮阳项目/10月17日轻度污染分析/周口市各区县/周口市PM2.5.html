@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区各乡镇PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+         <script src="china.js"></script>
+<!--         <script src="https://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>-->
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 550px;width: 900px;" id="main"></div>
+        <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("main"));
+    var points = [
+                  {name:'淮阳区',value: [114.8500000000, 33.7000000000],itemStyle:{color:'#f5a305'}}
+                  , {name:'商水县',value: [114.5049181171, 33.4878678687],itemStyle:{color:'#f5a305'}}
+                  , {name:'太康县',value: [114.8495941438, 34.0650668112],itemStyle:{color:'#f5a305'}}
+                  , {name:'项城市',value: [114.9012416144, 33.2940043446],itemStyle:{color:'#f5a305'}}
+                  , {name:'西华县',value: [114.4971362733, 33.7266407975],itemStyle:{color:'#f5a305'}}
+                  , {name:'沈丘县',value: [115.1943300823, 33.2688464863],itemStyle:{color:'#f5a305'}}
+                  , {name:'扶沟县',value: [114.3992978332, 34.0397120397],itemStyle:{color:'#f5a305'}}
+                  , {name:'鹿邑县',value: [115.3713178042, 33.8212330611],itemStyle:{color:'#f5a305'}}
+                  , {name:'川汇区',value: [114.6924137116, 33.5906863227],itemStyle:{color:'#f5a305'}}
+                  , {name:'郸城县',value: [115.2663353266, 33.5932261942],itemStyle:{color:'#f5a305'}}
+  ];
+    var days = ['10-17 00', '10-17 01', '10-17 02', '10-17 03', '10-17 04', '10-17 05', '10-17 06', '10-17 07', '10-17 08', '10-17 09', '10-17 10', '10-17 11', '10-17 12', '10-17 13', '10-17 14', '10-17 15', '10-17 16', '10-17 17', '10-17 18', '10-17 19', '10-17 20', '10-17 21', '10-17 22', '10-17 23'];
+    var province = ['川汇区', '扶沟县', '西华县', '商水县', '沈丘县', '郸城县', '淮阳区', '太康县', '鹿邑县', '项城市'];
+<!--    var news = ["东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风","东北风"]-->
+    var data = [[50.0, 55.0, 95.0, 66.0, 100.0, 92.0, 86.0, 102.0, 109.0, 71.0], [63.0, 64.0, 101.0, 70.0, 114.0, 101.0, 86.0, 100.0, 112.0, 78.0], [72.0, 79.0, 108.0, 70.0, 124.0, 104.0, 92.0, 106.0, 110.0, 84.0], [74.0, 66.0, 103.0, 64.0, 124.0, 112.0, 95.0, 108.0, 114.0, 86.0], [70.0, 66.0, 104.0, 70.0, 133.0, 110.0, 87.0, 104.0, 107.0, 87.0], [70.0, 71.0, 95.0, 82.0, 130.0, 96.0, 78.0, 94.0, 100.0, 89.0], [68.0, 68.0, 92.0, 92.0, 126.0, 92.0, 74.0, 92.0, 94.0, 86.0], [65.0, 65.0, 87.0, 92.0, 126.0, 90.0, 72.0, 101.0, 97.0, 74.0], [66.0, 70.0, 88.0, 96.0, 121.0, 90.0, 70.0, 104.0, 93.0, 72.0], [68.0, 66.0, 90.0, 100.0, 114.0, 88.0, 76.0, 98.0, 84.0, 76.0], [63.0, 53.0, 72.0, 98.0, 110.0, 87.0, 82.0, 88.0, 73.0, 78.0], [52.0, 42.0, 68.0, 74.0, 108.0, 86.0, 80.0, 68.0, 62.0, 70.0], [42.0, 46.0, 68.0, 56.0, 91.0, 73.0, 76.0, 53.0, 52.0, 66.0], [38.0, 48.0, 60.0, 52.0, 79.0, 66.0, 66.0, 40.0, 47.0, 61.0], [37.0, 54.0, 58.0, 50.0, 67.0, 61.0, 63.0, 49.0, 46.0, 50.0], [45.0, 55.0, 52.0, 48.0, 61.0, 56.0, 62.0, 51.0, 42.0, 43.0], [42.0, 51.0, 46.0, 48.0, 56.0, 56.0, 62.0, 37.0, 43.0, 42.0], [44.0, 52.0, 48.0, 50.0, 46.0, 54.0, 62.0, 44.0, 38.0, 40.0], [42.0, 54.0, 56.0, 52.0, 45.0, 61.0, 68.0, 60.0, 41.0, 40.0], [45.0, 48.0, 64.0, 59.0, 54.0, 68.0, 75.0, 69.0, 62.0, 46.0], [48.0, 54.0, 72.0, 72.0, 63.0, 72.0, 85.0, 76.0, 88.0, 54.0], [51.0, 55.0, 75.0, 80.0, 85.0, 78.0, 86.0, 81.0, 79.0, 68.0], [54.0, 58.0, 74.0, 84.0, 114.0, 80.0, 80.0, 79.0, 76.0, 72.0], [57.0, 56.0, 72.0, 86.0, 118.0, 83.0, 79.0, 80.0, 71.0, 67.0]];
+    var option = {
+        baseOption: {
+
+        timeline: {
+            axisType: 'category',
+            // realtime: false,
+            // loop: false,
+            autoPlay: true,
+            playInterval: 700,
+            symbolSize: 12,
+            left: '5%',
+            right: '5%',
+            bottom: '0%',
+            width: '90%',
+            // controlStyle: {
+            //     position: 'left'
+            // },
+            data: days,
+            tooltip: {
+                formatter: days
+            },
+        },
+
+        tooltip: {
+            show: true,
+            formatter: function(params) {
+                return params.name + '：' + params.data['value']
+            },
+        },
+        visualMap: {
+            type: 'piecewise',
+            pieces: [{'min':0,'max':50,'label':'0-50μg/m3','color':'#00E400'},
+                {'min':51,'max':150,'label':'51-150μg/m3','color':'#FFFF00'},
+                {'min':151,'max':250,'label':'151-250μg/m3','color':'#FF7E00'},
+                {'min':251,'max':350,'label':'251-350μg/m3','color':'#FF0000'},
+                {'min':351,'max':420,'label':'351-420μg/m3','color':'#99004C'},
+                {'min':420,'label':'＞420μg/m3','color':'#7E0023'},],
+            orient: 'vertical',
+            itemWidth: 25,
+            itemHeight: 15,
+            showLabel: true,
+            seriesIndex: [0],
+
+            textStyle: {
+                color: '#7B93A7'
+            },
+            bottom: '10%',
+            left: "5%",
+        },
+        grid: {
+            right: '5%',
+            top: '20%',
+            bottom: '10%',
+            width: '20%'
+        },
+        xAxis: {
+            min: 0,
+            max: 4000,
+            show: false
+        },
+        yAxis: [{
+            inverse: true,
+            offset: '2',
+            'type': 'category',
+            data: '',
+            nameTextStyle: {
+                color: '#fff'
+            },
+            axisTick: {
+                show: false,
+            },
+            axisLabel: {
+                //rotate:45,
+                textStyle: {
+                    fontSize: 14,
+                    color: '#000000',
+                },
+                interval: 0
+            },
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    color: '#333'
+                },
+            },
+            splitLine: {
+                show: false,
+                lineStyle: {
+                    color: '#333'
+                }
+            },
+        }],
+        toolbox: {
+        right:20,
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+        geo: {
+            map: 'china',
+            aspectScale: 0.75,
+            zoom: 10,
+            roam: true,
+            center:[114.8673128488, 33.6594200203],
+            right: '35%',
+            left: '5%',
+            label: {
+                emphasis: {
+                    show: true,
+                }
+            },
+            itemStyle: {
+                emphasis: {
+                    areaColor: '#00FF00'
+                }
+            }
+        },
+        regions: [{
+            name: '南海诸岛',
+            itemStyle: {
+                areaColor: 'rgba(0, 10, 52, 1)',
+                borderColor: 'rgba(0, 10, 52, 1)',
+                normal: {
+                    opacity: 0,
+                    label: {
+                        show: false,
+                        color: "#009cc9",
+                    }
+                }
+            },
+        }],
+        series: [{
+                name: 'mapSer',
+                type: 'map',
+                map: 'china',
+                roam: false,
+                geoIndex: 0,
+                label: {
+                    show: true,
+                },
+            },
+            {
+                'name': '',
+                'type': 'bar',
+                zlevel: 2,
+                barWidth: '40%',
+                label: {
+                    normal: {
+                        show: true,
+                        fontSize: 14,
+                        position: 'right',
+                        formatter: '{c}'
+                    }
+                },
+            },
+            {
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                showEffectOn: 'render',
+                zlevel:1,
+                rippleEffect: {
+                    period: 15,
+                    scale: 4,
+                    brushType: 'fill'
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'left',
+                        offset: [15, 0],
+                        color: 'black',
+                        show: true
+                    },
+                },
+                itemStyle: {
+                    normal: {
+                       color:'#1DE9B6',
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                symbolSize: 5,
+                data: points
+            },
+        ],
+
+    },
+    animationDurationUpdate: 3000,
+    animationEasingUpdate: 'quinticInOut',
+    options: []
+};
+for (var n = 0; n < days.length; n++) {
+
+    var res = [];
+    for (j = 0; j < data[n].length; j++) {
+        res.push({
+            name: province[j],
+            value: data[n][j]
+        });
+    }
+    res.sort(function(a, b) {
+        return b.value - a.value;
+    }).slice(0, 6);
+
+    res.sort(function(a, b) {
+        return a.value - b.value;
+    });
+    var res1 = [];
+    var res2 = [];
+    for (t = 0; t < 10; t++) {
+        res1[t] = res[res.length - 1 - t].name;
+        res2[t] = res[res.length - 1 - t].value;
+    }
+    console.log(res1);
+    console.log("----------------");
+    console.log(province);
+    option.options.push({
+        title: [{
+<!--                text: days[n] + " " + news[n],-->
+                text: days[n],
+                textStyle: {
+                    color: '#2D3E53',
+                    fontSize: 15
+                },
+                left: 20,
+                top: 20,
+            },
+            {
+                show: true,
+                text: '周口市各区县PM2.5浓度排名',
+                textStyle: {
+                    color: '#2D3E53',
+                    fontSize: 15
+                },
+                right: '15%',
+                top: '15%'
+            }
+        ],
+        yAxis: {
+            data: res1,
+        },
+        series: [{
+            type: 'map',
+            data: res
+        }, {
+            type: 'bar',
+            data: res2,
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [{
+                                colorStops: [{
+                                    offset: 0,
+                                    color: '#FF0000' // 0% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: '#990000' // 100% 处的颜色
+                                }]
+                            },
+                            {
+                                colorStops: [{
+                                    offset: 0,
+                                    color: '#00C0FA' // 0% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: '#2F95FA' // 100% 处的颜色
+                                }]
+                            }
+                        ];
+                        if (params.dataIndex < 3) {
+                            return colorList[0]
+                        } else {
+                            return colorList[1]
+                        }
+                    },
+                }
+            },
+        }]
+    });
+}
+
+        myChart.setOption(option);
+
+        </script>
+    </body>
+</html>

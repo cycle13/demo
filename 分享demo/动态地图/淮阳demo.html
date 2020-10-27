@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区各乡镇PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+         <script src="china.js"></script>
+<!--         <script src="https://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>-->
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 550px;width: 900px;" id="main"></div>
+        <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("main"));
+    var points = [
+                  {name:'齐老乡',value: [114.7673456406, 33.8556853640],itemStyle:{color:'#f5a305'}}
+                  , {name:'安岭镇',value: [114.8619113979, 33.8577170347],itemStyle:{color:'#f5a305'}}
+                  , {name:'临蔡镇',value: [114.9405742913, 33.8460605051],itemStyle:{color:'#f5a305'}}
+                  , {name:'四通镇',value: [115.0313611624, 33.8876433484],itemStyle:{color:'#f5a305'}}
+                  , {name:'黄集乡',value: [115.0445592514, 33.8220279168],itemStyle:{color:'#f5a305'}}
+                  , {name:'葛店乡',value: [115.0183104268, 33.7600301652],itemStyle:{color:'#f5a305'}}
+                  , {name:'白楼镇',value: [114.8840146961, 33.7889189614],itemStyle:{color:'#f5a305'}}
+                  , {name:'郑集乡',value: [114.7880708088, 33.7296315408],itemStyle:{color:'#f5a305'}}
+                  , {name:'曹河乡',value: [114.7141915316, 33.7283079533],itemStyle:{color:'#f5a305'}}
+                  , {name:'大连乡',value: [114.9749021794, 33.7066800312],itemStyle:{color:'#f5a305'}}
+                  , {name:'王店乡',value: [114.8550179025, 33.6628176004],itemStyle:{color:'#f5a305'}}
+                  , {name:'刘振屯乡',value: [114.9253261969, 33.6183475856],itemStyle:{color:'#f5a305'}}
+                  , {name:'冯塘乡',value: [115.0116472325, 33.5826183864],itemStyle:{color:'#f5a305'}}
+                  , {name:'新站镇',value: [114.8778877286, 33.5432307520],itemStyle:{color:'#f5a305'}}
+                  , {name:'朱集乡',value: [114.9484521712, 33.5187274355],itemStyle:{color:'#f5a305'}}
+                  , {name:'鲁台镇',value: [115.0336627571, 33.4866178504],itemStyle:{color:'#f5a305'}}
+                  , {name:'豆门乡',value: [114.9771647573, 33.4428670770],itemStyle:{color:'#f5a305'}}
+                  , {name:'城区',value: [114.8933128488, 33.7394200203],itemStyle:{color:'#f5a305'}}
+
+  ]
+    var days = ['2020/10/26 00', '2020/10/26 01', '2020/10/26 02', '2020/10/26 03', '2020/10/26 04', '2020/10/26 05', '2020/10/26 06', '2020/10/26 07', '2020/10/26 08', '2020/10/26 09', '2020/10/26 10', '2020/10/26 11', '2020/10/26 12', '2020/10/26 13', '2020/10/26 14', '2020/10/26 15', '2020/10/26 16', '2020/10/26 17', '2020/10/26 18', '2020/10/26 19', '2020/10/26 20', '2020/10/26 21', '2020/10/26 22', '2020/10/26 23', '2020/10/27 00'];
+    var province = ['新站镇', '鲁台镇', '四通镇', '临蔡镇', '安岭镇', '朱集乡', '豆门乡', '冯塘乡', '刘振屯乡', '王店乡', '大连乡', '葛店乡', '黄集乡', '齐老镇', '郑集乡', '曹河乡', '白楼镇', '城区'];
+<!--    var news = ["","","","","","","","","","",""]-->
+    var data = [
+    [145.0, 86.0, 91.0, 76.0, 129.0, 118.0, 107.0, 211.0, 110.0, 141.0, 132.0, 112.0, 110.0, 129.0, 117.0, 133.0, 145.0, 134.0],
+    [146.0, 97.0, 96.0, 83.0, 122.0, 121.0, 110.0, 128.0, 100.0, 143.0, 120.0, 107.0, 109.0, 129.0, 125.0, 136.0, 141.0, 133.0],
+    [161.0, 99.0, 92.0, 86.0, 107.0, 117.0, 117.0, 119.0, 108.0, 132.0, 129.0, 111.0, 109.0, 123.0, 121.0, 132.0, 156.0, 134.0],
+    [138.0, 118.0, 116.0, 93.0, 112.0, 126.0, 120.0, 167.0, 114.0, 126.0, 127.0, 105.0, 106.0, 114.0, 124.0, 129.0, "", 132.0],
+    [135.0, 122.0, 140.0, 89.0, 114.0, 127.0, 108.0, 123.0, 111.0, 129.0, 126.0, 110.0, 98.0, 109.0, 125.0, 144.0, "", 128.0],
+    [121.0, 118.0, 111.0, 94.0, 114.0, 139.0, 117.0, 115.0, 112.0, 133.0, 127.0, 108.0, 97.0, 119.0, 120.0, 142.0, 0.0, 124.0],
+    [129.0, 131.0, 121.0, 94.0, 120.0, 145.0, 125.0, 123.0, 130.0, 143.0, 129.0, 118.0, 113.0, 120.0, 122.0, 144.0, 0.0, 130.0],
+    [130.0, 132.0, 134.0, 97.0, 140.0, 163.0, 135.0, 143.0, 113.0, 145.0, 124.0, 125.0, 113.0, 112.0, 148.0, 141.0, 114.0, 133.0],
+    [162.0, 151.0, 212.0, 122.0, 155.0, 174.0, 168.0, 158.0, 138.0, 178.0, 154.0, 142.0, 151.0, 126.0, 193.0, 151.0, 144.0, 135.0],
+    [167.0, 144.0, 258.0, 119.0, 141.0, 0.0, 156.0, 177.0, 148.0, 169.0, 156.0, 170.0, 149.0, 165.0, 161.0, 160.0, 183.0, 138.0],
+    [160.0, 148.0, 184.0, 105.0, 135.0, 169.0, 143.0, 178.0, 146.0, 153.0, 146.0, 171.0, 138.0, 175.0, 146.0, 145.0, 167.0, 150.0],
+    [159.0, 125.0, 142.0, 90.0, 142.0, 148.0, 123.0, 135.0, 127.0, 132.0, 125.0, 155.0, 118.0, 139.0, 110.0, 134.0, 168.0, 159.0],
+    [125.0, 97.0, 109.0, 67.0, 101.0, 125.0, 113.0, 107.0, 126.0, 111.0, 104.0, 132.0, 100.0, 104.0, 95.0, 125.0, 149.0, 136.0],
+    [111.0, 84.0, 85.0, 44.0, 88.0, 118.0, 96.0, 102.0, 93.0, 95.0, 76.0, 100.0, 80.0, 95.0, 83.0, 81.0, 121.0, 112.0],
+    [88.0, 68.0, 84.0, 43.0, 81.0, 118.0, 82.0, 80.0, 67.0, 95.0, 68.0, 82.0, 79.0, 78.0, 70.0, 61.0, 110.0, 91.0],
+    [81.0, 69.0, 90.0, 49.0, 73.0, 87.0, 54.0, 77.0, 63.0, 81.0, 69.0, 80.0, 75.0, 72.0, 70.0, 71.0, 104.0, 82.0],
+    [82.0, 75.0, 96.0, 57.0, 85.0, 79.0, 92.0, 69.0, 66.0, 77.0, 74.0, 83.0, 69.0, 79.0, 65.0, 69.0, 104.0, 76.0],
+    [68.0, 68.0, 138.0, 57.0, 85.0, 218.0, 85.0, 74.0, 61.0, 78.0, 76.0, 85.0, 80.0, 88.0, 65.0, 66.0, 94.0, 64.0],
+    [135.0, 132.0, 194.0, 71.0, 107.0, 157.0, 245.0, 115.0, 153.0, 129.0, 88.0, 95.0, 89.0, 93.0, 222.0, 81.0, 87.0, 52.0],
+    [268.0, 182.0, 228.0, 98.0, 185.0, 145.0, 149.0, 249.0, 359.0, 187.0, 117.0, 162.0, 101.0, 122.0, 385.0, 136.0, 117.0, 63.0],
+    [200.0, 159.0, 132.0, 109.0, 160.0, 170.0, 126.0, 194.0, 169.0, 247.0, 115.0, 184.0, 126.0, 281.0, 249.0, 129.0, 256.0, 94.0],
+    [183.0, 182.0, 154.0, 102.0, 212.0, 175.0, 117.0, 183.0, 130.0, 198.0, 123.0, 173.0, 143.0, 147.0, 232.0, 123.0, 211.0, 115.0],
+    [165.0, 157.0, 123.0, 104.0, 155.0, 155.0, 137.0, 137.0, 119.0, 173.0, 135.0, 152.0, 151.0, 137.0, 132.0, 122.0, 206.0, 115.0],
+    [138.0, 129.0, 117.0, 102.0, 135.0, 136.0, 133.0, 133.0, 116.0, 155.0, 130.0, 129.0, 144.0, 122.0, 131.0, 120.0, 164.0, 0.0],
+    [141.0, 122.0, 124.0, 94.0, 147.0, 148.0, 141.0, 113.0, 109.0, 157.0, 125.0, 127.0, 126.0, 115.0, 125.0, 123.0, 167.0, 134.0]
+    ];
+    var option = {
+        baseOption: {
+        timeline: {
+            axisType: 'category',
+            // realtime: false,
+            // loop: false,
+            autoPlay: true,
+            playInterval: 1000,
+            symbolSize: 12,
+            left: '5%',
+            right: '5%',
+            bottom: '0%',
+            width: '90%',
+            // controlStyle: {
+            //     position: 'left'
+            // },
+            data: days,
+            tooltip: {
+                formatter: days
+            },
+        },
+        tooltip: {
+            show: true,
+            formatter: function(params) {
+                return params.name + '：' + params.data['value']
+            },
+        },
+        visualMap: {
+            type: 'piecewise',
+            pieces: [{'min':0,'max':50,'label':'0-50μg/m3','color':'#00E400'},
+                {'min':51,'max':150,'label':'51-150μg/m3','color':'#FFFF00'},
+                {'min':151,'max':250,'label':'151-250μg/m3','color':'#FF7E00'},
+                {'min':251,'max':350,'label':'251-350μg/m3','color':'#FF0000'},
+                {'min':351,'max':420,'label':'351-420μg/m3','color':'#99004C'},
+                {'min':420,'label':'＞420μg/m3','color':'#7E0023'},],
+            orient: 'vertical',
+            itemWidth: 25,
+            itemHeight: 15,
+            showLabel: true,
+            seriesIndex: [0],
+            textStyle: {
+                color: '#7B93A7'
+            },
+            bottom: '10%',
+            left: "5%",
+        },
+        grid: {
+            right: '5%',
+            top: '20%',
+            bottom: '10%',
+            width: '20%'
+        },
+        xAxis: {
+            min: 0,
+            max: 4000,
+            show: false
+        },
+        yAxis: [{
+            inverse: true,
+            offset: '2',
+            'type': 'category',
+            data: '',
+            nameTextStyle: {
+                color: '#fff'
+            },
+            axisTick: {
+                show: false,
+            },
+            axisLabel: {
+                //rotate:45,
+                textStyle: {
+                    fontSize: 14,
+                    color: '#000000',
+                },
+                interval: 0
+            },
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    color: '#333'
+                },
+            },
+            splitLine: {
+                show: false,
+                lineStyle: {
+                    color: '#333'
+                }
+            },
+        }],
+        toolbox: {
+        right:20,
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+        geo: {
+            map: 'china',
+            aspectScale: 0.75,
+            zoom: 25,
+            roam: true,
+            center:[114.8673128488, 33.6594200203],
+            right: '35%',
+            left: '5%',
+            label: {
+                emphasis: {
+                    show: true,
+                }
+            },
+            itemStyle: {
+                emphasis: {
+                    areaColor: '#00FF00'
+                }
+            }
+        },
+        regions: [{
+            name: '南海诸岛',
+            itemStyle: {
+                areaColor: 'rgba(0, 10, 52, 1)',
+                borderColor: 'rgba(0, 10, 52, 1)',
+                normal: {
+                    opacity: 0,
+                    label: {
+                        show: false,
+                        color: "#009cc9",
+                    }
+                }
+            },
+        }],
+        series: [{
+                name: 'mapSer',
+                type: 'map',
+                map: 'china',
+                roam: false,
+                geoIndex: 0,
+                label: {
+                    show: true,
+                },
+            },
+            {
+                'name': '',
+                'type': 'bar',
+                zlevel: 2,
+                barWidth: '40%',
+                label: {
+                    normal: {
+                        show: true,
+                        fontSize: 14,
+                        position: 'right',
+                        formatter: '{c}'
+                    }
+                },
+            },
+            {
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                showEffectOn: 'render',
+                zlevel:1,
+                rippleEffect: {
+                    period: 15,
+                    scale: 4,
+                    brushType: 'fill'
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'left',
+                        offset: [15, 0],
+                        color: 'black',
+                        show: true
+                    },
+                },
+                itemStyle: {
+                    normal: {
+                       color:'#1DE9B6',
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                symbolSize: 5,
+                data: points
+            },
+        ],
+    },
+    animationDurationUpdate: 3000,
+    animationEasingUpdate: 'quinticInOut',
+    options: []
+};
+for (var n = 0; n < days.length; n++) {
+
+    var res = [];
+    for (j = 0; j < data[n].length; j++) {
+        res.push({
+            name: province[j],
+            value: data[n][j]
+        });
+    }
+    res.sort(function(a, b) {
+        return b.value - a.value;
+    }).slice(0, 6);
+
+    res.sort(function(a, b) {
+        return a.value - b.value;
+    });
+    var res1 = [];
+    var res2 = [];
+    for (t = 0; t < 18; t++) {
+        res1[t] = res[res.length - 1 - t].name;
+        res2[t] = res[res.length - 1 - t].value;
+    }
+    console.log(res1);
+    console.log("----------------");
+    console.log(province);
+    option.options.push({
+        title: [{
+<!--                text: days[n] + " " + news[n],-->
+                text: days[n],
+                textStyle: {
+                    color: '#2D3E53',
+                    fontSize: 15
+                },
+                left: 20,
+                top: 20,
+            },
+            {
+                show: true,
+                text: '乡镇PM10浓度排名',
+                textStyle: {
+                    color: '#2D3E53',
+                    fontSize: 18
+                },
+                right: '17%',
+                top: '15%'
+            }
+        ],
+        yAxis: {
+            data: res1,
+        },
+        series: [{
+            type: 'map',
+            data: res
+        }, {
+            type: 'bar',
+            data: res2,
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [{
+                                colorStops: [{
+                                    offset: 0,
+                                    color: '#FF0000' // 0% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: '#990000' // 100% 处的颜色
+                                }]
+                            },
+                            {
+                                colorStops: [{
+                                    offset: 0,
+                                    color: '#00C0FA' // 0% 处的颜色
+                                }, {
+                                    offset: 1,
+                                    color: '#2F95FA' // 100% 处的颜色
+                                }]
+                            }
+                        ];
+                        if (params.dataIndex < 3) {
+                            return colorList[0]
+                        } else {
+                            return colorList[1]
+                        }
+                    },
+                }
+            },
+        }]
+    });
+}
+        myChart.setOption(option);
+
+        </script>
+    </body>
+</html>

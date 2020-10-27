@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区各乡镇PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+<!--         <script src="china.js"></script>-->
+<!--         <script src="https://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>-->
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 550px;width: 900px;" id="main"></div>
+        <script type="text/javascript">
+var _timerPie1;
+_timerPie1 = window.setInterval(function () {
+    var myChart = echarts.init(document.getElementById("main"));
+    myChart.setOption({
+    legend: {
+        data:['销量']
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {
+                name:'热度监控',
+                pixelRatio:2
+            }
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: []
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        name: '销量',
+        type: 'line',
+        data: []
+    }]
+});
+// 2异步加载数据
+myChart.showLoading();
+$.get('data1.json').done(function (data) {
+    // 填入数据
+    myChart.setOption({
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: data.dataX2
+        },
+        series: [{
+            name: '销量',
+            smooth: true,
+            data: data.data1
+        }]
+    });
+
+});
+myChart.hideLoading();
+},1000);
+<!--        myChart.setOption(option);-->
+
+        </script>
+    </body>
+</html>

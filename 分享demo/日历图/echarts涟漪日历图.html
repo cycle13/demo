@@ -2,7 +2,7 @@
 <html>
      <head>
           <meta charset="utf-8">
-          <title>五分钟上手之散点图</title>
+          <title>日历图</title>
           <!-- 引入 echarts.js -->
           <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
           <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
@@ -14,14 +14,14 @@
 
       var myChart = echarts.init(document.getElementById("main"));
 
-     $.get('beijing1.json', function (data) {
+     $.get('beijing.json', function (data) {
         myChart.setOption({
         backgroundColor: '#FFFFFF',
 
         title: {
             top: 30,
-            text: '淮阳区2019年AQI图',
-<!--            subtext: '数据纯属虚构',-->
+            text: '淮阳区2019和2020年年AQI图',
+            subtext: '上为2019年、下为2020年',
             left: 'center',
             textStyle: {
                 color: '#000000'
@@ -33,7 +33,7 @@
         legend: {
             top: '80',
             left: '20',
-            data: ['AQI', 'Top 12'],
+            data: ['AQI'],
             textStyle: {
             color: '#000000'
                 }
@@ -41,12 +41,6 @@
         toolbox : {
                 left : 'center',
                 feature : {
-<!--                    dataZoom : {-->
-<!--                        yAxisIndex : 'none'-->
-<!--                    },-->
-<!--                    magicType: {-->
-<!--                    type: ['line', 'bar']-->
-<!--                },-->
                     restore : {},
                     saveAsImage : {}
                 }
@@ -78,7 +72,7 @@
     }, {
         top: 280,
         left: 'center',
-        range: ['2020-01-01', '2020-12-31'],
+        range: ['2020-01-01', '2020-10-26'],
         splitLine: {
             show: true,
             lineStyle: {
@@ -122,7 +116,6 @@
                 return item;
             }),
             symbolSize: function (val) {
-<!--                return val[1] / 15;-->
                 return 15;
             },
             itemStyle: {
@@ -138,63 +131,15 @@
                 return item;
             }),
             symbolSize: function (val) {
-<!--                return val[1] / 15;-->
                 return 15;
             },
             itemStyle: {
                 color: '#ddb926'
             }
         },
-        {
-            name: 'Top 12',
-            type: 'effectScatter',
-            coordinateSystem: 'calendar',
-            calendarIndex: 1,
-            data: data.sort(function (a, b) {
-                return b[1] - a[1];
-            }).slice(0, 12),
-            symbolSize: function (val) {
-                return val[1] / 20;
-            },
-            showEffectOn: 'render',
-            rippleEffect: {
-                brushType: 'stroke'
-            },
-            hoverAnimation: true,
-            itemStyle: {
-                color: '#f4e925',
-                shadowBlur: 10,
-                shadowColor: '#333'
-            },
-            zlevel: 1
-        },
-        {
-            name: 'Top 12',
-            type: 'effectScatter',
-            coordinateSystem: 'calendar',
-            data: data.sort(function (a, b) {
-                return b[1] - a[1];
-            }).slice(0, 12),
-            symbolSize: function (val) {
-                return val[1] / 20;
-            },
-            showEffectOn: 'render',
-            rippleEffect: {
-                brushType: 'stroke'
-            },
-            hoverAnimation: true,
-            itemStyle: {
-                color: '#f4e925',
-                shadowBlur: 10,
-                shadowColor: '#333'
-            },
-            zlevel: 1
-        }
     ]
     });
         })
-<!--        myChart.setOption(option)-->
-
         </script>
     </body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script src="https://api.map.baidu.com/api?v=2.0&ak=TaXHPPc7HlxpjOFL3XjakmvHMbhp8YdX"></script>
+       <script src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 600px;width: 1200px;" id="main"></div>
+        <script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById("main"));
+$.get('track.json', function (data) {
+
+    var points = [].concat.apply([], data.map(function (track) {
+        return track.map(function (seg) {
+            return seg.coord.concat([1]);
+        });
+    }));
+    myChart.setOption(option = {
+        animation: false,
+        bmap: {
+            center: [120.13066322374, 30.240018034923],
+            zoom: 14,
+            roam: true
+        },
+        visualMap: {
+            show: false,
+            top: 'top',
+            min: 0,
+            max: 5,
+            seriesIndex: 0,
+            calculable: true,
+            inRange: {
+                color: ['blue', 'blue', 'green', 'yellow', 'red']
+            }
+        },
+        series: [{
+            type: 'heatmap',
+            coordinateSystem: 'bmap',
+            data: points,
+            pointSize: 5,
+            blurSize: 6
+        }]
+    });
+    // 添加百度地图插件
+    var bmap = myChart.getModel().getComponent('bmap').getBMap();
+    bmap.addControl(new BMap.MapTypeControl());
+});
+
+
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

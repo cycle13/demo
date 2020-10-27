@@ -11,9 +11,7 @@
         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
         <div style="height: 500px;width: 1000px;" id="main"></div>
         <script type="text/javascript">
-
       var myChart = echarts.init(document.getElementById("main"));
-
      $.get('beijing-pm10.json', function (data) {
 <!--     $.get('aqi-beijing.json', function (data) {-->
         myChart.setOption({
@@ -31,7 +29,6 @@
                 return item[0];
             })
             },
-
             legend: {
             top:0,
             left:10,
@@ -39,6 +36,8 @@
     },
             yAxis : {
                 name:'单位：μg/m3',
+                max:100,
+                min:0,
                 splitLine : {
                     show : false
                 }

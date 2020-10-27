@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1000px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     option = {
+    title: {
+        text: '太原市2017-2020年全年空气质量堆叠图',
+        top:20,
+        left:'center'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
+                backgroundColor: '#6a7985'
+            }
+        }
+    },
+    legend: {
+        data: ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染']
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    color: [
+        "#00E400",
+        "#FFFF00",
+        "#FF7E00",
+        "#FF0000",
+        "#99004C",
+        "#7E0023"
+    ],
+    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            data: ['2017年', '2018年', '2019年', '2020年']
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            name: '优',
+            type: 'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {},
+            data: [120, 132, 101, 134]
+        },
+        {
+            name: '良',
+            type: 'line',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {},
+            data: [220, 182, 191, 234]
+        },
+        {
+            name: '轻度污染',
+            type: 'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {},
+            data: [150, 232, 201, 154]
+        },
+        {
+            name: '中度污染',
+            type: 'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {},
+            data: [320, 332, 301, 334]
+        },
+        {
+            name: '重度污染',
+            type: 'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {},
+            data: [820, 932, 901, 934]
+        },
+        {
+            name: '严重污染',
+            type: 'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {},
+            data: [820, 932, 901, 934]
+        }
+    ]
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

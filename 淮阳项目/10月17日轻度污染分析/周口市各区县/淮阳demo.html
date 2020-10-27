@@ -422,9 +422,13 @@
         [200, 141, 195, 113, 121, 140, 114, 196, 137, 207, 289, 443, 155, 120, 305, 217, 154, 124],
         [82, 77, 135, 100, 187, 81, 110, 122, 117, 133, 278, 672, 182, 171, 241, 173, 212, 160],
         [82, 56, 161, 66, 167, 73, 78, 94, 67, 68, 162, 507, 191, 142, 104, 74, 73, 126]
+
+
     ];
+
     var option = {
         baseOption: {
+
         timeline: {
             axisType: 'category',
             // realtime: false,
@@ -444,6 +448,7 @@
                 formatter: days
             },
         },
+
         tooltip: {
             show: true,
             formatter: function(params) {
@@ -463,6 +468,7 @@
             itemHeight: 15,
             showLabel: true,
             seriesIndex: [0],
+
             textStyle: {
                 color: '#7B93A7'
             },
@@ -614,6 +620,7 @@
                 data: points
             },
         ],
+
     },
     animationDurationUpdate: 3000,
     animationEasingUpdate: 'quinticInOut',
@@ -709,6 +716,7 @@ for (var n = 0; n < days.length; n++) {
         }]
     });
 }
+
         myChart.setOption(option);
 
         </script>
