@@ -16,8 +16,9 @@
 
      option = {
     title: {
+<!--    1、改成自己的标题-->
             text: '淮阳区2019年月2020年第三季度污染等级天数变化情况',
-             subtext: '2020年有效天数91天，2019年有效天数92天',
+            subtext: '2020年有效天数91天，2019年有效天数92天',
 <!--            top:20,-->
             left:'center'
         },
@@ -47,6 +48,7 @@
     ],
     legend: {
         top:50,
+<!--    2、改成自己的标识-->
         data: ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染']
     },
     grid: {
@@ -60,10 +62,12 @@
     },
     yAxis: {
         type: 'category',
+<!--        3、改成自己的坐标-->
         data: ['2019年', '2020年']
     },
     series: [
         {
+<!--        4、更改对应的name和data数据-->
             name: '优',
             type: 'bar',
             stack: '总量',
@@ -99,39 +103,39 @@
             },
             data: [21, 9]
         },
-<!--        {-->
-<!--            name: '中度污染',-->
-<!--            type: 'bar',-->
-<!--            stack: '总量',-->
-<!--            label: {-->
-<!--                show: true,-->
-<!--                color:'black',-->
-<!--                position: 'insideRight'-->
-<!--            },-->
-<!--            data: [ 201, 154]-->
-<!--        },-->
-<!--        {-->
-<!--            name: '重度污染',-->
-<!--            type: 'bar',-->
-<!--            stack: '总量',-->
-<!--            label: {-->
-<!--                show: true,-->
-<!--                color:'black',-->
-<!--                position: 'insideRight'-->
-<!--            },-->
-<!--            data: [30, 20]-->
-<!--        },-->
-<!--        {-->
-<!--            name: '严重污染',-->
-<!--            type: 'bar',-->
-<!--            stack: '总量',-->
-<!--            label: {-->
-<!--                show: true,-->
-<!--                color:'black',-->
-<!--                position: 'insideRight'-->
-<!--            },-->
-<!--            data: [8, 4]-->
-<!--        }-->
+        {
+            name: '中度污染',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [ 201, 154]
+        },
+        {
+            name: '重度污染',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [30, 20]
+        },
+        {
+            name: '严重污染',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [8, 4]
+        }
     ]
 };
         myChart.setOption(option)

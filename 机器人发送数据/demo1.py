@@ -1,16 +1,10 @@
 import win32api
 import win32con
 import win32gui
-import win32com.client as win32
 import time
 import win32clipboard as w
 import requests
 import json
-from win32com.client import Dispatch, DispatchEx
-import pythoncom
-from PIL import ImageGrab, Image
-import uuid
-import xlwt
 
 
 session = requests.Session()
@@ -104,80 +98,38 @@ def day(url):
 
 def real(url):
     response = session.get(url= url_list,headers = headers).text
-    return response
-
-
-
-def save_excel():
-    book = xlwt.Workbook()
-    sheet = book.add_sheet('淮阳县空气质量数据')
-    n = 1
-    sheet.write(0,0,'区县')
-    sheet.write(0,1,'时间')
-    sheet.write(0,2,'CO')
-    sheet.write(0,3,'O3')
-    sheet.write(0,4,'SO2')
-    sheet.write(0,5,'NO2')
-    sheet.write(0,6,'PM10')
-    sheet.write(0,7,'PM2.5')
-    sheet.write(0,8,'AQI')
-    sheet.write(0,9,'首要污染物')
-    time.sleep(5)
-    l = real(url_list)
-    data = json.loads(l)['data']
+    data = json.loads(response)['detail']
+    print(data)
+    l = []
     for k in data:
-        if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市']:
-            sheet.write(n, 0, k['city'])
-            sheet.write(n, 1, ["MONIDATE"].split(" ")[1])
-            sheet.write(n, 2, k['co'])
-            sheet.write(n, 3, k['o3'])
-            sheet.write(n, 4, k['so2'])
-            sheet.write(n, 5, k['no2'])
-            sheet.write(n, 6, k['pm10'])
-            sheet.write(n, 7, k['pm25'])
-            sheet.write(n, 8, k['aqi'])
-            sheet.write(n, 9, k['primary'])
-            n+=1
-            print(str(i),k)
-    print(l)
-    book.save('周口市区县数据.xls')
+        if k['CITY'] in ['沈丘县', '商水县', '西华县', '扶沟县', '郸城县', '淮阳县', '太康县', '鹿邑县', '项城市',]:
+            j = []
+            n = ("时间：{};城市：{}； PM10：{}；PM2.5：{}；综合指数：{}".format(k["MONIDATE"],k['CITY'], k['PM10'], k['PM25'], k['AQI']))
+            # print(type(n))
+            j.append(n)
 
-def excel_catch_screen():
-    """ 对excel的表格区域进行截图——用例：excel_catch_screen(ur"E:\年周口市区县27日数据.xls", "淮阳县空气质量数据", "A1:J10")"""
-    # pythoncom.CoInitialize()  # excel多线程相关
-
-    excel = DispatchEx("Excel.Application")  # 启动excel
-    excel.Visible = True  # 可视化
-    excel.DisplayAlerts = False  # 是否显示警告
-    wb = excel.Workbooks.Open("周口市区县数据.xls")  # 打开excel
-    ws = wb.Sheets("淮阳县空气质量数据")  # 选择sheet
-    ws.Range("A1:J10").CopyPicture()  # 复制图片区域
-    ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
-    name = str(uuid.uuid4())  # 重命名唯一值
-    new_shape_name = name[:6]
-    excel.Selection.ShapeRange.Name = new_shape_name  # 将刚刚选择的Shape重命名，避免与已有图片混淆
-    ws.Shapes(new_shape_name).Copy()  # 选择图片
-    img = ImageGrab.grabclipboard()  # 获取剪贴板的图片数据
-    # if not img_name:
-    #     img_name = name + ".PNG"
-    # img.save(img_name)  # 保存图片
-    wb.Close(SaveChanges=0)  # 关闭工作薄，不保存
-    excel.Quit()  # 退出excel
-    # pythoncom.CoUninitialize()
+            l.append(j)
+    # print(l)
+    return(l)
 
 
+
+
+
+#
+l = real(url_list)
+print(l)
 
 # while True:
 #     try:
 #         FindWindow("环保小子")
 #         CloseWindow("环保小子")
-#         save_excel()
-#         time.sleep(2)
-#         excel_catch_screen()
+#         l = real(url_list)
+#         setText(str(l))
 #         ctrlV()
 #         altS()
 #         sendText("环保小子",str(l))
-#         time.sleep(3600)
+#         time.sleep(20)
 #     except:
-#         time.sleep(3600)
+#         time.sleep(20)
 #         pass

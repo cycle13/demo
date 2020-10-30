@@ -13,14 +13,16 @@
         <script type="text/javascript">
 
       var myChart = echarts.init(document.getElementById("main"));
-
+<!--1、空气质量等级“优、良、轻度污染”颜色，自己添加需要的其他空气质量等级颜色-->
       var colorList1 = ['#00E400', '#FFFF00','#FF7E00' ]
+<!--2、饼图外环代表的首要污染物的颜色-->
       var colorList2 = ['red', 'green', 'blue','#FF7E00' ,'#00E400','black','purple','#0066FF']
       option = {
       backgroundColor: '#fff',
       legend: {
         orient: 'vertical',
         left: 10,
+<!--        3、空气质量等级标识，自己可以添加需要的其他空气质量等级-->
         data: ['优','良','轻度污染']
     },
       tooltip: {
@@ -34,7 +36,9 @@
             }
         }
     },
-    series: [{
+    series: [
+<!--    4、绘制饼图内部-->
+    {
             name: '整体分类',
             type: 'pie',
             radius: [0, '30%'],
@@ -51,6 +55,7 @@
                 }
             },
             selectedMode: 'single',
+<!--            5、空气质量等级各有多少天-->
             data: [
                 {
                     value: 1,
@@ -123,7 +128,9 @@
                     }
                 }
             },
-            data: [{
+            data: [
+<!--            6、各空气质量等级首要污染物各有多少天-->
+            {
                     value: 1,
                     name: '优：-',
                 },

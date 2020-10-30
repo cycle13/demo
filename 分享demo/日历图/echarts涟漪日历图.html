@@ -13,12 +13,13 @@
         <script type="text/javascript">
 
       var myChart = echarts.init(document.getElementById("main"));
-
+<!--        1、beijing.json文件里面存放要显示的数据-->
      $.get('beijing.json', function (data) {
         myChart.setOption({
         backgroundColor: '#FFFFFF',
 
         title: {
+<!--        2、标题-->
             top: 30,
             text: '淮阳区2019和2020年AQI图',
             subtext: '上为2019年、下为2020年',
@@ -46,6 +47,7 @@
                 }
             },
         calendar: [{
+<!--        3、上面一个日历图的时间序列区间-->
             top: 100,
             left: 'center',
             range: ['2019-01-01', '2019-12-31'],
@@ -73,6 +75,7 @@
     {
         top: 280,
         left: 'center',
+<!--        4、下面一个日历图的时间序列区间-->
         range: ['2020-01-01', '2020-10-26'],
         splitLine: {
             show: true,
@@ -99,6 +102,7 @@
         visualMap: {
             top: 100,
             right: 60,
+<!--        5、数据用颜色区间显示-->
             pieces: [{'min':0,'max':50,'label':'优','color':'#00E400'},
                 {'min':51,'max':100,'label':'良','color':'#FFFF00'},
                 {'min':101,'max':150,'label':'轻度污染','color':'#FF7E00'},
