@@ -1,12 +1,13 @@
 import win32api
 import win32con
 import win32gui
-import pandas as pd
+import win32com.client as win32
 import time
 import win32clipboard as w
 import requests
 import json
 from win32com.client import Dispatch, DispatchEx
+import pythoncom
 from PIL import ImageGrab, Image
 import uuid
 import xlwt
@@ -139,62 +140,43 @@ def save_excel():
             n+=1
     book.save('周口市区县数据.xls')
 
+
 def excel_catch_screen(img_name=False):
-    """ 对excel的表格区域进行截图——用例：excel_catch_screen(r"E:\年周口市区县27日数据.xls", "淮阳县空气质量数据", "A1:J10")"""
-    # pythoncom.CoInitialize()  # excel多线程相关
+    """ 对excel的表格区域进行截图——用例：excel_catch_screen(ur"E:\年周口市区县27日数据.xls", "淮阳县空气质量数据", "A1:J10")"""
+    pythoncom.CoInitialize()  # excel多线程相关
 
     excel = DispatchEx("Excel.Application")  # 启动excel
     excel.Visible = True  # 可视化
     excel.DisplayAlerts = False  # 是否显示警告
-    wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xls")  # 打开excel
-    ws = wb.Sheets("Sheet1")  # 选择sheet
-    ws.Range("A1:M10").CopyPicture()  # 复制图片区域
+    wb = excel.Workbooks.Open("D:\Program Files\pycharm\机器人发送数据\周口市区县数据.xls")  # 打开excel
+    ws = wb.Sheets("淮阳县空气质量数据")  # 选择sheet
+    ws.Range("A1:J10").CopyPicture()  # 复制图片区域
     ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
-
     name = str(uuid.uuid4())  # 重命名唯一值
     new_shape_name = name[:6]
     excel.Selection.ShapeRange.Name = new_shape_name  # 将刚刚选择的Shape重命名，避免与已有图片混淆
-
     ws.Shapes(new_shape_name).Copy()  # 选择图片
     img = ImageGrab.grabclipboard()  # 获取剪贴板的图片数据
-    # if not img_name:
-    #     img_name = name + ".PNG"
-    # img.save(img_name)  # 保存图片
+    if not img_name:
+        img_name = name + ".PNG"
+    img.save(img_name)  # 保存图片
     wb.Close(SaveChanges=0)  # 关闭工作薄，不保存
     excel.Quit()  # 退出excel
-    # pythoncom.CoUninitialize()
-
-def excel_rank():
-    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县数据.xls')
-    df['PM2.5排名'] = df['PM2.5'].rank(method='min',ascending=True)
-    df['PM1.0排名'] = df['PM10'].rank(method='min',ascending=True)
-    # df['PM25排名'] = df['PM2.5'].rank(method='first', na_option='bottom', ascending=True)
-    # df['PM10排名'] = df['PM10'].rank(method='first', na_option='bottom', ascending=True)
-    df.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xls")
+    pythoncom.CoUninitialize()
 
 
 
-# save_excel()
-# excel_rank()
-
-
-if __name__ == '__main__':
-    while True:
-        try:
-            FindWindow("王彦军")
-            CloseWindow("王彦军")
-            save_excel()
-            print("已获取完数据")
-            excel_rank()
-            print("已对数据排名")
-            excel_catch_screen(img_name=False)
-            ctrlV()
-            altS()
-            time.sleep(5)
-            setText("数据来自河南省空气质量实况与播报app")
-            ctrlV()
-            altS()
-            time.sleep(3600)
-        except:
-            time.sleep(3600)
-            pass
+while True:
+    try:
+        FindWindow("环保小子")
+        CloseWindow("环保小子")
+        l = save_excel()
+        time.sleep(2)
+        excel_catch_screen(img_name=False)
+        ctrlV()
+        altS()
+        sendText("环保小子",str(l))
+        time.sleep(36)
+    except:
+        time.sleep(36)
+        pass
