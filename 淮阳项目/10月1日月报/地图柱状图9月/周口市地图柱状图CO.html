@@ -15,16 +15,16 @@
         <script type="text/javascript">
     var myChart = echarts.init(document.getElementById("main"));
     var rawData = [
-	{name:'淮阳区',value:[0.9, 1.0 ]},
-	{name:'商水县',value:[0.8,1.1 ]},
-	{name:'太康县',value:[0.9,1.1 ]},
-	{name:'项城市',value:[0.9,0.8 ]},
-	{name:'西华县',value:[1.0,1.0 ]},
-	{name:'沈丘县',value:[0.9,1.3 ]},
-	{name:'扶沟县',value:[0.9,0.9 ]},
+	{name:'淮阳区',value:[0.9, 0.8 ]},
+	{name:'商水县',value:[0.9,1.0]},
+	{name:'太康县',value:[1.0,0.9 ]},
+	{name:'项城市',value:[1.0,0.8 ]},
+	{name:'西华县',value:[0.9,1.0 ]},
+	{name:'沈丘县',value:[0.9,1.2 ]},
+	{name:'扶沟县',value:[0.9,1.0 ]},
 	{name:'鹿邑县',value:[0.8,0.8 ]},
 	{name:'川汇区',value:["-", "-"]},
-	{name:'郸城县',value:[1.1,1.0 ]},
+	{name:'郸城县',value:[1.0,0.9]},
 ];
 
 var geoCoordMap = {
@@ -47,7 +47,7 @@ var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 option = {
         backgroundColor:'#010b43',
         title: {
-                text: "周口市各区县2019年与2020年9月份CO浓度对比图",
+                text: "周口市各区县2019年与2020年10月份CO浓度对比图",
              subtext: '单位：mg/m3',
                 left: 'center',
                 textStyle: {

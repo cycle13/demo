@@ -120,16 +120,16 @@ def real(url):
 l = real(url_list)
 print(l)
 
-# while True:
-#     try:
-#         FindWindow("环保小子")
-#         CloseWindow("环保小子")
-#         l = real(url_list)
-#         setText(str(l))
-#         ctrlV()
-#         altS()
-#         sendText("环保小子",str(l))
-#         time.sleep(20)
-#     except:
-#         time.sleep(20)
-#         pass
+while True:
+    try:
+        FindWindow("王彦军")
+        CloseWindow("王彦军")
+        l = real(url_list)
+        setText(str(l))
+        ctrlV()
+        altS()
+        # sendText("环保小子",str(l))
+        time.sleep(20)
+    except:
+        time.sleep(20)
+        pass

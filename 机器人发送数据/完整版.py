@@ -10,6 +10,9 @@ from win32com.client import Dispatch, DispatchEx
 from PIL import ImageGrab, Image
 import uuid
 import xlwt
+import openpyxl
+import openpyxl.styles
+from openpyxl.styles import PatternFill
 
 
 session = requests.Session()
@@ -35,7 +38,6 @@ def FindWindow(chatroom):
     else:
         print('请注意：找不到【%s】这个人（或群），请激活窗口！' % chatroom)
         exit()
-
 def CloseWindow(chatroom):
     win = win32gui.FindWindow(None, chatroom)
     #print("找到关闭窗口：%x" % win)
@@ -150,7 +152,7 @@ def excel_catch_screen():
     excel = DispatchEx("Excel.Application")  # 启动excel
     excel.Visible = True  # 可视化
     excel.DisplayAlerts = False  # 是否显示警告
-    wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xls")  # 打开excel
+    wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")  # 打开excel
     ws = wb.Sheets("Sheet1")  # 选择sheet
     ws.Range("A1:M10").CopyPicture()  # 复制图片区域
     ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
@@ -176,17 +178,31 @@ def excel_rank():
     df.reset_index(drop=True, inplace=True)
     # df['PM25排名'] = df['PM2.5'].rank(method='first', na_option='bottom', ascending=True)
     # df['PM10排名'] = df['PM10'].rank(method='first', na_option='bottom', ascending=True)
-    df.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xls")
+    df.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xlsx")
 
+def excel_c():
+    wb = openpyxl.load_workbook(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xlsx")
+    sheet = wb["Sheet1"]
+    n = 0
+    fille=PatternFill("solid",fgColor="FFBB02")
+    for i in range(1,11):
+        if sheet.cell(i, 2).value == "淮阳县":
+            n = i
+    for j in range(1,14):
+        sheet.cell(n, j).fill = fille
+    wb.save(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")
+
+
+# excel_rank()
+excel_c()
 
 
 if __name__ == '__main__':
     while True:
         try:
-            FindWindow("淮阳区环境攻坚群")
-            CloseWindow("淮阳区环境攻坚群")
+            FindWindow("王彦军")
+            CloseWindow("王彦军")
             setText("数据来自河南省空气质量实况与播报app")
-
             time.sleep(1)
             ctrlV()
             time.sleep(1)
@@ -194,19 +210,21 @@ if __name__ == '__main__':
             time.sleep(1)
             print("已发送app")
             time.sleep(5)
-            FindWindow("淮阳区环境攻坚群")
-            CloseWindow("淮阳区环境攻坚群")
+            FindWindow("王彦军")
+            CloseWindow("王彦军")
             save_excel()
             print("已获取完数据")
             excel_rank()
             print("已对数据排名")
+            excel_c()
+            print("已对数据充填")
             excel_catch_screen()
             ctrlV()
             time.sleep(1)
             altS()
             time.sleep(1)
             print("已发送截图")
-            time.sleep(3590)
+            time.sleep(3600)
         except:
-            time.sleep(3590)
+            time.sleep(3600)
             pass
