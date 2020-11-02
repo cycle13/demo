@@ -108,8 +108,6 @@ def real(url):
     response = session.get(url= url_list,headers = headers).text
     return response
 
-
-
 def save_excel():
     book = xlwt.Workbook()
     sheet = book.add_sheet('淮阳县空气质量数据')
@@ -154,7 +152,7 @@ def excel_catch_screen():
     excel.DisplayAlerts = False  # 是否显示警告
     wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")  # 打开excel
     ws = wb.Sheets("Sheet1")  # 选择sheet
-    ws.Range("A1:M10").CopyPicture()  # 复制图片区域
+    ws.Range("A1:L10").CopyPicture()  # 复制图片区域
     ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
 
     name = str(uuid.uuid4())  # 重命名唯一值
@@ -176,9 +174,7 @@ def excel_rank():
     df['PM10排名'] = df['PM10'].rank(method='min',ascending=True)
     df = df.sort_values(by='PM2.5排名')
     df.reset_index(drop=True, inplace=True)
-    # df['PM25排名'] = df['PM2.5'].rank(method='first', na_option='bottom', ascending=True)
-    # df['PM10排名'] = df['PM10'].rank(method='first', na_option='bottom', ascending=True)
-    df.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xlsx")
+    df.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xlsx",index=False)
 
 def excel_c():
     wb = openpyxl.load_workbook(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xlsx")
@@ -186,22 +182,19 @@ def excel_c():
     n = 0
     fille=PatternFill("solid",fgColor="FFBB02")
     for i in range(1,11):
-        if sheet.cell(i, 2).value == "淮阳县":
+        if sheet.cell(i, 1).value == "淮阳县":
             n = i
-    for j in range(1,14):
+    for j in range(1,13):
         sheet.cell(n, j).fill = fille
     wb.save(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")
 
-
-# excel_rank()
-excel_c()
 
 
 if __name__ == '__main__':
     while True:
         try:
-            FindWindow("王彦军")
-            CloseWindow("王彦军")
+            FindWindow("淮阳区环境攻坚群")
+            CloseWindow("淮阳区环境攻坚群")
             setText("数据来自河南省空气质量实况与播报app")
             time.sleep(1)
             ctrlV()
@@ -210,8 +203,8 @@ if __name__ == '__main__':
             time.sleep(1)
             print("已发送app")
             time.sleep(5)
-            FindWindow("王彦军")
-            CloseWindow("王彦军")
+            FindWindow("淮阳区环境攻坚群")
+            CloseWindow("淮阳区环境攻坚群")
             save_excel()
             print("已获取完数据")
             excel_rank()
@@ -224,7 +217,7 @@ if __name__ == '__main__':
             altS()
             time.sleep(1)
             print("已发送截图")
-            time.sleep(3600)
+            time.sleep(3590)
         except:
-            time.sleep(3600)
+            time.sleep(3590)
             pass
