@@ -15,16 +15,16 @@
         <script type="text/javascript">
     var myChart = echarts.init(document.getElementById("main"));
     var rawData = [
-	{name:'淮阳区',value:[178, 162]},
-	{name:'商水县',value:[174, 156]},
-	{name:'太康县',value:[190, 170]},
-	{name:'项城市',value:[185, 161]},
-	{name:'西华县',value:[184, 165]},
-	{name:'沈丘县',value:[174, 171]},
-	{name:'扶沟县',value:[188, 168]},
-	{name:'鹿邑县',value:[192, 164]},
+	{name:'淮阳区',value:[158,176]},
+	{name:'商水县',value:[154,172]},
+	{name:'太康县',value:[166,186]},
+	{name:'项城市',value:[158,183]},
+	{name:'西华县',value:[163,183]},
+	{name:'沈丘县',value:[167,172]},
+	{name:'扶沟县',value:[165,188]},
+	{name:'鹿邑县',value:[164,191]},
 	{name:'川汇区',value:["-", "-"]},
-	{name:'郸城县',value:[170, 166]},
+	{name:'郸城县',value:[163,167]},
 ];
 
 var geoCoordMap = {
@@ -39,7 +39,7 @@ var geoCoordMap = {
     '川汇区': [114.6924137116, 33.5906863227],
     '郸城县': [115.2663353266, 33.5932261942]
 };
-var namearr = ['2019', '2020'];
+var namearr = ['2020', '2019'];
 
 var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 		'#ffe074', '#ffcbcb', '#cd8425' ];
@@ -47,7 +47,7 @@ var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 option = {
         backgroundColor:'#010b43',
         title: {
-                text: "周口市各区县2019年与2020年1至9月份O3浓度对比图",
+                text: "周口市各区县2019年与2020年1至10月份O3浓度对比图",
              subtext: '单位：μg/m3',
                 left: 'center',
                 textStyle: {

@@ -147,14 +147,13 @@ def excel_catch_screen():
     """ 对excel的表格区域进行截图——用例：excel_catch_screen(r"E:\年周口市区县27日数据.xls", "淮阳县空气质量数据", "A1:J10")"""
     # pythoncom.CoInitialize()  # excel多线程相关
 
-    excel = DispatchEx('Excel.Application')  # 启动excel
+    excel = DispatchEx("Excel.Application")  # 启动excel
     excel.Visible = True  # 可视化
     excel.DisplayAlerts = False  # 是否显示警告
     wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")  # 打开excel
     ws = wb.Sheets("Sheet1")  # 选择sheet
     ws.Range("A1:L10").CopyPicture()  # 复制图片区域
     ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
-
     name = str(uuid.uuid4())  # 重命名唯一值
     new_shape_name = name[:6]
     excel.Selection.ShapeRange.Name = new_shape_name  # 将刚刚选择的Shape重命名，避免与已有图片混淆
@@ -186,38 +185,46 @@ def excel_c():
             n = i
     for j in range(1,13):
         sheet.cell(n, j).fill = fille
+    pm25time = sheet.cell(n, 2).value
+    pm25nong = sheet.cell(n, 8).value
+    pm10nong = sheet.cell(n, 7).value
+    pm25rank = sheet.cell(n, 11).value
+    pm10rank = sheet.cell(n, 12).value
     wb.save(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")
+    return (pm25time,pm25nong,pm25rank,pm10nong,pm10rank)
 
-excel_catch_screen()
 
-# if __name__ == '__main__':
-#     while True:
-#         try:
-#             FindWindow("王彦军")
-#             CloseWindow("王彦军")
-#             setText("数据来自河南省空气质量实况与播报app")
-#             time.sleep(1)
-#             ctrlV()
-#             time.sleep(1)
-#             altS()
-#             time.sleep(1)
-#             print("已发送app")
-#             time.sleep(5)
-#             FindWindow("王彦军")
-#             CloseWindow("王彦军")
-#             save_excel()
-#             print("已获取完数据")
-#             excel_rank()
-#             print("已对数据排名")
-#             excel_c()
-#             print("已对数据充填")
-#             excel_catch_screen()
-#             ctrlV()
-#             time.sleep(1)
-#             altS()
-#             time.sleep(1)
-#             print("已发送截图")
-#             time.sleep(3590)
-#         except:
-#             time.sleep(3590)
-#             pass
+
+if __name__ == '__main__':
+    while True:
+        try:
+            FindWindow("淮阳区环境攻坚群")
+            CloseWindow("淮阳区环境攻坚群")
+            save_excel()
+            print("已获取完数据")
+            excel_rank()
+            print("已对数据排名")
+            l = excel_c()
+            print(l)
+            print("已对数据充填")
+            excel_catch_screen()
+            print("已截图")
+            ctrlV()
+            time.sleep(1)
+            altS()
+            time.sleep(1)
+            print("已发送截图")
+            time.sleep(5)
+            FindWindow("淮阳区环境攻坚群")
+            CloseWindow("淮阳区环境攻坚群")
+            setText("【实时播报】：\n淮阳县{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。数据来自《河南省空气质量实况与播报app》。".format(l[0],l[1],l[2],l[3],l[4]))
+            time.sleep(1)
+            ctrlV()
+            time.sleep(1)
+            altS()
+            time.sleep(1)
+            print("已发送app")
+            time.sleep(3590)
+        except:
+            time.sleep(3590)
+            pass

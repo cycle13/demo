@@ -13,9 +13,19 @@ import xlwt
 import openpyxl
 import openpyxl.styles
 from openpyxl.styles import PatternFill
+from datetime import datetime
+from pandas import Series,DataFrame
+from numpy.random import randn
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+import matplotlib
+from io import BytesIO
+
 
 
 session = requests.Session()
+first_url = 'http://service.envicloud.cn:8082/v2/weatherhistory/ZGVTBZE0NDI5MDM0MJAZNDC=/'
 first_url_day = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/dayAqi2018_county'
 first_url_month = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county'
 first_url_year = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county '
@@ -147,14 +157,13 @@ def excel_catch_screen():
     """ 对excel的表格区域进行截图——用例：excel_catch_screen(r"E:\年周口市区县27日数据.xls", "淮阳县空气质量数据", "A1:J10")"""
     # pythoncom.CoInitialize()  # excel多线程相关
 
-    excel = DispatchEx('Excel.Application')  # 启动excel
+    excel = DispatchEx("Excel.Application")  # 启动excel
     excel.Visible = True  # 可视化
     excel.DisplayAlerts = False  # 是否显示警告
     wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")  # 打开excel
     ws = wb.Sheets("Sheet1")  # 选择sheet
     ws.Range("A1:L10").CopyPicture()  # 复制图片区域
     ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
-
     name = str(uuid.uuid4())  # 重命名唯一值
     new_shape_name = name[:6]
     excel.Selection.ShapeRange.Name = new_shape_name  # 将刚刚选择的Shape重命名，避免与已有图片混淆
@@ -186,38 +195,138 @@ def excel_c():
             n = i
     for j in range(1,13):
         sheet.cell(n, j).fill = fille
+    pm25time = sheet.cell(n, 2).value
+    pm25nong = sheet.cell(n, 8).value
+    pm10nong = sheet.cell(n, 7).value
+    pm25rank = sheet.cell(n, 11).value
+    pm10rank = sheet.cell(n, 12).value
     wb.save(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")
+    return (pm25time,pm25nong,pm25rank,pm10nong,pm10rank)
 
-excel_catch_screen()
 
-# if __name__ == '__main__':
-#     while True:
-#         try:
-#             FindWindow("王彦军")
-#             CloseWindow("王彦军")
-#             setText("数据来自河南省空气质量实况与播报app")
-#             time.sleep(1)
-#             ctrlV()
-#             time.sleep(1)
-#             altS()
-#             time.sleep(1)
-#             print("已发送app")
-#             time.sleep(5)
-#             FindWindow("王彦军")
-#             CloseWindow("王彦军")
-#             save_excel()
-#             print("已获取完数据")
-#             excel_rank()
-#             print("已对数据排名")
-#             excel_c()
-#             print("已对数据充填")
-#             excel_catch_screen()
-#             ctrlV()
-#             time.sleep(1)
-#             altS()
-#             time.sleep(1)
-#             print("已发送截图")
-#             time.sleep(3590)
-#         except:
-#             time.sleep(3590)
-#             pass
+def qi(station,datatime_n,url):
+    url = url + station + '/' + datatime_n
+    response = session.get(url=url, headers=headers).text
+    return response
+
+def line_bar(hour_d):
+    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx')
+    plt.figure()
+    for i in range(len(df["区县"])):
+        if df["区县"][i] == '淮阳县':
+            plt.bar(df["区县"][i], df["PM2.5"][i], fc='b')
+        else:
+            plt.bar(df["区县"][i], df["PM2.5"][i], fc='y')
+    for i in range(len(df["PM2.5"])):
+        plt.text(df["区县"][i], df["PM2.5"][i] + 0.5, '%s' % round(df["PM2.5"][i], 3), ha='center', fontsize=10)
+    # plt.legend()
+    font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=20)
+    plt.title(u"周口市九区县{}时PM2.5浓度柱状图".format(hour_d), fontproperties=font1)
+    # 横坐标名称
+    plt.xlabel("区县")
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+    # 纵坐标名称
+    plt.ylabel("浓度μg/m3")
+
+    # 保存图片到本地
+    plt.savefig('image/pci.png')
+    matplotlib.use('Agg')
+    # 显示图片
+    plt.show()
+
+
+def get_file(image):
+    file_name = os.listdir(image)
+    return file_name
+
+# 图片转化成BPM格式图片
+def paste_img(file_img):
+    # 把图片写入image变量中
+    # 用open函数处理后，图像对象的模式都是 RGB
+    image = Image.open(file_img)
+
+    # 声明output字节对象
+    output = BytesIO()
+
+    # 用BMP (Bitmap) 格式存储
+    # 这里是位图，然后用output字节对象来存储
+    image.save(output, 'BMP')
+
+    # BMP图片有14字节的header，需要额外去除
+    data = output.getvalue()[14:]
+
+    # 关闭
+    output.close()
+    # DIB: 设备无关位图(device-independent bitmap)，名如其意
+    # BMP的图片有时也会以.DIB和.RLE作扩展名
+    # 设置好剪贴板的数据格式，再传入对应格式的数据，才能正确向剪贴板写入数据
+    setImage(data)
+
+
+# 把图片放到剪切板
+def setImage(data):  # 写入剪切板
+
+    w.OpenClipboard()
+    try:
+        # Unicode tests
+        w.EmptyClipboard()
+        w.SetClipboardData(win32con.CF_DIB, data)
+    except:
+        traceback.print_exc()
+    finally:
+        w.CloseClipboard()
+
+def fasong():
+    ctrlV()
+    altS()
+
+
+if __name__ == '__main__':
+    while True:
+        try:
+            FindWindow("淮阳区环境攻坚群")
+            save_excel()
+            print("已获取完数据")
+            excel_rank()
+            print("已对数据排名")
+            l = excel_c()
+            print(l)
+            print("已对数据充填")
+            datatime_n = datetime.strftime(pd.datetime.now(),'%Y%m%d/%H')
+            m = qi("101181404", datatime_n, first_url)
+            data = json.loads(m)
+            try:
+                if l[0][0:2] != "无":
+                    setText("【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。当前湿度{}%，风力为{}，风向为{}。空气质量数据来自《河南省空气质量实况与播报app》，气象数据来自《环境云》--测试。".format(l[0][0:2],l[1],l[2],l[3],l[4],data['humidity'],data['windpower'],data['winddirect']))
+                    time.sleep(1)
+                    fasong()
+                    time.sleep(1)
+                    CloseWindow("淮阳区环境攻坚群")
+                    print("已发送app")
+                    time.sleep(2)
+                    FindWindow("淮阳区环境攻坚群")
+                    excel_catch_screen()
+                    print("已截图")
+                    fasong()
+                    time.sleep(1)
+                    CloseWindow("淮阳区环境攻坚群")
+                    print("已发送截图")
+                    time.sleep(2)
+                    FindWindow("淮阳区环境攻坚群")
+                    line_bar(l[0][0:2])
+                    paste_img("D:\Program Files\pycharm\机器人发送数据\image\pci.png")
+                    fasong()
+                    time.sleep(1)
+                    print("柱状图已发送")
+                    CloseWindow("淮阳区环境攻坚群")
+                    time.sleep(3570)
+                else:
+                    raise
+            except:
+                setText("数据异常！")
+                time.sleep(1)
+                fasong()
+                time.sleep(1)
+        except:
+            time.sleep(3580)
+            pass

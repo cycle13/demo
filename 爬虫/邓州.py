@@ -16,7 +16,7 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2020-11-07',
+        'end':'2020-10-31',
         'sort':'asc',
         'start':'2020-01-01'
     }
@@ -27,7 +27,7 @@ def year(url):
 def month(url):
     data = {
         'sort':'asc',
-        'month':'2019-09'
+        'month':'2019-01'
     }
     response = session.post(url= url,data=data,headers = headers).text
     return response
@@ -68,7 +68,7 @@ sheet.write(0,5,'PM10')
 sheet.write(0,6,'PM2.5')
 sheet.write(0,7,'综合指数')
 for k in data:
-    if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市','港区',]:
+    if k['city'] in ['南召县','方城县','西峡县','镇平县','内乡县','淅川县','社旗县','唐河县','新野县','桐柏县','邓州市']:
         sheet.write(n, 0, k['city'])
         sheet.write(n, 1, k['co'])
         sheet.write(n, 2, k['o3'])
@@ -79,7 +79,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('周报2020年1-11月7日累计.xls')
+book.save('周报邓州市12020年1-10月累计.xls')
 
 print(data)
 

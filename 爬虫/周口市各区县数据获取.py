@@ -22,7 +22,7 @@ headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
 }
 
-time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2020-10-13', end='2020-10-19'))]
+time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2020-10-27', end='2020-11-01'))]
 book = xlwt.Workbook()
 sheet = book.add_sheet('周口市各区县数据')
 n = 1
@@ -48,4 +48,4 @@ for i in time_range:
                 print(k)
         # print(res)
 
-book.save('hourdata786.xls')
+book.save('hourdata11月1日.xls')

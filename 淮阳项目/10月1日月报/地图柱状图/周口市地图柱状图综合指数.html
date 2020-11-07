@@ -15,16 +15,16 @@
         <script type="text/javascript">
     var myChart = echarts.init(document.getElementById("main"));
     var rawData = [
-	{name:'淮阳区',value:[5.14, 4.55]},
-	{name:'商水县',value:[5.16, 4.25]},
-	{name:'太康县',value:[5.25, 4.53]},
-	{name:'项城市',value:[4.65, 4.08]},
-	{name:'西华县',value:[5.15, 4.29]},
-	{name:'沈丘县',value:[4.81, 4.50]},
-	{name:'扶沟县',value:[5.36, 4.42]},
-	{name:'鹿邑县',value:[4.77, 4.03]},
+	{name:'淮阳区',value:[4.61,5.12]},
+	{name:'商水县',value:[4.32,5.12]},
+	{name:'太康县',value:[4.64,5.24]},
+	{name:'项城市',value:[4.17,4.70]},
+	{name:'西华县',value:[4.39,5.129]},
+	{name:'沈丘县',value:[4.57,4.79]},
+	{name:'扶沟县',value:[4.50,5.34]},
+	{name:'鹿邑县',value:[4.16,4.84]},
 	{name:'川汇区',value:["-", "-"]},
-	{name:'郸城县',value:[5.10, 4.44]},
+	{name:'郸城县',value:[4.54,5.07]},
 ];
 
 var geoCoordMap = {
@@ -39,7 +39,7 @@ var geoCoordMap = {
     '川汇区': [114.6924137116, 33.5906863227],
     '郸城县': [115.2663353266, 33.5932261942]
 };
-var namearr = ['2019', '2020'];
+var namearr = ['2020', '2019'];
 
 var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 		'#ffe074', '#ffcbcb', '#cd8425' ];
@@ -47,7 +47,7 @@ var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 option = {
         backgroundColor:'#010b43',
         title: {
-                text: "周口市各区县2019年与2020年1至9月份综合指数对比图",
+                text: "周口市各区县2019年与2020年1至10月份综合指数对比图",
 <!--             subtext: '单位：μg/m3',-->
                 left: 'center',
                 textStyle: {

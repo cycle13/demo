@@ -15,16 +15,16 @@
         <script type="text/javascript">
     var myChart = echarts.init(document.getElementById("main"));
     var rawData = [
-	{name:'淮阳区',value:[96, 81]},
-	{name:'商水县',value:[96, 76]},
-	{name:'太康县',value:[98, 82]},
-	{name:'项城市',value:[92, 74]},
-	{name:'西华县',value:[97, 78]},
-	{name:'沈丘县',value:[87, 79]},
-	{name:'扶沟县',value:[101, 75]},
-	{name:'鹿邑县',value:[78, 70]},
+	{name:'淮阳区',value:[83,96]},
+	{name:'商水县',value:[77,96]},
+	{name:'太康县',value:[85,99]},
+	{name:'项城市',value:[76,93]},
+	{name:'西华县',value:[80,97]},
+	{name:'沈丘县',value:[82,87]},
+	{name:'扶沟县',value:[77,100]},
+	{name:'鹿邑县',value:[73,80]},
 	{name:'川汇区',value:["-", "-"]},
-	{name:'郸城县',value:[97, 79]},
+	{name:'郸城县',value:[82,97]},
 ];
 
 var geoCoordMap = {
@@ -39,7 +39,7 @@ var geoCoordMap = {
     '川汇区': [114.6924137116, 33.5906863227],
     '郸城县': [115.2663353266, 33.5932261942]
 };
-var namearr = ['2019', '2020'];
+var namearr = ['2020', '2019'];
 
 var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 		'#ffe074', '#ffcbcb', '#cd8425' ];
@@ -47,7 +47,7 @@ var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
 option = {
         backgroundColor:'#010b43',
         title: {
-                text: "周口市各区县2019年与2020年1至9月份PM10浓度对比图",
+                text: "周口市各区县2019年与2020年1至10月份PM10浓度对比图",
              subtext: '单位：μg/m3',
                 left: 'center',
                 textStyle: {
