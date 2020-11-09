@@ -23,7 +23,7 @@ import matplotlib
 from io import BytesIO
 import os
 
-import table_opr
+import table_oprt
 
 
 
@@ -33,6 +33,7 @@ first_url_day = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/dayAqi2018_county'
 first_url_month = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county'
 first_url_year = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county '
 url_list = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/getCityStationDetail'
+url_aqi = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/realtimeAqiOfPT '
 headers = {
     'User-Agent':'Dalvik/2.1.0 (Linux; U; Android 7.1.2; LIO-AN00 Build/N2G48H)'
 }
@@ -116,6 +117,46 @@ def real(url):
     response = session.get(url= url_list,headers = headers).text
     return response
 
+def realaqi(url):
+    data = {
+        '' : '',
+        'sort': 'asc',
+        'order': 'AQI',
+    }
+    response = session.post(url= url,data=data,headers = headers).text
+    return response
+
+def saveleiji_excel():
+    book = xlwt.Workbook()
+    sheet = book.add_sheet('淮阳县空气质量累积数据')
+    n = 1
+    sheet.write(0,0,'区县')
+    sheet.write(0,1,'时间')
+    sheet.write(0,2,'CO')
+    sheet.write(0,3,'O3')
+    sheet.write(0,4,'SO2')
+    sheet.write(0,5,'NO2')
+    sheet.write(0,6,'PM10')
+    sheet.write(0,7,'PM2.5')
+    time.sleep(5)
+    l = realaqi(url_aqi)
+    data = json.loads(l)['data']
+    for k in data:
+        if k['CITY'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市']:
+            sheet.write(n, 0, k['CITY'])
+            try:
+                sheet.write(n, 1, k["MONIDATE"].split(" ")[1])
+            except:
+                sheet.write(n, 1, "无")
+            sheet.write(n, 2, k['AVGCO'])
+            sheet.write(n, 3, k['AVGO3'])
+            sheet.write(n, 4, k['AVGSO2'])
+            sheet.write(n, 5, k['AVGNO2'])
+            sheet.write(n, 6, k['AVGPM10'])
+            sheet.write(n, 7, k['AVGPM25'])
+            n+=1
+    book.save('周口市区县累积数据.xls')
+
 def save_excel():
     book = xlwt.Workbook()
     sheet = book.add_sheet('淮阳县空气质量数据')
@@ -158,10 +199,10 @@ def excel_catch_screen():
     excel = DispatchEx("Excel.Application")  # 启动excel
     excel.Visible = True  # 可视化
     excel.DisplayAlerts = False  # 是否显示警告
-    wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名插入.xlsx")  # 打开excel
+    wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据累积排名插入.xlsx")  # 打开excel
     # wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")  # 打开excel
     ws = wb.Sheets("Sheet1")  # 选择sheet
-    ws.Range("A1:L11").CopyPicture()  # 复制图片区域
+    ws.Range("A1:J11").CopyPicture()  # 复制图片区域
     ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
     name = str(uuid.uuid4())  # 重命名唯一值
     new_shape_name = name[:6]
@@ -177,33 +218,33 @@ def excel_catch_screen():
     # pythoncom.CoUninitialize()
 
 def excel_rank():
-    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县数据.xls')
+    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县累积数据.xls')
     df['PM2.5排名'] = df['PM2.5'].rank(method='min',ascending=True)
     df['PM10排名'] = df['PM10'].rank(method='min',ascending=True)
     df = df.sort_values(by='PM2.5排名')
     df.reset_index(drop=True, inplace=True)
     df1 = df.sort_values(by='PM10排名')
     df1.reset_index(drop=True, inplace=True)
-    df.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xlsx",index=False)
-    df1.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名PM10.xlsx", index=False)
+    df.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据累积排名.xlsx",index=False)
+    df1.to_excel(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据累积排名PM10.xlsx", index=False)
 
 def excel_c():
-    wb = openpyxl.load_workbook(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名.xlsx")
+    wb = openpyxl.load_workbook(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据累积排名.xlsx")
     sheet = wb["Sheet1"]
     n = 0
 
     for i in range(1,11):
         if sheet.cell(i, 1).value == "淮阳县":
             n = i
-    if 50 >= sheet.cell(n, 9).value >= 0:
+    if 35 >= sheet.cell(n, 8).value >= 0:
         color = '00E400'
-    elif 100 >= sheet.cell(n, 9).value > 50:
+    elif 75 >= sheet.cell(n, 8).value > 35:
         color = 'FFFF00'
-    elif 150 >= sheet.cell(n, 9).value > 100:
+    elif 115 >= sheet.cell(n, 8).value > 75:
         color = 'FF7E00'
-    elif 200 >= sheet.cell(n, 9).value > 150:
+    elif 150 >= sheet.cell(n, 8).value > 115:
         color = 'FF0000'
-    elif 300 >= sheet.cell(n, 9).value > 200:
+    elif 250 >= sheet.cell(n, 8).value > 150:
         color = '99004C'
     else:
         color = '7E0023'
@@ -213,9 +254,9 @@ def excel_c():
     pm25time = sheet.cell(n, 2).value
     pm25nong = sheet.cell(n, 8).value
     pm10nong = sheet.cell(n, 7).value
-    pm25rank = sheet.cell(n, 11).value
-    pm10rank = sheet.cell(n, 12).value
-    wb.save(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")
+    pm25rank = sheet.cell(n, 9).value
+    pm10rank = sheet.cell(n, 10).value
+    wb.save(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据累积排名充填.xlsx")
     return (pm25time,pm25nong,pm25rank,pm10nong,pm10rank)
 
 def qi(station,datatime_n,url):
@@ -224,7 +265,7 @@ def qi(station,datatime_n,url):
     return response
 
 def line_bar(hour_d):
-    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx')
+    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县数据累积排名充填.xlsx')
     plt.figure()
     for i in range(len(df["区县"])):
         if 35 >= df["PM2.5"][i] >= 0:
@@ -261,7 +302,7 @@ def line_bar(hour_d):
         plt.text(df["区县"][i], df["PM2.5"][i] + 0.5, '%s' % round(df["PM2.5"][i], 3), ha='center', fontsize=10)
     # plt.legend()
     font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=20)
-    plt.title(u"周口市九区县{}时PM2.5浓度柱状图".format(hour_d), fontproperties=font1)
+    plt.title(u"周口市九区县截止今日{}时PM2.5累积浓度柱状图".format(hour_d), fontproperties=font1)
     # 横坐标名称
     plt.xlabel("周口市九区县")
     plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -275,7 +316,7 @@ def line_bar(hour_d):
     # plt.show()
 
 def line_barpm10(hour_d):
-    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名PM10.xlsx')
+    df = pd.read_excel(r'D:\Program Files\pycharm\机器人发送数据\周口市区县数据累积排名PM10.xlsx')
     plt.figure()
     for i in range(len(df["区县"])):
         if 50 >= df["PM10"][i] >= 0:
@@ -312,7 +353,7 @@ def line_barpm10(hour_d):
         plt.text(df["区县"][i], df["PM10"][i] + 0.5, '%s' % round(df["PM10"][i], 3), ha='center', fontsize=10)
     # plt.legend()
     font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=20)
-    plt.title(u"周口市九区县{}时PM10浓度柱状图".format(hour_d), fontproperties=font1)
+    plt.title(u"周口市九区县截止今日{}时PM10累积浓度柱状图".format(hour_d), fontproperties=font1)
     # 横坐标名称
     plt.xlabel("周口市九区县")
     plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -391,25 +432,16 @@ if __name__ == '__main__':
     while True:
         try:
             FindWindow(name)
-            save_excel()
+            saveleiji_excel()
             print("已获取完数据")
             excel_rank()
             print("已对数据排名")
             l = excel_c()
             print(l)
             print("已对数据充填")
-            datatime_n = datetime.strftime(pd.datetime.now(),'%Y%m%d/%H')
-            m = qi("101181404", datatime_n, first_url)
-            print("已获取气象数据")
-            data = json.loads(m)
             try:
                 if l[0][0:2] != "无":
-                    if data['rcode'] == 200:
-                        setText("【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。当前湿度{}%，风力为{}，风向为{}。".format(l[0][0:2],l[1],l[2],l[3],l[4],data['humidity'],data['windpower'],data['winddirect']))
-                    else:
-                        setText(
-                            "【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。气象数据缺失。".format(
-                                l[0][0:2], l[1], l[2], l[3], l[4]))
+                    setText("【今日累积播报】：\n淮阳区截止{}时，PM2.5累积浓度为{}μg/m3，在全市9个区县中排名第{}；PM10累积浓度为{}μg/m3，在全市9个区县中排名第{}。".format(l[0][0:2],l[1],l[2],l[3],l[4]))
                     time.sleep(1)
                     fasong()
                     time.sleep(1)
@@ -417,8 +449,8 @@ if __name__ == '__main__':
                     print("已发送app")
                     time.sleep(2)
                     FindWindow(name)
-                    table_opr.table_font("周口市九区县{}时PM2.5和PM10排名及各污染物详细表".format(l[0][0:2]))
-                    table_opr.set_from_center()
+                    table_oprt.table_font("周口市九区县截止{}时PM2.5和PM10累积浓度排名及各污染物详情表".format(l[0][0:2]))
+                    table_oprt.set_from_center()
                     excel_catch_screen()
                     print("已截图")
                     fasong()
@@ -437,7 +469,7 @@ if __name__ == '__main__':
                     print("柱状图已发送")
                     CloseWindow(name)
                     del_files("D:\Program Files\pycharm\机器人发送数据\image")
-                    time.sleep(3550)
+                    time.sleep(3580)
                 else:
                     raise
             except:
@@ -445,6 +477,6 @@ if __name__ == '__main__':
                 time.sleep(1)
                 fasong()
                 CloseWindow(name)
-                time.sleep(3570)
+                time.sleep(3590)
         except:
             time.sleep(60)

@@ -10,13 +10,20 @@ first_url_day = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/dayAqi2018_county'
 first_url_month = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county'
 first_url_year = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county '
 url_list = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/getCityStationDetail'
+url_aqi = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/realtimeAqiOfPT'
 headers = {
-    'User-Agent':'Dalvik/2.1.0 (Linux; U; Android 7.1.2; LIO-AN00 Build/N2G48H)'
+    'Accept-Encoding': 'gzip',
+    'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 7.1.2; LIO-AN00 Build/LIO-AN00)',
+    'Content-Length': '19',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Connection': 'Keep-Alive',
+    'Host': '1.192.88.18:8115'
+
 }
 
 def year(url):
     data = {
-        'end':'2020-11-07',
+        'end':'2020-11-08',
         'sort':'asc',
         'start':'2020-01-01'
     }
@@ -44,12 +51,25 @@ def day(url):
 def real(url):
     response = session.get(url= url_list,headers = headers).text
     return response
-    data = json.loads(l)['detail']
-    for i in data:
-        print(i)
+    # data = json.loads(l)['detail']
+    # for i in data:
+    #     print(i)
 
 
-# print(real(url_list))
+
+def realaqi(url):
+    data = {
+        '' : '',
+        'sort': 'asc',
+        'order': 'AQI',
+    }
+    response = session.post(url= url,data=data,headers = headers).text
+    return response
+    # data = json.loads(l)['detail']
+    # for i in data:
+    #     print(i)
+
+
 
 
 
@@ -79,7 +99,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('周报2020年1-11月7日累计.xls')
+book.save('周报2020年1-11月8日累计.xls')
 
 print(data)
 
