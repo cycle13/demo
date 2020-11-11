@@ -148,8 +148,87 @@ def wanbaistr():
     send_excel_pic(name,excel_file_dir,excel_filenew_dir,rank_name,name_table,excel_rank_insert,excel_lable)
 
 
-wanbaistr()
+
+
+def send_excelbz_pic(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,excel_filerank_dir1,excel_filerank_dir2):
+    windows_opr.FindWindow(name)
+    make_excel.excel_rank_str(excel_file_dir1, excel_filenew_dir1, rank_name)
+    make_excel.excel_bz_six(excel_filenew_dir1,name_c1,excel_filerank_dir1)
+    make_excel.table_font_six(excel_filerank_dir1, name_table1, excel_rank_insert1)
+    send_text_image.excel_catch_screen_six(excel_rank_insert1)
+    windows_opr.send()
+
+    make_excel.excel_rank_str(excel_file_dir2, excel_filenew_dir2, rank_name)
+    make_excel.excel_bz_any(excel_filenew_dir2, name_c2, excel_filerank_dir2)
+    make_excel.table_font_any(excel_filerank_dir2, name_table2, excel_rank_insert2)
+    send_text_image.excel_catch_screen_any(excel_rank_insert2)
+    windows_opr.send()
+    windows_opr.CloseWindow(name)
 
 
 
+def wanbaibz():
+    # 发送文本
+    name = '王彦军'
+    l = "【万柏林区{}空气质量日报】\n{}，万柏林区综合" \
+        "指数为{}，在太原市六城区中排名{}。太原市全市AQI为{}，{}，首要" \
+        "污染物：{}。万柏林区全区AQI值为{}，{}，首要污染物：{}，在太原市六" \
+        "城区中排名{}。在太原市11个标准站中，西山点位AQI值为{}，排名{}。\n当前气象" \
+        "条件：{}，相对湿度{}%，预计未来几个小时我区空气质量以{}。".format('2020年11月3日','2020年11月3日','3.22',
+                                                     '第一' ,'70','二级良','NO2','56','二级良','PM10','第一','56',
+                                                      '第二','南风二级','38','三级为主')
+    send_text(name,l)
+
+    # 发送excel截图
+    excel_file_dir1 = r'excelfiles\太原市六城区空气质量日报.xlsx'
+    excel_file_dir2 = r'excelfiles\太原市六城区标站空气质量日报.xlsx'
+    excel_filenew_dir1 = r'excelfiles\太原市六城区空气质量日报排名.xlsx'
+    excel_filenew_dir2 = r'excelfiles\太原市六城区标站空气质量日报排名.xlsx'
+    excel_filerank_dir1 = r'excelfiles\太原市六城区空气质量日报排名充填.xlsx'
+    excel_filerank_dir2 = r'excelfiles\太原市六城区标站空气质量日报排名充填.xlsx'
+    excel_rank_insert1 = r'D:\Program Files\pycharm\微信自动发送数据\万柏林\excelfiles\太原市六城区空气质量日报排名插入.xlsx'
+    excel_rank_insert2 = r'D:\Program Files\pycharm\微信自动发送数据\万柏林\excelfiles\太原市六城区标站空气质量日报排名插入.xlsx'
+    rank_name = 'AQI'
+    name_c1 = '万柏林区'
+    name_c2 = '西山'
+    name_table1 = '2020年11月3日全市六城区综合指数排名情况'
+    name_table2 = '2020年11月3日全市所有标站AQI排名情况'
+    send_excelbz_pic(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,excel_filerank_dir1,excel_filerank_dir2)
+
+
+
+
+def send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,excel_rank_insert,rank_name,name_c,name_table):
+    windows_opr.FindWindow(name)
+    make_excel.excel_rank_str(excel_file_dir, excel_filenew_dir, rank_name)
+    make_excel.excel_add(excel_filenew_dir, name_c, excel_filerank_dir)
+
+    make_excel.table_font_add(excel_filerank_dir, name_table, excel_rank_insert)
+    send_text_image.excel_catch_screen_add(excel_rank_insert)
+    windows_opr.send()
+
+
+
+def wanbaiadd():
+    # 发送文本
+    name = '王彦军'
+    l = "【夜间累计浓度变化情况】\n{}时，西山点位累计AQI" \
+        "为{}，{}，首要污染物：{}，今日{}时PM2.5平均浓度为{}μg/m³；今" \
+        "日{}时PM10平均浓度为{}μg/m³。\n 当前气象条件：{}，相对湿度{}%，预计未" \
+        "来几个小时我区空气质量以{}。".format('2020年11月2日20','44','一级优','无',
+                                   '1-20','9','1-20','44','西北风二级','30','一级为主')
+    send_text(name,l)
+
+
+
+    # 发送excel截图
+    excel_file_dir = r'excelfiles\太原市六城区空气质量累计日报.xlsx'
+    excel_filenew_dir = r'excelfiles\太原市六城区空气质量累计日报排名.xlsx'
+    excel_filerank_dir = r'excelfiles\太原市六城区空气质量累计日报排名充填.xlsx'
+    excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\万柏林\excelfiles\太原市六城区空气质量累计日报排名插入.xlsx'
+    rank_name = 'PM2.5'
+    name_c = '西山'
+    name_table = '备注：各点位按PM2.5当日累计浓度排序'
+
+    send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,excel_rank_insert,rank_name,name_c,name_table)
 

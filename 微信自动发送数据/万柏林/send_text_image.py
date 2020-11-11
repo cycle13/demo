@@ -90,6 +90,56 @@ def excel_catch_screen_str(excel_rank_insert):
     excel.Quit()
 
 
+def excel_catch_screen_six(excel_rank_insert):
+    excel = DispatchEx("Excel.Application")
+    excel.Visible = True
+    excel.DisplayAlerts = False
+    wb = excel.Workbooks.Open(excel_rank_insert)
+    ws = wb.Sheets("Sheet1")
+    ws.Range("A1:L8").CopyPicture()
+    ws.Paste()
+    name = str(uuid.uuid4())
+    new_shape_name = name[:6]
+    excel.Selection.ShapeRange.Name = new_shape_name
+    ws.Shapes(new_shape_name).Copy()
+    ImageGrab.grabclipboard()
+    wb.Close(SaveChanges=0)
+    excel.Quit()
+
+
+def excel_catch_screen_any(excel_rank_insert):
+    excel = DispatchEx("Excel.Application")
+    excel.Visible = True
+    excel.DisplayAlerts = False
+    wb = excel.Workbooks.Open(excel_rank_insert)
+    ws = wb.Sheets("Sheet1")
+    ws.Range("A1:J13").CopyPicture()
+    ws.Paste()
+    name = str(uuid.uuid4())
+    new_shape_name = name[:6]
+    excel.Selection.ShapeRange.Name = new_shape_name
+    ws.Shapes(new_shape_name).Copy()
+    ImageGrab.grabclipboard()
+    wb.Close(SaveChanges=0)
+    excel.Quit()
+
+def excel_catch_screen_add(excel_rank_insert):
+    excel = DispatchEx("Excel.Application")
+    excel.Visible = True
+    excel.DisplayAlerts = False
+    wb = excel.Workbooks.Open(excel_rank_insert)
+    ws = wb.Sheets("Sheet1")
+    ws.Range("A1:L13").CopyPicture()
+    ws.Paste()
+    name = str(uuid.uuid4())
+    new_shape_name = name[:6]
+    excel.Selection.ShapeRange.Name = new_shape_name
+    ws.Shapes(new_shape_name).Copy()
+    ImageGrab.grabclipboard()
+    wb.Close(SaveChanges=0)
+    excel.Quit()
+
+
 # 创建文件夹
 def make_files(filename):
     if not os.path.exists(filename):
