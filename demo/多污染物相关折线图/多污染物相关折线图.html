@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>相互关系图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1000px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+        myChart.setOption({
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        color: ['#a08fff', '#ff0003', '#130eff', '#ff0060', '#130eff', '#ff0060'],
+                        legend: {
+                            data: ['PM2.5', 'PM10', 'NO2', 'SO2', 'CO', 'O3']
+                        },
+                        grid: [{
+                            x:'7%',y:'7%',height:'20%',left:'10%'
+                        }, {
+                            x:'7%',y2:'7%'
+                        }, {
+                            x:'7%',y3:'7%'
+                        }],
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: [{
+                            type: 'category',
+                            gridIndex: 2,
+                            data: ['31日08时', '31日09时', '31日10时', '31日11时', '31日12时',
+                                '31日13时', '31日14时', '31日15时', '31日16时', '31日17时',
+                                '31日18时', '31日19时', '31日20时', '31日21时', '31日22时'
+                            ]
+                        }],
+                        yAxis: [{
+                            gridIndex: 0,
+                            type: 'value',
+                            name: 'PM2.5浓度',
+                            position: 'left',
+                            nameRotate:90,
+                            nameLocation : 'middle',
+                            nameGap : 30
+                        }, {
+                            gridIndex: 0,
+                            type: 'value',
+                            name: 'PM10浓度',
+                            position: 'right',
+                            nameRotate:90,
+                            nameLocation : 'middle',
+                            nameGap : 30
+                        }, {
+                            gridIndex: 1,
+                            type: 'value',
+                            name: 'NO2浓度',
+                            position: 'left',
+                            nameRotate:90,
+                            nameLocation : 'middle',
+                            nameGap : 30
+                        }, {
+                            gridIndex: 1,
+                            type: 'value',
+                            name: 'SO2浓度',
+                            position: 'right',
+                            nameRotate:90,
+                            nameLocation : 'middle',
+                            nameGap : 30
+                        }, {
+                            gridIndex: 2,
+                            type: 'value',
+                            name: 'CO浓度',
+                            position: 'left',
+                            nameRotate:90,
+                            nameLocation : 'middle',
+                            nameGap : 30
+                        }, {
+                            gridIndex: 2,
+                            type: 'value',
+                            name: 'O3浓度',
+                            position: 'right',
+                            nameRotate:90,
+                            nameLocation : 'middle',
+                            nameGap : 30
+                        }],
+                        series: [
+                            {
+                                name: 'PM2.5',
+                                type: 'line',
+                                showSymbol: false,
+                                hoverAnimation: false,
+                                data: [1,2,3,4,5,6,7,8,9,12,2,22,12,34,12],
+                                yAxisIndex: 0
+                            }, {
+                                name: 'PM10',
+                                type: 'line',
+                                showSymbol: false,
+                                hoverAnimation: false,
+                                data: [1,2,3,4,5,6,7,8,9,12,2,22,12,34,12],
+                                yAxisIndex: 1
+                            }, {
+                                name: 'NO2',
+                                type: 'line',
+                                showSymbol: false,
+                                hoverAnimation: false,
+                                data:[1,2,3,4,5,6,7,8,9,12,2,22,12,34,12],
+                                yAxisIndex: 2
+                            },{
+                                name: 'SO2',
+                                type: 'line',
+                                showSymbol: false,
+                                hoverAnimation: false,
+                                data: [1,2,3,4,5,6,7,8,9,12,2,22,12,34,12],
+                                yAxisIndex: 3
+                            }, {
+                                name: 'CO',
+                                type: 'line',
+                                showSymbol: false,
+                                hoverAnimation: false,
+                                data: [1,2,3,4,5,6,7,8,9,12,2,22,12,34,12],
+                                yAxisIndex: 4
+                            }, {
+                                name: 'O3',
+                                type: 'line',
+                                showSymbol: false,
+                                hoverAnimation: false,
+                                data:[1,2,3,4,5,6,7,8,9,12,2,22,12,34,12],
+                                yAxisIndex: 5
+                            }
+                        ]
+                    });
+        </script>
+    </body>
+</html>

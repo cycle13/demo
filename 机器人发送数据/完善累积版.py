@@ -366,6 +366,7 @@ def line_barpm10(hour_d):
     # 显示图片
     # plt.show()
 
+# 获取发送的文件
 def get_file(image):
     file_name = os.listdir(image)
     return file_name

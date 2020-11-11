@@ -405,7 +405,7 @@ if __name__ == '__main__':
             try:
                 if l[0][0:2] != "无":
                     if data['rcode'] == 200:
-                        setText("【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。当前湿度{}%，风力为{}，风向为{}。".format(l[0][0:2],l[1],l[2],l[3],l[4],data['humidity'],data['windpower'],data['winddirect']))
+                        setText("【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。当前湿度{}%，温度为{}℃，风力为{}，风向为{}。".format(l[0][0:2],l[1],l[2],l[3],l[4],data['humidity'],data['temperature'],data['windpower'],data['winddirect']))
                     else:
                         setText(
                             "【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。气象数据缺失。".format(
