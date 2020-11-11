@@ -442,7 +442,7 @@ if __name__ == '__main__':
             print("已对数据充填")
             try:
                 if l[0][0:2] != "无":
-                    setText("【今日累积播报】：\n淮阳区截止{}时，PM2.5累积浓度为{}μg/m3，在全市9个区县中排名第{}；PM10累积浓度为{}μg/m3，在全市9个区县中排名第{}。".format(l[0][0:2],l[1],l[2],l[3],l[4]))
+                    setText("【今日累计播报】：\n淮阳区截止{}时，PM2.5累计浓度为{}μg/m3，在全市9个区县中排名第{}；PM10累计浓度为{}μg/m3，在全市9个区县中排名第{}。".format(l[0][0:2],l[1],l[2],l[3],l[4]))
                     time.sleep(1)
                     fasong()
                     time.sleep(1)
@@ -450,7 +450,7 @@ if __name__ == '__main__':
                     print("已发送app")
                     time.sleep(2)
                     FindWindow(name)
-                    table_oprt.table_font("周口市九区县截止{}时PM2.5和PM10累积浓度排名及各污染物详情表".format(l[0][0:2]))
+                    table_oprt.table_font("周口市九区县截止{}时PM2.5和PM10累计浓度排名及各污染物详情表".format(l[0][0:2]))
                     table_oprt.set_from_center()
                     excel_catch_screen()
                     print("已截图")
