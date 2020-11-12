@@ -59,4 +59,3 @@ def hoursend():
     name_table2 = '2020年3月20日9时区域AQI排名'
     send_excel_pic_hour(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,name_c3,excel_filerank_dir1,excel_filerank_dir2)
 
-hoursend()
