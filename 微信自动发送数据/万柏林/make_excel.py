@@ -10,6 +10,12 @@ import xlrd
 import xlwt
 from pandas import read_csv
 import glob
+from openpyxl.styles import Color
+from openpyxl.formatting.rule import Rule
+from openpyxl import Workbook
+from openpyxl.styles import Color, PatternFill, Font, Border
+from openpyxl.styles.differential import DifferentialStyle
+from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 
 
 
@@ -284,3 +290,10 @@ def table_font_add(excel_filerank_dir2, name_table2, excel_rank_insert2):
     set_from_center(excel_rank_insert2)
     table_border(excel_rank_insert2)
 
+
+
+def color_scale(excel_filerank_dir):
+    wb = openpyxl.load_workbook(excel_filerank_dir)
+    sheet = wb["Sheet1"]
+    sheet.conditional_formatting.add('G2:G12', ColorScaleRule(start_type='min', start_color='00FF00',end_type = 'max', end_color = 'FF0000'))
+    wb.save(excel_filerank_dir)

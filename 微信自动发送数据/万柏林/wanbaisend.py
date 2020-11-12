@@ -202,7 +202,7 @@ def send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,e
     windows_opr.FindWindow(name)
     make_excel.excel_rank_str(excel_file_dir, excel_filenew_dir, rank_name)
     make_excel.excel_add(excel_filenew_dir, name_c, excel_filerank_dir)
-
+    make_excel.color_scale(excel_filerank_dir)
     make_excel.table_font_add(excel_filerank_dir, name_table, excel_rank_insert)
     send_text_image.excel_catch_screen_add(excel_rank_insert)
     windows_opr.send()
@@ -232,3 +232,4 @@ def wanbaiadd():
 
     send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,excel_rank_insert,rank_name,name_c,name_table)
 
+wanbaiadd()
