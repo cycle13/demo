@@ -231,5 +231,3 @@ def wanbaiadd():
     name_table = '备注：各点位按PM2.5当日累计浓度排序'
 
     send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,excel_rank_insert,rank_name,name_c,name_table)
-
-wanbaiadd()
