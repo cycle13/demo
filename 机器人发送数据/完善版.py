@@ -387,7 +387,7 @@ def del_files(path_file):
 
 
 if __name__ == '__main__':
-    name = "淮阳区环境攻坚群"
+    name = "王彦军"
     while True:
         try:
             FindWindow(name)
@@ -417,7 +417,7 @@ if __name__ == '__main__':
                     print("已发送app")
                     time.sleep(2)
                     FindWindow(name)
-                    table_opr.table_font("周口市九区县{}时PM2.5和PM10排名及各污染物详细表".format(l[0][0:2]))
+                    table_opr.table_font("周口市九区县{}时PM2.5和PM10排名及各污染物详情表".format(l[0][0:2]))
                     table_opr.set_from_center()
                     excel_catch_screen()
                     print("已截图")

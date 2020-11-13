@@ -429,7 +429,7 @@ def del_files(path_file):
 
 
 if __name__ == '__main__':
-    name = "淮阳区环境攻坚群"
+    name = "王彦军"
     while True:
         try:
             FindWindow(name)
