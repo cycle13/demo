@@ -1,7 +1,7 @@
 import make_excel
 import send_text_image
 import windows_opr
-
+import xiaodian_spider
 
 
 def send_text(name,l):
@@ -101,6 +101,8 @@ def send_excel_pic_hour(name, excel_file_dir1, excel_file_dir2,excel_filenew_dir
 
 def hoursend():
     name = '王彦军'
+    xiaodian_spider.zonghe()
+    sl = xiaodian_spider.aqi()
     # 发送excel截图
     excel_file_dir1 = r'excelfiles\小店区两站点AQI数据.xlsx'
     excel_file_dir2 = r'excelfiles\小店区两站点综合指数数据.xlsx'
@@ -114,9 +116,8 @@ def hoursend():
     rank_name2 = '综合指数'
     name_c1 = '坞城'
     name_c2 = '小店'
-    name_table1 = '2020年11月4日小店区2站点AQI排名'
-    name_table2 = '2020年11月4日小店区2站点综合指数排名'
+    name_table1 = '{}小店区2站点AQI排名'.format(sl)
+    name_table2 = '{}小店区2站点综合指数排名'.format(sl)
 
     send_excel_pic_hour(name, excel_file_dir1, excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_filerank_dir1,excel_filerank_dir2,excel_rank_insert1,excel_rank_insert2,rank_name1,rank_name2,name_table1,name_table2,name_c1,name_c2)
 
-hoursend()

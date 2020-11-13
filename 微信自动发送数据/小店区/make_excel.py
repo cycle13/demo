@@ -25,8 +25,8 @@ def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
 # excel根据字段排名
 def excel_rank_rb(excel_file_dir,excel_filenew_dir,rank_name):
     df = pd.read_excel(excel_file_dir)
+    df['排名'] = df[rank_name].rank(method='min', ascending=True)
     df = df.sort_values(by=rank_name,ascending=True)
-    # df[excel_add_name] = df[rank_name].rank(method='min', ascending=False)
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
 
