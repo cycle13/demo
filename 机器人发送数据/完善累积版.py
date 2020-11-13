@@ -302,7 +302,7 @@ def line_bar(hour_d):
         plt.text(df["区县"][i], df["PM2.5"][i] + 0.5, '%s' % round(df["PM2.5"][i], 3), ha='center', fontsize=10)
     # plt.legend()
     font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=20)
-    plt.title(u"周口市九区县截止今日{}时PM2.5累积浓度柱状图".format(hour_d), fontproperties=font1)
+    plt.title(u"周口市九区县截止今日{}时PM2.5累计浓度柱状图".format(hour_d), fontproperties=font1)
     # 横坐标名称
     plt.xlabel("周口市九区县")
     plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -353,7 +353,7 @@ def line_barpm10(hour_d):
         plt.text(df["区县"][i], df["PM10"][i] + 0.5, '%s' % round(df["PM10"][i], 3), ha='center', fontsize=10)
     # plt.legend()
     font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=20)
-    plt.title(u"周口市九区县截止今日{}时PM10累积浓度柱状图".format(hour_d), fontproperties=font1)
+    plt.title(u"周口市九区县截止今日{}时PM10累计浓度柱状图".format(hour_d), fontproperties=font1)
     # 横坐标名称
     plt.xlabel("周口市九区县")
     plt.rcParams['font.sans-serif'] = ['SimHei']
