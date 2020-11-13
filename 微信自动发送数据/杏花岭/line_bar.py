@@ -21,7 +21,7 @@ def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
     3、标签名字为y2-data
     '''
     plt.plot(x, y2, marker='*', color='r',label = 'PM2.5')
-    plt.plot(x, y3, marker='*', color='y',label = 'PM10')
+    plt.plot(x, y3, marker='x', color='y',label = 'PM10')
     # 标注值
     # for i in range(len(y1)):
     #     plt.text(x[i], y1[i] + 0.5, '%s' % round(y1[i], 3), ha='center', fontsize=10)
