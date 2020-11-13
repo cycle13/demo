@@ -178,6 +178,41 @@ def excel_c_hour(excel_filenew_dir1,name_c1,name_c2,excel_filerank_dir1):
     wb.save(excel_filerank_dir1)
 
 
+
+def zhzs_color(color_num):
+    if 4 >= color_num >= 0:
+        color = '00E400'
+    elif 6 >= color_num > 4:
+        color = 'FFFF00'
+    elif 8 >= color_num > 6:
+        color = 'FF7E00'
+    elif 10 >= color_num > 8:
+        color = 'FF0000'
+    elif color_num > 10:
+        color = '99004C'
+    else:
+        color = 'FFFFFF'
+    return color
+
+
+def excel_czh_hour(excel_filenew_dir1,name_c1,name_c2,excel_filerank_dir1):
+    wb = openpyxl.load_workbook(excel_filenew_dir1)
+    sheet = wb["Sheet1"]
+    n = col_num(sheet,name_c1)
+    for j in range(1,5):
+        sheet.cell(n, j).font = Font(bold=True, color="FF0000")
+
+    m = col_num(sheet, name_c2)
+    for j in range(1, 5):
+        sheet.cell(m, j).font = Font(bold=True, color="FF0000")
+
+    for j in range(2,11):
+        c = sheet.cell(j, 2).value
+        fille = PatternFill("solid", fgColor=zhzs_color(c))
+        sheet.cell(j, 2).fill = fille
+    wb.save(excel_filerank_dir1)
+
+
 #居中对齐，通过遍历方式实现
 def set_from_center(excel_rank_insert):
     fileName = excel_rank_insert

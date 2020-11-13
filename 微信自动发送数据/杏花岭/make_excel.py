@@ -37,18 +37,19 @@ def excel_c(excel_filenew_dir,name_c,excel_filerank_dir):
     for i in range(1,10):
         if sheet.cell(i, 2).value == name_c:
             n = i
-    if 50 >= sheet.cell(n, 15).value >= 0:
+    if 4 >= sheet.cell(n, 15).value >= 0:
         color = '00E400'
-    elif 100 >= sheet.cell(n, 15).value > 50:
+    elif 6 >= sheet.cell(n, 15).value > 4:
         color = 'FFFF00'
-    elif 150 >= sheet.cell(n, 15).value > 100:
+    elif 8 >= sheet.cell(n, 15).value > 6:
         color = 'FF7E00'
-    elif 200 >= sheet.cell(n, 15).value > 150:
+    elif 10 >= sheet.cell(n, 15).value > 8:
         color = 'FF0000'
-    elif 300 >= sheet.cell(n, 15).value > 200:
+    elif sheet.cell(n, 15).value > 10:
         color = '99004C'
     else:
-        color = '7E0023'
+        color = 'FFFFFF'
+    print(sheet.cell(n, 15).value)
     fille=PatternFill("solid",fgColor=color)
     for j in range(1,16):
         sheet.cell(n, j).fill = fille
