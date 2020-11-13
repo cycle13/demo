@@ -4,6 +4,7 @@ import make_excel
 import send_text_image
 import windows_opr
 import time
+import yingze_spider
 
 
 def send_text(name,l):
@@ -24,6 +25,7 @@ def send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c
 
 
 def hoursend():
+    sl = yingze_spider.zonghe()
     # 发送文本
     name = '王彦军'
     l = "【实时空气质量报告】{} {}，我区综" \
@@ -42,7 +44,7 @@ def hoursend():
     excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\迎泽区\excelfiles\迎泽小时推送数据排名充填插入.xlsx'
     rank_name = '综合指数'
     name_c = '迎泽区'
-    name_table = '2020年11月4日12时区域空气质量排名'
+    name_table = '{}区域空气质量排名'.format(sl)
     send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
 
 
@@ -74,3 +76,4 @@ def hourjc():
     send_excelhourjc_pic(name, excel_file_dir, excel_filenew_dir,rank_name,excel_rank_insert)
 
 
+hoursend()
