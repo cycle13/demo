@@ -59,5 +59,5 @@ def hoursend():
     image_file = r'image_file'
     send_line_pic(name, excel_file_dir, image_file)
 
-hoursend()
+
 
