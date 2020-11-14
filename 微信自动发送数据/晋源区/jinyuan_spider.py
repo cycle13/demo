@@ -87,8 +87,8 @@ def save_station_excel():
             sheet.write(n, 10, k['PollutionLevelBig']+'级')
             n+=1
             m = k['Time']
-            print(m)
     book.save(r'excelfiles\太原市六城区标站空气质量日报.xls')
+    return m
 
 
 
@@ -108,5 +108,3 @@ def station():
     timeArray = time.localtime(float(int(save_station_excel()[6:-2])/1000))
     time_now = time.strftime('%Y',timeArray)+'年'+time.strftime('%m',timeArray)+'月'+time.strftime('%d',timeArray)+"日"+time.strftime('%H',timeArray)+'时'
     return time_now
-
-

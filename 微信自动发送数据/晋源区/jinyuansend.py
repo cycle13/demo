@@ -32,7 +32,7 @@ def send_excel_pic_hour(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,
 
 def hoursend():
     sl = jinyuan_spider.location()
-    sx = jinyuan_spider.location()
+    sx = jinyuan_spider.station()
     name = '王彦军'
     l = '【{}时AQI排名情况】\n{} {}时，晋源' \
         '区AQI为{}，{},首要污染物：{}，在六城区' \

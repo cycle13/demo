@@ -164,11 +164,13 @@ def excel_c_hour(excel_filenew_dir1,name_c1,name_c2,excel_filerank_dir1):
     wb = openpyxl.load_workbook(excel_filenew_dir1)
     sheet = wb["Sheet1"]
     n = col_num(sheet,name_c1)
-    for j in range(1,5):
+    sheet.cell(n, 1).font = Font(bold=True, color="FF0000")
+    for j in range(3,5):
         sheet.cell(n, j).font = Font(bold=True, color="FF0000")
 
     m = col_num(sheet, name_c2)
-    for j in range(1, 5):
+    sheet.cell(m, 1).font = Font(bold=True, color="FF0000")
+    for j in range(3, 5):
         sheet.cell(m, j).font = Font(bold=True, color="FF0000")
 
     for j in range(2,11):
@@ -199,11 +201,13 @@ def excel_czh_hour(excel_filenew_dir1,name_c1,name_c2,excel_filerank_dir1):
     wb = openpyxl.load_workbook(excel_filenew_dir1)
     sheet = wb["Sheet1"]
     n = col_num(sheet,name_c1)
-    for j in range(1,5):
+    sheet.cell(n, 1).font = Font(bold=True, color="FF0000")
+    for j in range(3,5):
         sheet.cell(n, j).font = Font(bold=True, color="FF0000")
 
     m = col_num(sheet, name_c2)
-    for j in range(1, 5):
+    sheet.cell(m, 1).font = Font(bold=True, color="FF0000")
+    for j in range(3, 5):
         sheet.cell(m, j).font = Font(bold=True, color="FF0000")
 
     for j in range(2,11):
