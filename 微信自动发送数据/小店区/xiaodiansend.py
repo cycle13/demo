@@ -104,8 +104,8 @@ def hoursend():
     xiaodian_spider.zonghe()
     sl = xiaodian_spider.aqi()
     # 发送excel截图
-    excel_file_dir1 = r'excelfiles\小店区两站点AQI数据.xlsx'
-    excel_file_dir2 = r'excelfiles\小店区两站点综合指数数据.xlsx'
+    excel_file_dir1 = r'excelfiles\小店区两站点AQI数据.xls'
+    excel_file_dir2 = r'excelfiles\小店区两站点综合指数数据.xls'
     excel_filenew_dir1 = r'excelfiles\小店区两站点AQI数据排名.xlsx'
     excel_filenew_dir2 = r'excelfiles\小店区两站点综合指数数据排名.xlsx'
     excel_filerank_dir1 = r'excelfiles\小店区两站点AQI数据排名充填.xlsx'
@@ -121,3 +121,4 @@ def hoursend():
 
     send_excel_pic_hour(name, excel_file_dir1, excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_filerank_dir1,excel_filerank_dir2,excel_rank_insert1,excel_rank_insert2,rank_name1,rank_name2,name_table1,name_table2,name_c1,name_c2)
 
+hoursend()

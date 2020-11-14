@@ -51,7 +51,7 @@ def save_zong_excel():
             sheet.write(n, 11, k['PollutionLevelBig']+'级')
             n+=1
             m = k['Time']
-    book.save(r'excelfiles\迎泽小时推送数据.xlsx')
+    book.save(r'excelfiles\迎泽小时推送数据.xls')
     return m
 
 

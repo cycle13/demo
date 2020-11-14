@@ -1,6 +1,7 @@
 import make_excel
 import send_text_image
 import windows_opr
+import jinyuan_spider
 
 
 
@@ -30,6 +31,8 @@ def send_excel_pic_hour(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,
 
 
 def hoursend():
+    sl = jinyuan_spider.location()
+    sx = jinyuan_spider.location()
     name = '王彦军'
     l = '【{}时AQI排名情况】\n{} {}时，晋源' \
         '区AQI为{}，{},首要污染物：{}，在六城区' \
@@ -43,8 +46,8 @@ def hoursend():
 
 
     # 发送excel截图
-    excel_file_dir1 = r'excelfiles\太原市六城区空气质量日报.xlsx'
-    excel_file_dir2 = r'excelfiles\太原市六城区标站空气质量日报.xlsx'
+    excel_file_dir1 = r'excelfiles\太原市六城区空气质量日报.xls'
+    excel_file_dir2 = r'excelfiles\太原市六城区标站空气质量日报.xls'
     excel_filenew_dir1 = r'excelfiles\太原市六城区空气质量日报排名.xlsx'
     excel_filenew_dir2 = r'excelfiles\太原市六城区标站空气质量日报排名.xlsx'
     excel_filerank_dir1 = r'excelfiles\太原市六城区空气质量日报排名充填.xlsx'
@@ -55,7 +58,8 @@ def hoursend():
     name_c1 = '晋源区'
     name_c2 = '晋源'
     name_c3 = '金胜'
-    name_table1 = '2020年3月20日9时区域AQI排名'
-    name_table2 = '2020年3月20日9时区域AQI排名'
+    name_table1 = '{}区域AQI排名'.format(sl)
+    name_table2 = '{}站点AQI排名'.format(sx)
     send_excel_pic_hour(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,name_c3,excel_filerank_dir1,excel_filerank_dir2)
 
+hoursend()

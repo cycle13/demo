@@ -37,7 +37,7 @@ def hoursend():
     send_text(name, l)
 
     # 发送excel表格
-    excel_file_dir = r'excelfiles\迎泽小时推送数据.xlsx'
+    excel_file_dir = r'excelfiles\迎泽小时推送数据.xls'
     excel_filenew_dir = r'excelfiles\迎泽小时推送数据排名.xlsx'
     excel_filerank_dir = r'excelfiles\迎泽小时推送数据排名充填.xlsx'
     # 必须要绝对路径

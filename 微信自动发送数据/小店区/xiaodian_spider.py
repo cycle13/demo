@@ -34,7 +34,7 @@ def save_aqi_excel():
             sheet.write(n, 3, k['TopPollution'])
             n+=1
             m = k['Time']
-    book.save(r'excelfiles\小店区两站点AQI数据.xlsx')
+    book.save(r'excelfiles\小店区两站点AQI数据.xls')
     return m
 
 
