@@ -4,6 +4,7 @@ import make_excel
 import send_text_image
 import windows_opr
 import time
+import xinghualing_spider
 
 
 def send_text(name,l):
@@ -36,6 +37,8 @@ def send_line_pic(name,excel_file_dir,image_file):
 
 
 def hoursend():
+    sl = xinghualing_spider.station()
+    sx = xinghualing_spider.station1()
     # 发送文本
     name = '王彦军'
     l = "【空气质量播报】\n{}巨轮点位综合指数为{}，在太原市八个国控点" \
@@ -46,25 +49,25 @@ def hoursend():
     send_text(name, l)
 
     # 发送excel表格1
-    excel_file_dir = r'excelfiles\杏花岭小时推送数据.xlsx'
+    excel_file_dir = r'excelfiles\杏花岭小时推送数据.xls'
     excel_filenew_dir = r'excelfiles\杏花岭小时推送数据排名.xlsx'
     excel_filerank_dir = r'excelfiles\杏花岭小时推送数据排名充填.xlsx'
     # 必须要绝对路径
     excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\杏花岭\excelfiles\杏花岭小时推送数据排名充填插入.xlsx'
     rank_name = '综合指数'
     name_c = '巨轮'
-    name_table = '2020年3月18日太原市八个国控点的各项污染物的浓度及排名情况'
+    name_table = '{}太原市八个国控点的各项污染物的浓度及排名情况'.format(sl)
     send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
 
     # 发送excel表格2
-    excel_file_dir = r'excelfiles\杏花岭今日小时推送数据.xlsx'
+    excel_file_dir = r'excelfiles\杏花岭今日小时推送数据.xls'
     excel_filenew_dir = r'excelfiles\杏花岭今日小时推送数据排名.xlsx'
     excel_filerank_dir = r'excelfiles\杏花岭今日小时推送数据排名充填.xlsx'
     # 必须要绝对路径
     excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\杏花岭\excelfiles\杏花岭今日小时推送数据排名充填插入.xlsx'
     rank_name = '综合指数'
     name_c = '巨轮'
-    name_table = '2020年3月19日截止8时太原市八个国控点的各项污染物的浓度及排名情况'
+    name_table = '{}太原市八个国控点的各项污染物的浓度及排名情况'.format(sx)
     send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
 
 
@@ -101,5 +104,5 @@ def hourlastsend():
     send_line_pic(name, excel_file_dir, image_file)
 
 
-
+hoursend()
 

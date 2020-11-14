@@ -24,6 +24,12 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
     df = pd.read_excel(excel_file_dir)
     df['排名'] = df[rank_name].rank(method='min', ascending=True)
+    df['排名1'] = df["浓度值1"].rank(method='min', ascending=True)
+    df['排名2'] = df["浓度值2"].rank(method='min', ascending=True)
+    df['排名3'] = df["浓度值3"].rank(method='min', ascending=True)
+    df['排名4'] = df["浓度值4"].rank(method='min', ascending=True)
+    df['排名5'] = df["浓度值5"].rank(method='min', ascending=True)
+    df['排名6'] = df["浓度值6"].rank(method='min', ascending=True)
     df = df.sort_values(by=rank_name)
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
