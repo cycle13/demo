@@ -65,7 +65,7 @@ def send_pic(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file):
 def hoursend():
     try:
         # 发送文本
-        name = "王彦军"
+        name = "淮阳区环境攻坚群"
         # 发送excel表格1
         excel_file_dir = r'excelfiles\周口市区县数据.xls'
         excel_filenew_dir1 = r'excelfiles\周口市区县数据排名.xlsx'
@@ -121,7 +121,7 @@ def hoursend():
 def hourleijisend():
     try:
         # 发送文本
-        name = "王彦军"
+        name = "淮阳区环境攻坚群"
         # 发送excel表格1
         excel_file_dir = r'excelfiles\周口市区县数据.xls'
         excel_filenew_dir1 = r'excelfiles\周口市区县数据排名.xlsx'
