@@ -33,7 +33,7 @@ def line_bar(x,y1,y2,data1,data3,data4,image_file,name):
     plt.title(data1, fontproperties=font1)
     # 横坐标名称
     # 设置横坐标标注转换角度
-    plt.xticks(x, x, rotation=90)
+    plt.xticks(x, x, rotation=60)
     plt.xlabel(data3)
     # 纵坐标名称
     plt.ylabel(data4)

@@ -62,10 +62,10 @@ def send_pic(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file):
     send_text_image.del_files('excelfiles')
 
 
-def send_picline(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file):
+def send_picline(name,line_excel,image_title,image_file):
     windows_opr.FindWindow(name)
-    df = pd.read_excel(excel_file_dir)
-    line_bar.line_bar(df['时间'], df['PM2.5'], df['PM10'], image_title, '时间', '浓度 μg/m3',image_file, "PM25")
+    df = pd.read_excel(line_excel)
+    line_bar.line_bar(df['日期'], df['PM2.5'], df['PM10'], image_title, '时间', '浓度 μg/m3',image_file, "PM25")
     for i in send_text_image.get_file(image_file):
         send_text_image.paste_img(image_file + "\\" + i)
         windows_opr.send()
@@ -92,6 +92,8 @@ def hoursend():
         add_name2 = 'PM10排名'
         name_c = '淮阳县'
         name_table = '周口市九区县{}时PM2.5和PM10排名及各污染物详情表'
+        my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
+        line_date = 'excellinefiles/' + my_datatime
         l = make_excelhour(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert)
         print('已对数据排名、充填和插入表标题')
         datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
@@ -100,6 +102,7 @@ def hoursend():
         data = json.loads(m)
         pm10 = "周口市九区县{}时PM10浓度柱状图".format(l[0][0:2])
         pm25 = "周口市九区县{}时PM2.5浓度柱状图".format(l[0][0:2])
+        image_title = '淮阳区颗粒物0时至{}时折线图'.format(l[0][0:2])
         try:
             if l[0][0:2] != "无":
                 print('空气质量数据获取成功')
@@ -117,11 +120,20 @@ def hoursend():
                     send_excel(name, excel_rank_insert)
                 time.sleep(1)
                 send_pic(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file)
+
+                # 做折线图
+                huaiyang_spider.save_date(line_date)
+                # line_excel = line_date+'/'+'淮阳县' + my_datatime+".xls"
+                # send_picline(name,line_excel,image_title,image_file)
+
             else:
                 print('空气质量数据异常')
                 raise
         except:
+            windows_opr.FindWindow(name)
             send_text_image.setText("数据异常！")
+            windows_opr.ctrlV()
+            windows_opr.altS()
             time.sleep(1)
             windows_opr.CloseWindow(name)
     except:
@@ -163,7 +175,10 @@ def hourleijisend():
             else:
                 raise
         except:
+            windows_opr.FindWindow(name)
             send_text_image.setText("数据异常！")
+            windows_opr.ctrlV()
+            windows_opr.altS()
             time.sleep(1)
             windows_opr.CloseWindow(name)
     except:
