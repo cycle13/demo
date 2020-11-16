@@ -4,7 +4,7 @@ import matplotlib
 import pandas as pd
 
 
-def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
+def line_bar(x,y1,y2,data1,data3,data4,image_file,name):
     # 创建画布
     plt.figure(figsize=(6, 5))
 
@@ -13,20 +13,19 @@ def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
     2、线颜色为红色
     3、标签名字为y1-data
     '''
-    plt.plot(x, y1, marker='o', color='blue',label = '二氧化氮')
     # plt.tight_layout()
     '''绘制第二条数据线
     1、节点为五角星
     2、线颜色为蓝色
     3、标签名字为y2-data
     '''
-    plt.plot(x, y2, marker='*', color='r',label = 'PM2.5')
-    plt.plot(x, y3, marker='x', color='y',label = 'PM10')
+    plt.plot(x, y1, marker='*', color='r',label = 'PM2.5')
+    plt.plot(x, y2, marker='x', color='y',label = 'PM10')
     # 标注值
-    # for i in range(len(y1)):
-    #     plt.text(x[i], y1[i] + 0.5, '%s' % round(y1[i], 3), ha='center', fontsize=10)
-    # for i in range(len(y2)):
-    #     plt.text(x[i], y2[i] - 1, '%s' % round(y2[i], 3), ha='center', fontsize=10, va='bottom')
+    for i in range(len(y1)):
+        plt.text(x[i], y1[i] + 0.5, '%s' % round(y1[i], 3), ha='center', fontsize=10)
+    for i in range(len(y2)):
+        plt.text(x[i], y2[i] - 1, '%s' % round(y2[i], 3), ha='center', fontsize=10, va='bottom')
     # for i in range(len(y3)):
     #     plt.text(x[i], y3[i] - 1, '%s' % round(y3[i], 3), ha='center', fontsize=10, va='bottom')
     plt.legend()
@@ -46,8 +45,6 @@ def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
     plt.ylim(0, 20)
     plt.grid(True)
     matplotlib.use('Agg')
-    # 显示图片
-    # plt.show()
 
 # 画柱状图
 def line_pic(excel_filenew_dir1,hour_d,image_file):

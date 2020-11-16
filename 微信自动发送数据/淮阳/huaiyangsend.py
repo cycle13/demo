@@ -62,6 +62,18 @@ def send_pic(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file):
     send_text_image.del_files('excelfiles')
 
 
+def send_picline(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file):
+    windows_opr.FindWindow(name)
+    df = pd.read_excel(excel_file_dir)
+    line_bar.line_bar(df['时间'], df['PM2.5'], df['PM10'], image_title, '时间', '浓度 μg/m3',image_file, "PM25")
+    for i in send_text_image.get_file(image_file):
+        send_text_image.paste_img(image_file + "\\" + i)
+        windows_opr.send()
+        time.sleep(1)
+    windows_opr.CloseWindow(name)
+    send_text_image.del_files(image_file)
+
+
 def hoursend():
     try:
         # 发送文本

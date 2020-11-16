@@ -14,7 +14,8 @@
 
       var myChart = echarts.init(document.getElementById("main"));
 <!--      var colorList2 = ['red', 'green', 'blue','#FF7E00' ]-->
-      var colorList1 = ['#00E400', '#FFFF00','#FF7E00' ]
+<!--      var colorList1 = ['#00E400', '#FFFF00','#FF7E00' ]-->
+      var colorList1 = ['#FFFF00','#FF7E00' ]
       var colorList2 = ['red', 'green', 'blue','#FF7E00' ,'#00E400','black','purple','#0066FF']
 <!--      var colorList1 = [ '#FFFF00' ]-->
       option = {
@@ -22,7 +23,8 @@
       legend: {
         orient: 'vertical',
         left: 10,
-        data: ['优','良','轻度污染']
+<!--        data: ['优','良','轻度污染']-->
+        data: ['良','轻度污染']
     },
       tooltip: {
         formatter: function(param) {
@@ -54,17 +56,12 @@
             selectedMode: 'single',
             data: [
                 {
-                    value: 1,
-                    name: '优',
-
-                },
-                {
-                    value: 24,
+                    value: 7,
                     name: '良',
 
                 },
                 {
-                    value: 6,
+                    value: 8,
                     name: '轻度污染',
 
                 }
@@ -124,36 +121,21 @@
                     }
                 }
             },
-            data: [{
-                    value: 1,
-                    name: '优：-',
-                },
+            data: [
                 {
                     value: 1,
-                    name: '良：O3-8h',
-                },
-                {
-                    value: 10,
                     name: '良：PM2.5',
                 },
                 {
-                    value: 11,
+                    value: 6,
                     name: '良：PM10',
                 },
                 {
-                    value: 1,
-                    name: '良：NO2',
-                },
-                {
-                    value: 1,
-                    name: '良：PM2.5、PM10',
-                },
-                {
-                    value: 4,
+                    value: 7,
                     name: '轻度污染：PM2.5',
                 },
                 {
-                    value: 2,
+                    value: 1,
                     name: '轻度污染：PM10',
                 },
             ]
