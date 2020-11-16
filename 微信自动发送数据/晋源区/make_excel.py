@@ -33,6 +33,7 @@ def excel_rank_rb(excel_file_dir,excel_filenew_dir,rank_name):
 def excel_rank_str(excel_file_dir,excel_filenew_dir,rank_name):
     df = pd.read_excel(excel_file_dir)
     df['排名'] = df[rank_name].rank(method='min', ascending=True)
+    df['AQI排名'] = df['AQI'].rank(method='min', ascending=True)
     df = df.sort_values(by=rank_name)
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
@@ -111,6 +112,11 @@ def excel_bz_any(excel_filenew_dir,name_c,excel_filerank_dir):
     for j in range(1,12):
         sheet.cell(n, j).fill = fille
     wb.save(excel_filerank_dir)
+    aqi = sheet.cell(n, 9).value
+    aqidengji = sheet.cell(n, 11).value
+    shouyao = sheet.cell(n, 10).value
+    aqirank = sheet.cell(n, 12).value
+    return (aqi, aqidengji, shouyao, aqirank)
 
 
 
@@ -137,6 +143,11 @@ def excel_bz_hour(excel_filenew_dir,name_c,excel_filerank_dir):
     for j in range(1,12):
         sheet.cell(n, j).fill = fille
     wb.save(excel_filerank_dir)
+    aqi = sheet.cell(n, 9).value
+    aqidengji = sheet.cell(n, 11).value
+    shouyao = sheet.cell(n, 10).value
+    aqirank = sheet.cell(n, 12).value
+    return (aqi, aqidengji, shouyao, aqirank)
 
 
 def excel_add(excel_filenew_dir,name_c,excel_filerank_dir):

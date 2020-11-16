@@ -24,6 +24,9 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
     df = pd.read_excel(excel_file_dir)
     df['排名'] = df[rank_name].rank(method='min', ascending=True)
+    df['综指5排名'] = df['综合指数'].rank(method='min', ascending=True)
+    df['PM2.5排名'] = df['PM2.5'].rank(method='min', ascending=True)
+    df['PM10排名'] = df['PM10'].rank(method='min', ascending=True)
     df = df.sort_values(by=rank_name)
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
@@ -53,6 +56,17 @@ def excel_c(excel_filenew_dir,name_c,excel_filerank_dir):
     for j in range(1,13):
         sheet.cell(n, j).fill = fille
     wb.save(excel_filerank_dir)
+    zongzhi = sheet.cell(n, 3).value
+    zongrank = sheet.cell(n, 13).value
+    aqi = sheet.cell(n, 10).value
+    aqidengji = sheet.cell(n, 12).value
+    shouyao = sheet.cell(n, 11).value
+    pm25nong = sheet.cell(n, 8).value
+    pm10nong = sheet.cell(n, 9).value
+    pm25rank = sheet.cell(n, 14).value
+    pm10rank = sheet.cell(n, 15).value
+    wb.save(excel_filerank_dir)
+    return (zongzhi,zongrank,aqi,aqidengji,shouyao, pm25nong, pm25rank, pm10nong, pm10rank)
 
 
 #居中对齐，通过遍历方式实现

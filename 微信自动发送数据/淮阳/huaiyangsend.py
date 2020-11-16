@@ -80,7 +80,6 @@ def hoursend():
         add_name2 = 'PM10排名'
         name_c = '淮阳县'
         name_table = '周口市九区县{}时PM2.5和PM10排名及各污染物详情表'
-        huaiyang_spider.save_excel(excel_file_dir)
         l = make_excelhour(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert)
         print('已对数据排名、充填和插入表标题')
         datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
@@ -136,7 +135,6 @@ def hourleijisend():
         add_name2 = 'PM10排名'
         name_c = '淮阳县'
         name_table = "周口市九区县截止{}时PM2.5和PM10累计浓度排名及各污染物详情表"
-        huaiyang_spider.saveleiji_excel(excel_file_dir)
         l = make_excelhourleiji(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert)
         print('已对数据排名、充填和插入表标题')
         pm10 = "周口市九区县截止今日{}时PM10累积浓度柱状图".format(l[0][0:2])

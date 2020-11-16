@@ -30,6 +30,7 @@ def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
     df['排名4'] = df["浓度值4"].rank(method='min', ascending=True)
     df['排名5'] = df["浓度值5"].rank(method='min', ascending=True)
     df['排名6'] = df["浓度值6"].rank(method='min', ascending=True)
+    df['综合指数排名6'] = df["综合指数"].rank(method='min', ascending=True)
     df = df.sort_values(by=rank_name)
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
@@ -59,7 +60,11 @@ def excel_c(excel_filenew_dir,name_c,excel_filerank_dir):
     fille=PatternFill("solid",fgColor=color)
     for j in range(1,16):
         sheet.cell(n, j).fill = fille
+    zongzhi = sheet.cell(n, 15).value
+    zongrank = sheet.cell(n, 16).value
     wb.save(excel_filerank_dir)
+    return (zongzhi, zongrank)
+
 
 
 #居中对齐，通过遍历方式实现

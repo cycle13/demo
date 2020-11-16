@@ -14,14 +14,19 @@ def send_text(name,l):
     windows_opr.CloseWindow(name)
 
 
-def send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert):
-    windows_opr.FindWindow(name)
+def send_excelhour_pic(excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert):
     make_excel.excel_rank(excel_file_dir, excel_filenew_dir, rank_name)
-    make_excel.excel_c(excel_filenew_dir, name_c, excel_filerank_dir)
+    l = make_excel.excel_c(excel_filenew_dir, name_c, excel_filerank_dir)
     make_excel.table_font(excel_filerank_dir, name_table, excel_rank_insert)
+    return l
+
+
+def send_excel(name,excel_rank_insert):
+    windows_opr.FindWindow(name)
     send_text_image.excel_catch_screen(excel_rank_insert)
     windows_opr.send()
     windows_opr.CloseWindow(name)
+
 
 
 def send_line_pic(name,excel_file_dir,image_file):
@@ -41,35 +46,43 @@ def hoursend():
     sx = xinghualing_spider.station1()
     # 发送文本
     name = '王彦军'
-    l = "【空气质量播报】\n{}巨轮点位综合指数为{}，在太原市八个国控点" \
-        "中排名{}，日综合指数与各项污染物排名如下：\n{}巨轮点位累" \
-        "计综合指数为{}，在太原市八个国控点中排名{}，管控{}，累计综合指数与各项" \
-        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format('2020年3月18日','6.12','第八','2020年3月19日1-8时',
-                                                    '2.81','第三','良好','1-8时')
-    send_text(name, l)
+    # l = "【空气质量播报】\n{}巨轮点位综合指数为{}，在太原市八个国控点" \
+    #     "中排名{}，日综合指数与各项污染物排名如下：\n{}巨轮点位累" \
+    #     "计综合指数为{}，在太原市八个国控点中排名{}，管控{}，累计综合指数与各项" \
+    #     "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format('2020年3月18日','6.12','第八','2020年3月19日1-8时',
+    #                                                 '2.81','第三','良好','1-8时')
+    # send_text(name, l)
 
     # 发送excel表格1
     excel_file_dir = r'excelfiles\杏花岭小时推送数据.xls'
     excel_filenew_dir = r'excelfiles\杏花岭小时推送数据排名.xlsx'
     excel_filerank_dir = r'excelfiles\杏花岭小时推送数据排名充填.xlsx'
     # 必须要绝对路径
-    excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\杏花岭\excelfiles\杏花岭小时推送数据排名充填插入.xlsx'
+    excel_rank_insert1 = r'D:\Program Files\pycharm\微信自动发送数据\杏花岭\excelfiles\杏花岭小时推送数据排名充填插入.xlsx'
     rank_name = '综合指数'
     name_c = '巨轮'
     name_table = '{}太原市八个国控点的各项污染物的浓度及排名情况'.format(sl)
-    send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
+    l = send_excelhour_pic(excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert1)
 
     # 发送excel表格2
     excel_file_dir = r'excelfiles\杏花岭今日小时推送数据.xls'
     excel_filenew_dir = r'excelfiles\杏花岭今日小时推送数据排名.xlsx'
     excel_filerank_dir = r'excelfiles\杏花岭今日小时推送数据排名充填.xlsx'
     # 必须要绝对路径
-    excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\杏花岭\excelfiles\杏花岭今日小时推送数据排名充填插入.xlsx'
+    excel_rank_insert2 = r'D:\Program Files\pycharm\微信自动发送数据\杏花岭\excelfiles\杏花岭今日小时推送数据排名充填插入.xlsx'
     rank_name = '综合指数'
     name_c = '巨轮'
     name_table = '{}太原市八个国控点的各项污染物的浓度及排名情况'.format(sx)
-    send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
+    m = send_excelhour_pic(excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert2)
+    k = "【空气质量播报】\n{}巨轮点位综合指数为{}，在太原市八个国控点" \
+        "中排名{}，日综合指数与各项污染物排名如下：\n{}巨轮点位累" \
+        "计综合指数为{}，在太原市八个国控点中排名{}，管控{}，累计综合指数与各项" \
+        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format(sl, l[0], l[1], sx,
+                                                  m[0], m[1], '良好', '1-8时')
+    send_text(name, k)
 
+    send_excel(name, excel_rank_insert1)
+    send_excel(name, excel_rank_insert2)
 
     # 发送折线图
     excel_file_dir = r'excelfiles\杏花岭区折线图详细数据.xlsx'

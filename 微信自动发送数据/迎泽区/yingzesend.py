@@ -14,11 +14,15 @@ def send_text(name,l):
     windows_opr.CloseWindow(name)
 
 
-def send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert):
-    windows_opr.FindWindow(name)
+def send_excelhour_pic(excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert):
     make_excel.excel_rank(excel_file_dir, excel_filenew_dir, rank_name)
-    make_excel.excel_c(excel_filenew_dir, name_c, excel_filerank_dir)
+    l = make_excel.excel_c(excel_filenew_dir, name_c, excel_filerank_dir)
     make_excel.table_font(excel_filerank_dir, name_table, excel_rank_insert)
+    return l
+
+
+def send_excel(name,excel_rank_insert):
+    windows_opr.FindWindow(name)
     send_text_image.excel_catch_screen(excel_rank_insert)
     windows_opr.send()
     windows_opr.CloseWindow(name)
@@ -28,13 +32,13 @@ def hoursend():
     sl = yingze_spider.zonghe()
     # 发送文本
     name = '王彦军'
-    l = "【实时空气质量报告】{} {}，我区综" \
-        "合指数为{}，六城区中排名{}；AQI为{}，{}，首要污" \
-        "染物：{}。PM2.5实时浓度为{}μg/m³，六城区排名{}；PM10实时" \
-        "浓度为{}μg/m³，六城区排名{}；当前气象条件：{}，相对湿度{}%，预计未" \
-        "来几个小时我区空气质量以{}。".format('2020年11月4日','12时','6.55','第一','90','二级良','PM10',
-                                   '50','第二','130','第一','南风二级','38','二级为主')
-    send_text(name, l)
+    # l = "【实时空气质量报告】\n{} {}，我区综" \
+    #     "合指数为{}，六城区中排名{}；AQI为{}，{}，首要污" \
+    #     "染物：{}。PM2.5实时浓度为{}μg/m³，六城区排名{}；PM10实时" \
+    #     "浓度为{}μg/m³，六城区排名{}；当前气象条件：{}，相对湿度{}%，预计未" \
+    #     "来几个小时我区空气质量以{}。".format('2020年11月4日','12时','6.55','第一','90','二级良','PM10',
+    #                                '50','第二','130','第一','南风二级','38','二级为主')
+    # send_text(name, l)
 
     # 发送excel表格
     excel_file_dir = r'excelfiles\迎泽小时推送数据.xls'
@@ -45,8 +49,16 @@ def hoursend():
     rank_name = '综合指数'
     name_c = '迎泽区'
     name_table = '{}区域空气质量排名'.format(sl)
-    send_excelhour_pic(name, excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
+    l = send_excelhour_pic(excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
+    k = "【实时空气质量报告】\n        {} ，我区综" \
+        "合指数为{}，六城区中排名{}；AQI为{}，空气质量等级为{}，首要污" \
+        "染物：{}。\n        PM2.5实时浓度为{}μg/m³，六城区排名{}；\n        PM10实时" \
+        "浓度为{}μg/m³，六城区排名{}；\n当前气象条件：{}，相对湿度{}%，预计未" \
+        "来几个小时我区空气质量以{}。".format(sl, l[0], l[1], l[2], l[3], l[4],
+                                 l[5], l[6], l[7], l[8], '南风二级', '38', '二级为主')
+    send_text(name, k)
 
+    send_excel(name, excel_rank_insert)
 
 def send_excelhourjc_pic(name, excel_file_dir, excel_filenew_dir,rank_name,excel_rank_insert):
     windows_opr.FindWindow(name)
@@ -76,4 +88,3 @@ def hourjc():
     send_excelhourjc_pic(name, excel_file_dir, excel_filenew_dir,rank_name,excel_rank_insert)
 
 
-hoursend()
