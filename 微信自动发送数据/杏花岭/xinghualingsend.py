@@ -29,10 +29,10 @@ def send_excel(name,excel_rank_insert):
 
 
 
-def send_line_pic(name,excel_file_dir,image_file):
+def send_line_pic(name,excel_file_dir,image_title,image_file):
     windows_opr.FindWindow(name)
     df = pd.read_excel(excel_file_dir)
-    line_bar.line_bar(df['时间'], df['二氧化氮浓度'],df['PM2.5质量浓度'], df['PM10质量浓度'],'2020年3月19日01时到08时巨轮 参数对比图', '时间', '浓度 μg/m3',image_file,"PM25")
+    line_bar.line_bar(df['时间'], df['二氧化氮浓度'],df['PM2.5质量浓度'], df['PM10质量浓度'],image_title, '时间', '浓度 μg/m3',image_file,"PM25")
     for i in send_text_image.get_file(image_file):
         send_text_image.paste_img(image_file + "\\" + i)
         windows_opr.send()
@@ -46,13 +46,6 @@ def hoursend():
     sx = xinghualing_spider.station1()
     # 发送文本
     name = '王彦军'
-    # l = "【空气质量播报】\n{}巨轮点位综合指数为{}，在太原市八个国控点" \
-    #     "中排名{}，日综合指数与各项污染物排名如下：\n{}巨轮点位累" \
-    #     "计综合指数为{}，在太原市八个国控点中排名{}，管控{}，累计综合指数与各项" \
-    #     "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format('2020年3月18日','6.12','第八','2020年3月19日1-8时',
-    #                                                 '2.81','第三','良好','1-8时')
-    # send_text(name, l)
-
     # 发送excel表格1
     excel_file_dir = r'excelfiles\杏花岭小时推送数据.xls'
     excel_filenew_dir = r'excelfiles\杏花岭小时推送数据排名.xlsx'
@@ -72,13 +65,13 @@ def hoursend():
     excel_rank_insert2 = r'D:\Program Files\pycharm\微信自动发送数据\杏花岭\excelfiles\杏花岭今日小时推送数据排名充填插入.xlsx'
     rank_name = '综合指数'
     name_c = '巨轮'
-    name_table = '{}太原市八个国控点的各项污染物的浓度及排名情况'.format(sx)
+    name_table = '{}太原市八个国控点的各项污染物的浓度及排名情况'.format(sx[0]+sx[1])
     m = send_excelhour_pic(excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert2)
     k = "【空气质量播报】\n{}巨轮点位综合指数为{}，在太原市八个国控点" \
         "中排名{}，日综合指数与各项污染物排名如下：\n{}巨轮点位累" \
         "计综合指数为{}，在太原市八个国控点中排名{}，管控{}，累计综合指数与各项" \
-        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format(sl, l[0], l[1], sx,
-                                                  m[0], m[1], '良好', '1-8时')
+        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format(sl, l[0], l[1], sx[0]+sx[1],
+                                                  m[0], m[1], '良好', sx[1])
     send_text(name, k)
 
     send_excel(name, excel_rank_insert1)
@@ -87,7 +80,7 @@ def hoursend():
     # 发送折线图
     excel_file_dir = r'excelfiles\杏花岭区折线图详细数据.xlsx'
     image_file = r'image_file'
-    send_line_pic(name, excel_file_dir, image_file)
+    send_line_pic(name, excel_file_dir,sx[0]+sx[1], image_file)
 
 
 def hourlastsend():

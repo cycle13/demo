@@ -31,7 +31,7 @@ def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
     #     plt.text(x[i], y3[i] - 1, '%s' % round(y3[i], 3), ha='center', fontsize=10, va='bottom')
     plt.legend()
     font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=14)
-    plt.title(data1, fontproperties=font1)
+    plt.title('{}巨轮 参数对比图'.format(data1), fontproperties=font1)
     # 横坐标名称
     # 设置横坐标标注转换角度
     plt.xticks(x, x, rotation=90)

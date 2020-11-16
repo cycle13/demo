@@ -97,12 +97,13 @@ def realaqi(url):
 
 def station():
     timeArray = time.localtime(float(int(save_station_excel()[6:-2])/1000))
-    time_now = time.strftime('%Y',timeArray)+'年'+time.strftime('%m',timeArray)+'月'+time.strftime('%d',timeArray)+"日"+time.strftime('%H',timeArray)+'时'
+    time_now = time.strftime('%Y',timeArray)+'年'+time.strftime('%m',timeArray)+'月'+time.strftime('%d',timeArray)+"日"
     return time_now
 
 
 def station1():
     timeArray = time.localtime(float(int(save_station1_excel()[6:-2])/1000))
-    time_now = time.strftime('%Y',timeArray)+'年'+time.strftime('%m',timeArray)+'月'+time.strftime('%d',timeArray)+"日"+time.strftime('%H',timeArray)+'时'
-    return time_now
+    time_now = time.strftime('%Y',timeArray)+'年'+time.strftime('%m',timeArray)+'月'+time.strftime('%d',timeArray)+"日"
+    time_now1 = '1-'+time.strftime('%H',timeArray)+'时'
+    return (time_now,time_now1)
 
