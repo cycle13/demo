@@ -23,9 +23,9 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2019-10-31',
+        'end':'2020-11-17',
         'sort':'asc',
-        'start':'2019-10-01'
+        'start':'2020-01-01'
     }
     response = session.post(url= url,data=data,headers = headers).text
     print(response)
@@ -74,7 +74,7 @@ def realaqi(url):
 
 
 
-l = month(first_url_month)
+l = year(first_url_year)
 data = json.loads(l)['data']
 book = xlwt.Workbook()
 sheet = book.add_sheet('周口市各区县数据')
@@ -99,7 +99,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('周报2020年11月1-15日累计.xls')
+book.save('周报2020年1-11月17日累计.xls')
 
 print(data)
 

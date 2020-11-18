@@ -132,6 +132,7 @@ def save_date(line_date):
                 worksheet.write(0,6,label = 'O3')
                 worksheet.write(0,7,label = 'AQI')
                 worksheet.write(0,8,label = '首要污染物')
+                worksheet.write(0, 9, label='时间')
                 workbook.save(line_date+'/'+k['CITY'] + my_datatime+".xls")
             n = int(datetime.strftime(datetime.now(),'%H'))
             rb = xlrd.open_workbook(line_date + '/' + k['CITY'] + my_datatime + ".xls")
@@ -146,6 +147,8 @@ def save_date(line_date):
             sheet.write(n+1,6,label = k['O3'])
             sheet.write(n+1,7,label = k['AQI'])
             sheet.write(n+1,8,label = k['PRIMARYPOLLUTANT'])
+            for i in range(0,n+1):
+                sheet.write(i+1, 9, label=str(i)+'时')
             excel_dir = line_date+'/'+k['CITY'] + my_datatime+".xls"
             os.remove(excel_dir)
             wb.save(excel_dir)
