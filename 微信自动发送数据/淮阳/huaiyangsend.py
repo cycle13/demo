@@ -102,7 +102,7 @@ def hoursend():
         data = json.loads(m)
         pm10 = "周口市九区县{}时PM10浓度柱状图".format(l[0][0:2])
         pm25 = "周口市九区县{}时PM2.5浓度柱状图".format(l[0][0:2])
-        image_title = '淮阳区颗粒物00时至{}时折线图--测试'.format(l[0][0:2])
+        image_title = '淮阳区颗粒物00时至{}时浓度折线图'.format(l[0][0:2])
         try:
             if l[0][0:2] != "无":
                 print('空气质量数据获取成功')
