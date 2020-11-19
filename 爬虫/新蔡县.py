@@ -23,7 +23,7 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2020-11-18',
+        'end':'2020-11-17',
         'sort':'asc',
         'start':'2020-01-01'
     }
@@ -34,7 +34,7 @@ def year(url):
 def month(url):
     data = {
         'sort':'asc',
-        'month':'2020-11'
+        'month':'2020-10'
     }
     response = session.post(url= url,data=data,headers = headers).text
     return response
@@ -77,7 +77,7 @@ def realaqi(url):
 l = year(first_url_year)
 data = json.loads(l)['data']
 book = xlwt.Workbook()
-sheet = book.add_sheet('周口市各区县数据')
+sheet = book.add_sheet('新蔡各区县数据')
 n = 1
 sheet.write(0,0,'区县')
 sheet.write(0,1,'CO')
@@ -88,7 +88,7 @@ sheet.write(0,5,'PM10')
 sheet.write(0,6,'PM2.5')
 sheet.write(0,7,'综合指数')
 for k in data:
-    if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市','港区',]:
+    if k['city'] in ['沈丘县','平舆县','正阳县','息县','新蔡县']:
         sheet.write(n, 0, k['city'])
         sheet.write(n, 1, k['co'])
         sheet.write(n, 2, k['o3'])
@@ -99,7 +99,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('周报2020年1-11月18日累计.xls')
+book.save('新蔡2020年1-11年数据.xls')
 
 print(data)
 

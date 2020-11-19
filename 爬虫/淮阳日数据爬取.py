@@ -19,7 +19,7 @@ def day(url,timess):
     response = session.post(url= url,data=data,headers = headers).text
     return response
 
-time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2020-11-17', end='2020-11-17'))]
+time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2020-11-18', end='2020-11-18'))]
 book = xlwt.Workbook()
 sheet = book.add_sheet('淮阳县空气质量数据')
 n = 1
@@ -54,4 +54,4 @@ for i in time_range:
             print(str(i),k)
     print(l)
 
-book.save('2020年周口市区县11月17日数据.xls')
+book.save('2020年周口市区县11月18日数据.xls')
