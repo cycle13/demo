@@ -74,10 +74,9 @@ def send_picline(name,line_excel,image_title,image_file):
     send_text_image.del_files(image_file)
 
 
-def hoursend():
+def hoursend(name):
     try:
         # 发送文本
-        name = "淮阳区环境攻坚群"
         # 发送excel表格1
         excel_file_dir = r'excelfiles\周口市区县数据.xls'
         excel_filenew_dir1 = r'excelfiles\周口市区县数据排名.xlsx'
@@ -141,10 +140,9 @@ def hoursend():
         hoursend()
 
 
-def hourleijisend():
+def hourleijisend(name):
     try:
         # 发送文本
-        name = "淮阳区环境攻坚群"
         # 发送excel表格1
         excel_file_dir = r'excelfiles\周口市区县数据.xls'
         excel_filenew_dir1 = r'excelfiles\周口市区县数据排名.xlsx'
@@ -187,7 +185,8 @@ def hourleijisend():
 
 
 
-# name = "王彦军"
+
+
 # image_file = 'image_file'
 # image_title = '淮阳区颗粒物0时至{}时折线图--测试'.format("l[0][0:2]")
 # my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')

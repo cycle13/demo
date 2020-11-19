@@ -28,10 +28,10 @@ def send_excel(name,excel_rank_insert):
     windows_opr.CloseWindow(name)
 
 
-def hoursend():
-    sl = yingze_spider.zonghe()
+def hoursend(name):
+    sl = yingze_spider.location()
     # 发送文本
-    name = '王彦军'
+    # name = '王彦军'
     # l = "【实时空气质量报告】\n{} {}，我区综" \
     #     "合指数为{}，六城区中排名{}；AQI为{}，{}，首要污" \
     #     "染物：{}。PM2.5实时浓度为{}μg/m³，六城区排名{}；PM10实时" \
@@ -69,9 +69,9 @@ def send_excelhourjc_pic(name, excel_file_dir, excel_filenew_dir,rank_name,excel
     windows_opr.CloseWindow(name)
 
 
-def hourjc():
+def hourjc(name):
     # 发送文本
-    name = '王彦军'
+    # name = '王彦军'
     l = "【{}迎泽空气质量报告】\n今日{}时老军营点" \
         "位累计综合指数为{}，在全市11个标准站中排名{}，累计AQI为{}，{}，首要" \
         "污染物：{}。\nPM2.5累计浓度为{}μg/m³，在全市11个" \

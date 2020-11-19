@@ -62,7 +62,7 @@ def save_location_excel(url):
         sheet.write(n, 11, k['airQualityLevel'])
         n += 1
         now_datetime = k['dataTime']
-    book.save(r'excelfiles\迎泽小时推送数据.xls')
+    book.save(r'太原市迎泽空气质量日报.xls')
     return now_datetime
 
 
@@ -74,8 +74,10 @@ def data(hour_local_std_url):
     return x
 
 
-def location():
+def location(hour_local_std_url):
     timeArray = data(hour_local_std_url)
     time_now = datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%Y')+'年'+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%m')+'月'+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%d')+"日"+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%H')+'时'
-    return time_now
+    return (time_now)
 
+x = location(hour_local_std_url)
+print(x)

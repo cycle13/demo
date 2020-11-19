@@ -16,8 +16,7 @@ headers = {
 def realaqi(hour_local_std_url):
     res = session.get(hour_local_std_url,headers=headers).text
     data = json.loads(res)
-    # if '小店区' not in data:
-    #     realaqi(hour_local_std_url)
+
     return data
 
 
@@ -26,17 +25,16 @@ def save_location_excel(url):
     sheet = book.add_sheet('太原市六城区空气质量数据')
     n = 1
     sheet.write(0, 0, '排名')
-    sheet.write(0, 1, '点位名称')
-    sheet.write(0, 2, '综合指数')
-    sheet.write(0, 3, 'SO2')
-    sheet.write(0, 4, 'NO2')
-    sheet.write(0, 5, 'CO')
-    sheet.write(0, 6, 'O3')
-    sheet.write(0, 7, 'PM2.5')
-    sheet.write(0, 8, 'PM10')
-    sheet.write(0, 9, 'AQI')
-    sheet.write(0, 10, '首要污染物')
-    sheet.write(0, 11, '类别')
+    sheet.write(0,1,'点位名称')
+    sheet.write(0,2,'SO2')
+    sheet.write(0, 3, 'NO2')
+    sheet.write(0, 4, 'CO')
+    sheet.write(0, 5, 'O3')
+    sheet.write(0, 6, 'PM2.5')
+    sheet.write(0, 7, 'PM10')
+    sheet.write(0, 8, 'AQI')
+    sheet.write(0,9,'首要污染物')
+    sheet.write(0, 10, '类别')
     m = 0
     while True:
         data = realaqi(url)
@@ -50,19 +48,18 @@ def save_location_excel(url):
             break
     for k in data:
         sheet.write(n, 1, k['name'])
-        sheet.write(n, 2, k['totalIndex'])
-        sheet.write(n, 3, k["so2"])
-        sheet.write(n, 4, k["no2"])
-        sheet.write(n, 5, k["co"])
-        sheet.write(n, 6, k["o31"])
-        sheet.write(n, 7, k["pm25"])
-        sheet.write(n, 8, k["pm10"])
-        sheet.write(n, 9, k["aqi"])
-        sheet.write(n, 10, k["primaryPollutant"])
-        sheet.write(n, 11, k['airQualityLevel'])
-        n += 1
+        sheet.write(n, 2, k["so2"])
+        sheet.write(n, 3, k["no2"])
+        sheet.write(n, 4, k["co"])
+        sheet.write(n, 5, k["o31"])
+        sheet.write(n, 6, k["pm25"])
+        sheet.write(n, 7, k["pm10"])
+        sheet.write(n, 8, k["aqi"])
+        sheet.write(n, 9, k["primaryPollutant"])
+        sheet.write(n, 10, k['airQualityLevel'])
+        n+=1
         now_datetime = k['dataTime']
-    book.save(r'excelfiles\迎泽小时推送数据.xls')
+    book.save(r'太原市晋源空气质量日报.xls')
     return now_datetime
 
 
@@ -74,8 +71,13 @@ def data(hour_local_std_url):
     return x
 
 
-def location():
+
+
+
+def location(hour_local_std_url):
     timeArray = data(hour_local_std_url)
     time_now = datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%Y')+'年'+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%m')+'月'+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%d')+"日"+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%H')+'时'
-    return time_now
+    return (time_now,datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%H'))
 
+x = location(hour_local_std_url)
+print(x)
