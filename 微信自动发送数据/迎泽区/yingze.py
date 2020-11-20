@@ -6,7 +6,7 @@ import datetime
 if __name__ == '__main__':
     time_list = ['00:25','06:25','08:25','12:25','14:25','16:25','18:25','20:26','22:25']
     # time_list1 = ['10:30','16:30','20:30']
-    name = '王彦军'
+    name = input('请输入要发送的微信名称：')
     while True:
         now_time = datetime.datetime.strftime(datetime.datetime.now(),'%H:%M')
         if now_time in time_list:

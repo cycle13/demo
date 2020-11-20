@@ -57,16 +57,17 @@ def excel_c(excel_filenew_dir,name_c,excel_filerank_dir):
         sheet.cell(n, j).fill = fille
     wb.save(excel_filerank_dir)
     zongzhi = sheet.cell(n, 3).value
-    zongrank = sheet.cell(n, 13).value
+    zongrank = sheet.cell(n, 14).value
     aqi = sheet.cell(n, 10).value
     aqidengji = sheet.cell(n, 12).value
     shouyao = sheet.cell(n, 11).value
     pm25nong = sheet.cell(n, 8).value
     pm10nong = sheet.cell(n, 9).value
-    pm25rank = sheet.cell(n, 14).value
-    pm10rank = sheet.cell(n, 15).value
+    pm25rank = sheet.cell(n, 15).value
+    pm10rank = sheet.cell(n, 16).value
+    airtype = sheet.cell(n, 13).value
     wb.save(excel_filerank_dir)
-    return (zongzhi,zongrank,aqi,aqidengji,shouyao, pm25nong, pm25rank, pm10nong, pm10rank)
+    return (zongzhi,zongrank,aqi,aqidengji,shouyao, pm25nong, pm25rank, pm10nong, pm10rank,airtype)
 
 
 #居中对齐，通过遍历方式实现

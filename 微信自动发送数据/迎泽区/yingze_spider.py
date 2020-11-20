@@ -37,11 +37,12 @@ def save_location_excel(url):
     sheet.write(0, 9, 'AQI')
     sheet.write(0, 10, '首要污染物')
     sheet.write(0, 11, '类别')
+    sheet.write(0, 12, '优良')
     m = 0
     while True:
         data = realaqi(url)
         if len(data) == 0:
-            time.sleep(60)
+            time.sleep(180)
             print(m)
             m+=1
             if m>=10:
@@ -60,6 +61,7 @@ def save_location_excel(url):
         sheet.write(n, 9, k["aqi"])
         sheet.write(n, 10, k["primaryPollutant"])
         sheet.write(n, 11, k['airQualityLevel'])
+        sheet.write(n, 12, k['airQualityType'])
         n += 1
         now_datetime = k['dataTime']
     book.save(r'excelfiles\迎泽小时推送数据.xls')

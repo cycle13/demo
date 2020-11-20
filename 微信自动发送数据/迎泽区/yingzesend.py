@@ -51,10 +51,10 @@ def hoursend(name):
     name_table = '{}区域空气质量排名'.format(sl)
     l = send_excelhour_pic(excel_file_dir, excel_filenew_dir,rank_name, name_c, excel_filerank_dir,name_table, excel_rank_insert)
     k = "【实时空气质量报告】\n        {} ，我区综" \
-        "合指数为{}，六城区中排名{}；AQI为{}，空气质量等级为{}，首要污" \
-        "染物：{}。\n        PM2.5实时浓度为{}μg/m³，六城区排名{}；\n        PM10实时" \
-        "浓度为{}μg/m³，六城区排名{}；\n当前气象条件：{}，相对湿度{}%，预计未" \
-        "来几个小时我区空气质量以{}。".format(sl, l[0], l[1], l[2], l[3], l[4],
+        "合指数为{}，六城区中排名第{}；AQI为{}，空气质量等级为{}{}，首要污" \
+        "染物：{}。\n        PM2.5实时浓度为{}μg/m³，六城区排名第{}；\n        PM10实时" \
+        "浓度为{}μg/m³，六城区排名第{}；\n当前气象条件：{}，相对湿度{}%，预计未" \
+        "来几个小时我区空气质量以{}。".format(sl, l[0], l[1], l[2], l[3], l[9],l[4],
                                  l[5], l[6], l[7], l[8], '南风二级', '38', '二级为主')
     send_text(name, k)
 
@@ -86,5 +86,4 @@ def hourjc(name):
     excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\迎泽区\excelfiles\迎泽降尘小时推送数据排名插入.xlsx'
     rank_name = '累计AQI'
     send_excelhourjc_pic(name, excel_file_dir, excel_filenew_dir,rank_name,excel_rank_insert)
-
 
