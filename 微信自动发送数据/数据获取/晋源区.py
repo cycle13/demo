@@ -16,7 +16,6 @@ headers = {
 def realaqi(hour_local_std_url):
     res = session.get(hour_local_std_url,headers=headers).text
     data = json.loads(res)
-
     return data
 
 
