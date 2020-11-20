@@ -375,7 +375,7 @@ def table_font_hour(excel_filerank_dir1, name_table1, excel_rank_insert1):
     # sheet.column_dimensions['L'].width = 10
     # sheet.row_dimensions[1].height = 30
     sheet.cell(1, 1).value = name_table1
-    sheet["A1"].font = Font(size = 12,bold = True,color = "000000")
+    sheet["A1"].font = Font(size = 10,bold = True,color = "000000")
     sheet.merge_cells('A1:D1')
     sheet.cell(12, 1).value = '(数据来源于网络，未经审核，仅供参考)'
     sheet["A12"].font = Font(size=8, bold=True, color="000000")
