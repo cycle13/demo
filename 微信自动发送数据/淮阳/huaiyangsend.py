@@ -186,7 +186,7 @@ def hourleijisend(name):
 
 
 
-
+# hoursend('王彦军')
 # image_file = 'image_file'
 # image_title = '淮阳区颗粒物0时至{}时折线图--测试'.format("l[0][0:2]")
 # my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')

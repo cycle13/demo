@@ -23,7 +23,7 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2020-11-18',
+        'end':'2020-11-19',
         'sort':'asc',
         'start':'2020-01-01'
     }
@@ -99,7 +99,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('周报2020年1-11月18日累计.xls')
+book.save('周报2020年1-11月19日累计.xls')
 
 print(data)
 
