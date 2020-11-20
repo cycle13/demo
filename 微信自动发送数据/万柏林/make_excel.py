@@ -48,17 +48,18 @@ def excel_c(excel_filenew_dir,name_c,excel_filerank_dir):
     sheet = wb["Sheet1"]
     n = 0
     for i in range(1,13):
-        if sheet.cell(i, 1).value == name_c:
+        if sheet.cell(i, 2).value == name_c:
             n = i
-    if 50 >= sheet.cell(n, 2).value >= 0:
+            print(i)
+    if 50 >= sheet.cell(n, 3).value >= 0:
         color = '00E400'
-    elif 100 >= sheet.cell(n, 2).value > 50:
+    elif 100 >= sheet.cell(n, 3).value > 50:
         color = 'FFFF00'
-    elif 150 >= sheet.cell(n, 2).value > 100:
+    elif 150 >= sheet.cell(n, 3).value > 100:
         color = 'FF7E00'
-    elif 200 >= sheet.cell(n, 2).value > 150:
+    elif 200 >= sheet.cell(n, 3).value > 150:
         color = 'FF0000'
-    elif 300 >= sheet.cell(n, 2).value > 200:
+    elif 300 >= sheet.cell(n, 3).value > 200:
         color = '99004C'
     else:
         color = '7E0023'
@@ -177,8 +178,9 @@ def table_font(excel_filerank_dir,name_table,excel_rank_insert):
     sheet = wb["Sheet1"]
     sheet.insert_rows(1)
     sheet.column_dimensions['A'].width = 10
-    sheet.column_dimensions['C'].width = 12
+    sheet.column_dimensions['B'].width = 12
     sheet.column_dimensions['D'].width = 15
+    sheet.column_dimensions['E'].width = 15
     sheet.row_dimensions[1].height = 20
     sheet.cell(1, 1).value = name_table
     sheet["A1"].font = Font(size = 16,bold = True,color = "FF0000")
@@ -297,3 +299,40 @@ def color_scale(excel_filerank_dir):
     sheet = wb["Sheet1"]
     sheet.conditional_formatting.add('G2:G12', ColorScaleRule(start_type='min', start_color='00FF00',end_type = 'max', end_color = 'FF0000'))
     wb.save(excel_filerank_dir)
+
+
+
+def excel_rank_c(excel_file_dir,excel_file_dir1,excel_add_name,rank_name,name_c):
+    df = pd.read_excel(excel_file_dir)
+    df[excel_add_name] = df[rank_name].rank(method='min',ascending=True)
+    df = df.sort_values(by=rank_name)
+    df.reset_index(drop=True, inplace=True)
+    df.to_excel(excel_file_dir1,index=False)
+    wb = openpyxl.load_workbook(excel_file_dir1)
+    sheet = wb["Sheet1"]
+    n = 0
+    for i in range(1, 13):
+        if sheet.cell(i, 2).value == name_c:
+            n = i
+    wb.save(excel_file_dir1)
+    aqi = sheet.cell(n, 9).value
+    aqidengji = sheet.cell(n, 11).value
+    airtype = sheet.cell(n, 12).value
+    shouyao = sheet.cell(n, 10).value
+    aqirank = sheet.cell(n, 13).value
+    pm25 = sheet.cell(n, 7).value
+    pm10 = sheet.cell(n, 8).value
+    so2 = sheet.cell(n, 3).value
+    no2 = sheet.cell(n, 4).value
+    return (aqi, aqidengji,airtype, shouyao, aqirank, pm25,pm10,so2,no2)
+
+
+
+def quanmean(excel_xishanleiji_dir,name):
+    df = pd.read_excel(excel_xishanleiji_dir)
+    quan = df[name]
+    quan = quan[quan>0]
+    jun = round(quan.mean(),0)
+    return jun
+
+

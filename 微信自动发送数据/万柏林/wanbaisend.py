@@ -4,6 +4,7 @@ import make_excel
 import send_text_image
 import windows_opr
 import time
+import wanbai_spider
 
 
 
@@ -35,35 +36,51 @@ def send_line_pic(name,excel_file_dir,image_file):
         time.sleep(1)
     windows_opr.CloseWindow(name)
 
-def wanbaicg():
-    # 发送文本
-    name = '王彦军'
-    l = "【点位空气质量变化情况】\n     {}，西山点位：AQI为{}，{}" \
-        "，首要污染物：{}，在全市11个标准站中排名第{}，六城区排名第{}。\n     PM2.5实时浓度为{}μg/m³，" \
-        "今日{}时平均浓度为{}μg/m³；\n     PM10实时浓度为{}μg/m³，今日{}时平均浓度为{}μg/m³" \
-        "；\n     SO2实时浓度为{}μg/m³，今日{}时平均浓度为{}μg/m³；\n     NO2实时浓度为{}μg/m³，" \
-        "今日{}时平均浓度为{}μg/m³；\n     从变化趋势图来看，西山点位{}呈{}趋势。\n      当前气象条件：{}，相对湿度{}，预计未来几个小时我区空气质量以{}为主。".format(
-        "2020年11月4日 6时", "95", "二级良",
-        "PM10", "十一", "六", "40", "1-6", "30", "140",
-        "1-6", "114", "15",
-        "1-6", "14", "69", "1-6", "62", "、".join(['PM2.5浓度', 'PM10浓度', 'SO2浓度', 'NO2浓度']), "上升", "西南风一级",
-        "47%", "二级")
-    send_text(name,l)
 
+
+
+def wanbaicg():
+    name = '王彦军'
     # 发送excel表格
-    excel_file_dir = r'excelfiles\万柏林数据.xlsx'
+    excel_file_dir = r'excelfiles\万柏林数据.xls'
     excel_filenew_dir = r'excelfiles\万柏林数据排名.xlsx'
     excel_filerank_dir = r'excelfiles\万柏林数据排名充填.xlsx'
-        # 必须要绝对路径
+    excel_sixrank_dir = r'excelfiles\太原市六城区空气质量日报.xls'
+    excel_starank_dir = r'excelfiles\太原市六城区标站空气质量日报.xls'
+    excel_sixrank_dir1 = r'excelfiles\太原市六城区空气质量日报.xlsx'
+    excel_starank_dir1 = r'excelfiles\太原市六城区标站空气质量日报.xlsx'
+    excel_xishanleiji_dir = r'excelfiles\西山点位累计数据.xls'
+    # 必须要绝对路径
     excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\万柏林\excelfiles\万柏林数据排名充填插入.xlsx'
     excel_add_name = '排名'
     rank_name = 'AQI'
     name_c = '西山'
-    name_table = '2020年11月4日6时AQI排名'
+    wanbai_spider.table_excel(excel_file_dir)
+    wanbai_spider.location(excel_sixrank_dir)
+    time_data = wanbai_spider.station(excel_starank_dir)
+    name_table = '{}AQI排名'.format(time_data)
+    m = make_excel.excel_rank_c(excel_starank_dir,excel_starank_dir1,"AQI排名",'AQI','西山')
+    n = make_excel.excel_rank_c(excel_sixrank_dir,excel_sixrank_dir1, "AQI排名", 'AQI', '万柏林区')
+    now_time = wanbai_spider.leiji(excel_xishanleiji_dir)
+
+    l = "【点位空气质量变化情况】\n     {}，西山点位：AQI为{}，{}{}" \
+        "，首要污染物：{}，在全市11个标准站中排名第{}，六城区排名第{}。\n     PM2.5实时浓度为{}μg/m³，" \
+        "今日{}时平均浓度为{}μg/m³；\n     PM10实时浓度为{}μg/m³，今日{}时平均浓度为{}μg/m³" \
+        "；\n     SO2实时浓度为{}μg/m³，今日{}时平均浓度为{}μg/m³；\n     NO2实时浓度为{}μg/m³，" \
+        "今日{}时平均浓度为{}μg/m³；\n     从变化趋势图来看，西山点位{}呈{}趋势。\n      当前气象条件：{}，相对湿度{}，预计未来几个小时我区空气质量以{}为主。".format(
+        time_data, m[0],m[1],m[2],
+        m[3], m[4], n[4], m[5], "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"PM2.5")), m[6],
+        "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"PM10")), m[7],
+        "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"SO2")), m[8], "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"NO2")), "、".join(['PM2.5浓度', 'PM10浓度', 'SO2浓度', 'NO2浓度']), "上升", "西南风一级",
+        "47%", "二级")
+    send_text(name, l)
+
+
     send_excelpic(name,excel_file_dir,excel_filenew_dir,excel_add_name,rank_name,name_c,excel_filerank_dir,name_table,excel_rank_insert)
 
     # 发送折线图
-    excel_file_dir = r'excelfiles\万柏林区详细数据.xlsx'
+    excel_file_dir = r'excelfiles\太原市西山点位数据.xls'
+    wanbai_spider.line_station(excel_file_dir)
     image_file = r'image_file'
     send_line_pic(name,excel_file_dir,image_file)
 
@@ -122,7 +139,6 @@ def wanbairb():
     send_excelpic_rbdoble(name, excel_filePM25_dir,excel_filePM10_dir,excel_filenewPM25_dir,excel_filenewPM10_dir,excel_rank_insert1,excel_rank_insert2,excel_add_name,rank_name1,rank_name2,name_table1,name_table2)
 
 
-
 def send_excel_pic(name,excel_file_dir,excel_filenew_dir,rank_name,name_table,excel_rank_insert,excel_lable):
     windows_opr.FindWindow(name)
     make_excel.excel_rank_str(excel_file_dir, excel_filenew_dir,rank_name)
@@ -148,8 +164,6 @@ def wanbaistr():
     send_excel_pic(name,excel_file_dir,excel_filenew_dir,rank_name,name_table,excel_rank_insert,excel_lable)
 
 
-
-
 def send_excelbz_pic(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,excel_filerank_dir1,excel_filerank_dir2):
     windows_opr.FindWindow(name)
     make_excel.excel_rank_str(excel_file_dir1, excel_filenew_dir1, rank_name)
@@ -164,7 +178,6 @@ def send_excelbz_pic(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,exc
     send_text_image.excel_catch_screen_any(excel_rank_insert2)
     windows_opr.send()
     windows_opr.CloseWindow(name)
-
 
 
 def wanbaibz():
@@ -196,8 +209,6 @@ def wanbaibz():
     send_excelbz_pic(name,excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,excel_filerank_dir1,excel_filerank_dir2)
 
 
-
-
 def send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,excel_rank_insert,rank_name,name_c,name_table):
     windows_opr.FindWindow(name)
     make_excel.excel_rank_str(excel_file_dir, excel_filenew_dir, rank_name)
@@ -206,7 +217,6 @@ def send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,e
     make_excel.table_font_add(excel_filerank_dir, name_table, excel_rank_insert)
     send_text_image.excel_catch_screen_add(excel_rank_insert)
     windows_opr.send()
-
 
 
 def wanbaiadd():
@@ -231,3 +241,6 @@ def wanbaiadd():
     name_table = '备注：各点位按PM2.5当日累计浓度排序'
 
     send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,excel_rank_insert,rank_name,name_c,name_table)
+
+
+wanbaicg()
