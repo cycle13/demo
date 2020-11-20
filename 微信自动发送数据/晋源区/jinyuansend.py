@@ -66,15 +66,14 @@ def hoursend():
     name_table2 = '{}站点AQI排名'.format(sx)
     l = send_excel_pic_hour(excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,name_c3,excel_filerank_dir1,excel_filerank_dir2)
     k = '【{}时AQI排名情况】\n{}，晋源' \
-        '区AQI为{}，空气质量等级为{},首要污染物：{}，在六城区' \
-        '中排名第{}；\n晋源点位：AQI为{}，空气质量等级为{},首要污' \
+        '区AQI为{}，空气质量等级为{}{},首要污染物：{}，在六城区' \
+        '中排名第{}；\n晋源点位：AQI为{}，空气质量等级为{}{},首要污' \
         '染物：{}，在全市11个标准站中排名第{}；金胜' \
-        '点位：AQI为{}，空气质量等级为{},首要污染物：{}，在全市11个标准站中排名第{}。'.format(sl[1], sl[0],
-                                                       l[0][0], l[0][1], l[0][2], l[0][3],
-                                                       l[1][0], l[1][1], l[1][2], l[1][3], l[2][0],
-                                                       l[2][1], l[2][2], l[2][3])
+        '点位：AQI为{}，空气质量等级为{}{},首要污染物：{}，在全市11个标准站中排名第{}。'.format(sl[1], sl[0],
+                                                       l[0][0], l[0][1], l[0][4], l[0][2], l[0][3],
+                                                       l[1][0], l[1][1], l[1][4], l[1][2], l[1][3], l[2][0],
+                                                       l[2][1], l[2][4], l[2][2], l[2][3])
     send_text(name, k)
     send_excel(name, excel_rank_insert1, excel_rank_insert2)
-
 
 hoursend()

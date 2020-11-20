@@ -115,8 +115,9 @@ def excel_bz_any(excel_filenew_dir,name_c,excel_filerank_dir):
     aqi = sheet.cell(n, 9).value
     aqidengji = sheet.cell(n, 11).value
     shouyao = sheet.cell(n, 10).value
-    aqirank = sheet.cell(n, 12).value
-    return (aqi, aqidengji, shouyao, aqirank)
+    aqirank = sheet.cell(n, 13).value
+    airtype = sheet.cell(n, 12).value
+    return (aqi, aqidengji, shouyao, aqirank,airtype)
 
 
 
@@ -146,8 +147,9 @@ def excel_bz_hour(excel_filenew_dir,name_c,excel_filerank_dir):
     aqi = sheet.cell(n, 9).value
     aqidengji = sheet.cell(n, 11).value
     shouyao = sheet.cell(n, 10).value
-    aqirank = sheet.cell(n, 12).value
-    return (aqi, aqidengji, shouyao, aqirank)
+    aqirank = sheet.cell(n, 13).value
+    airtype = sheet.cell(n, 12).value
+    return (aqi, aqidengji, shouyao, aqirank,airtype)
 
 
 def excel_add(excel_filenew_dir,name_c,excel_filerank_dir):

@@ -35,6 +35,7 @@ def save_location_excel(url):
     sheet.write(0, 8, 'AQI')
     sheet.write(0,9,'首要污染物')
     sheet.write(0, 10, '类别')
+    sheet.write(0, 11, '优良')
     m = 0
     while True:
         data = realaqi(url)
@@ -57,6 +58,7 @@ def save_location_excel(url):
         sheet.write(n, 8, k["aqi"])
         sheet.write(n, 9, k["primaryPollutant"])
         sheet.write(n, 10, k['airQualityLevel'])
+        sheet.write(n, 11, k['airQualityType'])
         n+=1
         now_datetime = k['dataTime']
     book.save(r'excelfiles\太原市六城区空气质量日报.xls')
@@ -80,6 +82,7 @@ def save_station_excel(url,url1):
     sheet.write(0, 8, 'AQI')
     sheet.write(0, 9, '首要污染物')
     sheet.write(0, 10, '类别')
+    sheet.write(0, 11, '优良')
     m = 0
     while True:
         data = realaqi(url)
@@ -102,6 +105,7 @@ def save_station_excel(url,url1):
         sheet.write(n, 8, k["aqi"])
         sheet.write(n, 9, k["primaryPollutant"])
         sheet.write(n, 10, k['airQualityLevel'])
+        sheet.write(n, 11, k['airQualityType'])
         n += 1
         now_datetime = k['dataTime']
     while True:
@@ -125,6 +129,7 @@ def save_station_excel(url,url1):
         sheet.write(n, 8, k["aqi"])
         sheet.write(n, 9, k["primaryPollutant"])
         sheet.write(n, 10, k['airQualityLevel'])
+        sheet.write(n, 11, k['airQualityType'])
         n += 1
     book.save(r'excelfiles\太原市六城区标站空气质量日报.xls')
     return now_datetime
