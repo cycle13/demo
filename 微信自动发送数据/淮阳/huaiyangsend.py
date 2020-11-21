@@ -137,7 +137,7 @@ def hoursend(name):
             windows_opr.CloseWindow(name)
     except:
         time.sleep(60)
-        hoursend()
+        hoursend(name)
 
 
 def hourleijisend(name):
@@ -181,7 +181,7 @@ def hourleijisend(name):
             windows_opr.CloseWindow(name)
     except:
         time.sleep(60)
-        hourleijisend()
+        hourleijisend(name)
 
 
 

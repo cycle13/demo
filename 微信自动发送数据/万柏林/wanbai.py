@@ -14,16 +14,16 @@ if __name__ == '__main__':
         if now_time in time_list:
             print(now_time)
             wanbaisend.wanbaicg()
-        elif now_time in time_list1:
-            print(now_time)
-            wanbaisend.wanbairb()
-        elif now_time in time_list2:
-            print(now_time)
-            wanbaisend.wanbaistr()
-        elif now_time in time_list3:
-            print(now_time)
-            wanbaisend.wanbaibz()
-        elif now_time in time_list4:
-            print(now_time)
-            wanbaisend.wanbaiadd()
+        # elif now_time in time_list1:
+        #     print(now_time)
+        #     wanbaisend.wanbairb()
+        # elif now_time in time_list2:
+        #     print(now_time)
+        #     wanbaisend.wanbaistr()
+        # elif now_time in time_list3:
+        #     print(now_time)
+        #     wanbaisend.wanbaibz()
+        # elif now_time in time_list4:
+        #     print(now_time)
+        #     wanbaisend.wanbaiadd()
         time.sleep(60)
