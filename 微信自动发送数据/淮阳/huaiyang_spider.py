@@ -86,6 +86,8 @@ def save_excel(excel_file_dir):
     sheet.write(0,7,'PM2.5')
     sheet.write(0,8,'AQI')
     sheet.write(0,9,'首要污染物')
+    sheet.write(0, 10, 'PM2.5排名')
+    sheet.write(0, 11, 'PM10排名')
     time.sleep(5)
     l = real(url_list)
     data = json.loads(l)['detail']
@@ -104,7 +106,15 @@ def save_excel(excel_file_dir):
             sheet.write(n, 7, k['PM25'])
             sheet.write(n, 8, k['AQI'])
             sheet.write(n, 9, k['PRIMARYPOLLUTANT'])
-            n+=1
+
+            if k['CITY'] =='淮阳县':
+                x = 0
+                for l in k['STATIONS']:
+                    sheet.write(n, 12+x, l['STATIONNAME'])
+                    sheet.write(n, 13+x, l['PM10'])
+                    sheet.write(n, 14+x, l['PM25'])
+                    x+=3
+            n += 1
     book.save(excel_file_dir)
 
 
@@ -152,4 +162,3 @@ def save_date(line_date):
             excel_dir = line_date+'/'+k['CITY'] + my_datatime+".xls"
             os.remove(excel_dir)
             wb.save(excel_dir)
-

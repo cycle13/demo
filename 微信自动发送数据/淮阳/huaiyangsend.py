@@ -106,13 +106,24 @@ def hoursend(name):
             if l[0][0:2] != "无":
                 print('空气质量数据获取成功')
                 if data['rcode'] == 200:
-                    k = "【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。当前湿度{}%，温度为{}℃，风力为{}，风向为{}。".format(l[0][0:2], l[1], l[2], l[3], l[4], data['humidity'], data['temperature'], data['windpower'],data['winddirect'])
+                    k = "【实时播报】：\n淮阳区{}时:      \n{}PM2.5浓度为{}µg/m³，PM10浓" \
+                        "度为{}µg/m³。      \n{}PM2.5浓度为{}µg/m³，PM10浓" \
+                        "度为{}µg/m³。      \n{}PM2.5浓度为{}µg/m³，PM10浓度" \
+                        "为{}µg/m³。      \n淮阳区PM2.5浓度为{}μg/m3，在全市9个区" \
+                        "县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排" \
+                        "名第{}。      \n气象条件：当前湿度{}%，温度为{}℃，风力" \
+                        "为{}，风向为{}。".format(l[0][0:2],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13],l[1], l[2], l[3], l[4], data['humidity'], data['temperature'], data['windpower'],data['winddirect'])
                     print('气象数据获取成功')
                     send_text(name, k)
                     time.sleep(4)
                     send_excel(name, excel_rank_insert)
                 else:
-                    k = "【实时播报】：\n淮阳区{}时，PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。气象数据缺失！".format(l[0][0:2],l[1],l[2],l[3],l[4])
+                    k = "【实时播报】：\n淮阳区{}时:      \n{}PM2.5浓度为{}µg/m³，PM10浓" \
+                        "度为{}µg/m³。      \n{}PM2.5浓度为{}µg/m³，PM10浓度" \
+                        "为{}µg/m³。      \n{}PM2.5浓度为{}µg/m³，PM10浓" \
+                        "度为{}µg/m³。      \n淮阳区PM2.5浓度为{}μg/m3，在全市9个区" \
+                        "县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。气象数" \
+                        "据缺失！".format(l[0][0:2],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13],l[1], l[2], l[3], l[4],)
                     print('气象数据缺失')
                     send_text(name, k)
                     time.sleep(4)

@@ -23,9 +23,9 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2020-11-19',
+        'end':'2019-11-21',
         'sort':'asc',
-        'start':'2020-01-01'
+        'start':'2019-01-01'
     }
     response = session.post(url= url,data=data,headers = headers).text
     print(response)
@@ -99,7 +99,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('周报2020年1-11月19日累计.xls')
+book.save('周报2019年1-11月21日累计.xls')
 
 print(data)
 
