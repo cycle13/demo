@@ -23,9 +23,51 @@ def line_bar(x,y1,y2,data1,data3,data4,image_file,name):
     plt.plot(x, y2, marker='x', color='y',label = 'PM10')
     # 标注值
     for i in range(len(y1)):
-        plt.text(x[i], y1[i] - 1, '%s' % round(y1[i], 3), ha='center', fontsize=10)
+        plt.text(x[i], y1[i] - 2, '%s' % round(y1[i], 3), ha='center', fontsize=10)
     for i in range(len(y2)):
-        plt.text(x[i], y2[i] + 0.5, '%s' % round(y2[i], 3), ha='center', fontsize=10, va='bottom')
+        plt.text(x[i], y2[i] + 1, '%s' % round(y2[i], 3), ha='center', fontsize=10, va='bottom')
+    # for i in range(len(y3)):
+    #     plt.text(x[i], y3[i] - 1, '%s' % round(y3[i], 3), ha='center', fontsize=10, va='bottom')
+    plt.legend()
+    font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=14)
+    plt.title(data1, fontproperties=font1)
+    # 横坐标名称
+    # 设置横坐标标注转换角度
+    plt.xticks(x, x, rotation=60)
+    plt.xlabel(data3)
+    # 纵坐标名称
+    plt.ylabel(data4)
+
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+    # 保存图片到本地
+    plt.tight_layout()
+    plt.savefig(image_file+'/'+name+'.png')
+    plt.ylim(0, 20)
+    plt.grid(True)
+    matplotlib.use('Agg')
+
+def line_bar_double(x,y1,y2,data1,data3,data4,image_file,name):
+    # 创建画布
+    plt.figure(figsize=(6, 5))
+
+    '''绘制第一条数据线
+    1、节点为圆圈
+    2、线颜色为红色
+    3、标签名字为y1-data
+    '''
+    # plt.tight_layout()
+    '''绘制第二条数据线
+    1、节点为五角星
+    2、线颜色为蓝色
+    3、标签名字为y2-data
+    '''
+    plt.plot(x, y1, marker='o', color='b',label = '淮阳区')
+    plt.plot(x, y2, marker='*', color='r',label = '太康县')
+    # 标注值
+    for i in range(len(y1)):
+        plt.text(x[i], y1[i] - 2, '%s' % round(y1[i], 0), ha='center', fontsize=10)
+    for i in range(len(y2)):
+        plt.text(x[i], y2[i] +1, '%s' % round(y2[i], 0), ha='center', fontsize=10, va='bottom')
     # for i in range(len(y3)):
     #     plt.text(x[i], y3[i] - 1, '%s' % round(y3[i], 3), ha='center', fontsize=10, va='bottom')
     plt.legend()

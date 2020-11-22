@@ -73,6 +73,19 @@ def send_picline(name,line_excel,image_title,image_file):
     windows_opr.CloseWindow(name)
     send_text_image.del_files(image_file)
 
+def send_pic_line(name, line_excel, line_excel2,image_title_PM25,image_title_PM10, image_file):
+    windows_opr.FindWindow(name)
+    df = pd.read_excel(line_excel)
+    df2 = pd.read_excel(line_excel2)
+    line_bar.line_bar_double(df['时间'], df['PM2.5'], df2['PM2.5'], image_title_PM25, '时间', '浓度 μg/m3',image_file, "PM25")
+    line_bar.line_bar_double(df['时间'], df['PM10'], df2['PM10'], image_title_PM10, '时间', '浓度 μg/m3', image_file, "PM10")
+    for i in send_text_image.get_file(image_file):
+        send_text_image.paste_img(image_file + "\\" + i)
+        windows_opr.send()
+        time.sleep(1)
+    windows_opr.CloseWindow(name)
+    send_text_image.del_files(image_file)
+
 
 def hoursend(name):
     try:
@@ -125,6 +138,13 @@ def hoursend(name):
                 huaiyang_spider.save_date(line_date)
                 line_excel = line_date+'/'+'淮阳县' + my_datatime+".xls"
                 send_picline(name,line_excel,image_title,image_file)
+
+                # 做折线图对比图
+                image_title_PM25 = '淮阳区与太康县00时至{}时PM2.5浓度折线图'.format(l[0][0:2])
+                image_title_PM10 = '淮阳区与太康县00时至{}时PM10浓度折线图'.format(l[0][0:2])
+                line_excel = line_date + '/' + '淮阳县' + my_datatime + ".xls"
+                line_excel2 = line_date + '/' + '太康县' + my_datatime + ".xls"
+                send_pic_line(name, line_excel, line_excel2,image_title_PM25,image_title_PM10, image_file)
 
             else:
                 print('空气质量数据异常')
@@ -215,3 +235,12 @@ def save_data():
 # line_date = 'excellinefiles/' + my_datatime
 # line_excel = line_date+'/'+'淮阳县' + my_datatime+".xls"
 # send_picline(name,line_excel,image_title,image_file)
+
+# image_file = 'image_file'
+# my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
+# line_date = 'excellinefiles/' + my_datatime
+# image_title_PM25 = '淮阳区与太康县00时至{}时PM2.5浓度折线图'.format("l[0][0:2]")
+# image_title_PM10 = '淮阳区与太康县00时至{}时PM10浓度折线图'.format("l[0][0:2]")
+# line_excel = line_date + '/' + '淮阳县' + my_datatime + ".xls"
+# line_excel2 = line_date + '/' + '太康县' + my_datatime + ".xls"
+# send_pic_line('王彦军', line_excel, line_excel2,image_title_PM25,image_title_PM10, image_file)
