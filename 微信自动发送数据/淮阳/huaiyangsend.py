@@ -199,8 +199,16 @@ def yearleijisend(name):
     windows_opr.CloseWindow(name)
 
 
+
+def save_data():
+    my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    line_date = 'hnalldata/' + my_datatime
+    huaiyang_spider.save_hn_date(line_date)
+
+
 # yearleijisend('王彦军')
 # hoursend('王彦军')
+# save_data()
 # image_file = 'image_file'
 # image_title = '淮阳区颗粒物0时至{}时折线图--测试'.format("l[0][0:2]")
 # my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')

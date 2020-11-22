@@ -206,3 +206,49 @@ def yearleiji(excel_file_dir):
             n+=1
     book.save(excel_file_dir)
 
+
+def save_hn_date(line_date):
+    my_datatime = datetime.strftime(datetime.now(),'%Y-%m-%d')
+    print(my_datatime)
+    l = real(url_list)
+    data = json.loads(l)['detail']
+    print(data)
+    for k in data:
+        # if k['CITY'] in ['沈丘县', '商水县', '西华县', '扶沟县', '郸城县', '淮阳县', '太康县', '鹿邑县', '项城市']:
+        # if k['CITY'] in ['淮阳县']:
+        if not os.path.exists(line_date):
+            os.makedirs(line_date)
+        if not os.path.exists(line_date+'/'+k['CITY'] + ".xls"):
+            os.system(line_date+'/'+k['CITY'] + ".xls")
+            workbook = xlwt.Workbook(encoding='utf-8')
+            worksheet = workbook.add_sheet('数据')
+            worksheet.write(0,0,label = '日期')
+            worksheet.write(0,1,label = 'SO2')
+            worksheet.write(0,2,label = 'NO2')
+            worksheet.write(0,3,label = 'PM2.5')
+            worksheet.write(0,4,label = 'PM10')
+            worksheet.write(0,5,label = 'CO')
+            worksheet.write(0,6,label = 'O3')
+            worksheet.write(0,7,label = 'AQI')
+            worksheet.write(0,8,label = '首要污染物')
+            worksheet.write(0, 9, label='时间')
+            workbook.save(line_date+'/'+k['CITY'] + ".xls")
+        n = int(datetime.strftime(datetime.now(),'%H'))
+        rb = xlrd.open_workbook(line_date + '/' + k['CITY'] + ".xls")
+        wb = copy(rb)
+        sheet = wb.get_sheet(0)
+        sheet.write(n+1,0,label = k["MONIDATE"])
+        sheet.write(n+1,1,label = k['SO2'])
+        sheet.write(n+1,2,label = k['NO2'])
+        sheet.write(n+1,3,label = k['PM25'])
+        sheet.write(n+1,4,label = k['PM10'])
+        sheet.write(n+1,5,label = k['CO'])
+        sheet.write(n+1,6,label = k['O3'])
+        sheet.write(n+1,7,label = k['AQI'])
+        sheet.write(n+1,8,label = k['PRIMARYPOLLUTANT'])
+        for i in range(0,n+1):
+            sheet.write(i+1, 9, label=str(i)+'时')
+        excel_dir = line_date+'/'+k['CITY'] +".xls"
+        os.remove(excel_dir)
+        wb.save(excel_dir)
+
