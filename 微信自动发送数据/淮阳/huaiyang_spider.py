@@ -6,6 +6,7 @@ import xlrd
 from xlutils.copy import copy
 from datetime import datetime
 import os
+import datetime as datatime
 
 
 session = requests.Session()
@@ -162,3 +163,46 @@ def save_date(line_date):
             excel_dir = line_date+'/'+k['CITY'] + my_datatime+".xls"
             os.remove(excel_dir)
             wb.save(excel_dir)
+
+
+
+def year(url,yestoday):
+    data = {
+        'end':yestoday,
+        'sort':'asc',
+        'start':'2020-01-01'
+    }
+    response = session.post(url= url,data=data,headers = headers).text
+    print(response)
+    return response
+
+
+def yearleiji(excel_file_dir):
+    yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    l = year(first_url_year,yestoday)
+    data = json.loads(l)['data']
+    print(data)
+    book = xlwt.Workbook()
+    sheet = book.add_sheet('周口市各区县数据')
+    n = 1
+    sheet.write(0,0,'区县')
+    sheet.write(0,1,'CO')
+    sheet.write(0,2,'O3')
+    sheet.write(0,3,'SO2')
+    sheet.write(0,4,'NO2')
+    sheet.write(0,5,'PM10')
+    sheet.write(0,6,'PM2.5')
+    sheet.write(0,7,'综合指数')
+    for k in data:
+        if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市']:
+            sheet.write(n, 0, k['city'])
+            sheet.write(n, 1, k['co'])
+            sheet.write(n, 2, k['o3'])
+            sheet.write(n, 3, k['so2'])
+            sheet.write(n, 4, k['no2'])
+            sheet.write(n, 5, k['pm10'])
+            sheet.write(n, 6, k['pm25'])
+            sheet.write(n, 7, k['zong'])
+            n+=1
+    book.save(excel_file_dir)
+

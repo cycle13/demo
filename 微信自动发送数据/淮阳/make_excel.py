@@ -33,12 +33,48 @@ def excel_rank(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,
     df1.to_excel(excel_filenew_dir2, index=False)
 
 
+def excel_yearrank(excel_file_dir,excel_file_dir1):
+    df = pd.read_excel(excel_file_dir)
+    df["CO排名"] = df["CO"].rank(method='min',ascending=True)
+    df["O3排名"] = df["O3"].rank(method='min',ascending=True)
+    df["SO2排名"] = df["SO2"].rank(method='min', ascending=True)
+    df["NO2排名"] = df["NO2"].rank(method='min', ascending=True)
+    df["PM2.5排名"] = df["PM2.5"].rank(method='min', ascending=True)
+    df["PM10排名"] = df["PM10"].rank(method='min', ascending=True)
+    df["综合指数排名"] = df["综合指数"].rank(method='min', ascending=True)
+    df.reset_index(drop=True, inplace=True)
+    df.to_excel(excel_file_dir1,index=False)
+
+
+def excel_yearc(excel_filenew_dir):
+    wb = openpyxl.load_workbook(excel_filenew_dir)
+    sheet = wb["Sheet1"]
+    n = 0
+    m = 0
+    for i in range(1,11):
+        if sheet.cell(i, 1).value == '淮阳县':
+            n = i
+    color = 'FFC000'
+    fille=PatternFill("solid",fgColor=color)
+    for j in range(1,16):
+        sheet.cell(n, j).fill = fille
+
+    for i in range(1,11):
+        if sheet.cell(i, 1).value == '太康县':
+            m = i
+    color = '00B0F0'
+    fille=PatternFill("solid",fgColor=color)
+    for j in range(1,16):
+        sheet.cell(m, j).fill = fille
+    wb.save(excel_filenew_dir)
+    set_from_center(excel_filenew_dir)
+    table_border(excel_filenew_dir)
+
 # 充填行，按照AQI
 def excel_c(excel_filenew_dir, name_c, excel_filerank_dir):
     wb = openpyxl.load_workbook(excel_filenew_dir)
     sheet = wb["Sheet1"]
     n = 0
-
     for i in range(1,11):
         if sheet.cell(i, 1).value == name_c:
             n = i

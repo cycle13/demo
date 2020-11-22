@@ -195,8 +195,21 @@ def hourleijisend(name):
         hourleijisend(name)
 
 
+def yearleijisend(name):
+    windows_opr.FindWindow(name)
+    excel_file_dir = r'D:\Program Files\pycharm\微信自动发送数据\淮阳\excelfiles\周口市区县年累计数据.xls'
+    excel_file_dir1 = r'D:\Program Files\pycharm\微信自动发送数据\淮阳\excelfiles\周口市区县年累计数据.xlsx'
+    huaiyang_spider.yearleiji(excel_file_dir)
+    make_excel.excel_yearrank(excel_file_dir,excel_file_dir1)
+    make_excel.excel_yearc(excel_file_dir1)
+    send_text_image.excel_catch_screenyearleiji(excel_file_dir1)
+    windows_opr.ctrlV()
+    windows_opr.altS()
+    time.sleep(1)
+    windows_opr.CloseWindow(name)
 
 
+# yearleijisend('王彦军')
 # hoursend('王彦军')
 # image_file = 'image_file'
 # image_title = '淮阳区颗粒物0时至{}时折线图--测试'.format("l[0][0:2]")

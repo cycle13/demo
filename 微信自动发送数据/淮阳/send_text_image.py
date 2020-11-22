@@ -66,6 +66,31 @@ def excel_catch_screenleiji(excel_rank_insert):
     excel.Quit()  # 退出excel
 
 
+def excel_catch_screenyearleiji(excel_rank_insert):
+    """ 对excel的表格区域进行截图——用例：excel_catch_screen(r"E:\年周口市区县27日数据.xls", "淮阳县空气质量数据", "A1:J10")"""
+    # pythoncom.CoInitialize()  # excel多线程相关
+
+    excel = DispatchEx("Excel.Application")  # 启动excel
+    excel.Visible = True  # 可视化
+    excel.DisplayAlerts = False  # 是否显示警告
+    wb = excel.Workbooks.Open(excel_rank_insert)  # 打开excel
+    # wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")  # 打开excel
+    ws = wb.Sheets("Sheet1")  # 选择sheet
+    ws.Range("A1:O10").CopyPicture()  # 复制图片区域
+    ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
+    name = str(uuid.uuid4())  # 重命名唯一值
+    new_shape_name = name[:6]
+    excel.Selection.ShapeRange.Name = new_shape_name  # 将刚刚选择的Shape重命名，避免与已有图片混淆
+
+    ws.Shapes(new_shape_name).Copy()  # 选择图片
+    img = ImageGrab.grabclipboard()  # 获取剪贴板的图片数据
+    # if not img_name:
+    #     img_name = name + ".PNG"
+    # img.save(img_name)  # 保存图片
+    wb.Close(SaveChanges=0)  # 关闭工作薄，不保存
+    excel.Quit()  # 退出excel
+
+
 # 创建文件夹
 def make_files(filename):
     if not os.path.exists(filename):
