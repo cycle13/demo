@@ -53,32 +53,32 @@ def line_pic(excel_filenew_dir1,hour_d,image_file):
     for i in range(len(df["区县"])):
         if 35 >= df["PM2.5"][i] >= 0:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#00E400',edgecolor='black')
+                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#00E400',edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM2.5"][i], fc='#00E400')
         elif 75 >= df["PM2.5"][i] > 35:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FFFF00', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FFFF00', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FFFF00')
         elif 115 >= df["PM2.5"][i] > 75:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FF7E00', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FF7E00', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FF7E00')
         elif 150 >= df["PM2.5"][i] > 115:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FF0000', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FF0000', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM2.5"][i], fc='#FF0000')
         elif 250 >= df["PM2.5"][i] > 150:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#99004C', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#99004C', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM2.5"][i], fc='#99004C')
         else:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#7E0023', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM2.5"][i], fc='#7E0023', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM2.5"][i], fc='#7E0023')
     for i in range(len(df["PM2.5"])):
@@ -107,32 +107,32 @@ def line_picpm10(excel_filenew_dir2,hour_d,image_file):
     for i in range(len(df["区县"])):
         if 50 >= df["PM10"][i] >= 0:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM10"][i], fc='#00E400',edgecolor='black')
+                plt.bar(df["区县"][i], df["PM10"][i], fc='#00E400',edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM10"][i], fc='#00E400')
         elif 150 >= df["PM10"][i] > 50:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM10"][i], fc='#FFFF00', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM10"][i], fc='#FFFF00', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM10"][i], fc='#FFFF00')
         elif 250 >= df["PM10"][i] > 150:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM10"][i], fc='#FF7E00', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM10"][i], fc='#FF7E00', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM10"][i], fc='#FF7E00')
         elif 350 >= df["PM10"][i] > 250:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM10"][i], fc='#FF0000', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM10"][i], fc='#FF0000', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM10"][i], fc='#FF0000')
         elif 420 >= df["PM10"][i] > 350:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM10"][i], fc='#99004C', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM10"][i], fc='#99004C', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM10"][i], fc='#99004C')
         else:
             if df["区县"][i] == '淮阳县':
-                plt.bar(df["区县"][i], df["PM10"][i], fc='#7E0023', edgecolor='black')
+                plt.bar(df["区县"][i], df["PM10"][i], fc='#7E0023', edgecolor='black',linewidth=2)
             else:
                 plt.bar(df["区县"][i], df["PM10"][i], fc='#7E0023')
     for i in range(len(df["PM10"])):
