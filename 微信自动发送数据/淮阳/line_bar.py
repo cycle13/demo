@@ -23,7 +23,7 @@ def line_bar(x,y1,y2,data1,data3,data4,image_file,name):
     plt.plot(x, y2, marker='x', color='y',label = 'PM10')
     # 标注值
     for i in range(len(y1)):
-        plt.text(x[i], y1[i] - 0.5, '%s' % round(y1[i], 3), ha='center', fontsize=10)
+        plt.text(x[i], y1[i] - 1, '%s' % round(y1[i], 3), ha='center', fontsize=10)
     for i in range(len(y2)):
         plt.text(x[i], y2[i] + 0.5, '%s' % round(y2[i], 3), ha='center', fontsize=10, va='bottom')
     # for i in range(len(y3)):
