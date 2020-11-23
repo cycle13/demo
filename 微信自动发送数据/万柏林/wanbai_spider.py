@@ -22,6 +22,11 @@ def realaqi(hour_local_std_url):
     data = json.loads(res)
     return data
 
+def realaqi1(hour_local_std_url):
+    res = session.get(hour_local_std_url,headers=headers).text
+    data = json.loads(res)
+    return data
+
 
 def save_location_excel(url,excel_sixrank_dir):
     book = xlwt.Workbook()
@@ -290,7 +295,7 @@ def save_stationleiji_excel(url1,excel_file_dir):
         yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
         for i in range(1, 24):
             url = url1.format(yestoday, str(i))
-            data = realaqi(url)
+            data = realaqi1(url)
             for k in data:
                 if k['name'] in ['西山']:
                     sheet.write(n, 0, k['dataTime'])
@@ -303,8 +308,8 @@ def save_stationleiji_excel(url1,excel_file_dir):
                     sheet.write(n, 7, k["pm10"])
                     n += 1
         now_time = datetime.now().strftime("%Y-%m-%d")
-        url = url1.format(now_time, str(i))
-        data = realaqi(url)
+        url = url1.format(now_time, "00")
+        data = realaqi1(url)
         for k in data:
             if k['name'] in ['西山']:
                 sheet.write(n, 0, k['dataTime'])
@@ -323,7 +328,7 @@ def save_stationleiji_excel(url1,excel_file_dir):
         for i in range(1, int(now_time) + 1):
             print(now_data, str(i))
             url = url1.format(now_data,str(i))
-            data = realaqi(url)
+            data = realaqi1(url)
             for k in data:
                 if k['name'] in ['西山']:
                     sheet.write(n, 0, k['dataTime'])

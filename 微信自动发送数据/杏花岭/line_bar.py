@@ -2,26 +2,28 @@ import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 import matplotlib
 import pandas as pd
+from matplotlib.pyplot import MultipleLocator
 
 
 def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
     # 创建画布
     plt.figure(figsize=(6, 5))
-
     '''绘制第一条数据线
     1、节点为圆圈
     2、线颜色为红色
     3、标签名字为y1-data
     '''
-    plt.plot(x, y1, marker='o', color='blue',label = '二氧化氮')
-    # plt.tight_layout()
+
+    plt.tight_layout()
     '''绘制第二条数据线
     1、节点为五角星
     2、线颜色为蓝色
     3、标签名字为y2-data
     '''
+    plt.plot(x, y1, marker='o', color='blue', label='二氧化氮')
     plt.plot(x, y2, marker='*', color='r',label = 'PM2.5')
     plt.plot(x, y3, marker='x', color='y',label = 'PM10')
+
     # 标注值
     # for i in range(len(y1)):
     #     plt.text(x[i], y1[i] + 0.5, '%s' % round(y1[i], 3), ha='center', fontsize=10)
@@ -34,16 +36,19 @@ def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
     plt.title('{}巨轮 参数对比图'.format(data1), fontproperties=font1)
     # 横坐标名称
     # 设置横坐标标注转换角度
-    plt.xticks(x, x, rotation=90)
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+    y_major_locator = MultipleLocator(5)
+    plt.xticks(x, x, rotation=60)
+    ax = plt.gca()
+    ax.yaxis.set_major_locator(y_major_locator)
     plt.xlabel(data3)
     # 纵坐标名称
     plt.ylabel(data4)
 
-    plt.rcParams['font.sans-serif'] = ['SimHei']
     # 保存图片到本地
     plt.tight_layout()
     plt.savefig(image_file+'/'+name+'.png')
-    plt.ylim(0, 20)
+    plt.ylim(0, 100)
     plt.grid(True)
     matplotlib.use('Agg')
     # 显示图片

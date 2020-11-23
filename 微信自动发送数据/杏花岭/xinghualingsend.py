@@ -32,7 +32,7 @@ def send_excel(name,excel_rank_insert):
 def send_line_pic(name,excel_file_dir,image_title,image_file):
     windows_opr.FindWindow(name)
     df = pd.read_excel(excel_file_dir)
-    line_bar.line_bar(df['时间'], df['二氧化氮浓度'],df['PM2.5质量浓度'], df['PM10质量浓度'],image_title, '时间', '浓度 μg/m3',image_file,"PM25")
+    line_bar.line_bar(df['时间'], df['NO2'],df['PM2.5'], df['PM10'],image_title, '时间', '浓度μg/m3',image_file,"PM25")
     for i in send_text_image.get_file(image_file):
         send_text_image.paste_img(image_file + "\\" + i)
         windows_opr.send()
@@ -78,7 +78,8 @@ def hoursend():
     send_excel(name, excel_rank_insert2)
 
     # 发送折线图
-    excel_file_dir = r'excelfiles\杏花岭区折线图详细数据.xlsx'
+    excel_file_dir = r'excelfiles\杏花岭区折线图详细数据.xls'
+    xinghualing_spider.leiji(excel_file_dir)
     image_file = r'image_file'
     send_line_pic(name, excel_file_dir,sx[0]+sx[1], image_file)
 
