@@ -159,20 +159,37 @@ def save_stationtable_excel(url,url1,excel_file_dir):
         sheet.write(n, 1, k['name'])
         sheet.write(n, 2, k["aqi"])
         sheet.write(n, 3, k["primaryPollutant"])
-        if k["primaryPollutant"] == 'PM10':
-            sheet.write(n, 4, k["pm10"])
-        elif k["primaryPollutant"] == 'PM2.5':
-            sheet.write(n, 4, k["pm25"])
-        elif k["primaryPollutant"] == 'SO2':
-            sheet.write(n, 4, k["so2"])
-        elif k["primaryPollutant"] == 'NO2':
-            sheet.write(n, 4, k["no2"])
-        elif k["primaryPollutant"] == 'CO':
-            sheet.write(n, 4, k["co"])
-        elif k["primaryPollutant"] == 'O3':
-            sheet.write(n, 4, k["o31"])
-        else:
-            sheet.write(n, 4, '-')
+        qua = []
+        if 'PM10' in k["primaryPollutant"]:
+            qua.append(k["pm10"])
+        if 'PM2.5' in k["primaryPollutant"]:
+            qua.append(k["pm25"])
+        if 'SO2' in k["primaryPollutant"]:
+            qua.append(k["so2"])
+        if 'NO2' in k["primaryPollutant"]:
+            qua.append(k["no2"])
+        if 'CO' in k["primaryPollutant"]:
+            qua.append(k["co"])
+        if 'O3' in k["primaryPollutant"]:
+            qua.append(k["o31"])
+        if "无" in k["primaryPollutant"]:
+            qua.append('-')
+        sheet.write(n, 4, '、'.join(qua))
+
+        # if k["primaryPollutant"] == 'PM10':
+        #     sheet.write(n, 4, k["pm10"])
+        # elif k["primaryPollutant"] == 'PM2.5':
+        #     sheet.write(n, 4, k["pm25"])
+        # elif k["primaryPollutant"] == 'SO2':
+        #     sheet.write(n, 4, k["so2"])
+        # elif k["primaryPollutant"] == 'NO2':
+        #     sheet.write(n, 4, k["no2"])
+        # elif k["primaryPollutant"] == 'CO':
+        #     sheet.write(n, 4, k["co"])
+        # elif k["primaryPollutant"] == 'O3':
+        #     sheet.write(n, 4, k["o31"])
+        # else:
+        #     sheet.write(n, 4, '-')
         n += 1
     m = 0
     while True:
@@ -189,20 +206,22 @@ def save_stationtable_excel(url,url1,excel_file_dir):
         sheet.write(n, 1, k['name'])
         sheet.write(n, 2, k["aqi"])
         sheet.write(n, 3, k["primaryPollutant"])
-        if k["primaryPollutant"] == 'PM10':
-            sheet.write(n, 4, k["pm10"])
-        elif k["primaryPollutant"] == 'PM2.5':
-            sheet.write(n, 4, k["pm25"])
-        elif k["primaryPollutant"] == 'SO2':
-            sheet.write(n, 4, k["so2"])
-        elif k["primaryPollutant"] == 'NO2':
-            sheet.write(n, 4, k["no2"])
-        elif k["primaryPollutant"] == 'CO':
-            sheet.write(n, 4, k["co"])
-        elif k["primaryPollutant"] == 'O3':
-            sheet.write(n, 4, k["o31"])
-        else:
-            sheet.write(n, 4, '-')
+        qua = []
+        if 'PM10' in k["primaryPollutant"]:
+            qua.append(k["pm10"])
+        if 'PM2.5' in k["primaryPollutant"]:
+            qua.append(k["pm25"])
+        if 'SO2' in k["primaryPollutant"]:
+            qua.append(k["so2"])
+        if 'NO2' in k["primaryPollutant"]:
+            qua.append(k["no2"])
+        if 'CO' in k["primaryPollutant"]:
+            qua.append(k["co"])
+        if 'O3' in k["primaryPollutant"]:
+            qua.append(k["o31"])
+        if "无" in k["primaryPollutant"]:
+            qua.append('-')
+        sheet.write(n, 4, '、'.join(qua))
         n += 1
         now_datetime = k['dataTime']
     book.save(excel_file_dir)
