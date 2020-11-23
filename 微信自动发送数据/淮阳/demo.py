@@ -87,7 +87,7 @@ def line_picpm(name,pm25,title_name,wr_name):
     for i in range(len(pm25)):
         plt.text(name[i], pm25[i] + 0.5, '%s' % round(pm25[i], 3), ha='center', fontsize=10)
     # plt.legend()
-    font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=20)
+    font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=16)
     plt.title(title_name, fontproperties=font1)
     # 横坐标名称
     plt.xlabel("周口市九区县")
@@ -138,7 +138,7 @@ def line_picpm10(name,pm25,title_name,wr_name):
     for i in range(len(pm25)):
         plt.text(name[i], pm25[i] + 0.5, '%s' % round(pm25[i], 3), ha='center', fontsize=10)
     # plt.legend()
-    font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=20)
+    font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=16)
     plt.title(title_name, fontproperties=font1)
     # 横坐标名称
     plt.xlabel("周口市九区县")
@@ -200,5 +200,6 @@ def year_leiji():
     line_date = r"excelleiji/2020年周口市区县全年日数据.xls"
     save_date(line_date)
     x = list_num()
-    line_picpm(x[0],x[1],'周口市九区县PM2.5年累计柱状图',"pm25")
-    line_picpm10(x[0],x[2],'周口市九区县PM10年累计柱状图',"pm10")
+    yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%m")+"月"+(datetime.now() + datatime.timedelta(days=-1)).strftime("%d")+"日"
+    line_picpm(x[0],x[1],'2020年截至{}周口市九区县PM2.5年累计柱状图'.format(yestoday),"pm25")
+    line_picpm10(x[0],x[2],'2020年截至{}周口市九区县PM10年累计柱状图'.format(yestoday),"pm10")
