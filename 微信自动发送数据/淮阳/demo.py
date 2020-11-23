@@ -41,51 +41,62 @@ def mean_lj(name):
 
 
 def list_num():
+    b = []
     numname = []
     numpm25 = []
     numpm10 = []
     name_list = ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市']
     for i in name_list:
+        a = []
+        a.append(i)
+        a.append(mean_lj(i)[0])
+        a.append(mean_lj(i)[1])
         numname.append(i)
         numpm25.append(mean_lj(i)[0])
         numpm10.append(mean_lj(i)[1])
-    return numname,numpm25,numpm10
+        b.append(a)
+    df = pd.DataFrame(b, columns=['区县', 'PM2.5', 'PM10'])
+    df = df.sort_values(by="PM2.5")
+    df.reset_index(drop=True, inplace=True)
+    df1 = df.sort_values(by="PM10")
+    df1.reset_index(drop=True, inplace=True)
+    return df,df1
 
-def line_picpm(name,pm25,title_name,wr_name):
+def line_picpm(pm25,title_name,wr_name):
     plt.figure()
-    for i in range(len(name)):
-        if 35 >= pm25[i] >= 0:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#00E400',edgecolor='black',linewidth=2)
+    for i in range(len(pm25['区县'])):
+        if 35 >= pm25["PM2.5"][i] >= 0:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#00E400',edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#00E400')
-        elif 75 >= pm25[i] > 35:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#FFFF00', edgecolor='black',linewidth=2)
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#00E400')
+        elif 75 >= pm25["PM2.5"][i] > 35:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#FFFF00', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#FFFF00')
-        elif 115 >= pm25[i] > 75:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#FF7E00', edgecolor='black',linewidth=2)
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#FFFF00')
+        elif 115 >= pm25["PM2.5"][i] > 75:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#FF7E00', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#FF7E00')
-        elif 150 >= pm25[i] > 115:
-            if df["区县"][i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#FF0000', edgecolor='black',linewidth=2)
+                plt.bar(pm25['区县'][i], pm25[i], fc='#FF7E00')
+        elif 150 >= pm25["PM2.5"][i] > 115:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#FF0000', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i],pm25[i], fc='#FF0000')
+                plt.bar(pm25['区县'][i],pm25["PM2.5"][i], fc='#FF0000')
         elif 250 >= pm25[i] > 150:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#99004C', edgecolor='black',linewidth=2)
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#99004C', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#99004C')
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#99004C')
         else:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#7E0023', edgecolor='black',linewidth=2)
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#7E0023', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#7E0023')
-    for i in range(len(pm25)):
-        plt.text(name[i], pm25[i] + 0.5, '%s' % round(pm25[i], 3), ha='center', fontsize=10)
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#7E0023')
+    for i in range(len(pm25["PM2.5"])):
+        plt.text(pm25['区县'][i], pm25["PM2.5"][i] + 0.5, '%s' % round(pm25["PM2.5"][i], 3), ha='center', fontsize=10)
     # plt.legend()
     font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=16)
     plt.title(title_name, fontproperties=font1)
@@ -102,41 +113,41 @@ def line_picpm(name,pm25,title_name,wr_name):
     # plt.show()
 
 
-def line_picpm10(name,pm25,title_name,wr_name):
+def line_picpm10(pm25,title_name,wr_name):
     plt.figure()
-    for i in range(len(name)):
-        if 50 >= pm25[i] >= 0:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#00E400',edgecolor='black',linewidth=2)
+    for i in range(len(pm25['区县'])):
+        if 50 >= pm25["PM10"][i] >= 0:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#00E400',edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#00E400')
-        elif 150 >= pm25[i] > 50:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#FFFF00', edgecolor='black',linewidth=2)
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#00E400')
+        elif 150 >= pm25["PM10"][i] > 50:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#FFFF00', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#FFFF00')
-        elif 250 >= pm25[i] > 150:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#FF7E00', edgecolor='black',linewidth=2)
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#FFFF00')
+        elif 250 >= pm25["PM10"][i] > 150:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#FF7E00', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#FF7E00')
-        elif 350 >= pm25[i] > 250:
-            if df["区县"][i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#FF0000', edgecolor='black',linewidth=2)
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#FF7E00')
+        elif 350 >= pm25["PM10"][i] > 250:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#FF0000', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i],pm25[i], fc='#FF0000')
-        elif 420 >= pm25[i] > 350:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#99004C', edgecolor='black',linewidth=2)
+                plt.bar(pm25['区县'][i],pm25["PM10"][i], fc='#FF0000')
+        elif 420 >= pm25["PM10"][i] > 350:
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#99004C', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#99004C')
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#99004C')
         else:
-            if name[i] == '淮阳县':
-                plt.bar(name[i], pm25[i], fc='#7E0023', edgecolor='black',linewidth=2)
+            if pm25['区县'][i] == '淮阳县':
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#7E0023', edgecolor='black',linewidth=2)
             else:
-                plt.bar(name[i], pm25[i], fc='#7E0023')
-    for i in range(len(pm25)):
-        plt.text(name[i], pm25[i] + 0.5, '%s' % round(pm25[i], 3), ha='center', fontsize=10)
+                plt.bar(pm25['区县'][i], pm25["PM10"][i], fc='#7E0023')
+    for i in range(len(pm25["PM10"])):
+        plt.text(pm25['区县'][i], pm25["PM10"][i] + 0.5, '%s' % round(pm25["PM10"][i], 3), ha='center', fontsize=10)
     # plt.legend()
     font1 = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=16)
     plt.title(title_name, fontproperties=font1)
@@ -201,5 +212,5 @@ def year_leiji():
     save_date(line_date)
     x = list_num()
     yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%m")+"月"+(datetime.now() + datatime.timedelta(days=-1)).strftime("%d")+"日"
-    line_picpm(x[0],x[1],'2020年截至{}周口市九区县PM2.5年累计柱状图'.format(yestoday),"pm25")
-    line_picpm10(x[0],x[2],'2020年截至{}周口市九区县PM10年累计柱状图'.format(yestoday),"pm10")
+    line_picpm(x[0],'2020年截至{}周口市九区县PM2.5年累计柱状图'.format(yestoday),"pm25")
+    line_picpm10(x[1],'2020年截至{}周口市九区县PM10年累计柱状图'.format(yestoday),"pm10")
