@@ -7,6 +7,7 @@ from datetime import datetime
 import huaiyang_spider
 import json
 import time
+import demo
 
 
 
@@ -209,15 +210,21 @@ def yearleijisend(name):
     windows_opr.FindWindow(name)
     excel_file_dir = r'D:\Program Files\pycharm\微信自动发送数据\淮阳\excelfiles\周口市区县年累计数据.xls'
     excel_file_dir1 = r'D:\Program Files\pycharm\微信自动发送数据\淮阳\excelfiles\周口市区县年累计数据.xlsx'
+    line_date = r"excelimage"
     huaiyang_spider.yearleiji(excel_file_dir)
     make_excel.excel_yearrank(excel_file_dir,excel_file_dir1)
     make_excel.excel_yearc(excel_file_dir1)
     send_text_image.excel_catch_screenyearleiji(excel_file_dir1)
     windows_opr.ctrlV()
     windows_opr.altS()
+    demo.year_leiji()
+    for i in send_text_image.get_file(line_date):
+        send_text_image.paste_img(line_date + "\\" + i)
+        windows_opr.ctrlV()
+        windows_opr.altS()
     time.sleep(1)
     windows_opr.CloseWindow(name)
-
+    send_text_image.del_files(line_date)
 
 
 def save_data():
