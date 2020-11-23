@@ -15,6 +15,7 @@ headers = {
 
 def realaqi(hour_local_std_url):
     res = session.get(hour_local_std_url,headers=headers).text
+    res = res.replace('NA', '-')
     data = json.loads(res)
     # if '小店区' not in data:
     #     realaqi(hour_local_std_url)
