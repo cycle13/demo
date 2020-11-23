@@ -31,8 +31,12 @@ def day(url,yestoday):
 def mean_lj(name):
     df = pd.read_excel(r"excelleiji/2020年周口市区县全年日数据.xls")
     df = df.loc[df['区县'] == name]
-    pm10 = round(df["PM10"].mean(),2)
-    pm25 = round(df["PM2.5"].mean(),2)
+    a = df["PM10"]
+    b = a[a > 0]
+    c = df["PM2.5"]
+    d = c[c > 0]
+    pm10 = round(b.mean(),2)
+    pm25 = round(d.mean(),2)
     return pm25,pm10
 
 

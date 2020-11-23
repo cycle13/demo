@@ -18,9 +18,9 @@ if __name__ == '__main__':
             elif now_time in time_list1:
                 print(now_time)
                 huaiyangsend.hourleijisend(name)
-            elif now_time in time_list3:
-                print(now_time)
-                huaiyangsend.yearleijisend(name)
+            # elif now_time in time_list3:
+            #     print(now_time)
+            #     huaiyangsend.yearleijisend(name)
             elif now_time in time_list2:
                 print(now_time)
                 huaiyangsend.save_data()
