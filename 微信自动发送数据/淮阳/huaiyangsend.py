@@ -233,7 +233,7 @@ def save_data():
     huaiyang_spider.save_hn_date(line_date)
 
 
-yearleijisend('王彦军')
+# yearleijisend('王彦军')
 # hoursend('王彦军')
 # save_data()
 # image_file = 'image_file'
