@@ -1,0 +1,59 @@
+import pandas as pd
+
+
+def tezheng(file_dir,newfile_dir,now_time):
+    df = pd.read_excel(file_dir)
+    # 计算占比
+    df['CO_sum'] = df['CO']/(df['SO2']+df['NO2']+df['PM2.5']+df['PM10']+df['CO'])
+    df['SO2_sum'] = df['SO2']/(df['SO2']+df['NO2']+df['PM2.5']+df['PM10']+df['CO'])
+    df['NO2_sum'] = df['NO2']/(df['SO2']+df['NO2']+df['PM2.5']+df['PM10']+df['CO'])
+    df['PM2.5_sum'] = df['PM2.5']/(df['SO2']+df['NO2']+df['PM2.5']+df['PM10']+df['CO'])
+    df['PM10_sum'] = df['PM10']/(df['SO2']+df['NO2']+df['PM2.5']+df['PM10']+df['CO'])
+
+    # 计算占比均值
+    co_mean = df['CO_sum'].mean()
+    so2_mean = df['SO2_sum'].mean()
+    no2_mean = df['NO2_sum'].mean()
+    pm25_mean = df['PM2.5_sum'].mean()
+    pm10_mean = df['PM10_sum'].mean()
+    # 计算占比标准差
+    co_std = df['CO_sum'].std()
+    so2_std = df['SO2_sum'].std()
+    no2_std = df['NO2_sum'].std()
+    pm25_std = df['PM2.5_sum'].std()
+    pm10_std = df['PM10_sum'].std()
+    # 计算占比上限
+    co_mean_up = (co_mean+co_std)/co_mean
+    so2_mean_up = (so2_mean+so2_std)/so2_mean
+    no2_mean_up = (no2_mean+no2_std)/no2_mean
+    pm25_mean_up = (pm25_mean+pm25_std)/pm25_mean
+    pm10_mean_up = (pm10_mean+pm10_std)/pm10_mean
+    # 计算占比下限
+    co_mean_down = (co_mean-co_std)/co_mean
+    so2_mean_down = (so2_mean-so2_std)/so2_mean
+    no2_mean_down = (no2_mean-no2_std)/no2_mean
+    pm25_mean_down = (pm25_mean-pm25_std)/pm25_mean
+    pm10_mean_down = (pm10_mean-pm10_std)/pm10_mean
+    # 计算要绘制图对应日期的占比
+    CO_sum = df[df.时间 == now_time]['CO_sum']/co_mean
+    SO2_sum= df[df.时间 == now_time]['SO2_sum']/so2_mean
+    NO2_sum = df[df.时间 == now_time]['NO2_sum']/no2_mean
+    PM25_sum = df[df.时间 == now_time]['PM2.5_sum']/pm25_mean
+    PM10_sum = df[df.时间 == now_time]['PM10_sum']/pm10_mean
+    # 写成列表准备写入excel文件
+    a = [[co_mean,so2_mean,no2_mean,pm25_mean,pm10_mean],
+     [co_std,so2_std,no2_std,pm25_std,pm10_std],
+     [co_mean_up,so2_mean_up,no2_mean_up,pm25_mean_up,pm10_mean_up],
+     [co_mean_down,so2_mean_down,no2_mean_down,pm25_mean_down,pm10_mean_down ],
+     [float(CO_sum),float(SO2_sum),float(NO2_sum) ,float(PM25_sum),float(PM10_sum)],
+         [1,1,1,1,1]]
+    # 构造dataframe并写入excel文件
+    df1 = pd.DataFrame(a, columns=['CO', 'SO2', 'NO2', 'PM2.5', 'PM10'],index=['均值','标偏','上标','下标','要计算值','标准值'])
+    df1.to_excel(newfile_dir)
+
+
+
+now_time = '2020-11-12'
+file_dir = '淮阳县.xls'
+newfile_dir = '淮阳县.xlsx'
+tezheng(file_dir,newfile_dir,now_time)
