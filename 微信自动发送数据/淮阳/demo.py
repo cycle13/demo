@@ -168,6 +168,9 @@ def save_date(line_date):
     yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
     l = day(first_url_day,yestoday)
     data = json.loads(l)['data']
+    d1 = datetime(2020, 1, 1)
+    d2 = datetime.now()
+    n = (int((d2 - d1).days) - 1) * 9
     print(data)
     for k in data:
         if k['city'] in ['沈丘县', '商水县', '西华县', '扶沟县', '郸城县', '淮阳县', '太康县', '鹿邑县', '项城市']:
@@ -186,9 +189,6 @@ def save_date(line_date):
                 worksheet.write(0,8,label = 'AQI')
                 worksheet.write(0,9,label = '首要污染物')
                 workbook.save(line_date)
-            d1 = datetime(2020,1,1)
-            d2 = datetime.now()
-            n =(int((d2-d1).days)-1)*9
             rb = xlrd.open_workbook(line_date)
             wb = copy(rb)
             sheet = wb.get_sheet(0)
@@ -204,7 +204,7 @@ def save_date(line_date):
             sheet.write(n+1,9,label = k['primary'])
             os.remove(line_date)
             wb.save(line_date)
-
+            n+=1
 
 
 def year_leiji():
