@@ -48,7 +48,7 @@ def tezheng(file_dir,newfile_dir,now_time):
      [float(CO_sum),float(SO2_sum),float(NO2_sum) ,float(PM25_sum),float(PM10_sum)],
          [1,1,1,1,1]]
     # 构造dataframe并写入excel文件
-    df1 = pd.DataFrame(a, columns=['CO', 'SO2', 'NO2', 'PM2.5', 'PM10'],index=['均值','标偏','上标','下标','要计算值','标准值'])
+    df1 = pd.DataFrame(a, columns=['CO', 'SO2', 'NO2', 'PM2.5', 'PM10'],index=['均值','标偏','上标','下标','特征值','标准值'])
     df1.to_excel(newfile_dir)
 
 
