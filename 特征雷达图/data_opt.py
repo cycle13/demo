@@ -58,21 +58,29 @@ def tezheng(file_dir,newfile_dir,now_time):
     df1.to_excel(newfile_dir)
     if((float(SO2_sum)<so2_mean_up) and (float(PM10_sum)<pm10_mean_up) and (float(PM25_sum)<pm25_mean_up) and (float(CO_sum)<co_mean_up) and (float(NO2_sum)<no2_mean_up)):
         name = '偏标准型'
+        color = '#00E400'
     elif(float(PM25_sum)>pm25_mean_up):
         name = '偏二次型'
+        color = '#FFFF00'
     elif (float(SO2_sum)>so2_mean_up):
         name = '偏燃煤型'
+        color = '#FF7E00'
     elif (float(PM10_sum)>pm10_mean_up):
         name = '偏粗颗粒型'
+        color = '#FF0000'
     elif ((float(SO2_sum)>so2_mean_up)  and (float(PM25_sum)>pm25_mean_up)):
         name = '偏烟花型'
+        color = '#99004C'
     elif ((float(SO2_sum)>so2_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
         name = '偏钢铁型'
+        color = '#7E0023'
     elif ((float(PM25_sum)>pm25_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
         name = '偏机动车型'
+        color = '#7E2223'
     else:
         name = '偏其它型'
-    return name
+        color = '#772223'
+    return name,color
 
 
 

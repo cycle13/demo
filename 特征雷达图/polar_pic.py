@@ -1,6 +1,7 @@
 import data_visual
 import data_opt
 import spider_data
+import pic_bar
 from datetime import datetime
 import datetime as datatime
 import pandas as pd
@@ -22,13 +23,20 @@ def time_data():
     # yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d %H")
     file_dir = 'excelfile/淮阳县.xls'
     newfile_dir = 'excelfile/淮阳县.xlsx'
+    color = []
     # 获取数据
     # spider_data.save_excel(file_dir)
-    my_datatime = pd.date_range('11/22/2020', '11/22/2020')
+    my_datatime = pd.date_range('11/01/2020', '11/24/2020')
     result = my_datatime.strftime('%Y-%m-%d')
     for now_time in result:
         name = data_opt.tezheng(file_dir,newfile_dir,now_time)
-        data_visual.plot_radar_time(newfile_dir,now_time,name)
+        data_visual.plot_radar_time(newfile_dir,now_time,name[0])
+        if name in color:
+            color.append(('',name[1]))
+        else:
+            color.append(name)
+    print(color)
+    pic_bar.line_pic(file_dir,"image_file",color)
 
 
 time_data()
