@@ -63,7 +63,7 @@ def tezheng(file_dir,newfile_dir,now_time):
     elif (float(SO2_sum)>so2_mean_up):
         name = '偏燃煤型'
     elif (float(PM10_sum)>pm10_mean_up):
-        name = '偏燃粗颗粒型'
+        name = '偏粗颗粒型'
     elif ((float(SO2_sum)>so2_mean_up)  and (float(PM25_sum)>pm25_mean_up)):
         name = '偏烟花型'
     elif ((float(SO2_sum)>so2_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
