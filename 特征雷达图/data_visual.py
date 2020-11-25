@@ -24,8 +24,11 @@ def plot_radar(newfile_dir,now_time,name):
         ax.plot(angles, [i] * (n + 1), '--', lw=0.5, color='black')
     for i in range(n):
         ax.plot([angles[i], angles[i]], [floor, ceil], '--', lw=0.5, color='black')
-    for i in range(len(kinds)):
-        ax.plot(angles, centers[i], lw=2, label=kinds[i])
+    # for i in range(len(kinds)):
+    ax.plot(angles, centers[0],'--' ,lw=2, label=kinds[0], color='r')
+    ax.plot(angles, centers[1], '--', lw=2, label=kinds[1], color='g')
+    ax.plot(angles, centers[2], lw=2, label=kinds[2], color='black')
+    ax.plot(angles, centers[3], lw=2, label=kinds[3], color='b')
         # ax.fill(angles, centers[i])
     font = FontProperties(fname=r"C:\Windows\Fonts\simhei.ttf", size=14)
     ax.set_thetagrids(angles * 180 / np.pi, ['SO2', 'PM10', 'PM2.5', 'CO', 'NO2','SO2'], FontProperties=font)  # 设置显示的角度，将弧度转换为角度
@@ -61,8 +64,12 @@ def plot_radar_time(newfile_dir,now_time,name):
         ax.plot(angles, [i] * (n + 1), '--', lw=0.5, color='black')
     for i in range(n):
         ax.plot([angles[i], angles[i]], [floor, ceil], '--', lw=0.5, color='black')
-    for i in range(len(kinds)):
-        ax.plot(angles, centers[i], lw=2, label=kinds[i])
+    # for i in range(len(kinds)):
+    #     ax.plot(angles, centers[i], lw=2, label=kinds[i])
+    ax.plot(angles, centers[0], '--', lw=2, label=kinds[0], color='r')
+    ax.plot(angles, centers[1], '--', lw=2, label=kinds[1], color='g')
+    ax.plot(angles, centers[2], lw=2, label=kinds[2], color='black')
+    ax.plot(angles, centers[3], lw=2, label=kinds[3], color='b')
         # ax.fill(angles, centers[i])
     font = FontProperties(fname=r"C:\Windows\Fonts\simhei.ttf", size=14)
     ax.set_thetagrids(angles * 180 / np.pi, ['SO2', 'PM10', 'PM2.5', 'CO', 'NO2','SO2'], FontProperties=font)  # 设置显示的角度，将弧度转换为角度
