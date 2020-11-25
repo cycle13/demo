@@ -59,7 +59,7 @@ def tezheng(file_dir,newfile_dir,now_time):
     if((float(SO2_sum)<so2_mean_up) and (float(PM10_sum)<pm10_mean_up) and (float(PM25_sum)<pm25_mean_up) and (float(CO_sum)<co_mean_up) and (float(NO2_sum)<no2_mean_up)):
         name = '偏标准型'
     elif(float(PM25_sum)>pm25_mean_up):
-        name = '偏标二次型'
+        name = '偏二次型'
     elif (float(SO2_sum)>so2_mean_up):
         name = '偏燃煤型'
     elif (float(PM10_sum)>pm10_mean_up):
@@ -68,8 +68,6 @@ def tezheng(file_dir,newfile_dir,now_time):
         name = '偏烟花型'
     elif ((float(SO2_sum)>so2_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
         name = '偏钢铁型'
-    elif ((float(PM25_sum)>pm25_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
-        name = '偏机动车型'
     elif ((float(PM25_sum)>pm25_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
         name = '偏机动车型'
     else:
