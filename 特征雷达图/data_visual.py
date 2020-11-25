@@ -5,7 +5,7 @@ from matplotlib.font_manager import FontProperties
 import matplotlib
 
 
-def plot_radar(newfile_dir,now_time):
+def plot_radar(newfile_dir,now_time,name):
     data = pd.read_excel(newfile_dir)
     kinds = data.iloc[:, 0]
     labels = data.iloc[:, 1:].columns
@@ -35,7 +35,7 @@ def plot_radar(newfile_dir,now_time):
     ax.grid(False)  # 不显示默认的分割线
     # ax.set_yticks([])  # 不显示坐标间隔
     plt.tight_layout()
-    plt.title("data1",x=0,y=0.9,fontproperties=font,fontsize=18)
+    plt.title(name,x=0,y=0.9,fontproperties=font,fontsize=18,color = 'r')
     plt.savefig("image_file" + '/' + now_time + '.png')
     plt.ylim(0, 20)
     plt.grid(True)

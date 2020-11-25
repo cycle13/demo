@@ -51,11 +51,31 @@ def tezheng(file_dir,newfile_dir,now_time):
      [so2_mean_up,pm10_mean_up,pm25_mean_up,co_mean_up,no2_mean_up],
      [so2_mean_down,pm10_mean_down,pm25_mean_down,co_mean_down,no2_mean_down ],
      [float(SO2_sum),float(PM10_sum),float(PM25_sum),float(CO_sum) ,float(NO2_sum)],
-         [1,1,1,1,1]]
+     [1,1,1,1,1]]
     # 构造dataframe并写入excel文件
     # df1 = pd.DataFrame(a, columns=['SO2', 'NO2', 'CO', 'PM2.5', 'PM10'],index=['均值','标偏','上标','下标','特征值','标准值'])
     df1 = pd.DataFrame(a, columns=['SO2', 'PM10', 'PM2.5', 'CO', 'NO2'],index=['上标','下标','特征值','标准值'])
     df1.to_excel(newfile_dir)
+    if((float(SO2_sum)<so2_mean_up) and (float(PM10_sum)<pm10_mean_up) and (float(PM25_sum)<pm25_mean_up) and (float(CO_sum)<co_mean_up) and (float(NO2_sum)<no2_mean_up)):
+        name = '偏标准型'
+    elif(float(PM25_sum)>pm25_mean_up):
+        name = '偏标二次型'
+    elif (float(SO2_sum)>so2_mean_up):
+        name = '偏燃煤型'
+    elif (float(PM10_sum)>pm10_mean_up):
+        name = '偏燃粗颗粒型'
+    elif ((float(SO2_sum)>so2_mean_up)  and (float(PM25_sum)>pm25_mean_up)):
+        name = '偏烟花型'
+    elif ((float(SO2_sum)>so2_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
+        name = '偏钢铁型'
+    elif ((float(PM25_sum)>pm25_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
+        name = '偏机动车型'
+    elif ((float(PM25_sum)>pm25_mean_up)  and (float(CO_sum)>co_mean_up) and (float(NO2_sum)>no2_mean_up)):
+        name = '偏机动车型'
+    else:
+        name = '偏其它型'
+    return name
+
 
 
 
