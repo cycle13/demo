@@ -35,7 +35,7 @@ def plot_radar(newfile_dir,now_time,name):
     ax.grid(False)  # 不显示默认的分割线
     # ax.set_yticks([])  # 不显示坐标间隔
     plt.tight_layout()
-    plt.title(name,x=0,y=0.9,fontproperties=font,fontsize=18,color = 'r')
+    plt.title(now_time +'：' +name,x=0,y=0.9,fontproperties=font,fontsize=18,color = 'r')
     plt.savefig("image_file" + '/' + now_time + '.png')
     plt.ylim(0, 20)
     plt.grid(True)
