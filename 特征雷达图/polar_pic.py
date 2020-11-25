@@ -16,13 +16,13 @@ def area_data():
     spider_data.save_excel(file_dir)
     for now_time in ["商水县","太康县","扶沟县",'沈丘县','淮阳县','西华县','郸城县','项城市','鹿邑县']:
         name = data_opt.tezheng(file_dir,newfile_dir,now_time)
-        data_visual.plot_radar(newfile_dir,now_time,name)
+        data_visual.plot_radar(newfile_dir,now_time,name[0])
 
 
 def time_data():
     # yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d %H")
-    file_dir = 'excelfile/淮阳县.xls'
-    newfile_dir = 'excelfile/淮阳县.xlsx'
+    file_dir = 'excelfile/太康县.xls'
+    newfile_dir = 'excelfile/太康县.xlsx'
     color = []
     # 获取数据
     # spider_data.save_excel(file_dir)
@@ -39,4 +39,5 @@ def time_data():
     pic_bar.line_pic(file_dir,"image_file",color)
 
 
-time_data()
+area_data()
+# time_data()
