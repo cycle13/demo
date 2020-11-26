@@ -370,6 +370,14 @@ def table_font_add(excel_filerank_dir2, name_table2, excel_rank_insert2):
 def table_font_hour(excel_filerank_dir1, name_table1, excel_rank_insert1):
     wb = openpyxl.load_workbook(excel_filerank_dir1)
     sheet = wb["Sheet1"]
+    nrows = sheet.max_row  # 获得行数
+    ncols = sheet.max_column
+    for i in range(nrows):
+        for j in range(ncols):
+            if sheet.cell(row=i + 1, column=j + 1).value:
+                pass
+            else:
+                sheet.cell(row=i + 1, column=j + 1).value = '-'
     sheet.insert_rows(1)
     sheet.column_dimensions['A'].width = 12
     sheet.column_dimensions['B'].width = 12

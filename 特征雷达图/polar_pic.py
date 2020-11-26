@@ -44,7 +44,7 @@ def time_data():
 
 # 滚动计算每一天的特征雷达图
 def time_roll_data():
-    start_time = '11/20/2020'
+    start_time = '11/19/2020'
     my_datatime = pd.date_range(start_time, '12/31/2020')
     result = my_datatime.strftime('%Y-%m-%d')
     print(result[0])
@@ -62,6 +62,6 @@ def time_roll_data():
 
 
 
-# area_data()
-time_data()
+area_data()
+# time_data()
 # time_roll_data()

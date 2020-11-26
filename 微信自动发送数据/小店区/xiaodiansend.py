@@ -119,3 +119,7 @@ def hoursend(name):
     name_table2 = '{}小店区2站点综合指数排名'.format(sl)
 
     send_excel_pic_hour(name, excel_file_dir1, excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_filerank_dir1,excel_filerank_dir2,excel_rank_insert1,excel_rank_insert2,rank_name1,rank_name2,name_table1,name_table2,name_c1,name_c2)
+
+
+
+hoursend('王彦军')
