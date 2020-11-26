@@ -39,8 +39,7 @@ def send_line_pic(name,excel_file_dir,image_file):
 
 
 
-def wanbaicg():
-    name = '王彦军'
+def wanbaicg(name):
     # 发送excel表格
     excel_file_dir = r'excelfiles\万柏林数据.xls'
     excel_filenew_dir = r'excelfiles\万柏林数据排名.xlsx'
