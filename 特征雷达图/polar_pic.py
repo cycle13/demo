@@ -8,6 +8,7 @@ import pandas as pd
 
 
 
+# 区域特征雷达图
 def area_data():
     yestoday = (datetime.now() + datatime.timedelta(days=0)).strftime("%Y-%m-%d %H")
     file_dir = 'excelfile/' + yestoday + '.xls'
@@ -20,6 +21,7 @@ def area_data():
         data_visual.plot_radar(newfile_dir,now_time,name[0])
 
 
+# 整体考虑一段时间的特征雷达图
 def time_data():
     # yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d %H")
     file_dir = 'excelfile/太康县.xls'
@@ -40,5 +42,26 @@ def time_data():
     pic_bar.line_pic(file_dir,"image_file",color)
 
 
-# area_data()
-time_data()
+# 滚动计算每一天的特征雷达图
+def time_roll_data():
+    start_time = '11/20/2020'
+    my_datatime = pd.date_range(start_time, '12/31/2020')
+    result = my_datatime.strftime('%Y-%m-%d')
+    print(result[0])
+    yestoday = (my_datatime[0] + datatime.timedelta(days=-30)).strftime("%Y-%m-%d")
+    print(yestoday)
+    file_dir = 'excelfile/淮阳县整年数据.xls'
+    file_cen_dir = 'excelfile/淮阳县整年数据中间.xls'
+    newfile_dir = 'excelfile/淮阳县整年数据.xlsx'
+    df = pd.read_excel(file_dir)
+    df.index = df['时间']
+    df = df[yestoday:result[0]]
+    df.to_excel(file_cen_dir,index=False)
+    name = data_opt.tezheng(file_cen_dir,newfile_dir,result[0])
+    data_visual.plot_radar_time(newfile_dir,result[0],name[0])
+
+
+
+area_data()
+# time_data()
+# time_roll_data()
