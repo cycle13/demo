@@ -86,5 +86,3 @@ def hourjc(name):
     excel_rank_insert = r'D:\Program Files\pycharm\微信自动发送数据\迎泽区\excelfiles\迎泽降尘小时推送数据排名插入.xlsx'
     rank_name = '累计AQI'
     send_excelhourjc_pic(name, excel_file_dir, excel_filenew_dir,rank_name,excel_rank_insert)
-
-hoursend('王彦军')

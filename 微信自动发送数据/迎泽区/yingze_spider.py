@@ -52,7 +52,10 @@ def save_location_excel(url):
             break
     for k in data:
         sheet.write(n, 1, k['name'])
-        sheet.write(n, 2, k['totalIndex'])
+        if ((k["so2"] == '-') or (k["no2"] == '-') or (k["co"] == '-') or (k["o31"] == '-') or (k["pm25"] == '-') or (k["pm10"] == '-')):
+            sheet.write(n, 2, None)
+        else:
+            sheet.write(n, 2, k["totalIndex"])
         sheet.write(n, 3, k["so2"])
         sheet.write(n, 4, k["no2"])
         sheet.write(n, 5, k["co"])
@@ -72,7 +75,7 @@ def save_location_excel(url):
 def data(hour_local_std_url):
     now_data = datetime.strftime(datetime.now(),'%Y-%m-%d')
     now_time = datetime.strftime(datetime.now(),'%H')
-    hour_local_std_url = hour_local_std_url.format(now_data,now_time)
+    hour_local_std_url = hour_local_std_url.format(now_data,"14")
     x = save_location_excel(hour_local_std_url)
     return x
 

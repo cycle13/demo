@@ -27,7 +27,7 @@ def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
     df['综指5排名'] = df['综合指数'].rank(method='min', ascending=True)
     df['PM2.5排名'] = df['PM2.5'].rank(method='min', ascending=True)
     df['PM10排名'] = df['PM10'].rank(method='min', ascending=True)
-    df = df.sort_values(by=rank_name)
+    df = df.sort_values(by=rank_name,na_position='last')
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
 
