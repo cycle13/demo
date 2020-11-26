@@ -62,6 +62,6 @@ def time_roll_data():
 
 
 
-area_data()
-# time_data()
+# area_data()
+time_data()
 # time_roll_data()

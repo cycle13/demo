@@ -26,7 +26,7 @@ def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
 def excel_rank_rb(excel_file_dir,excel_filenew_dir,rank_name):
     df = pd.read_excel(excel_file_dir)
     df['排名'] = df[rank_name].rank(method='min', ascending=True)
-    df = df.sort_values(by=rank_name,ascending=True)
+    df = df.sort_values(by=rank_name,ascending=True,na_position='last')
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
 
@@ -182,16 +182,19 @@ def excel_c_hour(excel_filenew_dir1,name_c1,name_c2,excel_filerank_dir1):
 
 
 def zhzs_color(color_num):
-    if 4 >= color_num >= 0:
-        color = '00E400'
-    elif 6 >= color_num > 4:
-        color = 'FFFF00'
-    elif 8 >= color_num > 6:
-        color = 'FF7E00'
-    elif 10 >= color_num > 8:
-        color = 'FF0000'
-    elif color_num > 10:
-        color = '99004C'
+    if color_num:
+        if 4 >= float(color_num) >= 0:
+            color = '00E400'
+        elif 6 >= float(color_num) > 4:
+            color = 'FFFF00'
+        elif 8 >= float(color_num) > 6:
+            color = 'FF7E00'
+        elif 10 >= float(color_num) > 8:
+            color = 'FF0000'
+        elif float(color_num) > 10:
+            color = '99004C'
+        else:
+            color = 'FFFFFF'
     else:
         color = 'FFFFFF'
     return color

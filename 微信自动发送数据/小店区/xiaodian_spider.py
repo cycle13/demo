@@ -70,7 +70,10 @@ def save_zong_excel(url):
             break
     for k in data:
         sheet.write(n, 0, k['name'])
-        sheet.write(n, 1, k["totalIndex"])
+        if ((k["so2"] == '-') or (k["no2"] == '-') or (k["co"] == '-') or (k["o31"] == '-') or (k["pm25"] == '-') or (k["pm10"] == '-')):
+            sheet.write(n, 1, None)
+        else:
+            sheet.write(n, 1, k["totalIndex"])
         sheet.write(n, 3, k['primaryPollutant'])
         n+=1
         now_datetime = k['dataTime']
