@@ -75,7 +75,7 @@ def save_location_excel(url):
 def data(hour_local_std_url):
     now_data = datetime.strftime(datetime.now(),'%Y-%m-%d')
     now_time = datetime.strftime(datetime.now(),'%H')
-    hour_local_std_url = hour_local_std_url.format(now_data,"14")
+    hour_local_std_url = hour_local_std_url.format(now_data,now_time)
     x = save_location_excel(hour_local_std_url)
     return x
 
