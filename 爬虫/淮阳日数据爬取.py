@@ -54,4 +54,4 @@ for i in time_range:
             print(str(i),k)
     print(l)
 
-book.save('2020年周口市区县全年日数据.xls')
+book.save('周口市区县全年日数据.xls')

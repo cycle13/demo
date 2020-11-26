@@ -29,7 +29,7 @@ def day(url,yestoday):
 
 
 def mean_lj(name):
-    df = pd.read_excel(r"excelleiji/2020年周口市区县全年日数据.xls")
+    df = pd.read_excel(r"excelleiji/周口市区县全年日数据.xls")
     df = df.loc[df['区县'] == name]
     a = df["PM10"]
     b = a[a > 0]
@@ -208,7 +208,7 @@ def save_date(line_date):
 
 
 def year_leiji():
-    line_date = r"excelleiji/2020年周口市区县全年日数据.xls"
+    line_date = r"excelleiji/周口市区县全年日数据.xls"
     save_date(line_date)
     x = list_num()
     yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%m")+"月"+(datetime.now() + datatime.timedelta(days=-1)).strftime("%d")+"日"
