@@ -41,7 +41,10 @@ def save_aqi_excel(url):
             break
     for k in data:
         sheet.write(n, 0, k['name'])
-        sheet.write(n, 1, k["aqi"])
+        if k["aqi"] == '-':
+            sheet.write(n, 1, None)
+        else:
+            sheet.write(n, 1, k["aqi"])
         sheet.write(n, 3, k['primaryPollutant'])
         n+=1
         now_datetime = k['dataTime']

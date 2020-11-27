@@ -145,18 +145,21 @@ def col_num(sheet,name_c):
 
 
 def aqi_color(color_num):
-    if 50 >= color_num >= 0:
-        color = '00E400'
-    elif 100 >= color_num > 50:
-        color = 'FFFF00'
-    elif 150 >= color_num > 100:
-        color = 'FF7E00'
-    elif 200 >= color_num > 150:
-        color = 'FF0000'
-    elif 300 >= color_num > 200:
-        color = '99004C'
+    if color_num:
+        if 50 >= int(color_num) >= 0:
+            color = '00E400'
+        elif 100 >= int(color_num) > 50:
+            color = 'FFFF00'
+        elif 150 >= int(color_num) > 100:
+            color = 'FF7E00'
+        elif 200 >= int(color_num) > 150:
+            color = 'FF0000'
+        elif 300 >= int(color_num) > 200:
+            color = '99004C'
+        else:
+            color = 'FFFFFF'
     else:
-        color = '7E0023'
+        color = 'FFFFFF'
     return color
 
 
