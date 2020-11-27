@@ -1,12 +1,8 @@
 import requests
 import json
 import time
-import xlwt
-import xlrd
-from xlutils.copy import copy
 from datetime import datetime
-import os
-import datetime as datatime
+
 
 
 session = requests.Session()

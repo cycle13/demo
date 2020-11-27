@@ -212,5 +212,5 @@ def year_leiji():
     save_date(line_date)
     x = list_num()
     yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%m")+"月"+(datetime.now() + datatime.timedelta(days=-1)).strftime("%d")+"日"
-    line_picpm(x[0],'2020年截至{}周口市九区县PM2.5年累计柱状图'.format(yestoday),"pm25")
-    line_picpm10(x[1],'2020年截至{}周口市九区县PM10年累计柱状图'.format(yestoday),"pm10")
+    line_picpm(x[0],'2020年截止{}周口市九区县PM2.5年累计柱状图'.format(yestoday),"pm25")
+    line_picpm10(x[1],'2020年截止{}周口市九区县PM10年累计柱状图'.format(yestoday),"pm10")
