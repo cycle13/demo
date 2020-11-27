@@ -84,24 +84,38 @@ def daily():
 
 def send_excel_pic_hour(name, excel_file_dir1, excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_filerank_dir1,excel_filerank_dir2,excel_rank_insert1,excel_rank_insert2,rank_name1,rank_name2,name_table1,name_table2,name_c1,name_c2):
     windows_opr.FindWindow(name)
+    print('窗口打开成功')
     make_excel.excel_rank_rb(excel_file_dir1,excel_filenew_dir1,rank_name1)
+    print('综合指数数排名成功')
     make_excel.excel_c_hour(excel_filenew_dir1,name_c1,name_c2,excel_filerank_dir1)
+    print('综合指数数表格颜色充填成功')
     make_excel.table_font_hour(excel_filerank_dir1, name_table1, excel_rank_insert1)
+    print('综合指数数表格表头插入成功')
     send_text_image.excel_catch_screen_hour(excel_rank_insert1)
+    print('综合指表格成功截图')
     windows_opr.send()
+    print('综合指数数发送成功')
 
     make_excel.excel_rank_rb(excel_file_dir2, excel_filenew_dir2, rank_name2)
+    print('AQI数据排名成功')
     make_excel.excel_czh_hour(excel_filenew_dir2, name_c1, name_c2, excel_filerank_dir2)
+    print('AQI数据表格颜色充填成功')
     make_excel.table_font_hour(excel_filerank_dir2, name_table2, excel_rank_insert2)
+    print('AQI数据表格表头插入成功')
     send_text_image.excel_catch_screen_hour(excel_rank_insert2)
+    print('AQI表格成功截图')
     windows_opr.send()
+    print('AQI数数发送成功')
     windows_opr.CloseWindow(name)
+    print('窗口关闭成功')
 
 
 
 def hoursend(name):
     xiaodian_spider.zonghe()
+    print('综合指数数据获取成功')
     sl = xiaodian_spider.aqi()
+    print('AQI数据获取成功')
     # 发送excel截图
     excel_file_dir1 = r'excelfiles\小店区两站点AQI数据.xls'
     excel_file_dir2 = r'excelfiles\小店区两站点综合指数数据.xls'
