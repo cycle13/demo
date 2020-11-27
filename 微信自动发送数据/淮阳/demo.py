@@ -79,7 +79,7 @@ def line_picpm(pm25,title_name,wr_name):
             if pm25['区县'][i] == '淮阳县':
                 plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#FF7E00', edgecolor='black',linewidth=2)
             else:
-                plt.bar(pm25['区县'][i], pm25[i], fc='#FF7E00')
+                plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#FF7E00')
         elif 150 >= pm25["PM2.5"][i] > 115:
             if pm25['区县'][i] == '淮阳县':
                 plt.bar(pm25['区县'][i], pm25["PM2.5"][i], fc='#FF0000', edgecolor='black',linewidth=2)
