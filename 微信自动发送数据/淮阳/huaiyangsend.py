@@ -3,6 +3,7 @@ import line_bar
 import make_excel
 import send_text_image
 import windows_opr
+import pre_air
 from datetime import datetime
 import huaiyang_spider
 import json
@@ -233,6 +234,26 @@ def save_data():
     huaiyang_spider.save_hn_date(line_date)
 
 
+
+def pre_hn_air(name):
+    data = pre_air.pre_air()
+    my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    if my_datatime == data[0]:
+        l = '河南省区域环境空气质量预报\n    污染提示：{}\n一、未来7天' \
+            '预报\n    {}\n    {}\n    {}\n    {}' \
+            '\n    {}\n    {}\n    {}\n    {}\n二、建议\n    {}'.format(data[1],data[2][0],data[2][1],data[2][2],data[2][3],data[2][4],data[2][5],data[2][6],data[2][7],data[3])
+
+        send_text(name,l)
+        windows_opr.FindWindow(name)
+        for i in send_text_image.get_file("image_pic"):
+            send_text_image.paste_img("image_pic" + "\\" + i)
+            windows_opr.send()
+            time.sleep(1)
+        windows_opr.CloseWindow(name)
+        # send_text_image.del_files(image_file)
+
+
+pre_hn_air('王彦军')
 # yearleijisend('王彦军')
 # hoursend('王彦军')
 # save_data()
