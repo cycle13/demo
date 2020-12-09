@@ -5,6 +5,7 @@ import send_text_image
 import windows_opr
 import pre_air
 from datetime import datetime
+import datetime as datatime
 import huaiyang_spider
 import json
 import time
@@ -110,7 +111,8 @@ def hoursend(name):
         line_date = 'excellinefiles/' + my_datatime
         l = make_excelhour(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert)
         print('已对数据排名、充填和插入表标题')
-        datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
+        datatime_n = (datetime.now() + datatime.timedelta(hours =-1)).strftime("%Y%m%d/%H")
+        # datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
         m = huaiyang_spider.qi("101181404", datatime_n)
         print('已获取气象数据')
         data = json.loads(m)
@@ -245,11 +247,11 @@ def pre_hn_air(name):
 
         for i in data[2]:
             if i == data[2][0]:
-                m = '    ' + i + '\n'
+                m = '       ' + i + '\n'
             else:
-                m = m+'    '+i+'\n'
-        l = '河南省区域环境空气质量预报\n    污染提示：{}\n一、未来7天' \
-            '预报\n{} 二、建议\n    {}'.format(data[1],m,data[3])
+                m = m+'       '+i+'\n'
+        l = '河南省区域环境空气质量预报\n       污染提示：{}\n一、未来7天' \
+            '预报\n{} 二、建议\n       {}'.format(data[1],m,data[3])
         send_text(name,l)
         windows_opr.FindWindow(name)
         for i in send_text_image.get_file("image_pic"):
@@ -260,7 +262,7 @@ def pre_hn_air(name):
         send_text_image.del_files("image_pic")
 
 
-# pre_hn_air('王彦军')
+pre_hn_air('王彦军')
 # yearleijisend('王彦军')
 # hoursend('王彦军')
 # save_data()
