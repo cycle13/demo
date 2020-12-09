@@ -239,10 +239,17 @@ def pre_hn_air(name):
     data = pre_air.pre_air()
     my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
     if my_datatime == data[0]:
-        l = '河南省区域环境空气质量预报\n    污染提示：{}\n一、未来7天' \
-            '预报\n    {}\n    {}\n    {}\n    {}' \
-            '\n    {}\n    {}\n    {}\n    {}\n    {}\n二、建议\n    {}'.format(data[1],data[2][0],data[2][1],data[2][2],data[2][3],data[2][4],data[2][5],data[2][6],data[2][7],data[2][8],data[3])
+        # l = '河南省区域环境空气质量预报\n    污染提示：{}\n一、未来7天' \
+        #     '预报\n    {}\n    {}\n    {}\n    {}' \
+        #     '\n    {}\n    {}\n    {}\n    {}\n 二、建议\n    {}'.format(data[1],data[2][0],data[2][1],data[2][2],data[2][3],data[2][4],data[2][5],data[2][6],data[2][7],data[3])
 
+        for i in data[2]:
+            if i == data[2][0]:
+                m = '    ' + i + '\n'
+            else:
+                m = m+'    '+i+'\n'
+        l = '河南省区域环境空气质量预报\n    污染提示：{}\n一、未来7天' \
+            '预报\n{} 二、建议\n    {}'.format(data[1],m,data[3])
         send_text(name,l)
         windows_opr.FindWindow(name)
         for i in send_text_image.get_file("image_pic"):
