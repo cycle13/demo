@@ -11,6 +11,8 @@ session = requests.Session()
 hour_local_std_url = 'http://www.ty.daqi110.com/tyAirService/pust/postData?areaCode=1401&areaType=2&dataTime={}+{}%3A00%3A00&dataType=1&flag=1&isControlPoint=2&stationType=1'
 hour_station_prv_url = 'http://www.ty.daqi110.com/tyAirService/pust/postData?areaCode=1401&areaType=4&dataTime={}+{}%3A00%3A00&dataType=1&flag=1&isControlPoint=2&stationType=1'
 hour_station_sta_url = 'http://www.ty.daqi110.com/tyAirService/pust/postData?areaCode=1401&areaType=4&dataTime={}+{}%3A00%3A00&dataType=1&flag=1&isControlPoint=1&stationType=1'
+lj_url = 'http://www.ty.daqi110.com/tyAirService/pust/postTendencyData?code=S14010901&dataType=1&etime={}+{}%3A00%3A00&flag=3&stime={}+{}%3A00%3A00'
+hour_station_lj_url ='http://www.ty.daqi110.com/tyAirService/pust/postAccumulativeData?areaCode=1401&areaType=4&dataType=1&etime={}+{}%3A00%3A00&flag=3&isControlPoint=&stationType=1&stime={}+01%3A00%3A00'
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
     'X-Requested-With': 'XMLHttpRequest'
@@ -243,37 +245,34 @@ def save_stationline_excel(url1,excel_file_dir):
     sheet.write(0, 3, 'NO2')
     sheet.write(0, 4, 'CO')
     sheet.write(0, 5, 'O3')
-    sheet.write(0, 6, 'PM2.5')
-    sheet.write(0, 7, 'PM10')
-    m = 0
-    yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d %H")
-    now_data = datetime.strftime(datetime.now(), "%Y-%m-%d %H")
-    my_datatime = pd.date_range(start=yestoday, end=now_data, freq='1h')
-    for i in my_datatime:
-        now_data = i.strftime('%Y-%m-%d')
-        now_time = i.strftime('%H')
-        url = url1.format(now_data,now_time)
-        while True:
-            data = realaqi(url)
-            if len(data) == 0:
-                time.sleep(60)
-                print(m)
-                m += 1
-                if m >= 10:
-                    break
-            else:
+    sheet.write(0, 6, 'O38')
+    sheet.write(0, 7, 'PM2.5')
+    sheet.write(0, 8, 'PM10')
+    now_time = datetime.strftime(datetime.now(), "%H")
+    yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    now_data = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    url = url1.format(now_data, now_time, yestoday, now_time)
+    while True:
+        data = realaqi1(url)
+        if len(data) == 0:
+            time.sleep(60)
+            print(m)
+            m += 1
+            if m >= 10:
                 break
-        for k in data:
-            if k['name'] in ['西山']:
-                sheet.write(n, 0, k['dataTime'])
-                sheet.write(n, 1, k['name'])
-                sheet.write(n, 2, k["so2"])
-                sheet.write(n, 3, k["no2"])
-                sheet.write(n, 4, k["co"])
-                sheet.write(n, 5, k["o31"])
-                sheet.write(n, 6, k["pm25"])
-                sheet.write(n, 7, k["pm10"])
-                n += 1
+        else:
+            break
+    for k in range(len(data['no2'])):
+        sheet.write(n, 0, data['no2'][k]['dataTime'])
+        sheet.write(n, 1, '西山')
+        sheet.write(n, 2, data['so2'][k]['value'])
+        sheet.write(n, 3, data['no2'][k]['value'])
+        sheet.write(n, 4, data['co'][k]['value'])
+        sheet.write(n, 5, data['o31'][k]['value'])
+        sheet.write(n, 6, data['o38'][k]['value'])
+        sheet.write(n, 7, data['pm25'][k]['value'])
+        sheet.write(n, 8, data['pm10'][k]['value'])
+        n += 1
     book.save(excel_file_dir)
 
 
@@ -378,7 +377,7 @@ def station(excel_starank_dir):
 
 
 def line_station(excel_file_dir):
-    save_stationline_excel(hour_station_prv_url,excel_file_dir)
+    save_stationline_excel(lj_url,excel_file_dir)
 
 def table_excel(excel_file_dir):
     table_data(hour_station_sta_url,hour_station_prv_url,excel_file_dir)
@@ -389,3 +388,60 @@ def leiji(excel_xishanleiji_dir):
     return now_time
 
 
+def save_stationleiji_excel1(url1,yestoday, now_data, now_time,excel_xishanleiji_dir):
+    book = xlwt.Workbook()
+    sheet = book.add_sheet('太原市六城区空气质量数据')
+    n = 1
+    sheet.write(0, 0, '时间')
+    sheet.write(0, 1, '点位名称')
+    sheet.write(0, 2, 'SO2')
+    sheet.write(0, 3, 'NO2')
+    sheet.write(0, 4, 'CO')
+    sheet.write(0, 5, 'O3')
+    sheet.write(0, 6, 'O38')
+    sheet.write(0, 7, 'PM2.5')
+    sheet.write(0, 8, 'PM10')
+    m = 0
+    url = url1.format(now_data, now_time, yestoday)
+    print(url)
+    while True:
+        data = realaqi1(url)
+        if len(data) == 0:
+            time.sleep(60)
+            print(m)
+            m += 1
+            if m >= 10:
+                break
+        else:
+
+            for i in data:
+                print(i)
+                if i['name'] == '西山':
+                    sheet.write(n, 0, i['dataTime'])
+                    sheet.write(n, 1, '西山')
+                    sheet.write(n, 2, i['so2'])
+                    sheet.write(n, 3, i['no2'])
+                    sheet.write(n, 4, i['co'])
+                    sheet.write(n, 5, i['o31'])
+                    sheet.write(n, 6, i['o38'])
+                    sheet.write(n, 7, i['pm25'])
+                    sheet.write(n, 8, i['pm10'])
+            break
+    book.save(excel_xishanleiji_dir)
+    if now_time == '00':
+        now_time = "24"
+    return now_time
+
+
+
+def leiji1(excel_xishanleiji_dir):
+    if datetime.strftime(datetime.now(), '%H') == '00':
+        yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    else:
+        yestoday = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    now_data = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    now_time = datetime.strftime(datetime.now(), '%H')
+    now_time1 = save_stationleiji_excel1(hour_station_lj_url,yestoday, now_data, now_time,excel_xishanleiji_dir)
+    return now_time1
+
+# leiji1("excelfiles\西山点位累计数据.xls")

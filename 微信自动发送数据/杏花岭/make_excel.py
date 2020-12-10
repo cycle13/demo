@@ -31,7 +31,7 @@ def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
     df['排名5'] = df["浓度值5"].rank(method='min', ascending=True)
     df['排名6'] = df["浓度值6"].rank(method='min', ascending=True)
     df['综合指数排名6'] = df["综合指数"].rank(method='min', ascending=True)
-    df = df.sort_values(by=rank_name)
+    df = df.sort_values(by=rank_name,ascending=True,na_position='last')
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
 
@@ -44,16 +44,19 @@ def excel_c(excel_filenew_dir,name_c,excel_filerank_dir):
     for i in range(1,10):
         if sheet.cell(i, 2).value == name_c:
             n = i
-    if 4 >= sheet.cell(n, 15).value >= 0:
-        color = '00E400'
-    elif 6 >= sheet.cell(n, 15).value > 4:
-        color = 'FFFF00'
-    elif 8 >= sheet.cell(n, 15).value > 6:
-        color = 'FF7E00'
-    elif 10 >= sheet.cell(n, 15).value > 8:
-        color = 'FF0000'
-    elif sheet.cell(n, 15).value > 10:
-        color = '99004C'
+    if sheet.cell(n, 15).value:
+        if 4 >= float(sheet.cell(n, 15).value) >= 0:
+            color = '00E400'
+        elif 6 >= float(sheet.cell(n, 15).value) > 4:
+            color = 'FFFF00'
+        elif 8 >= float(sheet.cell(n, 15).value) > 6:
+            color = 'FF7E00'
+        elif 10 >= float(sheet.cell(n, 15).value) > 8:
+            color = 'FF0000'
+        elif float(sheet.cell(n, 15).value) > 10:
+            color = '99004C'
+        else:
+            color = 'FFFFFF'
     else:
         color = 'FFFFFF'
     print(sheet.cell(n, 15).value)
@@ -98,6 +101,14 @@ def table_border(excel_rank_insert):
 def table_font(excel_filerank_dir,name_table,excel_rank_insert):
     wb = openpyxl.load_workbook(excel_filerank_dir)
     sheet = wb["Sheet1"]
+    nrows = sheet.max_row  # 获得行数
+    ncols = sheet.max_column
+    for i in range(nrows):
+        for j in range(ncols):
+            if sheet.cell(row=i + 1, column=j + 1).value:
+                pass
+            else:
+                sheet.cell(row=i + 1, column=j + 1).value = '-'
     sheet.insert_rows(1)
     sheet.insert_rows(1)
     sheet.column_dimensions['B'].width = 10

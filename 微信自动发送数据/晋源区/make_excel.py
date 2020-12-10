@@ -18,7 +18,7 @@ import glob
 def excel_rank(excel_file_dir,excel_filenew_dir,rank_name):
     df = pd.read_excel(excel_file_dir)
     df['排名'] = df[rank_name].rank(method='min',ascending=True)
-    df = df.sort_values(by=rank_name)
+    df = df.sort_values(by=rank_name,ascending=True,na_position='last')
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
 
@@ -34,7 +34,7 @@ def excel_rank_str(excel_file_dir,excel_filenew_dir,rank_name):
     df = pd.read_excel(excel_file_dir)
     df['排名'] = df[rank_name].rank(method='min', ascending=True)
     df['AQI排名'] = df['AQI'].rank(method='min', ascending=True)
-    df = df.sort_values(by=rank_name)
+    df = df.sort_values(by=rank_name,ascending=True,na_position='last')
     df.reset_index(drop=True, inplace=True)
     df.to_excel(excel_filenew_dir,index=False)
 
@@ -96,18 +96,21 @@ def excel_bz_any(excel_filenew_dir,name_c,excel_filerank_dir):
     for i in range(1,13):
         if sheet.cell(i, 2).value == name_c:
             n = i
-    if 50 >= sheet.cell(n, 9).value >= 0:
-        color = '00E400'
-    elif 100 >= sheet.cell(n, 9).value > 50:
-        color = 'FFFF00'
-    elif 150 >= sheet.cell(n, 9).value > 100:
-        color = 'FF7E00'
-    elif 200 >= sheet.cell(n, 9).value > 150:
-        color = 'FF0000'
-    elif 300 >= sheet.cell(n, 9).value > 200:
-        color = '99004C'
+    if sheet.cell(n, 9).value:
+        if 50 >= float(sheet.cell(n, 9).value) >= 0:
+            color = '00E400'
+        elif 100 >= float(sheet.cell(n, 9).value) > 50:
+            color = 'FFFF00'
+        elif 150 >= float(sheet.cell(n, 9).value) > 100:
+            color = 'FF7E00'
+        elif 200 >= float(sheet.cell(n, 9).value) > 150:
+            color = 'FF0000'
+        elif 300 >= float(sheet.cell(n, 9).value) > 200:
+            color = '99004C'
+        else:
+            color = '7E0023'
     else:
-        color = '7E0023'
+        color = 'FFFFFF'
     fille=PatternFill("solid",fgColor=color)
     for j in range(1,12):
         sheet.cell(n, j).fill = fille
@@ -128,18 +131,21 @@ def excel_bz_hour(excel_filenew_dir,name_c,excel_filerank_dir):
     for i in range(1,8):
         if sheet.cell(i, 2).value == name_c:
             n = i
-    if 50 >= sheet.cell(n, 9).value >= 0:
-        color = '00E400'
-    elif 100 >= sheet.cell(n, 9).value > 50:
-        color = 'FFFF00'
-    elif 150 >= sheet.cell(n, 9).value > 100:
-        color = 'FF7E00'
-    elif 200 >= sheet.cell(n, 9).value > 150:
-        color = 'FF0000'
-    elif 300 >= sheet.cell(n, 9).value > 200:
-        color = '99004C'
+    if sheet.cell(n, 9).value:
+        if 50 >= float(sheet.cell(n, 9).value) >= 0:
+            color = '00E400'
+        elif 100 >= float(sheet.cell(n, 9).value) > 50:
+            color = 'FFFF00'
+        elif 150 >= float(sheet.cell(n, 9).value) > 100:
+            color = 'FF7E00'
+        elif 200 >= float(sheet.cell(n, 9).value) > 150:
+            color = 'FF0000'
+        elif 300 >= float(sheet.cell(n, 9).value) > 200:
+            color = '99004C'
+        else:
+            color = '7E0023'
     else:
-        color = '7E0023'
+        color = 'FFFFFF'
     fille=PatternFill("solid",fgColor=color)
     for j in range(1,12):
         sheet.cell(n, j).fill = fille
@@ -335,6 +341,14 @@ def table_font_six(excel_filerank_dir1, name_table1, excel_rank_insert1):
 def table_font_any(excel_filerank_dir2, name_table2, excel_rank_insert2):
     wb = openpyxl.load_workbook(excel_filerank_dir2)
     sheet = wb["Sheet1"]
+    nrows = sheet.max_row  # 获得行数
+    ncols = sheet.max_column
+    for i in range(nrows):
+        for j in range(ncols):
+            if sheet.cell(row=i + 1, column=j + 1).value:
+                pass
+            else:
+                sheet.cell(row=i + 1, column=j + 1).value = '-'
     sheet.insert_rows(1)
     sheet.column_dimensions['B'].width = 15
     # sheet.column_dimensions['C'].width = 20

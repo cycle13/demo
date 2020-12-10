@@ -26,10 +26,10 @@ def send_excelpic(name,excel_file_dir,excel_filenew_dir,excel_add_name,rank_name
 def send_line_pic(name,excel_file_dir,image_file):
     windows_opr.FindWindow(name)
     df = pd.read_excel(excel_file_dir)
-    line_bar.line_bar(df['时间'], df['PM2.5'], '西山PM2.5', '时间', '浓度 μg/m3',image_file,"PM25")
-    line_bar.line_bar(df['时间'], df['PM10'], '西山PM10', '时间', '浓度 μg/m3', image_file,"PM10")
-    line_bar.line_bar(df['时间'], df['NO2'], '西山NO2', '时间', '浓度 μg/m3', image_file,"NO2")
-    line_bar.line_bar(df['时间'], df['SO2'], '西山SO2', '时间', '浓度 μg/m3', image_file,"SO2")
+    line_bar.line_bar(df['时间'], df['PM2.5'], 'PM2.5', '西山', '浓度 μg/m3',image_file,"PM25")
+    line_bar.line_bar(df['时间'], df['PM10'], 'PM10', '西山', '浓度 μg/m3', image_file,"PM10")
+    line_bar.line_bar(df['时间'], df['NO2'], 'NO2', '西山', '浓度 μg/m3', image_file,"NO2")
+    line_bar.line_bar(df['时间'], df['SO2'], 'SO2', '西山', '浓度 μg/m3', image_file,"SO2")
     for i in send_text_image.get_file(image_file):
         send_text_image.paste_img(image_file + "\\" + i)
         windows_opr.send()
@@ -60,8 +60,8 @@ def wanbaicg(name):
     name_table = '{}AQI排名'.format(time_data)
     m = make_excel.excel_rank_c(excel_starank_dir,excel_starank_dir1,"AQI排名",'AQI','西山')
     n = make_excel.excel_rank_c(excel_sixrank_dir,excel_sixrank_dir1, "AQI排名", 'AQI', '万柏林区')
-    now_time = wanbai_spider.leiji(excel_xishanleiji_dir)
-
+    now_time = wanbai_spider.leiji1(excel_xishanleiji_dir)
+    print(now_time)
     l = "【点位空气质量变化情况】\n     {}，西山点位：AQI为{}，{}{}" \
         "，首要污染物：{}，在全市11个标准站中排名第{}，六城区排名第{}。\n     PM2.5实时浓度为{}μg/m³，" \
         "今日{}时平均浓度为{}μg/m³；\n     PM10实时浓度为{}μg/m³，今日{}时平均浓度为{}μg/m³" \
@@ -240,5 +240,3 @@ def wanbaiadd():
     name_table = '备注：各点位按PM2.5当日累计浓度排序'
 
     send_exceladd_pic(name,excel_file_dir,excel_filenew_dir,excel_filerank_dir,excel_rank_insert,rank_name,name_c,name_table)
-
-

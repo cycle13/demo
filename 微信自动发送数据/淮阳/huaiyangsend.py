@@ -262,7 +262,7 @@ def pre_hn_air(name):
         send_text_image.del_files("image_pic")
 
 
-pre_hn_air('王彦军')
+# pre_hn_air('王彦军')
 # yearleijisend('王彦军')
 # hoursend('王彦军')
 # save_data()

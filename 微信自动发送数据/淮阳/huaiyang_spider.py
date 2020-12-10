@@ -252,3 +252,8 @@ def save_hn_date(line_date):
         os.remove(excel_dir)
         wb.save(excel_dir)
 
+
+
+# url = 'https://page.henan.gov.cn/api/stt-weather'
+# res = session.post(url).text
+# print(res)

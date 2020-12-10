@@ -331,8 +331,6 @@ def excel_rank_c(excel_file_dir,excel_file_dir1,excel_add_name,rank_name,name_c)
 def quanmean(excel_xishanleiji_dir,name):
     df = pd.read_excel(excel_xishanleiji_dir)
     quan = df[name]
-    quan = quan[quan>0]
-    jun = round(quan.mean(),0)
-    return jun
+    return quan
 
 
