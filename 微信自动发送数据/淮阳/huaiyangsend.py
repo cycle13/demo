@@ -235,7 +235,7 @@ def yearleijisend(name):
 def save_data():
     my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
     line_date = 'hnalldata/' + my_datatime
-    huaiyang_spider.save_hn_date(line_date)
+    huaiyang_spider.save_hn_date1(line_date)
 
 
 

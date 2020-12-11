@@ -348,7 +348,7 @@ def save_hn_date1(line_date):
             pass
 
 
-save_hn_date1("line_date")
+# save_hn_date1("line_date")
 # def save_hn_date(line_date):
 #     my_datatime = datetime.strftime(datetime.now(),'%Y-%m-%d')
 #     print(my_datatime)
