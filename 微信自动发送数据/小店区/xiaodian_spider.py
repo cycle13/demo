@@ -2,6 +2,7 @@ import time
 import requests
 import json
 import xlwt
+from decimal import *
 from datetime import datetime
 
 
@@ -76,7 +77,7 @@ def save_zong_excel(url):
         if ((k["so2"] == '-') or (k["no2"] == '-') or (k["co"] == '-') or (k["o31"] == '-') or (k["pm25"] == '-') or (k["pm10"] == '-')):
             sheet.write(n, 1, None)
         else:
-            sheet.write(n, 1, k["totalIndex"])
+            sheet.write(n, 1, str(Decimal(k["totalIndex"]).quantize(Decimal('0.00'))))
         sheet.write(n, 3, k['primaryPollutant'])
         n+=1
         now_datetime = k['dataTime']

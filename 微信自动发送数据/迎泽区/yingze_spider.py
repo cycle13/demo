@@ -2,6 +2,7 @@ import time
 import requests
 import json
 import xlwt
+from decimal import *
 from datetime import datetime
 
 
@@ -43,7 +44,7 @@ def save_location_excel(url):
     while True:
         data = realaqi(url)
         if len(data) == 0:
-            time.sleep(180)
+            time.sleep(60)
             print(m)
             m+=1
             if m>=10:
@@ -55,10 +56,10 @@ def save_location_excel(url):
         if ((k["so2"] == '-') or (k["no2"] == '-') or (k["co"] == '-') or (k["o31"] == '-') or (k["pm25"] == '-') or (k["pm10"] == '-')):
             sheet.write(n, 2, None)
         else:
-            sheet.write(n, 2, k["totalIndex"])
+            sheet.write(n, 2, str(Decimal(k["totalIndex"]).quantize(Decimal('0.00'))))
         sheet.write(n, 3, k["so2"])
         sheet.write(n, 4, k["no2"])
-        sheet.write(n, 5, k["co"])
+        sheet.write(n, 5, str(Decimal(k["co"]).quantize(Decimal('0.0'))))
         sheet.write(n, 6, k["o31"])
         sheet.write(n, 7, k["pm25"])
         sheet.write(n, 8, k["pm10"])

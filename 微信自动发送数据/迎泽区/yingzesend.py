@@ -88,4 +88,4 @@ def hourjc(name):
     send_excelhourjc_pic(name, excel_file_dir, excel_filenew_dir,rank_name,excel_rank_insert)
 
 
-hoursend('王彦军')
+# hoursend('王彦军')

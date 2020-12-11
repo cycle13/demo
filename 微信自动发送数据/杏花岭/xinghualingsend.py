@@ -41,11 +41,11 @@ def send_line_pic(name,excel_file_dir,image_title,image_file):
     send_text_image.del_files(image_file)
 
 
-def hoursend():
+def hoursend(name):
     sl = xinghualing_spider.station()
     sx = xinghualing_spider.station1()
     # 发送文本
-    name = '王彦军'
+    # name = '王彦军'
     # 发送excel表格1
     excel_file_dir = r'excelfiles\杏花岭小时推送数据.xls'
     excel_filenew_dir = r'excelfiles\杏花岭小时推送数据排名.xlsx'
@@ -84,9 +84,9 @@ def hoursend():
     send_line_pic(name, excel_file_dir,sx[0]+sx[1], image_file)
 
 
-def hourlastsend():
+def hourlastsend(name):
     # 发送文本
-    name = '王彦军'
+    # name = '王彦军'
     l = "【空气质量播报】\n{}巨轮点位累计综合" \
         "指数为{}，在太原市八个国控点中排名{}，管控{}，累计综" \
         "合指数与各项污染物浓度排名及PM2.5、PM10、NO2浓度{}趋" \
@@ -111,5 +111,5 @@ def hourlastsend():
     send_line_pic(name, excel_file_dir, image_file)
 
 
-hoursend()
+# hoursend('王彦军')
 

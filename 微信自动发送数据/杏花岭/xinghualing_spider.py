@@ -2,6 +2,7 @@ import time
 import requests
 import json
 import xlwt
+from decimal import *
 from datetime import datetime
 import datetime as datatime
 
@@ -85,7 +86,7 @@ def save_station1_excel(yestoday,now_data,now_time):
             sheet.write(n, 1, k['name'])
             sheet.write(n, 2, k["so2"])
             sheet.write(n, 4, k["no2"])
-            sheet.write(n, 6, k["co"])
+            sheet.write(n, 6, str(Decimal(k["co"]).quantize(Decimal('0.0'))))
             sheet.write(n, 8, k["o38"])
             sheet.write(n, 10, k["pm25"])
             sheet.write(n, 12, k["pm10"])

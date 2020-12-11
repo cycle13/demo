@@ -34,10 +34,10 @@ def send_excel(name,excel_rank_insert1,excel_rank_insert2):
     windows_opr.CloseWindow(name)
 
 
-def hoursend():
+def hoursend(name):
     sl = jinyuan_spider.location()
     sx = jinyuan_spider.station()
-    name = '王彦军'
+    # name = '王彦军'
     # l = '【{}时AQI排名情况】\n{} {}时，晋源' \
     #     '区AQI为{}，{},首要污染物：{}，在六城区' \
     #     '中排名{}；\n晋源点位：AQI为{}，{},首要污' \
@@ -76,4 +76,4 @@ def hoursend():
     send_text(name, k)
     send_excel(name, excel_rank_insert1, excel_rank_insert2)
 
-hoursend()
+# hoursend('王彦军')

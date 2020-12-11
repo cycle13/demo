@@ -165,7 +165,10 @@ def save_stationtable_excel(url,url1,excel_file_dir):
     for k in data:
         print(data)
         sheet.write(n, 1, k['name'])
-        sheet.write(n, 2, k["aqi"])
+        if k["aqi"] == '-':
+            sheet.write(n, 2, None)
+        else:
+            sheet.write(n, 2, k["aqi"])
         sheet.write(n, 3, k["primaryPollutant"])
         qua = []
         if 'PM10' in k["primaryPollutant"]:
