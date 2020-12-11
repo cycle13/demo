@@ -163,7 +163,7 @@ def save_excel1(excel_file_dir):
 
 
 def save_date1(line_date):
-    my_datatime = datetime.strftime(datetime.now(),'%Y-%m-%d')
+    my_datatime = (datetime.now() + datatime.timedelta(hours=-1)).strftime("%Y-%m-%d")
     print(my_datatime)
     l = realaqi(url_aqi)
     data = json.loads(l)['data']
@@ -298,7 +298,7 @@ def yearleiji(excel_file_dir):
 
 
 def save_hn_date1(line_date):
-    my_datatime = datetime.strftime(datetime.now(),'%Y-%m-%d')
+    my_datatime = (datetime.now() + datatime.timedelta(hours=-1)).strftime("%Y-%m-%d")
     print(my_datatime)
     l = realaqi(url_aqi)
     data = json.loads(l)['data']

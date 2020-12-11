@@ -108,7 +108,8 @@ def hoursend(name):
         add_name2 = 'PM10排名'
         name_c = '淮阳县'
         name_table = '周口市九区县{}时PM2.5和PM10排名及各污染物详情表'
-        my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
+        # my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
+        my_datatime = (datetime.now() + datatime.timedelta(hours=-1)).strftime("%Y-%m-%d")
         line_date = 'excellinefiles/' + my_datatime
         l = make_excelhour(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert)
         print('已对数据排名、充填和插入表标题')
@@ -233,7 +234,7 @@ def yearleijisend(name):
 
 
 def save_data():
-    my_datatime = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    my_datatime = (datetime.now() + datatime.timedelta(hours=-1)).strftime("%Y-%m-%d")
     line_date = 'hnalldata/' + my_datatime
     huaiyang_spider.save_hn_date1(line_date)
 
