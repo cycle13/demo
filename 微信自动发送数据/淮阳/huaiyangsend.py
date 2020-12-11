@@ -92,7 +92,7 @@ def send_pic_line(name, line_excel, line_excel2,image_title_PM25,image_title_PM1
 
 
 def hoursend(name):
-    # try:
+    try:
         # 发送文本
         # 发送excel表格1
         excel_file_dir = r'excelfiles\周口市区县数据.xls'
@@ -162,9 +162,9 @@ def hoursend(name):
             windows_opr.altS()
             time.sleep(1)
             windows_opr.CloseWindow(name)
-    # except:
-    #     time.sleep(60)
-    #     hoursend(name)
+    except:
+        time.sleep(60)
+        hoursend(name)
 
 
 def hourleijisend(name):
