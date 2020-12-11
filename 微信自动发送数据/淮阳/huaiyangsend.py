@@ -7,6 +7,7 @@ import pre_air
 from datetime import datetime
 import datetime as datatime
 import huaiyang_spider
+import county_aqi
 import json
 import time
 import demo
@@ -262,6 +263,25 @@ def pre_hn_air(name):
         send_text_image.del_files("image_pic")
 
 
+def pre_county_air(name):
+    data = county_aqi.real()
+    for i in data:
+        if i == data[0]:
+            m = i + '\n'
+        else:
+            m = m+i+'\n'
+    l = '环境气象公报\n{}'.format(m)
+    send_text(name,l)
+    windows_opr.FindWindow(name)
+    for i in send_text_image.get_file("county_image"):
+        send_text_image.paste_img("county_image" + "\\" + i)
+        windows_opr.send()
+        time.sleep(1)
+    windows_opr.CloseWindow(name)
+    send_text_image.del_files("county_image")
+
+
+# pre_county_air('王彦军')
 # pre_hn_air('王彦军')
 # yearleijisend('王彦军')
 # hoursend('王彦军')
