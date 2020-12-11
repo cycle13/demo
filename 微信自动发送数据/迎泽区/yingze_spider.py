@@ -63,7 +63,10 @@ def save_location_excel(url):
         sheet.write(n, 6, k["o31"])
         sheet.write(n, 7, k["pm25"])
         sheet.write(n, 8, k["pm10"])
-        sheet.write(n, 9, k["aqi"])
+        if k["aqi"] == '-':
+            sheet.write(n, 9, None)
+        else:
+            sheet.write(n, 9, k["aqi"])
         sheet.write(n, 10, k["primaryPollutant"])
         sheet.write(n, 11, k['airQualityLevel'])
         sheet.write(n, 12, k['airQualityType'])

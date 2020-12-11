@@ -17,7 +17,7 @@ headers = {
 
 def realaqi(hour_local_std_url):
     res = session.get(hour_local_std_url,headers=headers).text
-    # res = res.replace('NA','-')
+    res = res.replace('NA','-')
     data = json.loads(res)
     return data
 
@@ -57,7 +57,10 @@ def save_location_excel(url):
         sheet.write(n, 5, k["o31"])
         sheet.write(n, 6, k["pm25"])
         sheet.write(n, 7, k["pm10"])
-        sheet.write(n, 8, k["aqi"])
+        if k["aqi"] == '-':
+            sheet.write(n, 8, None)
+        else:
+            sheet.write(n, 8, k["aqi"])
         sheet.write(n, 9, k["primaryPollutant"])
         sheet.write(n, 10, k['airQualityLevel'])
         sheet.write(n, 11, k['airQualityType'])
@@ -104,7 +107,10 @@ def save_station_excel(url,url1):
         sheet.write(n, 5, k["o31"])
         sheet.write(n, 6, k["pm25"])
         sheet.write(n, 7, k["pm10"])
-        sheet.write(n, 8, k["aqi"])
+        if k["aqi"] == '-':
+            sheet.write(n, 8, None)
+        else:
+            sheet.write(n, 8, k["aqi"])
         sheet.write(n, 9, k["primaryPollutant"])
         sheet.write(n, 10, k['airQualityLevel'])
         sheet.write(n, 11, k['airQualityType'])
@@ -128,7 +134,10 @@ def save_station_excel(url,url1):
         sheet.write(n, 5, k["o31"])
         sheet.write(n, 6, k["pm25"])
         sheet.write(n, 7, k["pm10"])
-        sheet.write(n, 8, k["aqi"])
+        if k["aqi"] == '-':
+            sheet.write(n, 8, None)
+        else:
+            sheet.write(n, 8, k["aqi"])
         sheet.write(n, 9, k["primaryPollutant"])
         sheet.write(n, 10, k['airQualityLevel'])
         sheet.write(n, 11, k['airQualityType'])

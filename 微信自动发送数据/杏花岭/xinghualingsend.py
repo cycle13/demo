@@ -111,5 +111,5 @@ def hourlastsend(name):
     send_line_pic(name, excel_file_dir, image_file)
 
 
-# hoursend('王彦军')
+hoursend('王彦军')
 
