@@ -23,7 +23,7 @@ def send_text(name,l):
 
 
 def make_excelhour(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert):
-    huaiyang_spider.save_excel(excel_file_dir)
+    huaiyang_spider.save_excel1(excel_file_dir)
     make_excel.excel_rank(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2, rank_name1,rank_name2,add_name1,add_name2)
     l = make_excel.excel_c(excel_filenew_dir1, name_c, excel_filerank_dir)
     make_excel.table_font(excel_filerank_dir, name_table.format(l[0][0:2]), excel_rank_insert)
@@ -92,7 +92,7 @@ def send_pic_line(name, line_excel, line_excel2,image_title_PM25,image_title_PM1
 
 
 def hoursend(name):
-    try:
+    # try:
         # 发送文本
         # 发送excel表格1
         excel_file_dir = r'excelfiles\周口市区县数据.xls'
@@ -124,14 +124,15 @@ def hoursend(name):
             if l[0][0:2] != "无":
                 print('空气质量数据获取成功')
                 if data['rcode'] == 200:
-                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。其中：\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      气象条件：当前湿度{}%，温度为{}℃，风力为{}，风向为{}。".format(l[0][0:2],l[1], l[2], l[3], l[4],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13], data['humidity'], data['temperature'], data['windpower'],data['winddirect'])
+                    # k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。其中：\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      气象条件：当前湿度{}%，温度为{}℃，风力为{}，风向为{}。".format(l[0][0:2],l[1], l[2], l[3], l[4],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13], data['humidity'], data['temperature'], data['windpower'],data['winddirect'])
+                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。\n      气象条件：当前湿度{}%，温度为{}℃，风力为{}，风向为{}。".format(l[0][0:2], l[1], l[2], l[3], l[4],data['humidity'], data['temperature'], data['windpower'], data['winddirect'])
                     print('气象数据获取成功')
                     send_text(name, k)
                     time.sleep(4)
                     send_excel(name, excel_rank_insert)
                 else:
-                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。其中：\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。气象数" \
-                        "据缺失！".format(l[0][0:2],l[1], l[2], l[3], l[4],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13])
+                    # k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。其中：\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。气象数" \"据缺失！".format(l[0][0:2],l[1], l[2], l[3], l[4],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13])
+                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。\n      气象数据缺失！".format(l[0][0:2], l[1], l[2], l[3], l[4])
                     print('气象数据缺失')
                     send_text(name, k)
                     time.sleep(4)
@@ -140,7 +141,7 @@ def hoursend(name):
                 send_pic(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file)
 
                 # 做折线图
-                huaiyang_spider.save_date(line_date)
+                huaiyang_spider.save_date1(line_date)
                 line_excel = line_date+'/'+'淮阳县' + my_datatime+".xls"
                 send_picline(name,line_excel,image_title,image_file)
 
@@ -161,9 +162,9 @@ def hoursend(name):
             windows_opr.altS()
             time.sleep(1)
             windows_opr.CloseWindow(name)
-    except:
-        time.sleep(60)
-        hoursend(name)
+    # except:
+    #     time.sleep(60)
+    #     hoursend(name)
 
 
 def hourleijisend(name):
@@ -285,6 +286,7 @@ def pre_county_air(name):
 # pre_hn_air('王彦军')
 # yearleijisend('王彦军')
 # hoursend('王彦军')
+# hourleijisend('王彦军')
 # save_data()
 # image_file = 'image_file'
 # image_title = '淮阳区颗粒物0时至{}时折线图--测试'.format("l[0][0:2]")

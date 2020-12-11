@@ -98,17 +98,18 @@ def excel_c(excel_filenew_dir, name_c, excel_filerank_dir):
     pm10nong = sheet.cell(n, 7).value
     pm25rank = sheet.cell(n, 11).value
     pm10rank = sheet.cell(n, 12).value
-    hbstation = sheet.cell(n, 13).value
-    hbpm25 = sheet.cell(n, 15).value
-    hbpm10 = sheet.cell(n, 14).value
-    zlstation = sheet.cell(n, 16).value
-    zlpm25 = sheet.cell(n, 18).value
-    zlpm10 = sheet.cell(n, 17).value
-    bgstation = sheet.cell(n, 19).value
-    bgpm25 = sheet.cell(n, 21).value
-    bgpm10 = sheet.cell(n, 20).value
+    # hbstation = sheet.cell(n, 13).value
+    # hbpm25 = sheet.cell(n, 15).value
+    # hbpm10 = sheet.cell(n, 14).value
+    # zlstation = sheet.cell(n, 16).value
+    # zlpm25 = sheet.cell(n, 18).value
+    # zlpm10 = sheet.cell(n, 17).value
+    # bgstation = sheet.cell(n, 19).value
+    # bgpm25 = sheet.cell(n, 21).value
+    # bgpm10 = sheet.cell(n, 20).value
     wb.save(excel_filerank_dir)
-    return (pm25time,pm25nong,pm25rank,pm10nong,pm10rank,hbstation,hbpm25,hbpm10,zlstation,zlpm25,zlpm10,bgstation,bgpm25,bgpm10)
+    # return (pm25time,pm25nong,pm25rank,pm10nong,pm10rank,hbstation,hbpm25,hbpm10,zlstation,zlpm25,zlpm10,bgstation,bgpm25,bgpm10)
+    return (pm25time,pm25nong,pm25rank,pm10nong,pm10rank)
 
 
 def excel_cleiji(excel_filenew_dir, name_c, excel_filerank_dir):

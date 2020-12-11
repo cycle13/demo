@@ -73,9 +73,10 @@ def saveleiji_excel(excel_file_dir):
     book.save(excel_file_dir)
 
 
-def save_excel(excel_file_dir):
+# 更换数据源后的数据
+def save_excel1(excel_file_dir):
     book = xlwt.Workbook()
-    sheet = book.add_sheet('淮阳县空气质量数据')
+    sheet = book.add_sheet('淮阳县空气质量累积数据')
     n = 1
     sheet.write(0,0,'区县')
     sheet.write(0,1,'时间')
@@ -85,13 +86,13 @@ def save_excel(excel_file_dir):
     sheet.write(0,5,'NO2')
     sheet.write(0,6,'PM10')
     sheet.write(0,7,'PM2.5')
-    sheet.write(0,8,'AQI')
-    sheet.write(0,9,'首要污染物')
+    sheet.write(0, 8, 'AQI')
+    sheet.write(0, 9, '首要污染物')
     sheet.write(0, 10, 'PM2.5排名')
     sheet.write(0, 11, 'PM10排名')
     time.sleep(5)
-    l = real(url_list)
-    data = json.loads(l)['detail']
+    l = realaqi(url_aqi)
+    data = json.loads(l)['data']
     for k in data:
         if k['CITY'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市']:
             sheet.write(n, 0, k['CITY'])
@@ -107,23 +108,65 @@ def save_excel(excel_file_dir):
             sheet.write(n, 7, k['PM25'])
             sheet.write(n, 8, k['AQI'])
             sheet.write(n, 9, k['PRIMARYPOLLUTANT'])
-
-            if k['CITY'] =='淮阳县':
-                x = 0
-                for l in k['STATIONS']:
-                    sheet.write(n, 12+x, l['STATIONNAME'])
-                    sheet.write(n, 13+x, l['PM10'])
-                    sheet.write(n, 14+x, l['PM25'])
-                    x+=3
-            n += 1
+            n+=1
     book.save(excel_file_dir)
 
 
-def save_date(line_date):
+
+
+
+# 之前的数据
+# def save_excel(excel_file_dir):
+#     book = xlwt.Workbook()
+#     sheet = book.add_sheet('淮阳县空气质量数据')
+#     n = 1
+#     sheet.write(0,0,'区县')
+#     sheet.write(0,1,'时间')
+#     sheet.write(0,2,'CO')
+#     sheet.write(0,3,'O3')
+#     sheet.write(0,4,'SO2')
+#     sheet.write(0,5,'NO2')
+#     sheet.write(0,6,'PM10')
+#     sheet.write(0,7,'PM2.5')
+#     sheet.write(0,8,'AQI')
+#     sheet.write(0,9,'首要污染物')
+#     sheet.write(0, 10, 'PM2.5排名')
+#     sheet.write(0, 11, 'PM10排名')
+#     time.sleep(5)
+#     l = real(url_list)
+#     data = json.loads(l)['detail']
+#     for k in data:
+#         if k['CITY'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市']:
+#             sheet.write(n, 0, k['CITY'])
+#             try:
+#                 sheet.write(n, 1, k["MONIDATE"].split(" ")[1])
+#             except:
+#                 sheet.write(n, 1, "无")
+#             sheet.write(n, 2, k['CO'])
+#             sheet.write(n, 3, k['O3'])
+#             sheet.write(n, 4, k['SO2'])
+#             sheet.write(n, 5, k['NO2'])
+#             sheet.write(n, 6, k['PM10'])
+#             sheet.write(n, 7, k['PM25'])
+#             sheet.write(n, 8, k['AQI'])
+#             sheet.write(n, 9, k['PRIMARYPOLLUTANT'])
+#
+#             if k['CITY'] =='淮阳县':
+#                 x = 0
+#                 for l in k['STATIONS']:
+#                     sheet.write(n, 12+x, l['STATIONNAME'])
+#                     sheet.write(n, 13+x, l['PM10'])
+#                     sheet.write(n, 14+x, l['PM25'])
+#                     x+=3
+#             n += 1
+#     book.save(excel_file_dir)
+
+
+def save_date1(line_date):
     my_datatime = datetime.strftime(datetime.now(),'%Y-%m-%d')
     print(my_datatime)
-    l = real(url_list)
-    data = json.loads(l)['detail']
+    l = realaqi(url_aqi)
+    data = json.loads(l)['data']
     print(data)
     for k in data:
         if k['CITY'] in ['沈丘县', '商水县', '西华县', '扶沟县', '郸城县', '淮阳县', '太康县', '鹿邑县', '项城市']:
@@ -145,7 +188,8 @@ def save_date(line_date):
                 worksheet.write(0,8,label = '首要污染物')
                 worksheet.write(0, 9, label='时间')
                 workbook.save(line_date+'/'+k['CITY'] + my_datatime+".xls")
-            n = int(datetime.strftime(datetime.now(),'%H'))
+            # n = int(datetime.strftime(datetime.now(),'%H'))
+            n = int((datetime.now() + datatime.timedelta(hours=-1)).strftime("%H"))
             rb = xlrd.open_workbook(line_date + '/' + k['CITY'] + my_datatime + ".xls")
             wb = copy(rb)
             sheet = wb.get_sheet(0)
@@ -163,6 +207,52 @@ def save_date(line_date):
             excel_dir = line_date+'/'+k['CITY'] + my_datatime+".xls"
             os.remove(excel_dir)
             wb.save(excel_dir)
+
+# 用的之前数据源
+# def save_date(line_date):
+#     my_datatime = datetime.strftime(datetime.now(),'%Y-%m-%d')
+#     print(my_datatime)
+#     l = real(url_list)
+#     data = json.loads(l)['detail']
+#     print(data)
+#     for k in data:
+#         if k['CITY'] in ['沈丘县', '商水县', '西华县', '扶沟县', '郸城县', '淮阳县', '太康县', '鹿邑县', '项城市']:
+#         # if k['CITY'] in ['淮阳县']:
+#             if not os.path.exists(line_date):
+#                 os.makedirs(line_date)
+#             if not os.path.exists(line_date+'/'+k['CITY'] + my_datatime+".xls"):
+#                 os.system(line_date+'/'+k['CITY'] + my_datatime+".xls")
+#                 workbook = xlwt.Workbook(encoding='utf-8')
+#                 worksheet = workbook.add_sheet('数据')
+#                 worksheet.write(0,0,label = '日期')
+#                 worksheet.write(0,1,label = 'SO2')
+#                 worksheet.write(0,2,label = 'NO2')
+#                 worksheet.write(0,3,label = 'PM2.5')
+#                 worksheet.write(0,4,label = 'PM10')
+#                 worksheet.write(0,5,label = 'CO')
+#                 worksheet.write(0,6,label = 'O3')
+#                 worksheet.write(0,7,label = 'AQI')
+#                 worksheet.write(0,8,label = '首要污染物')
+#                 worksheet.write(0, 9, label='时间')
+#                 workbook.save(line_date+'/'+k['CITY'] + my_datatime+".xls")
+#             n = int(datetime.strftime(datetime.now(),'%H'))
+#             rb = xlrd.open_workbook(line_date + '/' + k['CITY'] + my_datatime + ".xls")
+#             wb = copy(rb)
+#             sheet = wb.get_sheet(0)
+#             sheet.write(n+1,0,label = k["MONIDATE"])
+#             sheet.write(n+1,1,label = k['SO2'])
+#             sheet.write(n+1,2,label = k['NO2'])
+#             sheet.write(n+1,3,label = k['PM25'])
+#             sheet.write(n+1,4,label = k['PM10'])
+#             sheet.write(n+1,5,label = k['CO'])
+#             sheet.write(n+1,6,label = k['O3'])
+#             sheet.write(n+1,7,label = k['AQI'])
+#             sheet.write(n+1,8,label = k['PRIMARYPOLLUTANT'])
+#             for i in range(0,n+1):
+#                 sheet.write(i+1, 9, label=str(i)+'时')
+#             excel_dir = line_date+'/'+k['CITY'] + my_datatime+".xls"
+#             os.remove(excel_dir)
+#             wb.save(excel_dir)
 
 
 
