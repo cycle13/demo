@@ -190,6 +190,21 @@ def table_font(excel_filerank_dir, name_table, excel_rank_insert):
     table_border(excel_rank_insert)
 
 
+def table_font_year(excel_filerank_dir, name_table):
+    wb = openpyxl.load_workbook(excel_filerank_dir)
+    sheet = wb["Sheet1"]
+    sheet.insert_rows(1)
+    sheet.column_dimensions['M'].width = 10
+    sheet.column_dimensions['N'].width = 10
+    sheet.column_dimensions['O'].width = 12
+    sheet.cell(1, 1).value = name_table
+    sheet["A1"].font = Font(size = 16,bold = True,color = "000000")
+    sheet.merge_cells('A1:O1')
+    wb.save(excel_filerank_dir)
+    set_from_center(excel_filerank_dir)
+    table_border(excel_filerank_dir)
+
+
 def table_fontleiji(excel_filerank_dir, name_table, excel_rank_insert):
     wb = openpyxl.load_workbook(excel_filerank_dir)
     sheet = wb["Sheet1"]

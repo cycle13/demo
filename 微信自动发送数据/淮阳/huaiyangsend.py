@@ -220,6 +220,8 @@ def yearleijisend(name):
     huaiyang_spider.yearleiji(excel_file_dir)
     make_excel.excel_yearrank(excel_file_dir,excel_file_dir1)
     make_excel.excel_yearc(excel_file_dir1)
+    name_table = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y")+'年截止'+(datetime.now() + datatime.timedelta(days=-1)).strftime("%m")+'月'+(datetime.now() + datatime.timedelta(days=-1)).strftime("%d")+'日'+'周口市九区县各污染物浓度及排名情况表'
+    make_excel.table_font_year(excel_file_dir1, name_table)
     send_text_image.excel_catch_screenyearleiji(excel_file_dir1)
     windows_opr.ctrlV()
     windows_opr.altS()
@@ -285,7 +287,7 @@ def pre_county_air(name):
 
 # pre_county_air('王彦军')
 # pre_hn_air('王彦军')
-# yearleijisend('王彦军')
+yearleijisend('王彦军')
 # hoursend('王彦军')
 # hourleijisend('王彦军')
 # save_data()

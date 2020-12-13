@@ -10,6 +10,7 @@ import datetime as datatime
 
 
 session = requests.Session()
+hour24 = 'http://1.192.88.18:8007/api/v1/ChinaAir/get24History/411627'
 first_url = 'http://service.envicloud.cn:8082/v2/weatherhistory/ZGVTBZE0NDI5MDM0MJAZNDC=/'
 first_url_day = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/dayAqi2018_county'
 first_url_month = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/airreport2018_county'

@@ -76,7 +76,7 @@ def excel_catch_screenyearleiji(excel_rank_insert):
     wb = excel.Workbooks.Open(excel_rank_insert)  # 打开excel
     # wb = excel.Workbooks.Open(r"D:\Program Files\pycharm\机器人发送数据\周口市区县数据排名充填.xlsx")  # 打开excel
     ws = wb.Sheets("Sheet1")  # 选择sheet
-    ws.Range("A1:O10").CopyPicture()  # 复制图片区域
+    ws.Range("A1:O11").CopyPicture()  # 复制图片区域
     ws.Paste()  # 粘贴 ws.Paste(ws.Range('B1'))  # 将图片移动到具体位置
     name = str(uuid.uuid4())  # 重命名唯一值
     new_shape_name = name[:6]
