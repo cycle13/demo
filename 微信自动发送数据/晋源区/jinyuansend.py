@@ -76,4 +76,4 @@ def hoursend(name):
     send_text(name, k)
     send_excel(name, excel_rank_insert1, excel_rank_insert2)
 
-hoursend('王彦军')
+# hoursend('王彦军')
