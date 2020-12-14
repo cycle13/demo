@@ -1,4 +1,5 @@
 import make_excel
+import time
 import send_text_image
 import windows_opr
 import jinyuan_spider
@@ -34,7 +35,7 @@ def send_excel(name,excel_rank_insert1,excel_rank_insert2):
     windows_opr.CloseWindow(name)
 
 
-def hoursend(name):
+def hoursend(name1,name2):
     sl = jinyuan_spider.location()
     sx = jinyuan_spider.station()
     # name = '王彦军'
@@ -73,7 +74,11 @@ def hoursend(name):
                                                        l[0][0], l[0][1], l[0][4], l[0][2], l[0][3],
                                                        l[1][0], l[1][1], l[1][4], l[1][2], l[1][3], l[2][0],
                                                        l[2][1], l[2][4], l[2][2], l[2][3])
-    send_text(name, k)
-    send_excel(name, excel_rank_insert1, excel_rank_insert2)
+    send_text(name1, k)
+    time.sleep(2)
+    send_text(name2, k)
+    send_excel(name1, excel_rank_insert1, excel_rank_insert2)
+    time.sleep(2)
+    send_excel(name2, excel_rank_insert1, excel_rank_insert2)
 
-# hoursend('王彦军')
+# hoursend('王彦军','王彦军')
