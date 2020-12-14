@@ -287,7 +287,7 @@ def pre_county_air(name):
 
 # pre_county_air('王彦军')
 # pre_hn_air('王彦军')
-yearleijisend('王彦军')
+# yearleijisend('王彦军')
 # hoursend('王彦军')
 # hourleijisend('王彦军')
 # save_data()
