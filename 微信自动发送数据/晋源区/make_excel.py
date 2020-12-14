@@ -119,6 +119,14 @@ def excel_bz_any(excel_filenew_dir,name_c,excel_filerank_dir):
     aqidengji = sheet.cell(n, 11).value
     shouyao = sheet.cell(n, 10).value
     aqirank = sheet.cell(n, 13).value
+    x = 0
+    for j in range(1, 12):
+        if sheet.cell(j, 13).value == aqirank:
+            x += 1
+    if x >= 2:
+        aqirank = '并列第' + str(aqirank)
+    else:
+        aqirank = '第' + str(aqirank)
     airtype = sheet.cell(n, 12).value
     return (aqi, aqidengji, shouyao, aqirank,airtype)
 
@@ -154,6 +162,14 @@ def excel_bz_hour(excel_filenew_dir,name_c,excel_filerank_dir):
     aqidengji = sheet.cell(n, 11).value
     shouyao = sheet.cell(n, 10).value
     aqirank = sheet.cell(n, 13).value
+    x= 0
+    for j in range(1,12):
+        if sheet.cell(j, 13).value == aqirank:
+            x+=1
+    if x >=2:
+        aqirank = '并列第'+str(aqirank)
+    else:
+        aqirank = '第' + str(aqirank)
     airtype = sheet.cell(n, 12).value
     return (aqi, aqidengji, shouyao, aqirank,airtype)
 
