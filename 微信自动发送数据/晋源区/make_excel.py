@@ -96,7 +96,7 @@ def excel_bz_any(excel_filenew_dir,name_c,excel_filerank_dir):
     for i in range(1,13):
         if sheet.cell(i, 2).value == name_c:
             n = i
-    if sheet.cell(n, 9).value:
+    if sheet.cell(n, 9).value != '-':
         if 50 >= float(sheet.cell(n, 9).value) >= 0:
             color = '00E400'
         elif 100 >= float(sheet.cell(n, 9).value) > 50:
@@ -141,7 +141,7 @@ def excel_bz_hour(excel_filenew_dir,name_c,excel_filerank_dir):
     for i in range(1,8):
         if sheet.cell(i, 2).value == name_c:
             n = i
-    if sheet.cell(n, 9).value:
+    if sheet.cell(n, 9).value != '-':
         if 50 >= float(sheet.cell(n, 9).value) >= 0:
             color = '00E400'
         elif 100 >= float(sheet.cell(n, 9).value) > 50:
