@@ -11,9 +11,12 @@ if __name__ == '__main__':
     name1 = input('请输入要发送的微信名称1：')
     name2 = input('请输入要发送的微信名称2：')
     print('微信名称获取成功')
-    while True:
-        now_time = datetime.datetime.strftime(datetime.datetime.now(),'%H:%M')
-        if now_time in time_list:
-            print(now_time)
-            jinyuansend.hoursend(name1,name2)
-        time.sleep(60)
+    try:
+        while True:
+            now_time = datetime.datetime.strftime(datetime.datetime.now(),'%H:%M')
+            if now_time in time_list:
+                print(now_time)
+                jinyuansend.hoursend(name1,name2)
+            time.sleep(60)
+    except:
+        pass

@@ -37,7 +37,9 @@ def send_excel(name,excel_rank_insert1,excel_rank_insert2):
 
 def hoursend(name1,name2):
     sl = jinyuan_spider.location()
+    print('获取区域数据成功！')
     sx = jinyuan_spider.station()
+    print('获取站点数据成功！')
     # name = '王彦军'
     # l = '【{}时AQI排名情况】\n{} {}时，晋源' \
     #     '区AQI为{}，{},首要污染物：{}，在六城区' \
@@ -66,6 +68,7 @@ def hoursend(name1,name2):
     name_table1 = '{}区域AQI排名'.format(sl[0])
     name_table2 = '{}站点AQI排名'.format(sx)
     l = send_excel_pic_hour(excel_file_dir1,excel_file_dir2,excel_filenew_dir1,excel_filenew_dir2,excel_rank_insert1,excel_rank_insert2,rank_name,name_table1,name_table2,name_c1,name_c2,name_c3,excel_filerank_dir1,excel_filerank_dir2)
+    print('表格数据制作成功！')
     k = '【{}时AQI排名情况】\n       {}，晋源' \
         '区AQI为{}，空气质量等级为{}{},首要污染物：{}，在六城区' \
         '中排名{}；\n       晋源点位：AQI为{}，空气质量等级为{}{},首要污' \
@@ -77,8 +80,11 @@ def hoursend(name1,name2):
     send_text(name1, k)
     time.sleep(2)
     send_text(name2, k)
+    print('文本消息发送成功！')
+    time.sleep(2)
     send_excel(name1, excel_rank_insert1, excel_rank_insert2)
     time.sleep(2)
     send_excel(name2, excel_rank_insert1, excel_rank_insert2)
+    print('表格数据发送成功！')
 
 # hoursend('王彦军','王彦军')
