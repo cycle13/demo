@@ -373,7 +373,9 @@ def table_font_any(excel_filerank_dir2, name_table2, excel_rank_insert2):
     sheet.column_dimensions['B'].width = 15
     # sheet.column_dimensions['C'].width = 20
     sheet.column_dimensions['J'].width = 12
-    sheet.row_dimensions[1].height = 20
+    sheet.row_dimensions[1].height = 30
+    for i in range(2,14):
+        sheet.row_dimensions[i].height = 20
     sheet.cell(1, 1).value = name_table2
     sheet["A1"].font = Font(size = 14,bold = True,color = "FF0000")
     sheet.merge_cells('A1:K1')
