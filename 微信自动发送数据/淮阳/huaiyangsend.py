@@ -11,6 +11,7 @@ import county_aqi
 import json
 import time
 import demo
+import demo1
 
 
 
@@ -192,12 +193,27 @@ def hourleijisend(name):
         try:
             if l[0][0:2] != "无":
                 print('空气质量数据获取成功')
-                k = "【今日累计播报】：\n淮阳区截止{}时，PM2.5累计浓度为{}μg/m3，在全市9个区县中排名第{}；PM10累计浓度为{}μg/m3，在全市9个区县中排名第{}。".format(l[0][0:2],l[1],l[2],l[3],l[4])
+                k = "【今日累计播报】：\n       淮阳区截止{}时，PM2.5累计浓度为{}μg/m3，在全市9个区县中排名第{}；PM10累计浓度为{}μg/m3，在全市9个区县中排名第{}。".format(l[0][0:2],l[1],l[2],l[3],l[4])
                 send_text(name, k)
                 time.sleep(4)
                 send_excelleiji(name, excel_rank_insert)
                 time.sleep(1)
                 send_pic(name, excel_filenew_dir1,excel_filenew_dir2,pm10,pm25,image_file)
+
+                # 做折线图
+                my_datatime = (datetime.now() + datatime.timedelta(hours=-1)).strftime("%Y-%m-%d")
+                line_date = '24data/' + my_datatime
+                demo1.data_h(line_date)
+                demo1.data_t(line_date)
+                line_excel = line_date + '/' + '淮阳县.xls'
+                send_picline(name, line_excel, "淮阳区近24小时颗粒物浓度折线图", image_file)
+
+                # 做折线图对比图
+                image_title_PM25 = '淮阳区与太康县近24小时PM2.5浓度折线图'
+                image_title_PM10 = '淮阳区与太康县近24小时PM10浓度折线图'
+                line_excel = line_date + '/' + '淮阳县.xls'
+                line_excel2 = line_date + '/' + '太康县.xls'
+                send_pic_line(name, line_excel, line_excel2, image_title_PM25, image_title_PM10, image_file)
             else:
                 raise
         except:

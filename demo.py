@@ -1,36 +1,21 @@
-import time
-import requests
-import json
-import xlwt
-from decimal import *
-from datetime import datetime
+import asyncio
+from wechaty  import Wechaty,Message
 
+import os
+os.environ[ 'WECHATY_PUPPET_HOSTIE_TOKEN'] = 'puppet_donut_e175d*****ff25de1'
 
-def save_location_excel():
-    book = xlwt.Workbook()
-    sheet = book.add_sheet('太原市六城区空气质量数据')
-    n = 1
-    sheet.write(0, 0, '排名')
-    sheet.write(0, 1, '点位名称')
-    sheet.write(0, 2, '综合指数')
-    sheet.write(0, 3, 'SO2')
-    sheet.write(0, 4, 'NO2')
-    sheet.write(0, 5, 'CO')
-    sheet.write(0, 6, 'O3')
-    sheet.write(0, 7, 'PM2.5')
-    sheet.write(0, 8, 'PM10')
-    sheet.write(0, 9, 'AQI')
-    sheet.write(0, 10, '首要污染物')
-    sheet.write(0, 11, '类别')
-    sheet.write(0, 12, '优良')
+class MyBot(Wechaty):
+    async def on_message(self, msg: Message):
+        talker=msg.talker()
+        await talker.ready()
+        if msg.text()== "你好":
+            await talker.say( '请问有什么事？')
+        elif msg.text()== "博客":
+            await talker.say( '知乎：https://www.zhihu.com/people/liu-jian-60-54\n简书：https://www.jianshu.com/u/ba83fba00eef\nCSDN：https://blog.csdn.net/liujian197905187511')
+        elif msg.text()== "你是谁":
+            await talker.say( '个人简介')
+async def main():
+    bot = MyBot()
+    await bot.start()
 
-    for i in range(10):
-        sheet.write(n, 1, 2)
-        sheet.write(n, 2, 2)
-
-        sheet.write(n, 5, str(Decimal(1.00).quantize(Decimal('0.00'))))
-        n+=1
-    book.save(r'迎泽小时推送数据.xls')
-
-
-save_location_excel()
+asyncio.run(main())
