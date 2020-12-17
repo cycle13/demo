@@ -268,6 +268,36 @@ def pre_hn_air(name):
 
 
 def pre_county_air(name):
+    county_aqi.wumai()
+    send_text(name, '雾霾预报')
+    windows_opr.FindWindow(name)
+    for i in send_text_image.get_file("county_image"):
+        send_text_image.paste_img("county_image" + "\\" + i)
+        windows_opr.send()
+        time.sleep(1)
+    windows_opr.CloseWindow(name)
+    send_text_image.del_files("county_image")
+    time.sleep(10)
+    county_aqi.shachen()
+    send_text(name, '沙尘预报')
+    windows_opr.FindWindow(name)
+    for i in send_text_image.get_file("county_image"):
+        send_text_image.paste_img("county_image" + "\\" + i)
+        windows_opr.send()
+        time.sleep(1)
+    windows_opr.CloseWindow(name)
+    send_text_image.del_files("county_image")
+    time.sleep(10)
+    county_aqi.air_p()
+    send_text(name, '空气污染气象条件预报')
+    windows_opr.FindWindow(name)
+    for i in send_text_image.get_file("county_image"):
+        send_text_image.paste_img("county_image" + "\\" + i)
+        windows_opr.send()
+        time.sleep(1)
+    windows_opr.CloseWindow(name)
+    send_text_image.del_files("county_image")
+    time.sleep(10)
     data = county_aqi.real()
     for i in data:
         if i == data[0]:
@@ -283,6 +313,8 @@ def pre_county_air(name):
         time.sleep(1)
     windows_opr.CloseWindow(name)
     send_text_image.del_files("county_image")
+
+
 
 
 # pre_county_air('王彦军')

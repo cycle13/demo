@@ -264,10 +264,10 @@ def table_border(excel_rank_insert):
     ncols = ws.max_column
     for i in range(nrows):
         for j in range(ncols):
-            border = Border(left=Side(border_style='thin', color ='000000'),
-            right = Side(border_style='thin', color ='000000'),
-            top = Side(border_style='thin', color ='000000'),
-            bottom = Side(border_style='thin', color ='000000'))
+            border = Border(left=Side(border_style='thick', color ='000000'),
+            right = Side(border_style='thick', color ='000000'),
+            top = Side(border_style='thick', color ='000000'),
+            bottom = Side(border_style='thick', color ='000000'))
             ws.cell(i+1, j+1).border = border
     wb.save(excel_rank_insert)
 
