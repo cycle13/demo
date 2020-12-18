@@ -271,8 +271,13 @@ def pre_hn_air(name):
                 m = '       ' + i + '\n'
             else:
                 m = m+'       '+i+'\n'
+        for i in data[3]:
+            if i == data[3][0]:
+                n = '       ' + i + '\n'
+            else:
+                n = n+'       '+i+'\n'
         l = '河南省区域环境空气质量预报\n       污染提示：{}\n一、未来7天' \
-            '预报\n{} 二、建议\n       {}'.format(data[1],m,data[3])
+            '预报\n{} 二、建议\n{}'.format(data[1],m,n)
         send_text(name,l)
         windows_opr.FindWindow(name)
         for i in send_text_image.get_file("image_pic"):

@@ -25,7 +25,7 @@ def pre_air():
         otherStyleTime = time.strftime("%Y-%m-%d", timeArray)
         data1 = i['pollutionSituation'][0]
         data2 = i['sevenForecast']
-        data3 = i['myAdvise'][0]
+        data3 = i['myAdvise']
 
     my_datatime = datetime.strftime(datetime.now(),'%Y-%m-%d')
     for i in range(1,9):
