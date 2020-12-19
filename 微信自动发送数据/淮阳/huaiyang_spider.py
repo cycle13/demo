@@ -24,7 +24,7 @@ headers = {
 
 def qi(station,datatime_n):
     url = first_url + station + '/' + datatime_n
-    response = session.get(url=url, headers=headers).text
+    response = session.get(url=url, headers=headers,timeout=10).text
     return response
 
 

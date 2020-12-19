@@ -114,11 +114,14 @@ def hoursend(name):
         line_date = 'excellinefiles/' + my_datatime
         l = make_excelhour(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert)
         print('已对数据排名、充填和插入表标题')
-        datatime_n = (datetime.now() + datatime.timedelta(hours =-1)).strftime("%Y%m%d/%H")
-        # datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
-        m = huaiyang_spider.qi("101181404", datatime_n)
+        try:
+            datatime_n = (datetime.now() + datatime.timedelta(hours =-1)).strftime("%Y%m%d/%H")
+            # datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
+            m = huaiyang_spider.qi("101181404", datatime_n)
+            data = json.loads(m)
+        except:
+            data = {'rcode': 1}
         print('已获取气象数据')
-        data = json.loads(m)
         pm10 = "周口市九区县{}时PM10浓度柱状图".format(l[0][0:2])
         pm25 = "周口市九区县{}时PM2.5浓度柱状图".format(l[0][0:2])
         image_title = '淮阳区颗粒物00时至{}时浓度折线图'.format(l[0][0:2])
@@ -338,7 +341,7 @@ def pre_county_air(name):
 
 
 
-# pre_county_air('王彦军')
+# pre_county_air('淮阳区环境攻坚群')
 # pre_hn_air('王彦军')
 # yearleijisend('王彦军')
 # hoursend('王彦军')
