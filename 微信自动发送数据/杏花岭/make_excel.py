@@ -65,8 +65,19 @@ def excel_c(excel_filenew_dir,name_c,excel_filerank_dir):
         sheet.cell(n, j).fill = fille
     zongzhi = sheet.cell(n, 15).value
     zongrank = sheet.cell(n, 16).value
+    han = {1: '一', 2: '二', 3: '三', 4: '四', 5: '五', 6: '六', 7: '七', 8: '八', 9: '九', 10: '十', 11: '十一'}
+    aqirankh = han[zongrank]
+    x = 0
+    for j in range(1, 12):
+        if sheet.cell(j, 16).value == zongrank:
+            x += 1
+    if x >= 2:
+        aqirank = '并列第' + str(aqirankh)
+    else:
+        aqirank = '第' + str(aqirankh)
+
     wb.save(excel_filerank_dir)
-    return (zongzhi, zongrank)
+    return (zongzhi, zongrank,aqirank)
 
 
 

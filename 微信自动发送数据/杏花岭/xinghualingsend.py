@@ -73,11 +73,11 @@ def hoursend(name):
         level = '良好'
     elif 8>=m[1]>6:
         level = '较差'
-    k = "【空气质量播报】\n{}巨轮点位综合指数为{}，在太原市八个国控点" \
-        "中排名{}，日综合指数与各项污染物排名如下：\n{}巨轮点位累" \
+    k = "【空气质量播报】\n       {}巨轮点位综合指数为{}，在太原市八个国控点" \
+        "中排名{}，日综合指数与各项污染物排名如下：\n       {}巨轮点位累" \
         "计综合指数为{}，在太原市八个国控点中排名{}，管控{}，累计综合指数与各项" \
-        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format(sl, l[0], l[1], sx[0]+sx[1],
-                                                  m[0], m[1], level, sx[1])
+        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format(sl, l[0], l[2], sx[0]+sx[1],
+                                                  m[0], m[2], level, sx[1])
     send_text(name, k)
 
     send_excel(name, excel_rank_insert1)
@@ -124,10 +124,10 @@ def hourlastsend(name):
         level = '良好'
     elif 8>=m[1]>6:
         level = '较差'
-    k = "【空气质量播报】\n{}巨轮点位累" \
+    k = "【空气质量播报】\n       {}巨轮点位累" \
         "计综合指数为{}，在太原市八个国控点中排名{}，管控{}，累计综合指数与各项" \
-        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format( sx[0] + sx[1],
-                                                  m[0], m[1], level, sx[1])
+        "污染物浓度排名及PM2.5、PM10、NO2浓度{}趋势图如下：".format(sx[0] + sx[1],
+                                                  m[0], m[2], level, sx[1])
     send_text(name, k)
 
     # send_excel(name, excel_rank_insert1)
