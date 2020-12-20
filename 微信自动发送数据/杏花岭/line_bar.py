@@ -37,7 +37,7 @@ def line_bar(x,y1,y2,y3,data1,data3,data4,image_file,name):
     # 横坐标名称
     # 设置横坐标标注转换角度
     plt.rcParams['font.sans-serif'] = ['SimHei']
-    y_major_locator = MultipleLocator(5)
+    y_major_locator = MultipleLocator(15)
     plt.xticks(x, x, rotation=60)
     ax = plt.gca()
     ax.yaxis.set_major_locator(y_major_locator)
