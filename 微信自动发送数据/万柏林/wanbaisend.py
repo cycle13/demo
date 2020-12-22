@@ -62,6 +62,7 @@ def wanbaicg(name):
     n = make_excel.excel_rank_c(excel_sixrank_dir,excel_sixrank_dir1, "AQI排名", 'AQI', '万柏林区')
     now_time = wanbai_spider.leiji1(excel_xishanleiji_dir)
     print(now_time)
+    ml = wanbai_spider.qixiang()
     l = "【点位空气质量变化情况】\n     {}，西山点位：AQI为{}，{}{}" \
         "，首要污染物：{}，在全市11个标准站中排名第{}，六城区排名第{}。\n     PM2.5实时浓度为{}μg/m³，" \
         "今日{}时平均浓度为{}μg/m³；\n     PM10实时浓度为{}μg/m³，今日{}时平均浓度为{}μg/m³" \
@@ -70,8 +71,7 @@ def wanbaicg(name):
         time_data, m[0],m[1],m[2],
         m[3], m[4], n[4], m[5], "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"PM2.5")), m[6],
         "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"PM10")), m[7],
-        "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"SO2")), m[8], "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"NO2")), "、".join(['PM2.5浓度', 'PM10浓度', 'SO2浓度', 'NO2浓度']), "上升", "西南风一级",
-        "47%", "二级")
+        "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"SO2")), m[8], "1-{}".format(now_time), int(make_excel.quanmean(excel_xishanleiji_dir,"NO2")), "、".join(['PM2.5浓度', 'PM10浓度', 'SO2浓度', 'NO2浓度']), "上升", ml[1], ml[0], ml[2])
     send_text(name, l)
 
 
@@ -243,4 +243,4 @@ def wanbaiadd():
 
 
 
-# wanbaicg('王彦军')
+wanbaicg('王彦军')
