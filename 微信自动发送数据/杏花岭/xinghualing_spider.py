@@ -44,14 +44,37 @@ def save_station_excel(yestoday):
     for k in data:
         if k['name'] in ['桃园','金胜','南寨','尖草坪','巨轮','坞城','晋源','小店']:
             sheet.write(n, 1, k['name'])
-            sheet.write(n, 2, k["so2"])
-            sheet.write(n, 4, k["no2"])
-            sheet.write(n, 6, k["co"])
-            sheet.write(n, 8, k["o38"])
-            sheet.write(n, 10, k["pm25"])
-            sheet.write(n, 12, k["pm10"])
+            if k["so2"] == '0' or k["so2"] == '-':
+                sheet.write(n, 2, None)
+            else:
+                sheet.write(n, 2, k["so2"])
+            # sheet.write(n, 2, k["so2"])
+            if k["no2"] == '0' or k["no2"] == '-':
+                sheet.write(n, 4, None)
+            else:
+                sheet.write(n, 4, k["no2"])
+            # sheet.write(n, 4, k["no2"])
+            if k["co"] == '0' or k["co"] == '-':
+                sheet.write(n, 6, None)
+            else:
+                sheet.write(n, 6, k["co"])
+            # sheet.write(n, 6, k["co"])
+            if k["o38"] == '0' or k["o38"] == '-':
+                sheet.write(n, 8, None)
+            else:
+                sheet.write(n, 8, k["o38"])
+            # sheet.write(n, 10, k["pm25"])
+            if k["pm25"] == '0' or k["pm25"] == '-':
+                sheet.write(n, 10, None)
+            else:
+                sheet.write(n, 10, k["pm25"])
+            # sheet.write(n, 12, k["pm10"])
+            if k["pm10"] == '0' or k["pm10"] == '-':
+                sheet.write(n, 12, None)
+            else:
+                sheet.write(n, 12, k["pm10"])
             # sheet.write(n, 14, k["totalIndex"])
-            if ((k["so2"] == '-') or (k["no2"] == '-') or (k["co"] == '-') or (k["o31"] == '-') or (k["pm25"] == '-') or (k["pm10"] == '-')):
+            if ((k["so2"] == '-' or k["so2"] == '0') or (k["no2"] == '-' or k["no2"] == '0') or (k["co"] == '-' or k["co"] == '0') or (k["o38"] == '-' or k["o38"] == '0') or (k["pm25"] == '-' or k["pm25"] == '0') or (k["pm10"] == '-' or k["pm10"] == '0')):
                 sheet.write(n, 14, None)
             else:
                 sheet.write(n, 14, k["totalIndex"])
@@ -84,14 +107,37 @@ def save_station1_excel(yestoday,now_data,now_time):
     for k in data:
         if k['name'] in ['桃园', '金胜', '南寨', '尖草坪', '巨轮', '坞城', '晋源', '小店']:
             sheet.write(n, 1, k['name'])
-            sheet.write(n, 2, k["so2"])
-            sheet.write(n, 4, k["no2"])
-            sheet.write(n, 6, str(Decimal(k["co"]).quantize(Decimal('0.0'))))
-            sheet.write(n, 8, k["o38"])
-            sheet.write(n, 10, k["pm25"])
-            sheet.write(n, 12, k["pm10"])
+            if k["so2"] == '0' or k["so2"] == '-':
+                sheet.write(n, 2, None)
+            else:
+                sheet.write(n, 2, k["so2"])
+            # sheet.write(n, 2, k["so2"])
+            # sheet.write(n, 4, k["no2"])
+            if k["no2"] == '0' or k["no2"] == '-':
+                sheet.write(n, 4, None)
+            else:
+                sheet.write(n, 4, k["no2"])
+            # sheet.write(n, 6, str(Decimal(k["co"]).quantize(Decimal('0.0'))))
+            if k["co"] == '0' or k["co"] == '-':
+                sheet.write(n, 6, None)
+            else:
+                sheet.write(n, 6, str(Decimal(k["co"]).quantize(Decimal('0.0'))))
+            if k["o38"] == '0' or k["o38"] == '-':
+                sheet.write(n, 8, None)
+            else:
+                sheet.write(n, 8, k["o38"])
+            # sheet.write(n, 10, k["pm25"])
+            if k["pm25"] == '0' or k["pm25"] == '-':
+                sheet.write(n, 10, None)
+            else:
+                sheet.write(n, 10, k["pm25"])
+            # sheet.write(n, 12, k["pm10"])
+            if k["pm10"] == '0' or k["pm10"] == '-':
+                sheet.write(n, 12, None)
+            else:
+                sheet.write(n, 12, k["pm10"])
             # sheet.write(n, 14, k["totalIndex"])
-            if ((k["so2"] == '-') or (k["no2"] == '-') or (k["co"] == '-') or (k["o31"] == '-') or (k["pm25"] == '-') or (k["pm10"] == '-')):
+            if ((k["so2"] == '-' or k["so2"] == '0') or (k["no2"] == '-' or k["no2"] == '0') or (k["co"] == '-' or k["co"] == '0') or (k["o38"] == '-' or k["o38"] == '0') or (k["pm25"] == '-' or k["pm25"] == '0') or (k["pm10"] == '-' or k["pm10"] == '0')):
                 sheet.write(n, 14, None)
             else:
                 sheet.write(n, 14, k["totalIndex"])
@@ -121,7 +167,7 @@ def save_stationleiji_excel(url1,excel_file_dir):
             data = realaqi1(url)
             for k in data:
                 if k['name'] in ['巨轮']:
-                    sheet.write(n, 0, k['dataTime'])
+                    sheet.write(n, 0, k['dataTime'][5:])
                     sheet.write(n, 1, k['name'])
                     sheet.write(n, 2, k["so2"])
                     sheet.write(n, 3, k["no2"])
@@ -135,7 +181,7 @@ def save_stationleiji_excel(url1,excel_file_dir):
         data = realaqi1(url)
         for k in data:
             if k['name'] in ['巨轮']:
-                sheet.write(n, 0, k['dataTime'])
+                sheet.write(n, 0, k['dataTime'][5:])
                 sheet.write(n, 1, k['name'])
                 sheet.write(n, 2, k["so2"])
                 sheet.write(n, 3, k["no2"])
@@ -154,7 +200,7 @@ def save_stationleiji_excel(url1,excel_file_dir):
             data = realaqi1(url)
             for k in data:
                 if k['name'] in ['巨轮']:
-                    sheet.write(n, 0, k['dataTime'])
+                    sheet.write(n, 0, k['dataTime'][5:])
                     sheet.write(n, 1, k['name'])
                     sheet.write(n, 2, k["so2"])
                     sheet.write(n, 3, k["no2"])
