@@ -114,13 +114,14 @@ def hoursend(name):
         line_date = 'excellinefiles/' + my_datatime
         l = make_excelhour(excel_file_dir, excel_filenew_dir1,excel_filenew_dir2,rank_name1,rank_name2,add_name1 ,add_name2,name_c, excel_filerank_dir,name_table, excel_rank_insert)
         print('已对数据排名、充填和插入表标题')
-        try:
-            datatime_n = (datetime.now() + datatime.timedelta(hours =-1)).strftime("%Y%m%d/%H")
-            # datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
-            m = huaiyang_spider.qi("101181404", datatime_n)
-            data = json.loads(m)
-        except:
-            data = {'rcode': 1}
+        # try:
+        #     datatime_n = (datetime.now() + datatime.timedelta(hours =-1)).strftime("%Y%m%d/%H")
+        #     # datatime_n = datetime.strftime(datetime.now(), '%Y%m%d/%H')
+        #     m = huaiyang_spider.qi("101181404", datatime_n)
+        #     data = json.loads(m)
+        # except:
+        #     data = {'rcode': 1}
+        sl = huaiyang_spider.qixiang()
         print('已获取气象数据')
         pm10 = "周口市九区县{}时PM10浓度柱状图".format(l[0][0:2])
         pm25 = "周口市九区县{}时PM2.5浓度柱状图".format(l[0][0:2])
@@ -128,9 +129,10 @@ def hoursend(name):
         try:
             if l[0][0:2] != "无":
                 print('空气质量数据获取成功')
-                if data['rcode'] == 200:
+                # if data['rcode'] == 200:
+                if sl[0] != '':
                     # k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。其中：\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      气象条件：当前湿度{}%，温度为{}℃，风力为{}，风向为{}。".format(l[0][0:2],l[1], l[2], l[3], l[4],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13], data['humidity'], data['temperature'], data['windpower'],data['winddirect'])
-                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。\n      气象条件：当前湿度{}%，温度为{}℃，风力为{}，风向为{}。".format(l[0][0:2], l[1], l[2], l[3], l[4],data['humidity'], data['temperature'], data['windpower'], data['winddirect'])
+                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。\n      气象条件：当前{}，相对{},温度为{}℃。".format(l[0][0:2], l[1], l[2], l[3], l[4],sl[1], sl[0], sl[2])
                     print('气象数据获取成功')
                     send_text(name, k)
                     time.sleep(4)
@@ -344,7 +346,7 @@ def pre_county_air(name):
 # pre_county_air('淮阳区环境攻坚群')
 # pre_hn_air('淮阳区环境攻坚群')
 # yearleijisend('王彦军')
-# hoursend('淮阳区环境攻坚群')
+# hoursend('王彦军')
 # hourleijisend('王彦军')
 # save_data()
 # image_file = 'image_file'

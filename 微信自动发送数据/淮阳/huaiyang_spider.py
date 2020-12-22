@@ -7,9 +7,12 @@ from xlutils.copy import copy
 from datetime import datetime
 import os
 import datetime as datatime
+from lxml import etree
 
 
 session = requests.Session()
+qi_url = 'https://tianqi.moji.com/weather/china/henan/huaiyangdistrict'
+aqi_url = 'https://tianqi.moji.com/aqi/china/henan/huaiyangdistrict'
 hour24 = 'http://1.192.88.18:8007/api/v1/ChinaAir/get24History/411627'
 first_url = 'http://service.envicloud.cn:8082/v2/weatherhistory/ZGVTBZE0NDI5MDM0MJAZNDC=/'
 first_url_day = 'http://1.192.88.18:8115/hnAqi/v1.0/api/air/dayAqi2018_county'
@@ -395,6 +398,16 @@ def save_hn_date1(line_date):
 #         os.remove(excel_dir)
 #         wb.save(excel_dir)
 
+
+def qixiang():
+    response = session.get(url=qi_url, headers=headers)
+    response.encoding = "utf-8"
+    res = response.text
+    html = etree.HTML(res)
+    shidu = html.xpath('//div[@class="wea_about clearfix"]/span/text()')[0]
+    fengji = html.xpath('//div[@class="wea_about clearfix"]/em/text()')[0]
+    wendu = html.xpath('//div[@class="wea_weather clearfix"]/em/text()')[0]
+    return shidu,fengji,wendu
 
 
 # url = 'https://page.henan.gov.cn/api/stt-weather'
