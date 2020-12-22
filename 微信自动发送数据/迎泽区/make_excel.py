@@ -117,6 +117,7 @@ def table_font(excel_filerank_dir,name_table,excel_rank_insert):
     sheet.column_dimensions['K'].width = 12
     sheet.column_dimensions['C'].width = 10
     sheet.row_dimensions[1].height = 20
+    sheet.row_dimensions[2].height = 15
     sheet.cell(1, 1).value = name_table
     sheet["A1"].font = Font(size = 14,bold = True,color = "FF0000")
     sheet.merge_cells('A1:L1')

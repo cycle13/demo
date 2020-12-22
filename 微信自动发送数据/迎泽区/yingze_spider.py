@@ -4,9 +4,12 @@ import json
 import xlwt
 from decimal import *
 from datetime import datetime
+from lxml import etree
 
 
 session = requests.Session()
+qi_url = 'https://tianqi.moji.com/weather/china/shanxi/yingze-district'
+aqi_url = 'https://tianqi.moji.com/aqi/china/shanxi/yingze-district'
 hour_local_std_url = 'http://www.ty.daqi110.com/tyAirService/pust/postData?areaCode=1401&areaType=2&dataTime={}+{}%3A00%3A00&dataType=1&flag=3&isControlPoint=2&stationType=1'
 hour_station_url = 'http://183.203.223.83:85/ReleaseMap/GetListAndViewByCityCode?RegionId=140101'
 headers = {
@@ -88,4 +91,31 @@ def location():
     timeArray = data(hour_local_std_url)
     time_now = datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%Y')+'年'+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%m')+'月'+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%d')+"日"+datetime.strptime(timeArray, '%Y-%m-%d %H:%M:%S').strftime('%H')+'时'
     return time_now
+
+
+def qixiang():
+    response = session.get(url=qi_url, headers=headers)
+    response.encoding = "utf-8"
+    res = response.text
+    html = etree.HTML(res)
+    shidu = html.xpath('//div[@class="wea_about clearfix"]/span/text()')[0]
+    fengji = html.xpath('//div[@class="wea_about clearfix"]/em/text()')[0]
+    response = session.get(url=aqi_url, headers=headers)
+    response.encoding = "utf-8"
+    res = response.text
+    html = etree.HTML(res)
+    aqi = html.xpath('//div[@class="aqi_info_detail"]/span/text()')[0]
+    if aqi == '优':
+        aqi = '一级'+aqi
+    if aqi == '良':
+        aqi = '二级'+aqi
+    if aqi == '轻度污染':
+        aqi = '三级'+aqi
+    if aqi == '中度污染':
+        aqi = '四级'+aqi
+    if aqi == '中度污染':
+        aqi = '五级'+aqi
+    if aqi == '严重污染':
+        aqi = '六级'+aqi
+    return shidu,fengji,aqi
 
