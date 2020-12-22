@@ -137,7 +137,7 @@ def hoursend(name):
                     send_excel(name, excel_rank_insert)
                 else:
                     # k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。其中：\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。\n      {}PM2.5浓度为{}µg/m³，PM10浓度为{}µg/m³。气象数" \"据缺失！".format(l[0][0:2],l[1], l[2], l[3], l[4],l[5], l[6],l[7],l[8], l[9],l[10],l[11], l[12],l[13])
-                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。\n      气象数据缺失！".format(l[0][0:2], l[1], l[2], l[3], l[4])
+                    k = "【实时播报】：\n淮阳区{}时: \n      淮阳区PM2.5浓度为{}μg/m3，在全市9个区县中排名第{}；PM10浓度为{}μg/m3，在全市9个区县中排名第{}。".format(l[0][0:2], l[1], l[2], l[3], l[4])
                     print('气象数据缺失')
                     send_text(name, k)
                     time.sleep(4)
@@ -344,7 +344,7 @@ def pre_county_air(name):
 # pre_county_air('淮阳区环境攻坚群')
 # pre_hn_air('淮阳区环境攻坚群')
 # yearleijisend('王彦军')
-# hoursend('王彦军')
+# hoursend('淮阳区环境攻坚群')
 # hourleijisend('王彦军')
 # save_data()
 # image_file = 'image_file'
