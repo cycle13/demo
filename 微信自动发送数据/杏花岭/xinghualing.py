@@ -21,5 +21,5 @@ if __name__ == '__main__':
             xinghualingsend.hoursend(name)
         elif now_time in time_list1:
             print(now_time)
-            xinghualingsend.hourlastsend()
+            xinghualingsend.hourlastsend(name)
         time.sleep(60)
