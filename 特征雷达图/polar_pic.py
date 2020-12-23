@@ -84,10 +84,10 @@ def area_roll_data():
 # 滚动计算每一天的时间累计特征雷达图
 def time_acc_data():
     color = []
-    file_dir = 'excelfile/汝州市.xls'
-    file_cen_dir = 'excelfile/汝州市数据中间.xls'
-    newfile_dir = 'excelfile/汝州市.xlsx'
-    newfile_acc_dir = 'excelfile/汝州市截取数据.xlsx'
+    file_dir = 'excelfile/淮阳县整年数据.xls'
+    file_cen_dir = 'excelfile/淮阳县整年数据中间.xls'
+    newfile_dir = 'excelfile/淮阳县整年数据.xlsx'
+    newfile_acc_dir = 'excelfile/淮阳县整年截取数据.xlsx'
     my_datatime = pd.date_range('11/17/2020', '12/17/2020')
     start_time = my_datatime[0].strftime('%Y-%m-%d')
     stop_time = my_datatime[-1].strftime('%Y-%m-%d')
@@ -113,11 +113,16 @@ def time_acc_data():
             color.append(name)
     print(color)
     pic_bar.line_pic(newfile_acc_dir, "image_file", color)
+    pic_bar.line_pic10(newfile_acc_dir, "image_file", color)
+    pic_bar.line_picco(newfile_acc_dir, "image_file", color)
+    pic_bar.line_picso2(newfile_acc_dir, "image_file", color)
+    pic_bar.line_picno2(newfile_acc_dir, "image_file", color)
+    pic_bar.line_pico3(newfile_acc_dir, "image_file", color)
 
 
 
 
-time_acc_data()
+# time_acc_data()
 # area_roll_data()
 # area_data()
 # time_data()
