@@ -23,7 +23,7 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2020-12-16',
+        'end':'2020-12-31',
         'sort':'asc',
         'start':'2020-01-01'
     }
@@ -34,7 +34,7 @@ def year(url):
 def month(url):
     data = {
         'sort':'asc',
-        'month':'2020-11'
+        'month':'2019-01'
     }
     response = session.post(url= url,data=data,headers = headers).text
     return response
@@ -47,15 +47,12 @@ def day(url):
     response = session.post(url= url,data=data,headers = headers).text
     return response
 
-
 def real(url):
     response = session.get(url= url_list,headers = headers).text
     return response
     # data = json.loads(l)['detail']
     # for i in data:
     #     print(i)
-
-
 
 def realaqi(url):
     data = {
@@ -68,11 +65,6 @@ def realaqi(url):
     # data = json.loads(l)['detail']
     # for i in data:
     #     print(i)
-
-
-
-
-
 
 l = year(first_url_year)
 data = json.loads(l)['data']
@@ -99,7 +91,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('周报2020年1-12月16日累计.xls')
+book.save('全年2020年年数据.xls')
 
 print(data)
 

@@ -36,7 +36,7 @@ def save_excel():
     sheet.write(0,7,'rain')
     sheet.write(0,8,'temperature')
     time.sleep(5)
-    for i in time_range('2020-10-01-00', '2020-10-31-23'):
+    for i in time_range('2020-01-01-00', '2020-12-31-23'):
         l = qi("101181404", i, first_url)
         print(l)
         try:
