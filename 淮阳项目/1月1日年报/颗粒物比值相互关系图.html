@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>相互关系图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 1000px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+option = {
+    title: {
+        text: '2020年颗粒物分布',
+<!--        subtext: '抽样调查来自: Heinz  2003'-->
+    },
+    grid: {
+        left: '3%',
+        right: '7%',
+        bottom: '3%',
+        containLabel: true
+    },
+    tooltip: {
+        // trigger: 'axis',
+        showDelay: 0,
+        formatter: function (params) {
+            if (params.value.length > 1) {
+                return params.seriesName + ' :<br/>'
+                +'PM10:'+ params.value[0] + 'μg/m3   '
+                + 'PM2.5:'+params.value[1] + 'μg/m3   ';
+            }
+            else {
+                return params.seriesName + ' :<br/>'
+                + params.name + ' : '
+                + params.value + 'μg/m3 ';
+            }
+        },
+        axisPointer: {
+            show: true,
+            type: 'cross',
+            lineStyle: {
+                type: 'dashed',
+                width: 1
+            }
+        }
+    },
+    toolbox: {
+        top:'20',
+        feature: {
+            dataZoom: {},
+            brush: {
+                type: ['rect', 'polygon', 'clear']
+            },
+            restore : {},
+                    saveAsImage : {}
+        }
+    },
+    brush: {
+    },
+    legend: {
+        data: ['1月份', '2月份', '3月份', '4月份', '5月份', '6月份', '7月份', '8月份', '9月份', '10月份', '11月份', '12月份','PM2.5/PM10=40%','PM2.5/PM10=66.7%'],
+        left: '180'
+    },
+    xAxis: [
+        {
+            type: 'value',
+            name:'PM10',
+            scale: true,
+            axisLabel: {
+                formatter: '{value} μg/m3'
+            },
+            splitLine: {
+                show: false
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name:'PM2.5',
+            scale: true,
+            axisLabel: {
+                formatter: '{value} μg/m3'
+            },
+            splitLine: {
+                show: false
+            }
+        }
+    ],
+    series: [
+        {
+            name: '1月份',
+            type: 'scatter',
+            data: [[120,86],[167,122],[221,172],[236,190],[133,122],[82,82],[52,56],[85,78],[133,117],[168,138],[258,218],[278,208],[270,214],[242,182],[181,138],[192,156],[182,144],[178,144],[130,85],[154,103],[230,184],[242,190],[136,110],[256,222],[168,147],[183,170],[164,150],[109,100],[131,122],[145,133],[143,131]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '1月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '2月份',
+            type: 'scatter',
+            data: [[119,110],[146,133],[139,123],[187,166],[109,86],[41,30],[56,48],[58,54],[88,78],[70,62],[51,43],[80,73],[50,42],[78,57],[32,26],[38,21],[50,34],[49,34],[56,42],[92,72],[118,62],[100,44],[104,60],[140,95],[125,100],[102,78],[61,43],[43,38],[54,43]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '2月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '3月份',
+            type: 'scatter',
+            data: [[77,56],[87,70],[103,72],[89,58],[88,64],[110,82],[142,110],[132,104],[126,108],[121,76],[138,52],[110,54],[115,62],[96,49],[98,42],[110,60],[100,44],[92,36],[154,29],[152,56],[88,51],[138,70],[61,30],[92,57],[57,44],[59,42],[44,18],[56,30],[44,38],[56,46],[81,64]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '3月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '4月份',
+            type: 'scatter',
+            data: [[100,72],[100,68],[110,80],[116,74],[122,40],[72,40],[98,55],[88,52],[126,78],[74,63],[63,52],[78,45],[80,38],[72,38],[62,33],[96,50],[142,50],[84,56],[62,50],[60,30],[83,42],[94,48],[76,36],[96,48],[105,36],[108,39],[53,27],[56,31],[81,49],[84,48]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '4月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '5月份',
+            type: 'scatter',
+            data: [[68,45],[74,45],[87,44],[146,48],[51,30],[52,30],[33,24],[16,14],[20,14],[58,26],[87,28],[82,30],[99,40],[72,38],[74,44],[71,42],[114,50],[136,40],[87,39],[90,44],[76,38],[83,34],[104,38],[74,36],[84,28],[86,30],[84,30],[108,32],[110,36],[56,28],[86,36]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '5月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '6月份',
+            type: 'scatter',
+            data: [[64,28],[190,54],[156,46],[102,40],[76,35],[42,20],[66,24],[70,24],[65,38],[45,34],[40,28],[23,20],[34,23],[50,31],[43,28],[27,18],[8,6],[22,13],[37,24],[38,24],[42,27],[32,20],[25,14],[54,29],[75,37],[54,33],[51,32],[11,8],[38,26],[46,31]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '6月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '7月份',
+            type: 'scatter',
+            data: [[54,35],[34,26],[34,22],[34,22],[42,24],[49,26],["-","-"],[42,28],[41,25],[46,28],[34,23],[10,6],[34,22],[42,28],[24,20],[31,21],[32,24],[27,19],[51,38],[72,50],[50,36],[10,6],[41,30],[38,26],[32,20],[26,20],[34,24],[40,28],[38,22],[34,24],[26,18]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '7月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '8月份',
+            type: 'scatter',
+            data: [[30,18],[26,18],[34,18],[26,14],[38,22],[37,22],[17,12],[28,15],[48,30],[48,32],[38,26],[33,20],[29,14],[34,14],[42,14],[51,19],[60,23],[54,27],[43,18],[16,12],[34,26],[39,24],[50,26],[41,22],[48,25],[59,30],[39,18],[47,24],[58,36],[74,48],[80,42]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '8月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '9月份',
+            type: 'scatter',
+            data: [[54,24],[52,24],[56,24],[80,28],[82,33],[95,44],[80,41],[91,42],[82,42],[36,26],[45,26],[44,22],[56,31],[66,39],[50,28],[66,27],[76,33],[78,36],[69,29],[76,34],[40,26],[40,28],[70,37],[62,36],[102,58],[84,55],[54,26],[57,24],[70,30],[105,54]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '9月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '10月份',
+            type: 'scatter',
+            data: [[98,50],[67,40],[56,34],[64,22],[84,38],[52,29],[68,40],[85,52],[80,41],[84,44],[88,48],[90,54],[64,40],[42,34],[52,40],[60,44],[108,76],[102,70],[107,74],[120,86],[166,76],[246,88],[148,54],[114,58],[119,69],[114,66],[150,87],[116,48],[151,80],[110,65],[100,69]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '10月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '11月份',
+            type: 'scatter',
+            data: [[158,79],[138,53],[88,36],[86,40],[96,53],[152,84],[113,40],[148,62],[179,82],[192,105],[146,80],[116,72],[132,87],[126,86],[126,76],[107,66],[46,34],[21,18],[58,38],[50,37],[57,53],[66,60],[58,44],[64,48],[92,72],[124,94],[111,72],[120,84],[142,108],[174,132]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '11月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name: '12月份',
+            type: 'scatter',
+            data: [[177,136],[160,128],[146,118],[135,96],[132,94],[152,105],[194,145],[133,94],[162,112],[168,128],[189,140],[160,115],[118,50],[52,26],[86,53],[120,80],[140,93],[168,120],[97,62],[133,90],[146,99],[120,83],[164,111],[196,128],[214,142],[276,207],[222,160],[279,227],[90,60],[53,16],[52,24]],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    color: 'transparent',
+                    borderWidth: 1,
+                    borderType: 'dashed'
+                },
+                data: [[{
+                    name: '12月份颗粒物分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+                name : 'PM2.5/PM10=40%',
+                type : 'line',
+                color:'yellow',
+                data: [[0,0],[279,111.6]],
+
+        },
+        {
+                name : 'PM2.5/PM10=66.7%',
+                type : 'line',
+                color:'blue',
+                data: [[0,0],[279,186.093]],
+
+        }
+    ]
+};
+
+myChart.setOption(option);
+
+
+        </script>
+    </body>
+</html>

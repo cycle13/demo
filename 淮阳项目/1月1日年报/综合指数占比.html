@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 700px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     var color = ['red', 'blue', 'green','yellow', '#C25EC4', '#FC4567']
+
+option = {
+    color: color,
+    backgroundColor: '#B5D5FF',
+    title: {
+        text: '综合指数占比',
+        left: 'center',
+        top: '50%',
+        textStyle: {
+            fontSize: 20,
+            color: 'black',
+            fontWeight: 'normal'
+        }
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        right: 20,
+        top: 20
+    },
+    series: [{
+        type: 'pie',
+        roseType: 'radius',
+        radius: ['30%', '60%'],
+        data: [{value: 0.17, name: 'SO2'},
+                {value: 0.58, name: 'NO2'},
+                {value: 1.29, name: 'PM10'},
+                {value: 1.63, name: 'PM2.5'},
+                {value: 0.32, name: 'CO'},
+                {value: 0.98, name: 'O3-8h'}
+        ],
+        label: {
+            normal: {
+<!--                formatter: '{font|{c}}\n{hr|}\n{font|{d}%}',-->
+                    formatter: '{b}: ({d}%)',
+                rich: {
+                    font: {
+                        fontSize: 15,
+                        padding: [5, 0],
+                        color: '#fff'
+                    },
+                    hr: {
+                        height: 0,
+                        borderWidth: 1,
+                        width: '100%',
+                        borderColor: '#fff'
+                    }
+                }
+            },
+        },
+        labelLine: {
+            lineStyle: {
+                color: '#fff'
+            }
+        },
+        emphasis: {
+            itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0,0,0,0.5)'
+            }
+        }
+    }]
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
