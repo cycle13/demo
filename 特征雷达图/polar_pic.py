@@ -63,16 +63,16 @@ def time_roll_data():
 
 # 滚动计算每一天的区域特征雷达图
 def area_roll_data():
-    start_time = '12/18/2020'
+    start_time = '12/28/2020'
     area_name = '淮阳县'
     my_datatime = pd.date_range(start_time, '12/31/2020')
     result = my_datatime.strftime('%Y-%m-%d')
     print(result[0])
     yestoday = (my_datatime[0] + datatime.timedelta(days=-31)).strftime("%Y-%m-%d")
     print(yestoday)
-    file_dir = 'excelfile/周口市区县全年日数据.xls'
-    file_cen_dir = 'excelfile/周口市区县全年日数据中间.xls'
-    newfile_dir = 'excelfile/周口市区县全年日数据.xlsx'
+    file_dir = 'excelfile/周口市2020年区县全年日数据 .xls'
+    file_cen_dir = 'excelfile/周口市2020年区县全年日数据中间.xls'
+    newfile_dir = 'excelfile/周口市2020年区县全年日数据.xlsx'
     df = pd.read_excel(file_dir)
     df.index = df['时间']
     df = df[yestoday:result[0]]
@@ -123,7 +123,7 @@ def time_acc_data():
 
 
 # time_acc_data()
-# area_roll_data()
+area_roll_data()
 # area_data()
 # time_data()
 # time_roll_data()
