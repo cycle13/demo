@@ -29,7 +29,7 @@ def day(url,yestoday):
 
 
 def mean_lj(name):
-    df = pd.read_excel(r"excelleiji/周口市区县全年日数据.xls")
+    df = pd.read_excel(r"excelleiji/2021周口市区县全年日数据.xls")
     df = df.loc[df['区县'] == name]
     a = df["PM10"]
     b = a[a > 0]
@@ -168,7 +168,7 @@ def save_date(line_date):
     yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
     l = day(first_url_day,yestoday)
     data = json.loads(l)['data']
-    d1 = datetime(2020, 1, 1)
+    d1 = datetime(2021, 1, 1)
     d2 = datetime.now()
     n = (int((d2 - d1).days) - 1) * 9
     print(data)
@@ -208,9 +208,9 @@ def save_date(line_date):
 
 
 def year_leiji():
-    line_date = r"excelleiji/周口市区县全年日数据.xls"
+    line_date = r"excelleiji/2021周口市区县全年日数据.xls"
     save_date(line_date)
     x = list_num()
     yestoday = (datetime.now() + datatime.timedelta(days=-1)).strftime("%m")+"月"+(datetime.now() + datatime.timedelta(days=-1)).strftime("%d")+"日"
-    line_picpm(x[0],'2020年截止{}周口市九区县PM2.5年累计柱状图'.format(yestoday),"pm25")
-    line_picpm10(x[1],'2020年截止{}周口市九区县PM10年累计柱状图'.format(yestoday),"pm10")
+    line_picpm(x[0],'2021年截止{}周口市九区县PM2.5年累计柱状图'.format(yestoday),"pm25")
+    line_picpm10(x[1],'2021年截止{}周口市九区县PM10年累计柱状图'.format(yestoday),"pm10")
