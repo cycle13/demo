@@ -295,6 +295,17 @@ def send_text(name,l):
     send()
     CloseWindow(name)
 
+def send(name):
+    save_excel()
+    excel_rank()
+    ls = '1.xlsx'
+    xl = r'D:\Program Files\pycharm\微信自动发送数据\demo\1.xlsx'
+    table_font(ls)
+    excel_catch_screen(xl)
+    FindWindow(name)
+    ctrlV()
+    altS()
+    CloseWindow(name)
 
 if __name__ == '__main__':
     f = open('time_file/datafile.txt')
@@ -307,29 +318,12 @@ if __name__ == '__main__':
             now_time = datetime.datetime.strftime(datetime.datetime.now(),'%H:%M')
             if now_time in time_list:
                 print(now_time)
-                save_excel()
-                excel_rank()
-                ls = '1.xlsx'
-                xl = r'D:\Program Files\pycharm\微信自动发送数据\demo\1.xlsx'
-                table_font(ls)
-                excel_catch_screen(xl)
-                FindWindow(name)
-                ctrlV()
-                altS()
-                CloseWindow(name)
+                send(name)
             time.sleep(60)
         except:
             send_text(name,'数据异常')
 
-
-# blend_two_images()
-# FindWindow('王彦军')
-# for i in get_file('pic'):
-#     paste_img('pic' + "\\" + i)
-#     ctrlV()
-#     altS()
-# CloseWindow('王彦军')
-
+# send('王彦军')
 
 
 # sessions = requests.Session()
