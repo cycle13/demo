@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2019年月2020年第三季度污染等级天数变化情况</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 800px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     option = {
+    title: {
+            text: '淮阳区2019年与2020年优良污染等级天数变化情况',
+             subtext: '2020年有效天数365天，2019年有效天数365天',
+<!--            top:20,-->
+            left:'center'
+        },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    toolbox : {
+                left : 'right',
+                feature : {
+                    magicType: {
+                    type: ['line', 'bar',]
+                },
+                    restore : {},
+                    saveAsImage : {}
+                }
+            },
+     color: [
+        "#00E400",
+        "#FFFF00",
+        "#FF7E00",
+        "#FF0000",
+        "#99004C",
+        "#7E0023"
+    ],
+    legend: {
+        top:50,
+        data: ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value'
+    },
+    yAxis: {
+        type: 'category',
+        data: ['2019年', '2020年']
+    },
+    series: [
+        {
+            name: '优',
+            type: 'bar',
+            stack: '总量',
+<!--            更改柱状图宽度-->
+            barWidth: "50%",
+            label: {
+                show: true,
+<!--                更改字体颜色-->
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [26, 45]
+        },
+        {
+            name: '良',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [181, 200]
+        },
+        {
+            name: '轻度污染',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [100, 80]
+        },
+        {
+            name: '中度污染',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [33, 25]
+        },
+        {
+            name: '重度污染',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideRight'
+            },
+            data: [24, 15]
+        },
+        {
+            name: '严重污染',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                show: true,
+                color:'black',
+                position: 'insideLeft'
+            },
+            data: [1, 0]
+        }
+    ]
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
