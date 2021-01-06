@@ -19,7 +19,6 @@ from PIL import ImageGrab, Image, ImageDraw, ImageFont
 import uuid
 from io import BytesIO
 import os
-import datetime
 
 
 
@@ -311,33 +310,25 @@ def send_text(name,l):
 
 def send_excel_pic(name):
     save_excel()
+    time.sleep(1)
     excel_rank()
+    time.sleep(1)
     ls = r'excelfile\1.xlsx'
     xl = r'D:\Program Files\pycharm\微信自动发送数据\淮阳县demo\excelfile\1.xlsx'
     name_c = '淮阳县'
     table_font(ls)
+    time.sleep(1)
     excel_c(ls, name_c)
+    time.sleep(1)
     excel_catch_screen(xl)
+    time.sleep(1)
     FindWindow(name)
+    time.sleep(1)
     ctrlV()
     altS()
+    time.sleep(1)
     CloseWindow(name)
 
-if __name__ == '__main__':
-    f = open('time_file/datafile.txt')
-    print('时间文件获取成功')
-    time_list = f.read()
-    name = input('请输入要发送的微信名称：')
-    print('微信名称获取成功')
-    while True:
-        try:
-            now_time = datetime.datetime.strftime(datetime.datetime.now(),'%H:%M')
-            if now_time in time_list:
-                print(now_time)
-                send_excel_pic(name)
-            time.sleep(60)
-        except:
-            send_text(name,'数据异常')
-            time.sleep(60)
+
 
 # send('王彦军')
