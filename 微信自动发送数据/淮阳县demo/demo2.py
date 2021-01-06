@@ -251,9 +251,9 @@ def excel_catch_screen(excel_rank_insert,img_name=False):
     excel.Selection.ShapeRange.Name = new_shape_name
     ws.Shapes(new_shape_name).Copy()  # 选择图片
     img = ImageGrab.grabclipboard()  # 获取剪贴板的图片数据
-    if not img_name:
-        img_name = r'pic\name' + ".png"
-    img.save(img_name)  # 保存图片
+    # if not img_name:
+    #     img_name = r'pic\name' + ".png"
+    # img.save(img_name)  # 保存图片
     wb.Close(SaveChanges=0)  # 关闭工作薄，不保存
     excel.Quit()  # 退出excel
 
@@ -309,7 +309,7 @@ def send_text(name,l):
     send()
     CloseWindow(name)
 
-def send(name):
+def send_excel_pic(name):
     save_excel()
     excel_rank()
     ls = r'excelfile\1.xlsx'
@@ -334,9 +334,10 @@ if __name__ == '__main__':
             now_time = datetime.datetime.strftime(datetime.datetime.now(),'%H:%M')
             if now_time in time_list:
                 print(now_time)
-                send(name)
+                send_excel_pic(name)
             time.sleep(60)
         except:
             send_text(name,'数据异常')
+            time.sleep(60)
 
 # send('王彦军')

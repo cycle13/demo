@@ -322,6 +322,7 @@ if __name__ == '__main__':
             time.sleep(60)
         except:
             send_text(name,'数据异常')
+            time.sleep(60)
 
 # send('王彦军')
 
