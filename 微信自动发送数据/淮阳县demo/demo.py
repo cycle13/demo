@@ -123,16 +123,16 @@ def sendd_text(name):
     tai = taikang()
     time.sleep(1)
     print(huai,tai)
-    if ((int(huai[0][0])-int(huai[1][0]))/int(huai[1][0]))>=0.3:
-        l+='淮阳县PM2.5上升较快'
-    if ((int(huai[0][1]) - int(huai[1][1])) / int(huai[1][1])) >= 0.3:
-        l += '，淮阳县PM10上升较快'
+    if ((int(huai[0][0])-int(huai[1][0]))/int(huai[1][0])) > 0.1:
+        l+='PM2.5相较于上一小时上升超过10%'
+    if ((int(huai[0][1]) - int(huai[1][1])) / int(huai[1][1])) > 0.1:
+        l += '，PM10相较于上一小时上升超过10%'
     if (int(huai[0][0])-int(tai[0][0])) >= 10:
-        l+='，淮阳县跟太康县PM2.5差距较大'
+        l+='，跟太康县PM2.5差距较大'
     if (int(huai[0][1])-int(tai[0][1])) >= 10:
-        l+='，淮阳县跟太康县PM10差距较大'
+        l+='，跟太康县PM10差距较大'
     if len(l) > 0:
-        l = '@所有人 '+l+'。'
+        l = '淮阳区 '+l+'。'
     send_text(name,l)
 
 

@@ -15,9 +15,9 @@ if __name__ == '__main__':
             now_time = datetime.datetime.strftime(datetime.datetime.now(),'%H:%M')
             if now_time in time_list:
                 print(now_time)
-                demo2.send_excel_pic(name)
-                time.sleep(2)
                 demo.sendd_text(name)
+                time.sleep(2)
+                demo2.send_excel_pic(name)
             time.sleep(60)
         except:
             demo2.send_text(name,'数据异常')
