@@ -23,9 +23,9 @@ headers = {
 
 def year(url):
     data = {
-        'end':'2020-12-31',
+        'end':'2019-12-31',
         'sort':'asc',
-        'start':'2020-01-01'
+        'start':'2019-06-01'
     }
     response = session.post(url= url,data=data,headers = headers).text
     print(response)
@@ -91,7 +91,7 @@ for k in data:
         sheet.write(n, 7, k['zong'])
         n+=1
 
-book.save('全年2020年年数据.xls')
+book.save('全年2019年考核期年数据.xls')
 
 print(data)
 
