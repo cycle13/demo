@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>周口市各区县2019年与2020年1至9月份CO浓度对比图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+         <script src="china.js"></script>
+<!--         <script src="https://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>-->
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 550px;width: 800px;" id="main"></div>
+        <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("main"));
+    var rawData = [
+	{name:'淮阳区',value:[0.9, 0.8 ]},
+	{name:'商水县',value:[0.9,1.0]},
+	{name:'太康县',value:[1.0,0.9 ]},
+	{name:'项城市',value:[1.0,0.8 ]},
+	{name:'西华县',value:[0.9,1.0 ]},
+	{name:'沈丘县',value:[0.9,1.2 ]},
+	{name:'扶沟县',value:[0.9,1.0 ]},
+	{name:'鹿邑县',value:[0.8,0.8 ]},
+	{name:'川汇区',value:["-", "-"]},
+	{name:'郸城县',value:[1.0,0.9]},
+];
+
+var geoCoordMap = {
+    '淮阳区': [114.8500000000, 33.7000000000],
+    '商水县': [114.4049181171, 33.4878678687],
+    '太康县': [114.8495941438, 34.0650668112],
+    '项城市': [114.9012416144, 33.2940043446],
+    '西华县': [114.4971362733, 33.7266407975],
+    '沈丘县': [115.1943300823, 33.2688464863],
+    '扶沟县': [114.3992978332, 34.0397120397],
+    '鹿邑县': [115.3713178042, 33.8212330611],
+    '川汇区': [114.6924137116, 33.5906863227],
+    '郸城县': [115.2663353266, 33.5932261942]
+};
+var namearr = ['2020', '2019'];
+
+var colorarr = [ '#1921ff', '#266eff', '#01c3dd', '#008198', '#2ef4ab',
+		'#ffe074', '#ffcbcb', '#cd8425' ];
+
+option = {
+        backgroundColor:'#010b43',
+        title: {
+                text: "周口市各区县2019年与2020年12月份CO浓度对比图",
+             subtext: '单位：mg/m3',
+                left: 'center',
+                textStyle: {
+                    color: '#FFFFFF'
+                }
+            },
+		top : '-40%',
+		bottom : '-40%',
+		tooltip: {
+		    trigger: 'axis'
+		},
+		geo: {
+            map: 'china',
+            aspectScale: 0.75,
+            zoom: 12,
+            roam: true,
+            center:[114.7073128488, 33.6594200203],
+            right: '35%',
+            left: '5%',
+            label : {
+				normal : {
+					textStyle : {
+						color : '#fff'
+					},
+					show : false
+				},
+				emphasis : {
+					textStyle : {
+						color : '#C6A300'
+					},
+					show : false
+				}
+			},
+            itemStyle : {
+				normal : {
+					areaColor : "rgba(0,0,0,0)",
+					borderColor : "#126cc4",
+					borderWidth : 1.3
+				},
+				emphasis : {
+					areaColor : "rgba(233,0,200,0.3)"
+				}
+			}
+        },
+        regions: [{
+            name: '南海诸岛',
+            itemStyle: {
+                areaColor: 'rgba(0, 10, 52, 1)',
+                borderColor: 'rgba(0, 10, 52, 1)',
+                normal: {
+                    opacity: 0,
+                    label: {
+                        show: false,
+                        color: "#009cc9",
+                    }
+                }
+            },
+        }],
+		series : []
+	}
+
+function renderEachCity() {
+	var options = {
+		legend:[],
+		xAxis : [],
+		yAxis : [],
+		grid : [],
+		series : []
+	};
+
+	options.legend.push({
+        data : namearr,
+        left:'70%',
+        top:'85%',
+        itemWidth:25,
+        itemHeight:15,
+        textStyle:{
+            color:'#ddd',
+            fontSize:15
+        },
+
+    });
+
+	echarts.util.each(rawData, function(dataItem, idx) {
+		var geoCoord = geoCoordMap[dataItem.name];
+		var coord = myChart.convertToPixel('geo', geoCoord);
+		idx += '';
+
+		options.xAxis.push({
+			id : idx,
+			gridId : idx,
+			type : 'category',
+			name : dataItem.name,
+			nameTextStyle : {
+				color : '#fff',
+				fontSize : 14
+			},
+			nameLocation : 'middle',
+			nameGap : 3,
+			splitLine : {
+				show : false
+			},
+			axisTick : {
+				show : false
+			},
+			axisLabel : {
+				show : false
+			},
+			axisLine : {
+				show : false,
+				lineStyle : {
+					color : '#bbb'
+				}
+			},
+			data : [ dataItem.name ],
+		});
+		options.yAxis.push({
+			id : idx,
+			gridId : idx,
+			show : false
+		});
+		options.grid.push({
+			id : idx,
+			width : 50,
+			height : 40,
+			left : coord[0] - 15,
+			top : coord[1] - 35,
+		});
+
+		for (var i = 0; i < namearr.length; i++) {
+			options.series.push({
+				name : namearr[i],
+				type : 'bar',
+				xAxisId : idx,
+				yAxisId : idx,
+				barWidth: '20%',
+				barGap:'150%',
+				itemStyle : {
+					normal : {
+						color : colorarr[i]
+					}
+				},
+				data : [ dataItem.value[i] ],
+				label:{
+                       normal:{
+                               show:true,
+                                formatter: '{c}',
+                                top:20,
+                               },
+                       },
+			});
+		}
+
+	});
+	myChart.setOption(options);
+}
+setTimeout(function(){
+    renderEachCity();
+},1);
+
+        myChart.setOption(option);
+
+        </script>
+    </body>
+</html>
