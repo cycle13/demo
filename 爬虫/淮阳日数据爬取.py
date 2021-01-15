@@ -19,7 +19,7 @@ def day(url,timess):
     response = session.post(url= url,data=data,headers = headers).text
     return response
 
-time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2020-12-07', end='2020-12-08'))]
+time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2021-01-04', end='2021-01-04'))]
 book = xlwt.Workbook()
 sheet = book.add_sheet('淮阳县空气质量数据')
 n = 1
@@ -39,7 +39,7 @@ for i in time_range:
     l = day(first_url_day,str(i))
     data = json.loads(l)['data']
     for k in data:
-        if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市']:
+        # if k['city'] in ['沈丘县','商水县','西华县','扶沟县','郸城县','淮阳县','太康县','鹿邑县','项城市','通许县','睢县','杞县']:
             sheet.write(n, 0, k['city'])
             sheet.write(n, 1, str(i))
             sheet.write(n, 2, k['co'])
@@ -54,4 +54,4 @@ for i in time_range:
             print(str(i),k)
     print(l)
 
-book.save('周口市区县12-08全年日数据.xls')
+book.save('周口市区县21年4日日数据.xls')

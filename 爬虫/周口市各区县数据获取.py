@@ -22,7 +22,7 @@ headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
 }
 
-time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2020-12-26', end='2020-12-28'))]
+time_range = [x.strftime('%Y-%m-%d') for x in list(pd.date_range(start='2021-01-11', end='2021-01-11'))]
 book = xlwt.Workbook()
 sheet = book.add_sheet('周口市各区县数据')
 n = 1
@@ -40,7 +40,7 @@ sheet.write(0,10,'综合指数')
 sheet.write(0,11,'空气质量等级')
 
 for i in time_range:
-    for j in range(0,24):
+    for j in range(0,17):
         try:
             time.sleep(5)
             url = first_url+str(i)+'+'+str(j)+ '%3A00'
@@ -68,4 +68,4 @@ for i in time_range:
             print('数据异常')
             time.sleep(30)
 
-book.save('2020年12月小时数据.xls')
+book.save('2021年1月11日小时数据.xls')
