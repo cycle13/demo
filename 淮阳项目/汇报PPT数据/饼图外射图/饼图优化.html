@@ -15,7 +15,7 @@
       var myChart = echarts.init(document.getElementById("main"));
 <!--      var colorList2 = ['red', 'green', 'blue','#FF7E00' ]-->
 <!--      var colorList1 = ['#00E400', '#FFFF00','#FF7E00' ]-->
-      var colorList1 = ['#FFFF00','#FF7E00' ]
+      var colorList1 = ['#FFFF00','#FF7E00' ,'#FF0000','#99004C']
       var colorList2 = ['red', 'green', 'blue','#FF7E00' ,'#00E400','black','purple','#0066FF']
 <!--      var colorList1 = [ '#FFFF00' ]-->
       option = {
@@ -24,7 +24,7 @@
         orient: 'vertical',
         left: 10,
 <!--        data: ['优','良','轻度污染']-->
-        data: ['良','轻度污染']
+        data: ['良','轻度污染','中度污染','重度污染']
     },
       tooltip: {
         formatter: function(param) {
@@ -56,13 +56,23 @@
             selectedMode: 'single',
             data: [
                 {
-                    value: 8,
+                    value: 7,
                     name: '良',
 
                 },
                 {
-                    value: 8,
+                    value: 12,
                     name: '轻度污染',
+
+                },
+                {
+                    value: 9,
+                    name: '中度污染',
+
+                },
+                {
+                    value: 3,
+                    name: '重度污染',
 
                 }
             ]
@@ -123,20 +133,24 @@
             },
             data: [
                 {
-                    value: 2,
+                    value: 3,
                     name: '良：PM2.5',
                 },
                 {
-                    value: 6,
+                    value: 4,
                     name: '良：PM10',
                 },
                 {
-                    value: 7,
+                    value: 12,
                     name: '轻度污染：PM2.5',
                 },
                 {
-                    value: 1,
-                    name: '轻度污染：PM10',
+                    value: 9,
+                    name: '轻度污染：PM2.5',
+                },
+                {
+                    value: 3,
+                    name: '轻度污染：PM2.5',
                 },
             ]
         }
