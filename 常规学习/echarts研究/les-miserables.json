@@ -1,0 +1,2791 @@
+{
+    "categories": [
+        {
+            "name": "龙华区"
+        },
+        {
+            "name": "美兰区"
+        },
+        {
+            "name": "琼山区"
+        },
+        {
+            "name": "秀英区"
+        }
+    ],
+    "nodes": [
+
+       {
+            "id": "1000",
+            "name": "龙华区",
+            "symbolSize": 20.638097333333334,
+            "x": 712.18353,
+            "y": 4.8131495,
+            "value": 154.541933,
+            "label": {
+                "normal": {
+                    "show": true
+                }
+            },
+            "category": 0
+        },
+
+  {
+    "id": "0",
+    "name": "安全、消防用金属制品制造",
+    "symbolSize": 2,
+    "x": 87,
+    "y": -25,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "1",
+    "name": "白酒制造",
+    "symbolSize": 10,
+    "x": -24,
+    "y": 71,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "2",
+    "name": "包装装潢及其他印刷",
+    "symbolSize": 4,
+    "x": 53,
+    "y": -98,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "3",
+    "name": "保健食品制造",
+    "symbolSize": 6,
+    "x": -29,
+    "y": -77,
+    "value": 0.006812,
+    "category": 3
+  },
+  {
+    "id": "4",
+    "name": "本册印制",
+    "symbolSize": 5,
+    "x": -78,
+    "y": -5,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "5",
+    "name": "变压器、整流器和电感器制造",
+    "symbolSize": 6,
+    "x": -23,
+    "y": 54,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "6",
+    "name": "玻璃纤维增强塑料制品制造",
+    "symbolSize": 9,
+    "x": 12,
+    "y": 87,
+    "value": 0,
+    "category": 1
+  },
+  {
+    "id": "7",
+    "name": "单板加工",
+    "symbolSize": 8,
+    "x": 87,
+    "y": 9,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "8",
+    "name": "稻谷加工",
+    "symbolSize": 4,
+    "x": -52,
+    "y": 76,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "9",
+    "name": "电容器及其配套设备制造",
+    "symbolSize": 9,
+    "x": -53,
+    "y": 41,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "10",
+    "name": "电线、电缆制造",
+    "symbolSize": 1,
+    "x": -64,
+    "y": 22,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "11",
+    "name": "电子元器件与机电组件设备制造",
+    "symbolSize": 3,
+    "x": -60,
+    "y": 73,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "12",
+    "name": "淀粉及淀粉制品制造",
+    "symbolSize": 9,
+    "x": 36,
+    "y": -23,
+    "value": 0,
+    "category": 1
+  },
+  {
+    "id": "13",
+    "name": "雕塑工艺品制造",
+    "symbolSize": 5,
+    "x": -28,
+    "y": -16,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "14",
+    "name": "豆制品制造",
+    "symbolSize": 5,
+    "x": 99,
+    "y": 61,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "15",
+    "name": "非金属船舶制造",
+    "symbolSize": 1,
+    "x": 56,
+    "y": -64,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "16",
+    "name": "非金属废料和碎屑加工处理",
+    "symbolSize": 1,
+    "x": 87,
+    "y": -43,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "17",
+    "name": "非食用植物油加工",
+    "symbolSize": 10,
+    "x": 88,
+    "y": -49,
+    "value": 0.003445,
+    "category": 1
+  },
+  {
+    "id": "18",
+    "name": "风机、风扇制造",
+    "symbolSize": 2,
+    "x": 31,
+    "y": 33,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "19",
+    "name": "复混肥料制造",
+    "symbolSize": 1,
+    "x": 6,
+    "y": -93,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "20",
+    "name": "糕点、面包制造",
+    "symbolSize": 1,
+    "x": -47,
+    "y": -15,
+    "value": 0.000325,
+    "category": 1
+  },
+  {
+    "id": "21",
+    "name": "供应用仪器仪表制造",
+    "symbolSize": 9,
+    "x": -13,
+    "y": 17,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "22",
+    "name": "固体饮料制造",
+    "symbolSize": 6,
+    "x": 34,
+    "y": 73,
+    "value": 0.000769,
+    "category": 0
+  },
+  {
+    "id": "23",
+    "name": "光伏设备及元器件制造",
+    "symbolSize": 4,
+    "x": -28,
+    "y": -84,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "24",
+    "name": "光缆制造",
+    "symbolSize": 8,
+    "x": -13,
+    "y": 80,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "25",
+    "name": "果菜汁及果菜汁饮料制造",
+    "symbolSize": 4,
+    "x": 29,
+    "y": 59,
+    "value": 0.00624,
+    "category": 3
+  },
+  {
+    "id": "26",
+    "name": "含乳饮料和植物蛋白饮料制造",
+    "symbolSize": 2,
+    "x": 57,
+    "y": -54,
+    "value": 0.55855,
+    "category": 3
+  },
+  {
+    "id": "27",
+    "name": "化学农药制造",
+    "symbolSize": 2,
+    "x": -64,
+    "y": -86,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "28",
+    "name": "化学药品原料药制造",
+    "symbolSize": 7,
+    "x": 71,
+    "y": 32,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "29",
+    "name": "化学药品制剂制造",
+    "symbolSize": 6,
+    "x": 93,
+    "y": -87,
+    "value": 0.159855,
+    "category": 3
+  },
+  {
+    "id": "30",
+    "name": "化妆品制造",
+    "symbolSize": 4,
+    "x": 40,
+    "y": -76,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "31",
+    "name": "机床功能部件及附件制造",
+    "symbolSize": 6,
+    "x": 30,
+    "y": 62,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "32",
+    "name": "基因工程药物和疫苗制造",
+    "symbolSize": 3,
+    "x": -10,
+    "y": -29,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "33",
+    "name": "集装箱制造",
+    "symbolSize": 7,
+    "x": 68,
+    "y": -85,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "34",
+    "name": "记录媒介复制",
+    "symbolSize": 3,
+    "x": 88,
+    "y": 54,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "35",
+    "name": "加工纸制造",
+    "symbolSize": 2,
+    "x": 98,
+    "y": 90,
+    "value": 0.0036,
+    "category": 3
+  },
+  {
+    "id": "36",
+    "name": "建筑、家具用金属配件制造",
+    "symbolSize": 10,
+    "x": 27,
+    "y": -49,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "37",
+    "name": "建筑用石加工",
+    "symbolSize": 10,
+    "x": -75,
+    "y": -8,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "38",
+    "name": "建筑装饰用石开采",
+    "symbolSize": 3,
+    "x": 82,
+    "y": 79,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "39",
+    "name": "交通安全、管制及类似专用设备制造",
+    "symbolSize": 6,
+    "x": -33,
+    "y": -53,
+    "value": 0,
+    "category": 0
+  },
+
+      {
+            "id": "2000",
+            "name": "美兰区",
+            "symbolSize": 20.638097333333334,
+            "x": -712.18353,
+            "y": 4.8131495,
+            "value": 660.507038,
+            "label": {
+                "normal": {
+                    "show": true
+                }
+            },
+            "category": 1
+        },
+
+  {
+    "id": "40",
+    "name": "交通及公共管理用金属标牌制造",
+    "symbolSize": 9,
+    "x": -81,
+    "y": -81,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "41",
+    "name": "胶合板制造",
+    "symbolSize": 2,
+    "x": -17,
+    "y": 1,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "42",
+    "name": "金属包装容器及材料制造",
+    "symbolSize": 1,
+    "x": -5,
+    "y": 21,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "43",
+    "name": "金属表面处理及热处理加工",
+    "symbolSize": 7,
+    "x": -86,
+    "y": -74,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "44",
+    "name": "金属废料和碎屑加工处理",
+    "symbolSize": 8,
+    "x": 7,
+    "y": -84,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "45",
+    "name": "金属家具制造",
+    "symbolSize": 1,
+    "x": -62,
+    "y": 82,
+    "value": 0.005036,
+    "category": 3
+  },
+  {
+    "id": "46",
+    "name": "金属结构制造",
+    "symbolSize": 10,
+    "x": 31,
+    "y": -84,
+    "value": 0.000325,
+    "category": 3
+  },
+  {
+    "id": "47",
+    "name": "金属门窗制造",
+    "symbolSize": 1,
+    "x": 56,
+    "y": 62,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "48",
+    "name": "金属切割及焊接设备制造",
+    "symbolSize": 6,
+    "x": 0,
+    "y": 70,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "49",
+    "name": "金属丝绳及其制品制造",
+    "symbolSize": 9,
+    "x": 90,
+    "y": 84,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "50",
+    "name": "金属压力容器制造",
+    "symbolSize": 6,
+    "x": -11,
+    "y": -25,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "51",
+    "name": "金属制厨房用器具制造",
+    "symbolSize": 10,
+    "x": -23,
+    "y": -36,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "52",
+    "name": "金属制品修理",
+    "symbolSize": 3,
+    "x": 37,
+    "y": 89,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "53",
+    "name": "金属制卫生器具制造",
+    "symbolSize": 3,
+    "x": -38,
+    "y": -74,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "54",
+    "name": "精制茶加工",
+    "symbolSize": 6,
+    "x": -21,
+    "y": 70,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "55",
+    "name": "锯材加工",
+    "symbolSize": 3,
+    "x": 19,
+    "y": 93,
+    "value": 0.25,
+    "category": 3
+  },
+  {
+    "id": "56",
+    "name": "卷烟制造",
+    "symbolSize": 5,
+    "x": -31,
+    "y": -61,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "57",
+    "name": "口腔科用设备及器具制造",
+    "symbolSize": 7,
+    "x": -41,
+    "y": 86,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "58",
+    "name": "冷冻饮品及食用冰制造",
+    "symbolSize": 5,
+    "x": 54,
+    "y": 10,
+    "value": 0.0675,
+    "category": 1
+  },
+  {
+    "id": "59",
+    "name": "林产化学产品制造",
+    "symbolSize": 7,
+    "x": 85,
+    "y": -37,
+    "value": 0.00428,
+    "category": 2
+  },
+  {
+    "id": "60",
+    "name": "煤制品制造",
+    "symbolSize": 10,
+    "x": 37,
+    "y": 41,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "61",
+    "name": "米、面制品制造",
+    "symbolSize": 7,
+    "x": -52,
+    "y": 40,
+    "value": 0.037038,
+    "category": 3
+  },
+  {
+    "id": "62",
+    "name": "密封用填料及类似品制造",
+    "symbolSize": 7,
+    "x": -50,
+    "y": -56,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "63",
+    "name": "棉印染精加工",
+    "symbolSize": 7,
+    "x": 28,
+    "y": 18,
+    "value": 0.0391,
+    "category": 2
+  },
+  {
+    "id": "64",
+    "name": "木楼梯制造",
+    "symbolSize": 1,
+    "x": 82,
+    "y": -63,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "65",
+    "name": "木门窗制造",
+    "symbolSize": 10,
+    "x": -24,
+    "y": -11,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "66",
+    "name": "木片加工",
+    "symbolSize": 7,
+    "x": 48,
+    "y": -46,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "67",
+    "name": "木制容器制造",
+    "symbolSize": 7,
+    "x": 27,
+    "y": -86,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "68",
+    "name": "木质家具制造",
+    "symbolSize": 9,
+    "x": -2,
+    "y": -97,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "69",
+    "name": "耐火陶瓷制品及其他耐火材料制造",
+    "symbolSize": 6,
+    "x": -35,
+    "y": 10,
+    "value": 0.040625,
+    "category": 3
+  },
+  {
+    "id": "70",
+    "name": "农林牧渔机械配件制造",
+    "symbolSize": 5,
+    "x": 58,
+    "y": -93,
+    "value": 0,
+    "category": 1
+  },
+  {
+    "id": "71",
+    "name": "泡沫塑料制造",
+    "symbolSize": 10,
+    "x": 21,
+    "y": 93,
+    "value": 2.078009,
+    "category": 3
+  },
+  {
+    "id": "72",
+    "name": "配电开关控制设备制造",
+    "symbolSize": 9,
+    "x": 6,
+    "y": 91,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "73",
+    "name": "啤酒制造",
+    "symbolSize": 1,
+    "x": 58,
+    "y": -64,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "74",
+    "name": "瓶（罐）装饮用水制造",
+    "symbolSize": 8,
+    "x": 70,
+    "y": 3,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "75",
+    "name": "其他常用有色金属矿采选",
+    "symbolSize": 3,
+    "x": 49,
+    "y": 60,
+    "value": 1.1,
+    "category": 0
+  },
+  {
+    "id": "76",
+    "name": "其他非金属矿物制品制造",
+    "symbolSize": 7,
+    "x": 55,
+    "y": -1,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "77",
+    "name": "其他机械和设备修理业",
+    "symbolSize": 10,
+    "x": 13,
+    "y": -70,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "78",
+    "name": "其他家具制造",
+    "symbolSize": 4,
+    "x": 14,
+    "y": -35,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "79",
+    "name": "其他建筑、安全用金属制品制造",
+    "symbolSize": 9,
+    "x": -69,
+    "y": 56,
+    "value": 0,
+    "category": 3
+  },
+
+       {
+            "id": "3000",
+            "name": "琼山区",
+            "symbolSize": 20.638097333333334,
+            "x": 0.18353,
+            "y": 712.8131495,
+            "value": 352.409846,
+            "label": {
+                "normal": {
+                    "show": true
+                }
+            },
+            "category": 2
+        },
+
+
+  {
+    "id": "80",
+    "name": "其他建筑材料制造",
+    "symbolSize": 5,
+    "x": -63,
+    "y": -29,
+    "value": 0.005226,
+    "category": 3
+  },
+  {
+    "id": "81",
+    "name": "其他金属工具制造",
+    "symbolSize": 10,
+    "x": 91,
+    "y": -82,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "82",
+    "name": "其他金属制日用品制造",
+    "symbolSize": 7,
+    "x": -33,
+    "y": 45,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "83",
+    "name": "其他人造板制造",
+    "symbolSize": 3,
+    "x": -84,
+    "y": 91,
+    "value": 0.0215,
+    "category": 3
+  },
+  {
+    "id": "84",
+    "name": "其他日用化学产品制造",
+    "symbolSize": 4,
+    "x": 24,
+    "y": 75,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "85",
+    "name": "其他输配电及控制设备制造",
+    "symbolSize": 10,
+    "x": 77,
+    "y": 78,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "86",
+    "name": "其他水泥类似制品制造",
+    "symbolSize": 8,
+    "x": -26,
+    "y": -14,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "87",
+    "name": "其他饲料加工",
+    "symbolSize": 3,
+    "x": 73,
+    "y": 87,
+    "value": 0.026632,
+    "category": 3
+  },
+  {
+    "id": "88",
+    "name": "其他调味品、发酵制品制造",
+    "symbolSize": 6,
+    "x": -87,
+    "y": 64,
+    "value": 0.0624,
+    "category": 1
+  },
+  {
+    "id": "89",
+    "name": "其他未列明金属制品制造",
+    "symbolSize": 1,
+    "x": -75,
+    "y": -39,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "90",
+    "name": "其他文教办公用品制造",
+    "symbolSize": 10,
+    "x": 99,
+    "y": -91,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "91",
+    "name": "其他医疗设备及器械制造",
+    "symbolSize": 9,
+    "x": 3,
+    "y": -25,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "92",
+    "name": "其他运输设备修理",
+    "symbolSize": 3,
+    "x": 67,
+    "y": 0,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "93",
+    "name": "其他专用化学产品制造",
+    "symbolSize": 8,
+    "x": 100,
+    "y": -89,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "94",
+    "name": "汽柴油车整车制造",
+    "symbolSize": 2,
+    "x": 79,
+    "y": -73,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "95",
+    "name": "汽车车身、挂车制造",
+    "symbolSize": 10,
+    "x": 89,
+    "y": 35,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "96",
+    "name": "汽车零部件及配件制造",
+    "symbolSize": 3,
+    "x": -87,
+    "y": 71,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "97",
+    "name": "切削工具制造",
+    "symbolSize": 10,
+    "x": 55,
+    "y": -22,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "98",
+    "name": "禽类屠宰",
+    "symbolSize": 10,
+    "x": 72,
+    "y": 57,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "99",
+    "name": "轻质建筑材料制造",
+    "symbolSize": 7,
+    "x": 86,
+    "y": -18,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "100",
+    "name": "日用塑料制品制造",
+    "symbolSize": 1,
+    "x": -87,
+    "y": -56,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "101",
+    "name": "日用陶瓷制品制造",
+    "symbolSize": 3,
+    "x": 81,
+    "y": -27,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "102",
+    "name": "肉制品及副产品加工",
+    "symbolSize": 4,
+    "x": -44,
+    "y": -80,
+    "value": 0.01033,
+    "category": 3
+  },
+  {
+    "id": "103",
+    "name": "软木制品及其他木制品制造",
+    "symbolSize": 4,
+    "x": 55,
+    "y": -60,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "104",
+    "name": "社会公共安全设备及器材制造",
+    "symbolSize": 8,
+    "x": 55,
+    "y": -25,
+    "value": 0,
+    "category": 1
+  },
+  {
+    "id": "105",
+    "name": "生物化学农药及微生物农药制造",
+    "symbolSize": 5,
+    "x": 41,
+    "y": -1,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "106",
+    "name": "生物药品制造",
+    "symbolSize": 3,
+    "x": -31,
+    "y": 38,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "107",
+    "name": "生物质致密成型燃料加工",
+    "symbolSize": 9,
+    "x": -38,
+    "y": 89,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "108",
+    "name": "牲畜屠宰",
+    "symbolSize": 4,
+    "x": -51,
+    "y": -73,
+    "value": 0.69154,
+    "category": 3
+  },
+  {
+    "id": "109",
+    "name": "石灰和石膏制造",
+    "symbolSize": 5,
+    "x": 47,
+    "y": 66,
+    "value": 15.50124,
+    "category": 3
+  },
+  {
+    "id": "110",
+    "name": "食品、酒、饮料及茶生产专用设备制造",
+    "symbolSize": 9,
+    "x": -89,
+    "y": 100,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "111",
+    "name": "食品及饲料添加剂制造",
+    "symbolSize": 7,
+    "x": -61,
+    "y": 75,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "112",
+    "name": "兽用药品制造",
+    "symbolSize": 3,
+    "x": 20,
+    "y": 82,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "113",
+    "name": "书、报刊印刷",
+    "symbolSize": 10,
+    "x": -59,
+    "y": 7,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "114",
+    "name": "水产品冷冻加工",
+    "symbolSize": 10,
+    "x": -86,
+    "y": 87,
+    "value": 0.0026,
+    "category": 3
+  },
+  {
+    "id": "115",
+    "name": "水泥制品制造",
+    "symbolSize": 3,
+    "x": -60,
+    "y": 13,
+    "value": 0.018048,
+    "category": 3
+  },
+  {
+    "id": "116",
+    "name": "塑料板、管、型材制造",
+    "symbolSize": 4,
+    "x": 31,
+    "y": -75,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "117",
+    "name": "塑料包装箱及容器制造",
+    "symbolSize": 4,
+    "x": 97,
+    "y": -75,
+    "value": 0.0006,
+    "category": 3
+  },
+  {
+    "id": "118",
+    "name": "塑料薄膜制造",
+    "symbolSize": 4,
+    "x": -59,
+    "y": 60,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "119",
+    "name": "塑料家具制造",
+    "symbolSize": 2,
+    "x": -31,
+    "y": -78,
+    "value": 0,
+    "category": 0
+  },
+      {
+            "id": "4000",
+            "name": "秀英区",
+            "symbolSize": 20.638097333333334,
+            "x": 0.18353,
+            "y": -712.8131495,
+            "value":818.235149,
+            "label": {
+                "normal": {
+                    "show": true
+                }
+            },
+            "category": 3
+        },
+
+  {
+    "id": "120",
+    "name": "塑料零件及其他塑料制品制造",
+    "symbolSize": 3,
+    "x": -41,
+    "y": 42,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "121",
+    "name": "塑料丝、绳及编织品制造",
+    "symbolSize": 2,
+    "x": 76,
+    "y": 23,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "122",
+    "name": "碳酸饮料制造",
+    "symbolSize": 5,
+    "x": -89,
+    "y": -44,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "123",
+    "name": "糖果、巧克力制造",
+    "symbolSize": 9,
+    "x": 8,
+    "y": 32,
+    "value": 0.024615,
+    "category": 3
+  },
+  {
+    "id": "124",
+    "name": "特种玻璃制造",
+    "symbolSize": 1,
+    "x": -82,
+    "y": 84,
+    "value": 0,
+    "category": 1
+  },
+  {
+    "id": "125",
+    "name": "通信系统设备制造",
+    "symbolSize": 10,
+    "x": -40,
+    "y": -58,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "126",
+    "name": "通用设备修理",
+    "symbolSize": 9,
+    "x": -64,
+    "y": 47,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "127",
+    "name": "砼结构构件制造",
+    "symbolSize": 3,
+    "x": 57,
+    "y": -63,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "128",
+    "name": "涂料制造",
+    "symbolSize": 5,
+    "x": -31,
+    "y": -90,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "129",
+    "name": "卫生材料及医药用品制造",
+    "symbolSize": 6,
+    "x": 18,
+    "y": 19,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "130",
+    "name": "香料、香精制造",
+    "symbolSize": 4,
+    "x": -67,
+    "y": 62,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "131",
+    "name": "橡胶板、管、带制造",
+    "symbolSize": 2,
+    "x": 35,
+    "y": 80,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "132",
+    "name": "橡胶加工专用设备制造",
+    "symbolSize": 7,
+    "x": -34,
+    "y": 85,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "133",
+    "name": "盐加工",
+    "symbolSize": 9,
+    "x": 82,
+    "y": -75,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "134",
+    "name": "液体乳制造",
+    "symbolSize": 9,
+    "x": 6,
+    "y": -87,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "135",
+    "name": "营养食品制造",
+    "symbolSize": 7,
+    "x": 18,
+    "y": 68,
+    "value": 0.022346,
+    "category": 3
+  },
+  {
+    "id": "136",
+    "name": "有机肥料及微生物肥料制造",
+    "symbolSize": 2,
+    "x": -26,
+    "y": 87,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "137",
+    "name": "原油加工及石油制品制造",
+    "symbolSize": 10,
+    "x": -26,
+    "y": -95,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "138",
+    "name": "杂粮加工",
+    "symbolSize": 8,
+    "x": -2,
+    "y": -44,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "139",
+    "name": "炸药及火工产品制造",
+    "symbolSize": 4,
+    "x": -94,
+    "y": -3,
+    "value": 0.0793,
+    "category": 3
+  },
+  {
+    "id": "140",
+    "name": "粘土及其他土砂石开采",
+    "symbolSize": 4,
+    "x": -46,
+    "y": 88,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "141",
+    "name": "粘土砖瓦及建筑砌块制造",
+    "symbolSize": 3,
+    "x": -100,
+    "y": 76,
+    "value": 0.903617,
+    "category": 3
+  },
+  {
+    "id": "142",
+    "name": "纸和纸板容器制造",
+    "symbolSize": 10,
+    "x": -90,
+    "y": 24,
+    "value": 0.000076,
+    "category": 3
+  },
+  {
+    "id": "143",
+    "name": "制糖业",
+    "symbolSize": 9,
+    "x": -19,
+    "y": 33,
+    "value": 0.475,
+    "category": 3
+  },
+  {
+    "id": "144",
+    "name": "中成药生产",
+    "symbolSize": 10,
+    "x": 20,
+    "y": -62,
+    "value": 0.02119,
+    "category": 3
+  },
+  {
+    "id": "145",
+    "name": "中药饮片加工",
+    "symbolSize": 4,
+    "x": -80,
+    "y": 7,
+    "value": 0.08398,
+    "category": 3
+  },
+  {
+    "id": "146",
+    "name": "竹制品制造",
+    "symbolSize": 4,
+    "x": 63,
+    "y": -60,
+    "value": 0,
+    "category": 2
+  },
+  {
+    "id": "147",
+    "name": "专用设备修理",
+    "symbolSize": 2,
+    "x": -26,
+    "y": 83,
+    "value": 0,
+    "category": 3
+  },
+  {
+    "id": "148",
+    "name": "装订及印刷相关服务",
+    "symbolSize": 3,
+    "x": 49,
+    "y": 6,
+    "value": 0,
+    "category": 0
+  },
+  {
+    "id": "149",
+    "name": "棕制品制造",
+    "symbolSize": 8,
+    "x": 92,
+    "y": -95,
+    "value": 0.022287,
+    "category": 1
+  }
+
+
+],
+    "links": [
+         {
+            "id": "0",
+            "source": "4000",
+            "target": "0"
+          },
+          {
+            "id": null,
+            "source": "1000",
+            "target": "0"
+          },
+          {
+            "id": "1",
+            "source": "4000",
+            "target": "1"
+          },
+          {
+            "id": "2",
+            "source": "1000",
+            "target": "2"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "2"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "2"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "2"
+          },
+          {
+            "id": "3",
+            "source": "4000",
+            "target": "3"
+          },
+          {
+            "id": "4",
+            "source": "1000",
+            "target": "4"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "4"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "4"
+          },
+          {
+            "id": "5",
+            "source": "1000",
+            "target": "5"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "5"
+          },
+          {
+            "id": "6",
+            "source": "2000",
+            "target": "6"
+          },
+          {
+            "id": "7",
+            "source": "3000",
+            "target": "7"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "7"
+          },
+          {
+            "id": "8",
+            "source": "1000",
+            "target": "8"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "8"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "8"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "8"
+          },
+          {
+            "id": "9",
+            "source": "4000",
+            "target": "9"
+          },
+          {
+            "id": "10",
+            "source": "1000",
+            "target": "10"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "10"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "10"
+          },
+          {
+            "id": "11",
+            "source": "4000",
+            "target": "11"
+          },
+          {
+            "id": "12",
+            "source": "2000",
+            "target": "12"
+          },
+          {
+            "id": "13",
+            "source": "1000",
+            "target": "13"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "13"
+          },
+          {
+            "id": "14",
+            "source": "2000",
+            "target": "14"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "14"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "14"
+          },
+          {
+            "id": "15",
+            "source": "1000",
+            "target": "15"
+          },
+          {
+            "id": "16",
+            "source": "4000",
+            "target": "16"
+          },
+          {
+            "id": "17",
+            "source": "2000",
+            "target": "17"
+          },
+          {
+            "id": "18",
+            "source": "4000",
+            "target": "18"
+          },
+          {
+            "id": "19",
+            "source": "4000",
+            "target": "19"
+          },
+          {
+            "id": "20",
+            "source": "2000",
+            "target": "20"
+          },
+          {
+            "id": "21",
+            "source": "1000",
+            "target": "21"
+          },
+          {
+            "id": "22",
+            "source": "1000",
+            "target": "22"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "22"
+          },
+          {
+            "id": "23",
+            "source": "4000",
+            "target": "23"
+          },
+          {
+            "id": "24",
+            "source": "1000",
+            "target": "24"
+          },
+          {
+            "id": "25",
+            "source": "2000",
+            "target": "25"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "25"
+          },
+          {
+            "id": "26",
+            "source": "1000",
+            "target": "26"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "26"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "26"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "26"
+          },
+          {
+            "id": "27",
+            "source": "4000",
+            "target": "27"
+          },
+          {
+            "id": "28",
+            "source": "1000",
+            "target": "28"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "28"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "28"
+          },
+          {
+            "id": "29",
+            "source": "1000",
+            "target": "29"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "29"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "29"
+          },
+          {
+            "id": "30",
+            "source": "1000",
+            "target": "30"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "30"
+          },
+          {
+            "id": "31",
+            "source": "1000",
+            "target": "31"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "31"
+          },
+          {
+            "id": "32",
+            "source": "4000",
+            "target": "32"
+          },
+          {
+            "id": "33",
+            "source": "4000",
+            "target": "33"
+          },
+          {
+            "id": "34",
+            "source": "4000",
+            "target": "34"
+          },
+          {
+            "id": "35",
+            "source": "4000",
+            "target": "35"
+          },
+          {
+            "id": "36",
+            "source": "1000",
+            "target": "36"
+          },
+          {
+            "id": null,
+            "source": "4000",
+            "target": "36"
+          },
+          {
+            "id": "37",
+            "source": "1000",
+            "target": "37"
+          },
+          {
+            "id": null,
+            "source": "2000",
+            "target": "37"
+          },
+          {
+            "id": null,
+            "source": "3000",
+            "target": "37"
+          },
+         {
+            "id": null,
+            "source": "4000",
+            "target": "37"
+          },
+          {
+            "id": "38",
+            "source": "4000",
+            "target": "38"
+          },
+          {
+            "id": "39",
+            "source": "1000",
+            "target": "39"
+          },
+          {
+            "id": "40",
+            "source": "1000",
+            "target": "40"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "40"
+          },
+      {
+            "id": "41",
+            "source": "1000",
+            "target": "41"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "41"
+          },
+      {
+            "id": "42",
+            "source": "2000",
+            "target": "42"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "42"
+          },
+      {
+            "id": "43",
+            "source": "1000",
+            "target": "43"
+          },
+      {
+            "id": "44",
+            "source": "4000",
+            "target": "44"
+          },
+      {
+            "id": "45",
+            "source": "1000",
+            "target": "45"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "45"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "45"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "45"
+          },
+      {
+            "id": "46",
+            "source": "1000",
+            "target": "46"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "46"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "46"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "46"
+          },
+      {
+            "id": "47",
+            "source": "1000",
+            "target": "47"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "47"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "47"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "47"
+          },
+      {
+            "id": "48",
+            "source": "4000",
+            "target": "48"
+          },
+      {
+            "id": "49",
+            "source": "4000",
+            "target": "49"
+          },
+      {
+            "id": "50",
+            "source": "3000",
+            "target": "50"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "50"
+          },
+      {
+            "id": "51",
+            "source": "1000",
+            "target": "51"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "51"
+          },
+      {
+            "id": "52",
+            "source": "3000",
+            "target": "52"
+          },
+      {
+            "id": "53",
+            "source": "1000",
+            "target": "53"
+          },
+      {
+            "id": "54",
+            "source": "4000",
+            "target": "54"
+          },
+      {
+            "id": "55",
+            "source": "1000",
+            "target": "55"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "55"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "55"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "55"
+          },
+      {
+            "id": "56",
+            "source": "3000",
+            "target": "56"
+          },
+      {
+            "id": "57",
+            "source": "4000",
+            "target": "57"
+          },
+      {
+            "id": "58",
+            "source": "2000",
+            "target": "58"
+          },
+      {
+            "id": "59",
+            "source": "2000",
+            "target": "59"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "59"
+          },
+      {
+            "id": "60",
+            "source": "3000",
+            "target": "60"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "60"
+          },
+      {
+            "id": "61",
+            "source": "3000",
+            "target": "61"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "61"
+          },
+      {
+            "id": "62",
+            "source": "4000",
+            "target": "62"
+          },
+      {
+            "id": "63",
+            "source": "3000",
+            "target": "63"
+          },
+      {
+            "id": "64",
+            "source": "1000",
+            "target": "64"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "64"
+          },
+      {
+            "id": "65",
+            "source": "1000",
+            "target": "65"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "65"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "65"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "65"
+          },
+      {
+            "id": "66",
+            "source": "1000",
+            "target": "66"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "66"
+          },
+      {
+            "id": "67",
+            "source": "1000",
+            "target": "67"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "67"
+          },
+      {
+            "id": "68",
+            "source": "1000",
+            "target": "68"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "68"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "68"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "68"
+          },
+      {
+            "id": "69",
+            "source": "4000",
+            "target": "69"
+          },
+      {
+            "id": "70",
+            "source": "2000",
+            "target": "70"
+          },
+      {
+            "id": "71",
+            "source": "1000",
+            "target": "71"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "71"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "71"
+          },
+      {
+            "id": "72",
+            "source": "1000",
+            "target": "72"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "72"
+          },
+      {
+            "id": "73",
+            "source": "1000",
+            "target": "73"
+          },
+      {
+            "id": "74",
+            "source": "1000",
+            "target": "74"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "74"
+          },
+      {
+            "id": "75",
+            "source": "1000",
+            "target": "75"
+          },
+      {
+            "id": "76",
+            "source": "3000",
+            "target": "76"
+          },
+      {
+            "id": "77",
+            "source": "4000",
+            "target": "77"
+          },
+      {
+            "id": "78",
+            "source": "1000",
+            "target": "78"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "78"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "78"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "78"
+          },
+      {
+            "id": "79",
+            "source": "3000",
+            "target": "79"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "79"
+          },
+      {
+            "id": "80",
+            "source": "2000",
+            "target": "80"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "80"
+          },
+      {
+            "id": "81",
+            "source": "3000",
+            "target": "81"
+          },
+      {
+            "id": "82",
+            "source": "3000",
+            "target": "82"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "82"
+          },
+      {
+            "id": "83",
+            "source": "1000",
+            "target": "83"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "83"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "83"
+          },
+      {
+            "id": "84",
+            "source": "1000",
+            "target": "84"
+          },
+      {
+            "id": "85",
+            "source": "2000",
+            "target": "85"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "85"
+          },
+      {
+            "id": "86",
+            "source": "3000",
+            "target": "86"
+          },
+      {
+            "id": "87",
+            "source": "1000",
+            "target": "87"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "87"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "87"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "87"
+          },
+      {
+            "id": "88",
+            "source": "2000",
+            "target": "88"
+          },
+      {
+            "id": "89",
+            "source": "3000",
+            "target": "89"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "89"
+          },
+      {
+            "id": "90",
+            "source": "1000",
+            "target": "90"
+          },
+      {
+            "id": "91",
+            "source": "1000",
+            "target": "91"
+          },
+      {
+            "id": "92",
+            "source": "3000",
+            "target": "92"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "92"
+          },
+      {
+            "id": "93",
+            "source": "4000",
+            "target": "93"
+          },
+      {
+            "id": "94",
+            "source": "1000",
+            "target": "94"
+          },
+      {
+            "id": "95",
+            "source": "4000",
+            "target": "95"
+          },
+      {
+            "id": "96",
+            "source": "1000",
+            "target": "96"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "96"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "96"
+          },
+      {
+            "id": "97",
+            "source": "4000",
+            "target": "97"
+          },
+      {
+            "id": "98",
+            "source": "4000",
+            "target": "98"
+          },
+      {
+            "id": "99",
+            "source": "4000",
+            "target": "99"
+          },
+      {
+            "id": "100",
+            "source": "3000",
+            "target": "100"
+          },
+      {
+            "id": "101",
+            "source": "1000",
+            "target": "101"
+          },
+      {
+            "id": "102",
+            "source": "1000",
+            "target": "102"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "102"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "102"
+          },
+      {
+            "id": "103",
+            "source": "1000",
+            "target": "103"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "103"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "103"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "103"
+          },
+      {
+            "id": "104",
+            "source": "2000",
+            "target": "104"
+          },
+      {
+            "id": "105",
+            "source": "4000",
+            "target": "105"
+          },
+      {
+            "id": "106",
+            "source": "2000",
+            "target": "106"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "106"
+          },
+      {
+            "id": "107",
+            "source": "4000",
+            "target": "107"
+          },
+      {
+            "id": "108",
+            "source": "2000",
+            "target": "108"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "108"
+          },
+      {
+            "id": "109",
+            "source": "4000",
+            "target": "109"
+          },
+      {
+            "id": "110",
+            "source": "4000",
+            "target": "110"
+          },
+      {
+            "id": "111",
+            "source": "4000",
+            "target": "111"
+          },
+      {
+            "id": "112",
+            "source": "1000",
+            "target": "112"
+          },
+      {
+            "id": "113",
+            "source": "1000",
+            "target": "113"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "113"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "113"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "113"
+          },
+      {
+            "id": "114",
+            "source": "2000",
+            "target": "114"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "114"
+          },
+      {
+            "id": "115",
+            "source": "1000",
+            "target": "115"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "115"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "115"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "115"
+          },
+      {
+            "id": "116",
+            "source": "2000",
+            "target": "116"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "116"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "116"
+          },
+      {
+            "id": "117",
+            "source": "1000",
+            "target": "117"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "117"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "117"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "117"
+          },
+      {
+            "id": "118",
+            "source": "1000",
+            "target": "118"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "118"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "118"
+          },
+      {
+            "id": "119",
+            "source": "1000",
+            "target": "119"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "119"
+          },
+      {
+            "id": "120",
+            "source": "1000",
+            "target": "120"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "120"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "120"
+          },
+      {
+            "id": "121",
+            "source": "4000",
+            "target": "121"
+          },
+      {
+            "id": "122",
+            "source": "4000",
+            "target": "122"
+          },
+      {
+            "id": "123",
+            "source": "1000",
+            "target": "123"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "123"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "123"
+          },
+      {
+            "id": "124",
+            "source": "2000",
+            "target": "124"
+          },
+      {
+            "id": "125",
+            "source": "1000",
+            "target": "125"
+          },
+      {
+            "id": "126",
+            "source": "4000",
+            "target": "126"
+          },
+      {
+            "id": "127",
+            "source": "4000",
+            "target": "127"
+          },
+      {
+            "id": "128",
+            "source": "1000",
+            "target": "128"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "128"
+          },
+      {
+            "id": "129",
+            "source": "1000",
+            "target": "129"
+          },
+      {
+            "id": "130",
+            "source": "1000",
+            "target": "130"
+          },
+      {
+            "id": "131",
+            "source": "3000",
+            "target": "131"
+          },
+      {
+            "id": "132",
+            "source": "3000",
+            "target": "132"
+          },
+      {
+            "id": "133",
+            "source": "4000",
+            "target": "133"
+          },
+      {
+            "id": "134",
+            "source": "4000",
+            "target": "134"
+          },
+      {
+            "id": "135",
+            "source": "2000",
+            "target": "135"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "135"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "135"
+          },
+      {
+            "id": "136",
+            "source": "2000",
+            "target": "136"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "136"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "136"
+          },
+      {
+            "id": "137",
+            "source": "1000",
+            "target": "137"
+          },
+      {
+            "id": "138",
+            "source": "1000",
+            "target": "138"
+          },
+      {
+            "id": "139",
+            "source": "4000",
+            "target": "139"
+          },
+      {
+            "id": "140",
+            "source": "1000",
+            "target": "140"
+          },
+      {
+            "id": "141",
+            "source": "1000",
+            "target": "141"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "141"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "141"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "141"
+          },
+      {
+            "id": "142",
+            "source": "1000",
+            "target": "142"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "142"
+          },
+      {
+            "id": null,
+            "source": "3000",
+            "target": "142"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "142"
+          },
+      {
+            "id": "143",
+            "source": "1000",
+            "target": "143"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "143"
+          },
+      {
+            "id": "144",
+            "source": "1000",
+            "target": "144"
+          },
+      {
+            "id": null,
+            "source": "2000",
+            "target": "144"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "144"
+          },
+      {
+            "id": "145",
+            "source": "1000",
+            "target": "145"
+          },
+      {
+            "id": null,
+            "source": "4000",
+            "target": "145"
+          },
+      {
+            "id": "146",
+            "source": "3000",
+            "target": "146"
+          },
+      {
+            "id": "147",
+            "source": "4000",
+            "target": "147"
+          },
+      {
+            "id": "148",
+            "source": "1000",
+            "target": "148"
+          },
+      {
+            "id": "149",
+            "source": "2000",
+            "target": "149"
+          }
+    ]
+}

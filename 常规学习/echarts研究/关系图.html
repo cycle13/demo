@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2019年月2020年第三季度污染等级天数变化情况</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.jsdelivr.net/npm/echarts@5.0.0/dist/echarts.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 500px;width: 800px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+myChart.showLoading();
+$.getJSON('https://echarts.apache.org/next/examples/data/asset/data/les-miserables.json', function (graph) {
+    myChart.hideLoading();
+
+    option = {
+        tooltip: {},
+        legend: [{
+            data: graph.categories.map(function (a) {
+                return a.name;
+            })
+        }],
+        series: [
+            {
+                name: 'Les Miserables',
+                type: 'graph',
+                layout: 'none',
+                data: graph.nodes,
+                links: graph.links,
+                categories: graph.categories,
+                roam: true,
+                label: {
+                    show: true,
+                    position: 'right',
+                    formatter: '{b}'
+                },
+                labelLayout: {
+                    hideOverlap: true
+                },
+                scaleLimit: {
+                    min: 0.4,
+                    max: 2
+                },
+                lineStyle: {
+                    color: 'source',
+                    curveness: 0.3
+                }
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+});
+
+        </script>
+    </body>
+</html>
