@@ -2,6 +2,7 @@ import requests
 import time
 import urllib.request
 import hashlib
+import wmi
 
 
 session = requests.Session()
@@ -55,26 +56,45 @@ def qipic():
     urllib.request.urlretrieve(response.text,'pic/' + lon+"_"+lat+"_"+response.text[-20:-1])
     print('输出完成！')
 
-def readquan():
+def readquan(xulie):
     x = open('data/data.txt','r')
     y = x.read()
     x.close()
-    tet = y.split(' ')
-    name=tet[0]
-    paw = tet[1]
-    fmd5 = hashlib.md5(name.encode("utf-8"))
+    paw = y
+    fmd5 = hashlib.md5(xulie.encode("utf-8"))
     ls = fmd5.hexdigest()[0:10]+fmd5.hexdigest()[20:30]
     fmd55 = hashlib.md5(ls.encode("utf-8"))
     ll = fmd55.hexdigest()[5:11]+fmd55.hexdigest()[15:28]
+    print(ll)
     if ll == paw:
         return 1
     else:
         return 0
 
 
+def xulie():
+    c = wmi.WMI()
+    # # 硬盘序列号
+    for physical_disk in c.Win32_DiskDrive():
+        return (physical_disk.SerialNumber)
+    # # CPU序列号
+    # for cpu in c.Win32_Processor():
+    #     print(cpu.ProcessorId.strip())
+    # # 主板序列号
+    # for board_id in c.Win32_BaseBoard():
+    #     print(board_id.SerialNumber)
+    # # mac地址
+    # for mac in c.Win32_NetworkAdapter():
+    #     print(mac.MACAddress)
+    # # bios序列号
+    # for bios_id in c.Win32_BIOS():
+    #     print(bios_id.SerialNumber.strip())
+
+
+
 
 if __name__ == '__main__':
-    if readquan():
+    if readquan(xulie()):
         print('授权存在,请输入经纬度后按回车键等待下载！')
         qipic()
     else:
