@@ -123,7 +123,7 @@ def time_acc_data():
 
 
 # time_acc_data()
-area_roll_data()
+# area_roll_data()
 # area_data()
 # time_data()
-# time_roll_data()
+time_roll_data()

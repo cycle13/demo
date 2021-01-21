@@ -4,7 +4,7 @@ from pyecharts import options as opts
 from pyecharts.charts import Graph
 
 
-with open("les-miserablesvoc.json", "r", encoding="utf-8") as f:
+with open("les-miserablesnozero.json", "r", encoding="utf-8") as f:
     j = json.load(f)
     nodes = j["nodes"]
     links = j["links"]
@@ -28,6 +28,6 @@ c = (
         title_opts=opts.TitleOpts(title="海口市各区与各行业关系图"),
         legend_opts=opts.LegendOpts(orient="vertical", pos_left="2%", pos_top="20%"),
     )
-    .render("挥发性有机物海口市各区与各行业关系图.html")
+    .render("海口市各区与各行业关系图.html")
 )
 c

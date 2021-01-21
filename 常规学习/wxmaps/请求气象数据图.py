@@ -1,6 +1,7 @@
 import requests
 import time
 import urllib.request
+import hashlib
 
 
 session = requests.Session()
@@ -40,14 +41,41 @@ datapay = '''
     </field>,
     </gaplot>,
 '''
-lon = input('请输入经度(E)：')
-lat = input('请输入纬度(N)：')
-data = datapay.format(lon,lat)
-res = session.get(first_url,headers = header)
-time.sleep(10)
-response = session.post(pic_url,data = data,headers=headers)
-print(response.text)
-time.sleep(10)
-print('正在输出图像，请稍等！')
-urllib.request.urlretrieve(response.text,'pic/' + lon+"_"+lat+"_"+response.text[-20:-1])
-print('输出完成！')
+
+def qipic():
+    lon = input('请输入经度(E)：')
+    lat = input('请输入纬度(N)：')
+    data = datapay.format(lon,lat)
+    res = session.get(first_url,headers = header)
+    time.sleep(10)
+    response = session.post(pic_url,data = data,headers=headers)
+    print(response.text)
+    time.sleep(10)
+    print('正在输出图像，请稍等！')
+    urllib.request.urlretrieve(response.text,'pic/' + lon+"_"+lat+"_"+response.text[-20:-1])
+    print('输出完成！')
+
+def readquan():
+    x = open('data/data.txt','r')
+    y = x.read()
+    x.close()
+    tet = y.split(' ')
+    name=tet[0]
+    paw = tet[1]
+    fmd5 = hashlib.md5(name.encode("utf-8"))
+    ls = fmd5.hexdigest()[0:10]+fmd5.hexdigest()[20:30]
+    fmd55 = hashlib.md5(ls.encode("utf-8"))
+    ll = fmd55.hexdigest()[5:11]+fmd55.hexdigest()[15:28]
+    if ll == paw:
+        return 1
+    else:
+        return 0
+
+
+
+if __name__ == '__main__':
+    if readquan():
+        print('授权存在,请输入经纬度后按回车键等待下载！')
+        qipic()
+    else:
+        print('该授权不存在！')
