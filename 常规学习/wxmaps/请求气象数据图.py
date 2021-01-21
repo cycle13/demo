@@ -65,7 +65,6 @@ def readquan(xulie):
     ls = fmd5.hexdigest()[0:10]+fmd5.hexdigest()[20:30]
     fmd55 = hashlib.md5(ls.encode("utf-8"))
     ll = fmd55.hexdigest()[5:11]+fmd55.hexdigest()[15:28]
-    print(ll)
     if ll == paw:
         return 1
     else:
