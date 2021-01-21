@@ -50,7 +50,7 @@ def qipic():
     res = session.get(first_url,headers = header)
     time.sleep(10)
     response = session.post(pic_url,data = data,headers=headers)
-    print(response.text)
+    print(lon+"_"+lat+"点位数据获取成功，请稍等！")
     time.sleep(10)
     print('正在输出图像，请稍等！')
     urllib.request.urlretrieve(response.text,'pic/' + lon+"_"+lat+"_"+response.text[-20:-1])
