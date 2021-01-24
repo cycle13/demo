@@ -17,7 +17,7 @@ c = (
         "AQI",
         Faker.week,
         data,
-        label_opts=opts.LabelOpts(is_show=True, position="inside"),
+        label_opts=opts.LabelOpts(is_show=True, position="inside",color='black'),
     )
     .set_global_opts(
         title_opts=opts.TitleOpts(title="2021年第三周AQI污染物浓度",  pos_top="30px",pos_left="400px"),
