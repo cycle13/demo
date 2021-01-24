@@ -17,5 +17,5 @@ def readquan(xulie):
 #     for physical_disk in c.Win32_DiskDrive():
 #         return (physical_disk.SerialNumber)
 
-xulie = '044A_5000_5180_1881.'
+xulie = 'E823_8FA6_BF53_0001_001B_444A_464A_8C98.'
 readquan(xulie)

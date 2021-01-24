@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height:800px;width:1400px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+
+var points = [
+                  {name:'减排情景库',value: [92.7301025390625, 40.657722371758105],itemStyle:{color:'#f34e2b'}}
+                  , {name:'管控措施库',value: [93.29315185546875, 40.66397287638688],itemStyle:{color:'#f34e2b'}}
+                  , {name:'案例库',value: [93.944091796875, 40.820045086716505],itemStyle:{color:'#f34e2b'}}
+                  , {name:'知识库',value: [93.93585205078125,40.66188943992171],itemStyle:{color:'#f34e2b'}}
+                  , {name:'源清单库',value: [93.94134521484374,40.49291502689579],itemStyle:{color:'#f34e2b'}}
+  ]
+var uploadedDataURL = "huaiyang.json";
+myChart.showLoading();
+      let index = -1;
+
+$.getJSON(uploadedDataURL, function(geoJson) {
+
+    echarts.registerMap('china', geoJson);
+    myChart.hideLoading();
+    option = {
+toolbox : {
+                left : 'center',
+                feature : {
+                    dataZoom : {
+                        yAxisIndex : 'none'
+                    },
+
+                    restore : {},
+                    saveAsImage : {}
+                }
+            },
+
+        geo: {
+          map: 'china',
+          aspectScale: 0.75,
+          zoom: 30,
+          roam: true,
+          center:[93.43048095703125, 40.657722371758105],
+          regions: [{
+            name: '南海诸岛',
+            itemStyle: {
+                areaColor: 'rgba(0, 10, 52, 1)',
+                borderColor: 'rgba(0, 10, 52, 1)',
+                normal: {
+                    opacity: 0,
+                    label: {
+                        show: true,
+                        color: "#009cc9",
+                    }
+                }
+            },
+        }],
+        },
+        series: [ {
+            type: 'map',
+            roam: false,
+            label: {
+                normal: {
+                    show: true,
+                    formatter:'{b}',
+                    textStyle: {
+                        color: '#1DE9B6'
+                    }
+                },
+                emphasis: {
+                    textStyle: {
+                        color: 'rgb(183,185,14)'
+                    }
+                }
+            },
+            itemStyle: {
+              normal: {
+               borderColor: 'rgb(147, 235, 248)',
+                borderWidth: 1,
+                areaColor: {
+                        type: 'radial',
+                        x: 0.5,
+                        y: 0.5,
+                        r: 0.8,
+                        colorStops: [{
+                            offset: 0,
+                            color: '#09132c'
+                        }, {
+                            offset: 1,
+                            color: '#274d68'
+                        }],
+                        globalCoord: true
+                    },
+              },
+              emphasis: {
+                    areaColor: 'rgb(46,229,206)',
+                    borderWidth: 0.1
+                }
+            },
+            zoom: 1.1,
+          },
+          {
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                showEffectOn: 'render',
+                zlevel:1,
+                rippleEffect: {
+                    period: 15,
+                    scale: 4,
+                    brushType: 'fill'
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'right',
+                        offset: [35, 0],
+                        show: true,
+                        textStyle: {
+                    fontSize: 18 },
+                        color:'rgba(0,0,0,1)',
+
+                    },
+                },
+                itemStyle: {
+                    normal: {
+                       color:'#333',
+                        shadowBlur: 10,
+                        shadowColor: '#333',
+                        color:'rgba(255,255,255,255)'
+                    }
+                },
+                symbolSize: 5,
+                data: points
+            },
+          {
+                type: 'lines',
+                zlevel: 1,
+                effect: {
+                    show: true,
+                    period: 4,
+                    trailLength: 0.4,
+                    symbol: 'arrow',
+                    symbolSize: 10,
+                },
+                lineStyle: {
+                    normal: {
+                        color:'#1DE9B6',
+                        width: 1,
+                        opacity: 0.1,
+                        curveness: .3
+                    }
+                },
+                data: [
+                    {coords: [[92.7301025390625, 40.657722371758105],[93.29315185546875, 40.66397287638688]],lineStyle:{color:'blue'}}
+                  , {coords: [[93.29315185546875, 40.66397287638688],[93.944091796875, 40.820045086716505]],lineStyle:{color:'black'}}
+                  , {coords: [[93.29315185546875, 40.66397287638688],[93.93585205078125,40.66188943992171]],lineStyle:{color:'black'}}
+                  , {coords: [[93.29315185546875, 40.66397287638688],[93.94134521484374,40.49291502689579]],lineStyle:{color:'black'}}
+                  , {coords: [[93.94134521484374,40.49291502689579],[92.7301025390625, 40.657722371758105]],lineStyle:{color:'green'}}
+                ]
+            }
+
+        ]
+    };
+    myChart.setOption(option,true);
+});
+
+        </script>
+    </body>
+</html>
