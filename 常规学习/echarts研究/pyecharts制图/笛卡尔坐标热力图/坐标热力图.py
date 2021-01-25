@@ -9,13 +9,15 @@ from pyecharts.faker import Faker
 with open("demoresult.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 print(data)
+value=['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
 time_t = ['0时','1时','2时','3时','4时','5时','6时','7时','8时','9时','10时','11时','12时','13时','14时','15时','16时','17时','18时','19时','20时','21时','22时','23时']
+date_t = ['1日','2日','6日','4日','5日','6日','7日','8日','9日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31日',]
 c = (
     HeatMap(init_opts=opts.InitOpts(width="1000px", height="600px"))
-    .add_xaxis(time_t)
+    .add_xaxis(date_t)
     .add_yaxis(
         "AQI",
-        Faker.week,
+        value,
         data,
         label_opts=opts.LabelOpts(is_show=True, position="inside",color='black'),
     )
