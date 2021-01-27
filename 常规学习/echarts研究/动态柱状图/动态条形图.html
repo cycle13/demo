@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>淮阳区2020年8月12日01点到2020年8月19日23点PM10小时浓度变化图</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 1000px;width: 2400px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+      var years = ['2017/01', '2017/02', '2017/03', '2017/04', '2017/05', '2017/06', '2017/07', '2017/08', '2017/09', '2017/10', '2017/11', '2017/12'];
+ var jdData = [
+     ['其他建筑材料制造', '金属结构制造', '水泥制品制造', '粘土砖瓦及建筑砌块制造', '建筑装饰用石开采', '林产化学产品制造', '复混肥料制造', '石灰和石膏制造', '涂料制造', '塑料板、管、型材制造'],
+ ]
+ var data = [[16.48, 6.21, 6.18, 5.61, 3.31, 2.91, 2.51, 1.9, 1.68, 1.37], [17.21, 6.49, 6.45, 5.85, 3.45, 3.04, 2.63, 1.98, 1.75, 1.43], [15.44, 5.82, 5.79, 5.25, 3.1, 2.73, 2.36, 1.78, 1.57, 1.28], [15.03, 5.66, 5.63, 5.11, 3.02, 2.66, 2.29, 1.73, 1.53, 1.25], [12.0, 4.52, 4.5, 4.08, 2.41, 2.12, 1.83, 1.38, 1.22, 1.0], [9.8, 3.69, 3.67, 3.33, 1.97, 1.73, 1.49, 1.13, 1.0, 0.81], [8.91, 3.36, 3.34, 3.03, 1.79, 1.58, 1.36, 1.03, 0.91, 0.74], [9.47, 3.57, 3.55, 3.22, 1.9, 1.67, 1.44, 1.09, 0.96, 0.79], [12.25, 4.62, 4.59, 4.17, 2.46, 2.16, 1.87, 1.41, 1.25, 1.02], [15.92, 6.0, 5.97, 5.42, 3.2, 2.81, 2.43, 1.84, 1.62, 1.32], [17.05, 6.43, 6.39, 5.8, 3.42, 3.01, 2.6, 1.97, 1.74, 1.42], [20.32, 7.66, 7.61, 6.91, 4.08, 3.59, 3.1, 2.34, 2.07, 1.69]];
+
+ option = {
+
+     baseOption: {
+         backgroundColor: '#ffffff', //背景颜色
+         timeline: {
+             data: years,
+             axisType: 'category',
+             autoPlay: true,
+             playInterval: 1500, //播放速度
+
+             left: '5%',
+             right: '5%',
+             bottom: '0%',
+             width: '90%',
+             height: 30,
+             label: {
+                 normal: {
+                     textStyle: {
+
+                         color: 'red',
+                     }
+                 },
+                 emphasis: {
+                     textStyle: {
+                         color: 'red'
+                     }
+                 }
+             },
+             symbolSize: 10,
+             lineStyle: {
+                 color: '#red'
+             },
+             checkpointStyle: {
+                 borderColor: '#red',
+                 borderWidth: 2
+             },
+             controlStyle: {
+                 showNextBtn: true,
+                 showPrevBtn: true,
+                 normal: {
+                     color: '#ff8800',
+                     borderColor: '#ff8800'
+                 },
+                 emphasis: {
+                     color: 'red',
+                     borderColor: 'red'
+                 }
+             },
+
+         },
+         title: {
+             text: '淮阳区各乡镇PM10浓度图',
+             right: '2%',
+             bottom: '8%',
+             color:'red',
+             textStyle: {
+                 fontSize: 50,
+                 color: 'black' //标题字体颜色
+             }
+         },
+         tooltip: {
+             'trigger': 'axis'
+         },
+         calculable: true,
+         grid: {
+             left: '8%',
+             right: '2%',
+             bottom: '6%',
+             top: '0%',
+             containLabel: true
+         },
+         label: {
+             normal: {
+                 textStyle: {
+                     color: 'red'
+                 }
+             }
+         },
+         yAxis: [{
+
+             nameGap: 50,
+             offset: '37',
+             'type': 'category',
+             interval: 50,
+             //inverse: ture,//图表倒叙或者正序排版
+             data: '',
+             nameTextStyle: {
+                 color: 'red'
+             },
+
+
+             axisLabel: {
+                 //rotate:45,
+                 show: false,
+                 textStyle: {
+                     fontSize: 32,
+
+                     color: function(params, Index) { // 标签国家字体颜色
+
+                         //color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);//随机生成颜色
+
+                         var colorarrays = ['#6bc0fb', '#7fec9d', '#fedd8b', '#ffa597', '#84e4dd', '#749f83',
+                             '#ca8622', '#bda29a', '#a8d8ea', '#aa96da', '#fcbad3', '#ffffd2',
+                             '#f38181', '#fce38a', '#eaffd0', '#95e1d3', '#e3fdfd', '#749f83', '#ca8622'
+                         ];
+
+                         //console.log("111", Index, colorarrays[Index],params); //打印序列
+
+                         return colorarrays[jdData[0].indexOf(params)];
+                     },
+
+
+                 }, //rotate:45,
+                 interval: 50
+             },
+             axisLine: {
+
+                 lineStyle: {
+                     color: 'black' //Y轴颜色
+                 },
+             },
+             splitLine: {
+                 show: false,
+                 lineStyle: {
+                     color: 'black'
+                 }
+             },
+
+         }],
+         xAxis: [{
+             'type': 'value',
+             'name': '',
+
+             splitNumber: 8, //轴线个数
+             nameTextStyle: {
+                 color: 'balck'
+             },
+             axisLine: {
+                 lineStyle: {
+                     color: 'red', //X轴颜色
+                     width: 1
+                 }
+             },
+             axisLabel: {
+                 formatter: '{value} ',
+                 fontSize: 15
+             },
+             splitLine: {
+                 show: true,
+                 lineStyle: {
+                     color: 'red',
+                     width: 1
+                 }
+             },
+         }],
+         series: [{
+                 'name': '',
+                 'type': 'bar',
+                 markLine: {
+                     label: {
+                         normal: {
+                             show: false
+                         }
+                     },
+                     lineStyle: {
+                         normal: {
+                             color: 'red',
+                             width: 3
+                         }
+                     },
+                 },
+                 label: {
+                     normal: {
+                         show: true,
+                         position: 'right', //数值显示在右侧
+                         formatter: '{c}'
+                     }
+                 },
+                 itemStyle: {
+                     normal: {
+                         color: function(params) {
+                             // build a color map as your need.
+                             //color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);//随机生成颜色
+                             var colorList = ['#6bc0fb', '#7fec9d', '#fedd8b', '#ffa597', '#84e4dd', '#749f83',
+                                 '#ca8622', '#bda29a', '#a8d8ea', '#aa96da', '#fcbad3', '#ffffd2',
+                                 '#f38181', '#fce38a', '#eaffd0', '#95e1d3', '#e3fdfd', '#749f83', '#ca8622'
+                             ];
+                             // return colorList[params.dataIndex]
+
+                             console.log("111", params.name); //打印序列
+                             return colorList[jdData[0].indexOf(params.name)];
+                         },
+
+                     }
+                 },
+             },
+
+             {
+                 'name': '',
+                 'type': 'bar',
+                 markLine: {
+
+
+                     label: {
+                         normal: {
+                             show: false
+                         }
+                     },
+                     lineStyle: {
+
+                         normal: {
+                             color: 'red',
+                             width: 3
+                         }
+                     },
+                 },
+                 barWidth: '50%',
+                 barGap: '-100%',
+                 label: {
+                     normal: {
+                         show: true,
+                         fontSize: 16,  //标签国家字体大小
+                         position: 'left', //数值显示在右侧
+                         formatter: function(p) {
+                             return p.name;
+                         }
+                     }
+                 },
+                 itemStyle: {
+                     normal: {
+
+
+                         color: function(params) {
+                             // build a color map as your need.
+                             //color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);//随机生成颜色
+                             var colorList = ['#6bc0fb', '#7fec9d', '#fedd8b', '#ffa597', '#84e4dd', '#749f83',
+                                 '#ca8622', '#bda29a', '#a8d8ea', '#aa96da', '#fcbad3', '#ffffd2',
+                                 '#f38181', '#fce38a', '#eaffd0', '#95e1d3', '#e3fdfd', '#749f83', '#ca8622'
+                             ];
+                             // return colorList[params.dataIndex]
+
+                             // console.log("111", params.name); //打印序列
+                             return colorList[jdData[0].indexOf(params.name)];
+                         },
+
+                     }
+                 },
+             }
+         ],
+
+         animationEasingUpdate: 'quinticInOut',
+         animationDurationUpdate: 1500, //动画效果
+     },
+
+     options: []
+ };
+ for (var n = 0; n < years.length; n++) {
+
+     var res = [];
+     //alert(jdData.length);
+     for (j = 0; j < data[n].length; j++) {
+         res.push({
+             name: jdData[0][j],
+             value: data[n][j]
+         });
+
+     }
+
+     res.sort(function(a, b) {
+         return b.value - a.value;
+     }).slice(0, 6);
+
+     res.sort(function(a, b) {
+         return a.value - b.value;
+     });
+
+
+     var res1 = [];
+     var res2 = [];
+     //console.log(res);
+     for (t = 0; t < res.length; t++) {
+         res1[t] = res[t].name;
+         res2[t] = res[t].value;
+     }
+     option.options.push({
+         title: {
+             text: years[n],
+             textStyle: {
+                    color: '#000000',
+                    fontSize: 15
+                },
+         },
+         yAxis: {
+             data: res1,
+         },
+         series: [{
+             data: res2
+         }, {
+             data: res2
+         }]
+     });
+ }
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

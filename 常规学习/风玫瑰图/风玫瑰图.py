@@ -5,7 +5,7 @@ from matplotlib.pylab import savefig
 import windrose
 # 重新升级matplotlib到3.0.2版本就行了
 # 读取数据
-pm25W = pd.read_excel('weatherAll1.xlsx')
+pm25W = pd.read_excel('data.xls')
 #加载字体
 font = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=15)
 
@@ -24,5 +24,5 @@ def ShowAndSave_WindroseAxes(pm25W0,iname):
     ax.set_title(iname,fontproperties=font) #标题
     savefig('./' + iname + '.png')
 
-pm25W1 = pm25W[pm25W.name == '桃园2019年春节假期']
-ShowAndSave_WindroseAxes(pm25W1,'桃园2019年春节假期')
+# pm25W1 = pm25W[pm25W.name == '桃园2019年春节假期']
+ShowAndSave_WindroseAxes(pm25W,'淮阳区2021年1月份')

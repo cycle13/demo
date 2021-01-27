@@ -36,7 +36,7 @@ def save_excel():
     sheet.write(0,7,'rain')
     sheet.write(0,8,'temperature')
     time.sleep(5)
-    for i in time_range('2020-01-01-00', '2020-12-31-23'):
+    for i in time_range('2021-01-01-00', '2021-01-27-09'):
         l = qi("101181404", i, first_url)
         print(l)
         try:
@@ -54,7 +54,7 @@ def save_excel():
         except:
             n += 1
             pass
-    book.save('周口市气象数据.xls')
+    book.save('淮阳区气象数据.xls')
 
 save_excel()
 
