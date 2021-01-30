@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@1/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@1/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/map/js/world.js"></script>
+<!--       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var posList = [
+    'left', 'right', 'top', 'bottom',
+    'inside',
+    'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+    'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+];
+
+app.configParameters = {
+    rotate: {
+        min: -90,
+        max: 90
+    },
+    align: {
+        options: {
+            left: 'left',
+            center: 'center',
+            right: 'right'
+        }
+    },
+    verticalAlign: {
+        options: {
+            top: 'top',
+            middle: 'middle',
+            bottom: 'bottom'
+        }
+    },
+    position: {
+        options: echarts.util.reduce(posList, function (map, pos) {
+            map[pos] = pos;
+            return map;
+        }, {})
+    },
+    distance: {
+        min: 0,
+        max: 100
+    }
+};
+
+app.config = {
+    rotate: 90,
+    align: 'left',
+    verticalAlign: 'middle',
+    position: 'insideBottom',
+    distance: 15,
+    onChange: function () {
+        var labelOption = {
+            normal: {
+                rotate: app.config.rotate,
+                align: app.config.align,
+                verticalAlign: app.config.verticalAlign,
+                position: app.config.position,
+                distance: app.config.distance
+            }
+        };
+        myChart.setOption({
+            series: [{
+                label: labelOption
+            }, {
+                label: labelOption
+            }, {
+                label: labelOption
+            }, {
+                label: labelOption
+            }]
+        });
+    }
+};
+
+
+var labelOption = {
+    show: true,
+    position: app.config.position,
+    distance: app.config.distance,
+    align: app.config.align,
+    verticalAlign: app.config.verticalAlign,
+    rotate: app.config.rotate,
+<!--    formatter: '{c}  {name|{a}}',-->
+    fontSize: 16,
+    rich: {
+        name: {
+            textBorderColor: '#fff'
+        }
+    }
+};
+
+option = {
+    color: ['#61a0a8', '#d48265', '#c23531', '#e5323e'],
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    legend: {
+        data: ['行业总排放量', '行业限制最大排放量', '行业减排目标'],
+        fontSize: 30,
+    },
+    toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+            mark: {show: true},
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    xAxis: [
+        {
+            name:'',
+            type: 'category',
+            axisLabel:{interval: 0},
+            axisTick: {show: false},
+            data: ['其他建筑材料制造', '金属结构制造', '水泥制品制造', '粘土砖瓦及建筑砌块制造', '建筑装饰用石开采', '林产化学产品制造', '复混肥料制造', '石灰和石膏制造', '涂料制造', '塑料板、管、型材制造','其他行业总量','扬尘','机动车排放','非移动道路机械','其他','外来传输','海盐粒子']
+        }
+    ],
+    yAxis: [
+        {
+            name:'PM2.5排放量（t）',
+            fontSize: 30,
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            name: '行业总排放量',
+            type: 'bar',
+            barGap: 0,
+            label: labelOption,
+            data: [42, 15.8, 15.7, 14.3, 8.4, 7.4, 6.4, 4.8, 4.3, 3.5, 16.2, 259, 134.2, 140, 261, 205.1, 74.5]
+        },
+        {
+            name: '行业限制最大排放量',
+            type: 'bar',
+            label: labelOption,
+            data: [29.4, 11.1, 11, 10, 5.9, 5.2, 4.5, 3.4, 3, 2.4, 16.2, 155.4, 93.9, 98, 182.7, 205.1, 74.5]
+        },
+        {
+            name: '行业减排目标',
+            type: 'bar',
+            label: labelOption,
+            data: [12.6, 4.8, 4.7, 4.3, 2.5, 2.2, 1.9, 1.5, 1.3, 1, 0, 103.6, 40.3, 42, 78.3, 0, 0]
+        },
+        {
+            type: 'pie',
+            center: ['40%', '60%'],
+            radius: '30%',
+            data: [
+                    {value:911.7, name:'海口市限制最大排放量'},
+                    {value:301.0, name:'海口市减排目标'},
+            ],
+            label: {
+                    formatter: '{b}: {@2012} ({d}%)'
+                },
+        },
+        {
+            type: 'pie',
+            center: ['30%', '25%'],
+            radius: '30%',
+            data: [
+                    {value:139.1, name:'工业排放量'},
+                    {value:258.9, name:'扬尘排放量'},
+                    {value:274.2, name:'移动源放量'},
+                    {value:261.0, name:'其他排放量'},
+                    {value:205.1, name:'外来传输'},
+                    {value:74.5, name:'海盐粒子'},
+                    {value:9.7, name:'燃煤'},
+            ],
+            label: {
+                    formatter: '{b}: {@2012} ({d}%)'
+                },
+        },
+        {
+        name: 'Pressure',
+        type: 'gauge',
+        radius: '30%',
+        center: ['55%', '25%'],
+        progress: {
+            show: true
+        },
+        detail: {
+            valueAnimation: true,
+            formatter: '{value}%'
+        },
+        data: [{
+            value: 30,
+            name: '减排'
+        }]
+    }
+
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

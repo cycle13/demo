@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 1400px;width: 1600px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     var data = [{
+    name: '包装装潢及其他印刷',
+    itemStyle: {
+        color: '#da0d68'
+    },
+    children: [{
+        name: '海口彩日纸塑印刷有限公司',
+        value: 31108,
+        itemStyle: {
+            color: '#975e6d'
+        }
+    },{
+        name: '海南比信包装印刷有限公司',
+        value: 6660,
+        itemStyle: {
+            color: '#975e6d'
+        }
+    },{
+        name: '海南继瑶包装彩印有限公司',
+        value: 17505,
+        itemStyle: {
+            color: '#975e6d'
+        }
+    },{
+        name: '海南拍拍看信息技术有限公司',
+        value: 7538,
+        itemStyle: {
+            color: '#975e6d'
+        }
+    },{
+        name: '海南现代彩印包装有限公司',
+        value: 34938,
+        itemStyle: {
+            color: '#975e6d'
+        }
+    },{
+        name: '中钞华森实业公司',
+        value: 14207,
+        itemStyle: {
+            color: '#975e6d'
+        }
+    }]
+}, {
+    name: '化学药品制剂制造',
+    itemStyle: {
+        color: '#da1d23'
+    },
+    children: [{
+        name: '海口市制药厂有限公司',
+        value: 7995,
+        itemStyle: {
+            color: '#dd4c51'
+        },
+    }, {
+        name: '海南先声药业有限公司',
+        value: 5188,
+        itemStyle: {
+            color: '#c94a44'
+        },
+    }]
+}, {
+    name: '耐火陶瓷制品及其他耐火材料制造',
+    itemStyle: {
+        color: '#ebb40f'
+    },
+    children: [{
+        name: '海南蓝箭轻型建材贸易有限公司',
+        value: 92623,
+        itemStyle: {
+            color: '#e1c315'
+        },
+    }]
+}, {
+    name: '汽车零部件及配件制造',
+    itemStyle: {
+        color: '#187a2f'
+    },
+    children: [{
+        name: '海南华福汽车零部件制造有限公司',
+        value: 23168,
+        itemStyle: {
+            color: '#a2b029'
+        }
+    }]
+}, {
+    name: '书、报刊印刷',
+    itemStyle: {
+        color: '#0aa3b5'
+    },
+    children: [{
+        name: '海南博威印刷有限公司',
+        value: 7659,
+        itemStyle: {
+            color: '#9db2b7'
+        },
+    }, {
+        name: '海南日报有限责任公司',
+        value: 7094,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }]
+}, {
+    name: '塑料板、管、型材制造',
+    itemStyle: {
+        color: '#c94930'
+    },
+    children: [{
+        name: '海南雄海实业有限公司',
+        value: 5400,
+        itemStyle: {
+            color: '#caa465'
+        }
+    }]
+}, {
+    name: '塑料包装箱及容器制造',
+    itemStyle: {
+        color: '#ad213e'
+    },
+    children: [{
+        name: '海口中南瓶胚有限公司',
+        value: 5300,
+        itemStyle: {
+            color: '#794752'
+        }
+    }]
+}, {
+    name: '塑料薄膜制造',
+    itemStyle: {
+        color: '#a87b64'
+    },
+    children: [{
+        name: '海口成兴塑胶有限公司',
+        value: 10477,
+        itemStyle: {
+            color: '#c78869'
+        },
+    }, {
+        name: '海南赛诺实业有限公司',
+        value: 21649,
+        itemStyle: {
+            color: '#bb764c'
+        }
+    }, {
+        name: '海南天人降解塑料股份有限公司',
+        value: 8205,
+        itemStyle: {
+            color: '#bb764c'
+        }
+    }]
+}, {
+    name: '盐加工',
+    itemStyle: {
+        color: '#e65832'
+    },
+    children: [{
+        name: '海南晶辉盐业有限公司',
+        value: 25500,
+        itemStyle: {
+            color: '#d45a59'
+        },
+    }]
+}, {
+    name: '纸和纸板容器制造',
+    itemStyle: {
+        color: '#e65832'
+    },
+    children: [{
+        name: '海南宝岛实业有限公司',
+        value: 31433,
+        itemStyle: {
+            color: '#d45a59'
+        },
+    }]
+}];
+
+option = {
+    backgroundColor:'#100C2A',
+    title: {
+        text: '海口市排放VOCs前十行业对应企业',
+        textStyle: {
+            fontSize: 20,
+            align: 'center'
+        },
+        subtextStyle: {
+            align: 'center'
+        },
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {c})'
+    },
+    series: {
+        type: 'sunburst',
+        data: data,
+        label:{
+            normal:{
+                 show:true,
+                 formatter:function(params){
+                 return params.name+"\n"+params.value
+                          },
+                      },
+                  },
+        radius: [0, '95%'],
+        sort: null,
+        emphasis: {
+            focus: 'ancestor'
+        },
+        levels: [{}, {
+            r0: '15%',
+            r: '35%',
+            itemStyle: {
+                borderWidth: 2
+            },
+            label: {
+                padding: 3,
+                silent: false
+            }
+        }, {
+            r0: '40%',
+            r: '72%',
+            label: {
+                position: 'outside',
+                padding: 3,
+                silent: false
+            },
+            itemStyle: {
+                borderWidth: 3
+            }
+        }]
+    }
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
