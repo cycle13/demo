@@ -24,5 +24,6 @@ def ShowAndSave_WindroseAxes(pm25W0,iname):
     ax.set_title(iname,fontproperties=font) #标题
     savefig('./' + iname + '.png')
 
+# 筛选出名称为“桃园2019年春节假期”的数据
 # pm25W1 = pm25W[pm25W.name == '桃园2019年春节假期']
-ShowAndSave_WindroseAxes(pm25W,'淮阳区2021年1月份')
+ShowAndSave_WindroseAxes(pm25W,'太原市2021年1月份')
