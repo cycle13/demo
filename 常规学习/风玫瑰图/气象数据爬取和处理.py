@@ -10,7 +10,7 @@ headers = {
 
 urll = 'https://hepp.zc12369.com/api/airwise-api/{}%2000:00/{}%2023:00/{}/{}/hour-data'
 start = '2021-01-01'
-end = '2021-01-28'
+end = '2021-02-03'
 lon = '112.550864'
 lat = '37.890277'
 url = urll.format(start,end,lon,lat)
@@ -92,5 +92,5 @@ def save_excel():
         n+=1
     book.save('data.xls')
 
-# save_excel()
-save_excel_all()
+save_excel()
+# save_excel_all()

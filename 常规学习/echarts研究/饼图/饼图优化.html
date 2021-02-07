@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 600px;width: 900px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+      var colorList1 = ['#4F81BD','#C0504D' ,'#9BBB59','#8064A2']
+      var colorList2 = ['#4BACC6', '#F79646', '#2C4D75','#5F7530','#4BACC6', '#F79646', '#2C4D75','#5F7530','#4BACC6', '#F79646', '#2C4D75','#5F7530','#4BACC6', '#F79646', '#2C4D75','#5F7530']
+      option = {
+      backgroundColor: '#fff',
+      legend: {
+        orient: 'vertical',
+        left: 10,
+        data: ['龙华区','美兰区','琼山区','秀英区']
+    },
+      tooltip: {
+        formatter: function(param) {
+            if (param.data.type == null) {
+
+                return param.data.name + ":" + param.value + '个';
+            } else {
+
+                return param.data.type + ":" + param.value + '个';
+            }
+        }
+    },
+    series: [{
+            name: '整体分类',
+            type: 'pie',
+            radius: [0, '30%'],
+            label: {
+                position: 'inner',
+            },
+            itemStyle: {
+                normal: {
+                    borderColor: '#fff',
+                    borderWidth: 2,
+                    color: function(params) {
+                        return colorList1[params.dataIndex]
+                    }
+                }
+            },
+            selectedMode: 'single',
+            data: [
+
+                {
+                    value: 143,
+                    name: '龙华区',
+
+                },
+
+                {
+                    value: 175,
+                    name: '秀英区',
+
+                },
+                {
+                    value: 89,
+                    name: '琼山区',
+
+                },
+                {
+                    value: 147,
+                    name: '美兰区',
+
+                },
+
+            ]
+        },
+        {
+            name: '优、良和污染天数及比例',
+            type: 'pie',
+            radius: ['40%', '55%'],
+
+            itemStyle: {
+                normal: {
+                    color: function(params) {
+                        return colorList2[params.dataIndex]
+                    }
+                }
+            },
+            label: {
+                formatter: '{b|{b}：}{c}  {per|{d}%}  ',
+                backgroundColor: '#eee',
+                borderColor: '#aaa',
+                borderWidth: 1,
+                borderRadius: 4,
+                shadowBlur:3,
+                shadowOffsetX: 2,
+                shadowOffsetY: 2,
+                shadowColor: '#999',
+                padding: [0, 7],
+                rich: {
+                    a: {
+                        color: 'yellow',
+                        lineHeight: 22,
+                        align: 'center'
+                    },
+                    abg: {
+                        backgroundColor: '#333',
+                        width: '100%',
+                        align: 'right',
+                        height: 22,
+                        borderRadius: [4, 4, 0, 0]
+                    },
+                    hr: {
+                        borderColor: 'yellow',
+                        width: '100%',
+                        borderWidth: 0.5,
+                        height: 0
+                    },
+                    b: {
+                        fontSize: 16,
+                        lineHeight: 33
+                    },
+                    per: {
+                        color: '#eee',
+                        backgroundColor: '#334455',
+                        padding: [2, 4],
+                        borderRadius: 2
+                    }
+                }
+            },
+            data: [
+
+
+
+                {
+                    value: 76,
+                    name: '区站建筑',
+                },
+                {
+                    value: 4,
+                    name: '区站市政',
+                },
+                {
+                    value: 59,
+                    name: '市站建筑',
+                },
+                {
+                    value: 4,
+                    name: '市站政府',
+                },
+
+                {
+                    value: 37,
+                    name: '区站建筑',
+                },
+                {
+                    value: 1,
+                    name: '区站市政',
+                },
+                {
+                    value: 112,
+                    name: '市站建筑',
+                },
+                {
+                    value: 25,
+                    name: '市站政府',
+                },
+
+
+
+                {
+                    value: 53,
+                    name: '区站建筑',
+                },
+                {
+                    value: 1,
+                    name: '区站市政',
+                },
+                {
+                    value: 29,
+                    name: '市站建筑',
+                },
+                {
+                    value: 6,
+                    name: '市站政府',
+                },
+
+                {
+                    value: 50,
+                    name: '区站建筑',
+                },
+                {
+                    value: 3,
+                    name: '区站市政',
+                },
+                {
+                    value: 72,
+                    name: '市站建筑',
+                },
+                {
+                    value: 22,
+                    name: '市站政府',
+                },
+
+
+
+
+
+            ]
+        }
+    ]
+};
+
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>

@@ -1,5 +1,5 @@
 #导入模块
-import numpy as np
+import data_p
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.colors as col
@@ -7,11 +7,20 @@ import matplotlib.cm as cm
 from scipy.ndimage.filters import gaussian_filter
 plt.rcParams['font.sans-serif'] = ['SimHei']
 
-path = 'data/data4.txt'
+name = 'aaa'
+data2 = data_p.data_p(name)
+path = 'data/'+name+'.txt'
 data = open(path,'r').read()
+print('正在处理数据！')
+data = data.replace('<P>','')
+data = data.replace('</BODY>','')
+data = data.replace('</HTML>','')
+data = data.replace('\n','')
 data1 = data.split(' ')
+data1 = filter(None,data1)
 data = []
 for j in data1:
+    print(j)
     data.append(float(j))
 voc = []
 nox = []
@@ -31,7 +40,6 @@ for i in range(int(len(data['voc'])/step)):
     for j in range(len(data['voc'][i*step:(i+1)*step])):
         x.append(data['voc'][i*step+j])
     X.append(x)
-print(X)
 
 for i in range(int(len(data['nox'])/step)):
     y=[]
@@ -44,7 +52,7 @@ for i in range(int(len(data['o3'])/step)):
     for j in range(len(data['o3'][i*step:(i+1)*step])):
         z.append(data['o3'][i*step+j])
     Z.append(z)
-
+print('正在绘图！')
 # 自定义色阶
 color1 = '#00E400'  # 优
 color2 = '#FFFF00'  # 良
@@ -67,6 +75,6 @@ plt.clabel(contour,fontsize=10,colors='k')
 cd = plt.colorbar(cset)
 cd.set_label("O3/ppm",size=10)
 plt.title("EKMA曲线图",y=1.06,size=10)
-plt.scatter(0.34,0.0214,color = 'black', s=5)
-plt.savefig('pic/EKMA4.png',dpi=600)
+plt.scatter(float(data2[0]),float(data2[1]),color = 'black', s=5)
+plt.savefig('pic/EKMA1221.png',dpi=600)
 plt.show()
