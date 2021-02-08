@@ -123,7 +123,7 @@ def time_acc_data():
 # 滚动计算每一小时的时间累计特征雷达图
 def time_hour_acc_data():
     color = []
-    end_date_time = '01/01/2021'
+    end_date_time = '01/02/2021'
     start_time = '00:00:00'
     end_time = '12:00:00'
     my_datatime = pd.date_range(end_date_time, '12/31/2021')
@@ -158,7 +158,7 @@ def time_hour_acc_data():
         else:
             color.append(name)
     print(color)
-    pic_bar.line_pic(newfile_acc_dir, "image_file", color)
+    pic_bar.line_pic_hour(newfile_acc_dir, "image_file", color)
     # pic_bar.line_pic10(newfile_acc_dir, "image_file", color)
     # pic_bar.line_picco(newfile_acc_dir, "image_file", color)
     # pic_bar.line_picso2(newfile_acc_dir, "image_file", color)
