@@ -7,7 +7,7 @@ import matplotlib.cm as cm
 from scipy.ndimage.filters import gaussian_filter
 plt.rcParams['font.sans-serif'] = ['SimHei']
 
-name = 'aaa'
+name = 'isopleth'
 data2 = data_p.data_p(name)
 path = 'data/'+name+'.txt'
 data = open(path,'r').read()
@@ -76,5 +76,5 @@ cd = plt.colorbar(cset)
 cd.set_label("O3/ppm",size=10)
 plt.title("EKMA曲线图",y=1.06,size=10)
 plt.scatter(float(data2[0]),float(data2[1]),color = 'black', s=5)
-plt.savefig('pic/EKMA1221.png',dpi=600)
+plt.savefig('pic/EKMA曲线.png',dpi=600)
 plt.show()
