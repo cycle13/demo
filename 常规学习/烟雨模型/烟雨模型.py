@@ -60,31 +60,12 @@ elif 6>=int(name6)>=5:
     for j in dirc:
         Vertical.append(spp1*1000*j/(1+0.3*j))
 
-wb = load_workbook('data/demo.xlsx')
+wb = load_workbook('data/demo1.xlsx')
 sheet = wb["Sheet1"]
 sheet.cell(1, 1).value = 'speed'
-sheet.cell(1, 2).value = '1'
-sheet.cell(1, 3).value = '3'
-sheet.cell(1, 4).value = '5'
-sheet.cell(1, 5).value = '7'
-sheet.cell(1, 6).value = '9'
-sheet.cell(1, 7).value = '11'
-sheet.cell(1, 8).value = '13'
-sheet.cell(1, 9).value = '15'
-sheet.cell(1, 10).value = '17'
-sheet.cell(1, 11).value = '19'
+for l in range(len(dirc)):
+    sheet.cell(1, 3+l).value = dirc[l]
 
-sheet.cell(1, 3).value = '0'
-sheet.cell(1, 4).value = '0.5'
-sheet.cell(1, 5).value = '0.8'
-sheet.cell(1, 6).value = '1.5'
-sheet.cell(1, 7).value = '3'
-sheet.cell(1, 8).value = '5'
-sheet.cell(1, 9).value = '10'
-sheet.cell(1, 10).value = '20'
-sheet.cell(1, 11).value = '35'
-sheet.cell(1, 12).value = '60'
-sheet.cell(1, 13).value = '100'
 # 写入Ht
 sheet.cell(1, 2).value = 'Ht(m)'
 Ht = []
@@ -109,5 +90,5 @@ for n in range(len(Lateral)):
             sk = 1000000*int(name2)/(2*math.pi*Lateral[n]*Vertical[n]*speed[m])*(math.exp(-0.5*((Ht[m]/Vertical[n])**2))*2)
 
         sheet.cell(m + 2, n+3).value = sk
-wb.save('data/demo.xlsx')
+wb.save('data/demo1.xlsx')
 print('数据计算完成，请在excel中查看数据内容！')
