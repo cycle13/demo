@@ -1,6 +1,6 @@
-import openpyxl
+from openpyxl import load_workbook
 import math
-import time
+from time import sleep
 
 
 name = input('请输入烟囱高度（m）：')
@@ -28,7 +28,7 @@ spp1 = spp[name6]
 # 定义温度
 
 print('正在计算开尔文温度数据！')
-time.sleep(1)
+sleep(1)
 Kelvin = [int(name4)+273.15,int(name5)+273.15]
 Kelvin.append(3.12*0.785*int(name3)*(int(name1)**2)*(Kelvin[0]-Kelvin[1])/(Kelvin[0]))
 if Kelvin[2] > 55:
@@ -43,7 +43,7 @@ else:
 Lateral = []
 Vertical = []
 print('正在计算稳定性类别的横向和纵向离散系数！')
-time.sleep(1)
+sleep(1)
 for i in dirc:
     Lateral.append(sp1*1000*i*1/math.sqrt(1+0.1*i))
 
@@ -60,7 +60,7 @@ elif 6>=int(name6)>=5:
     for j in dirc:
         Vertical.append(spp1*1000*j/(1+0.3*j))
 
-wb = openpyxl.load_workbook('data/demo.xlsx')
+wb = load_workbook('data/demo.xlsx')
 sheet = wb["Sheet1"]
 sheet.cell(1, 1).value = 'speed'
 sheet.cell(1, 2).value = '1'
@@ -99,7 +99,7 @@ for k in range(len(speed)):
     Ht.append(sl)
 
 print('正在计算烟雨中心线上距离原点的距离处污染物浓度！')
-time.sleep(1)
+sleep(1)
 # 写入落地浓度
 for n in range(len(Lateral)):
     for m in range(len(speed)):
@@ -110,3 +110,4 @@ for n in range(len(Lateral)):
 
         sheet.cell(m + 2, n+3).value = sk
 wb.save('data/demo.xlsx')
+print('数据计算完成，请在excel中查看数据内容！')
