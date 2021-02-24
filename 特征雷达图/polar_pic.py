@@ -84,11 +84,11 @@ def area_roll_data():
 # 滚动计算每一天的时间累计特征雷达图
 def time_acc_data():
     color = []
-    file_dir = 'excelfile/淮阳县整年数据.xls'
-    file_cen_dir = 'excelfile/淮阳县整年数据中间.xls'
-    newfile_dir = 'excelfile/淮阳县整年数据.xlsx'
-    newfile_acc_dir = 'excelfile/淮阳县整年截取数据.xlsx'
-    my_datatime = pd.date_range('01/01/2021', '01/11/2021')
+    file_dir = 'excelfile/合川.xlsx'
+    file_cen_dir = 'excelfile/合川中间.xls'
+    newfile_dir = 'excelfile/合川数据.xlsx'
+    newfile_acc_dir = 'excelfile/合川截取数据.xlsx'
+    my_datatime = pd.date_range('02/02/2021', '02/12/2021')
     start_time = my_datatime[0].strftime('%Y-%m-%d')
     stop_time = my_datatime[-1].strftime('%Y-%m-%d')
     df = pd.read_excel(file_dir)
@@ -123,17 +123,17 @@ def time_acc_data():
 # 滚动计算每一小时的时间累计特征雷达图
 def time_hour_acc_data():
     color = []
-    end_date_time = '01/02/2021'
+    end_date_time = '02/12/2021'
     start_time = '00:00:00'
     end_time = '12:00:00'
     my_datatime = pd.date_range(end_date_time, '12/31/2021')
     result = my_datatime[0].strftime('%Y-%m-%d')
     start_date = (my_datatime[0] + datatime.timedelta(days=-31)).strftime("%Y-%m-%d")
     end_date = (my_datatime[0] + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    file_dir = 'excelfile/数据.xls'
-    file_cen_dir = 'excelfile/数据中间.xls'
-    newfile_dir = 'excelfile/数据.xlsx'
-    newfile_acc_dir = 'excelfile/截取数据.xlsx'
+    file_dir = 'excelfile/合川区.xls'
+    file_cen_dir = 'excelfile/合川区中间.xls'
+    newfile_dir = 'excelfile/合川区.xlsx'
+    newfile_acc_dir = 'excelfile/合川区截取.xlsx'
 
     print(start_date,end_date,result,start_time,end_time)
     df1 = pd.read_excel(file_dir,sheet_name='Sheet1')
@@ -207,5 +207,5 @@ def area_hour_acc_data():
 # area_data()
 # time_data()
 # time_roll_data()
-# time_hour_acc_data()
-area_hour_acc_data()
+time_hour_acc_data()
+# area_hour_acc_data()
