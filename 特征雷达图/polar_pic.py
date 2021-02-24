@@ -166,9 +166,9 @@ def time_hour_acc_data():
     # pic_bar.line_pico3(newfile_acc_dir, "image_file", color)
 
 
-# 滚动计算每一小时的时间累计特征雷达图
+# 滚动计算每一小时的区域特征雷达图
 def area_hour_acc_data():
-    # color = []
+    area_name = '淮阳县'
     end_date_time = '01/01/2021'
     start_time = '00:00:00'
     end_time = '02:00:00'
@@ -176,10 +176,10 @@ def area_hour_acc_data():
     result = my_datatime[0].strftime('%Y-%m-%d')
     start_date = (my_datatime[0] + datatime.timedelta(days=-31)).strftime("%Y-%m-%d")
     end_date = (my_datatime[0] + datatime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    file_dir = 'excelfile/周口市数据.xls'
-    file_cen_dir = 'excelfile/周口市数据中间.xls'
-    newfile_dir = 'excelfile/周口市数据.xlsx'
-    newfile_acc_dir = 'excelfile/周口市截取数据.xlsx'
+    file_dir = 'excelfile/周口数据.xls'
+    file_cen_dir = 'excelfile/周口数据中间.xls'
+    newfile_dir = 'excelfile/周口数据.xlsx'
+    newfile_acc_dir = 'excelfile/周口截取数据.xlsx'
 
     print(start_date,end_date,result,start_time,end_time)
     df1 = pd.read_excel(file_dir,sheet_name='Sheet1')
@@ -190,20 +190,16 @@ def area_hour_acc_data():
     df2.index = df2['时间']
     df4 = df2[my_datatime[0].strftime('%Y-%m-%d %H:%M:%S'):my_datatime[-1].strftime('%Y-%m-%d %H:%M:%S')]
     df4.to_excel(newfile_acc_dir)
-    # for i in my_datatime:
-    #     j = i.strftime('%Y-%m-%d %H:%M:%S')
-    #     k = i.strftime('%Y-%m-%d %H%M%S')
-    #     df3 = df2[j:j]
-    #     df = df1.append(df3)
-    #     print(j)
-    #     df.to_excel(file_cen_dir, index=False)
-    #     name = data_opt.tezheng_hour(file_cen_dir, newfile_dir, i)
-    #     data_visual.plot_radar_time_hour(newfile_dir, k, name[0])
-    #     if name in color:
-    #         color.append(('', name[1]))
-    #     else:
-    #         color.append(name)
-    # print(color)
+    for i in my_datatime:
+        j = i.strftime('%Y-%m-%d %H:%M:%S')
+        k = i.strftime('%Y-%m-%d %H%M%S')
+        df3 = df2[j:j]
+        df = df1.append(df3)
+        print(j)
+        df.to_excel(file_cen_dir, index=False)
+        name = data_opt.tezheng_area(file_cen_dir, newfile_dir, i,area_name)
+        data_visual.plot_radar_time(newfile_dir, k, name[0])
+
 
 
 # time_acc_data()
