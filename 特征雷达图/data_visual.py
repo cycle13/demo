@@ -38,6 +38,7 @@ def plot_radar(newfile_dir,now_time,name):
     ax.grid(False)  # 不显示默认的分割线
     # ax.set_yticks([])  # 不显示坐标间隔
     plt.tight_layout()
+    fig.text(0.75, 0.15, '佳华科技生态环境研究院', fontsize=30, rotation=45, color='gray', ha='right', va='bottom', alpha=0.4)
     plt.title(now_time +'：' +name,x=0,y=0.9,fontproperties=font,fontsize=18,color = 'r')
     plt.savefig("image_file" + '/' + now_time + '.png')
     plt.ylim(0, 20)
@@ -79,6 +80,7 @@ def plot_radar_time(newfile_dir,now_time,name):
     ax.grid(False)  # 不显示默认的分割线
     # ax.set_yticks([])  # 不显示坐标间隔
     plt.tight_layout()
+    fig.text(0.75, 0.15, '佳华科技生态环境研究院', fontsize=30, rotation=45, color='gray', ha='right', va='bottom', alpha=0.4)
     plt.title(name,x=0,y=0.9,fontproperties=font,fontsize=18,color = 'r')
     plt.savefig("image_file" + '/' + now_time + '.png')
     plt.ylim(0, 20)
