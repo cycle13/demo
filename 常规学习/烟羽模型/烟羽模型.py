@@ -97,6 +97,7 @@ print('数据计算完成，请在excel中查看数据内容！')
 data = pd.read_excel('data/demo1.xlsx')
 data = data.drop(columns = ['Ht(m)'])
 data = data.drop(columns = ['speed'])
+data.index = speed
 data = data.T
 plt.rcParams['font.sans-serif'] = ['SimHei']
 data.plot(marker='*')
