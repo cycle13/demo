@@ -1,23 +1,25 @@
 from openpyxl import load_workbook
 import math
+import matplotlib.pyplot as plt
 from time import sleep
+import pandas as pd
 
 
-name = input('请输入烟囱高度（m）：')
-name1 = input('请输入烟囱直径（m）：')
-name2 = input('请输入排放速率 (g/s)：')
-name3 = input('请输入气体出口速度 (m/s)：')
-name4 = input('请输入气体出口温度（℃）：')
-name5 = input('请输入环境温度（℃）：')
-name6 = input('请输入大气条件类别（1：非常不稳定；2：重度不稳定；3：轻微不稳定；4：中立；5：稳定；6：非常稳定）：')
+# name = input('请输入烟囱高度（m）：')
+# name1 = input('请输入烟囱直径（m）：')
+# name2 = input('请输入排放速率 (g/s)：')
+# name3 = input('请输入气体出口速度 (m/s)：')
+# name4 = input('请输入气体出口温度（℃）：')
+# name5 = input('请输入环境温度（℃）：')
+# name6 = input('请输入大气条件类别（1：非常不稳定；2：重度不稳定；3：轻微不稳定；4：中立；5：稳定；6：非常稳定）：')
 
-# name = '30'
-# name1 = '2'
-# name2 = '5'
-# name3 = '5'
-# name4 = '200'
-# name5 = '20'
-# name6 = '5'
+name = '30'
+name1 = '2'
+name2 = '5'
+name3 = '5'
+name4 = '200'
+name5 = '20'
+name6 = '1'
 
 speed = [1,3,5,7,9,11,13,15,17,19]
 dirc = [0,0.5,0.8,1.5,3,5,10,20,35,60,100]
@@ -92,3 +94,17 @@ for n in range(len(Lateral)):
         sheet.cell(m + 2, n+3).value = sk
 wb.save('data/demo1.xlsx')
 print('数据计算完成，请在excel中查看数据内容！')
+data = pd.read_excel('data/demo1.xlsx')
+data = data.drop(columns = ['Ht(m)'])
+data = data.drop(columns = ['speed'])
+data = data.T
+plt.rcParams['font.sans-serif'] = ['SimHei']
+data.plot(marker='*')
+plt.xlabel('距排气筒水平距离(km)')
+plt.text(9, 0, '佳华科技生态环境研究院', fontsize=30, rotation=45, color='gray', ha='right', va='bottom', alpha=0.4)
+plt.title('基于高斯分布的点源污染扩散')
+plt.ylabel('浓度 (mmg/m3)')
+plt.savefig('pic/aaa.png')
+plt.show()
+
+print(data)
