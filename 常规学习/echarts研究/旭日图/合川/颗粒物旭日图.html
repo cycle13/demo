@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>太原市2019年全年每日AQI值</title>
+          <!-- 引入 echarts.js -->
+          <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+          <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+     </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div style="height: 1400px;width: 1600px;" id="main"></div>
+        <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("main"));
+
+     var data = [{
+    name: '复混肥料制造',
+    itemStyle: {
+        color: '#da0d68'
+    },
+    children: [{
+        name: '海南百荣达新生物科技发展有限公司',
+        value: 84.67,
+        itemStyle: {
+            color: '#975e6d'
+        }
+    }]
+}, {
+    name: '建筑装饰用石开采',
+    itemStyle: {
+        color: '#da1d23'
+    },
+    children: [{
+        name: '海南鑫双龙矿业有限公司',
+        value: 21.33,
+        itemStyle: {
+            color: '#dd4c51'
+        },
+    }, {
+        name: '海南证拓投资有限公司港口文峰石场分公司',
+        value: 98.71,
+        itemStyle: {
+            color: '#c94a44'
+        },
+    }]
+}, {
+    name: '金属结构制造',
+    itemStyle: {
+        color: '#ebb40f'
+    },
+    children: [{
+        name: '共享钢构有限责任公司',
+        value: 77.37,
+        itemStyle: {
+            color: '#e1c315'
+        },
+    }, {
+        name: '海口顺顺意建材有限公司',
+        value: 15.90,
+        itemStyle: {
+            color: '#b09733'
+        },
+    },{
+        name: '海南博奥电气设备有限公司',
+        value: 96.28,
+        itemStyle: {
+            color: '#b09733'
+        },
+    }]
+}, {
+    name: '林产化学产品制造',
+    itemStyle: {
+        color: '#187a2f'
+    },
+    children: [{
+        name: '海口美兰科业环保机械木炭厂',
+        value: 38.31,
+        itemStyle: {
+            color: '#a2b029'
+        }
+    }, {
+        name: '海口美兰排城再生资源能源炭厂',
+        value: 58.94,
+        itemStyle: {
+            color: '#718933'
+        }
+    }]
+}, {
+    name: '其他建筑材料制造',
+    itemStyle: {
+        color: '#0aa3b5'
+    },
+    children: [{
+        name: '海口美兰昌达碎石加工厂',
+        value: 45.95,
+        itemStyle: {
+            color: '#9db2b7'
+        },
+    }, {
+        name: '海口美兰大湖碎石场',
+        value: 59.45,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口美兰利昌隆碎石场',
+        value: 77.10,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口美兰六顺碎石加工场',
+        value: 31.81,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口美兰日昌碎石场',
+        value: 32.38,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口美兰日达石场',
+        value: 69.78,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口美兰三江四海碎石场',
+        value: 18.95,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口美兰万利碎石场',
+        value: 54.50,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口美兰鑫磊碎石场',
+        value: 28.37,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口秀英金源建筑废料资源回收加工场',
+        value: 29.54,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口秀英通生石料加工厂',
+        value: 12.34,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海口秀英永圣建筑材料加工点',
+        value: 19.71,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海南亮智矿业开发有限公司',
+        value: 22.74,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }, {
+        name: '海南星砂建材有限公司',
+        value: 87.11,
+        itemStyle: {
+            color: '#76c0cb'
+        },
+    }]
+}, {
+    name: '石灰和石膏制造',
+    itemStyle: {
+        color: '#c94930'
+    },
+    children: [{
+        name: '海南鑫胜环保材料有限公司',
+        value: 69.23,
+        itemStyle: {
+            color: '#caa465'
+        }
+    }]
+}, {
+    name: '水泥制品制造',
+    itemStyle: {
+        color: '#ad213e'
+    },
+    children: [{
+        name: '海口市秀英荣顺建筑材料厂',
+        value: 11.10,
+        itemStyle: {
+            color: '#794752'
+        }
+    }, {
+        name: '海口秀英建宏水泥制品厂',
+        value: 17.87,
+        itemStyle: {
+            color: '#cc3d41'
+        }
+    }, {
+        name: '海南佳益混凝土有限公司',
+        value: 42.64,
+        itemStyle: {
+            color: '#b14d57'
+        },
+    }, {
+        name: '海南家赞建材有限公司',
+        value: 17.87,
+        itemStyle: {
+            color: '#b14d57'
+        },
+    }, {
+        name: '海南瑞泽双林建材有限公司海口分公司',
+        value: 32.60,
+        itemStyle: {
+            color: '#b14d57'
+        },
+    }]
+}, {
+    name: '塑料板、管、型材制造',
+    itemStyle: {
+        color: '#a87b64'
+    },
+    children: [{
+        name: '海南省蓝塑实业有限公司',
+        value: 18.00,
+        itemStyle: {
+            color: '#c78869'
+        },
+    }, {
+        name: '海南雄海实业有限公司',
+        value: 21.60,
+        itemStyle: {
+            color: '#bb764c'
+        }
+    }]
+}, {
+    name: '涂料制造',
+    itemStyle: {
+        color: '#e65832'
+    },
+    children: [{
+        name: '海南中衡泰岳建材有限公司',
+        value: 29.76,
+        itemStyle: {
+            color: '#d45a59'
+        },
+    }, {
+        name: '立邦新型材料（上海）有限公司海口分公司',
+        value: 14.89,
+        itemStyle: {
+            color: '#f89a80'
+        }
+    }]
+}, {
+    name: '粘土砖瓦及建筑砌块制造',
+    itemStyle: {
+        color: '#e65832'
+    },
+    children: [{
+        name: '海口龙殿环保建材厂',
+        value: 12.00,
+        itemStyle: {
+            color: '#d45a59'
+        },
+    }, {
+        name: '海口琼山唐琼发建材厂',
+        value: 13.46,
+        itemStyle: {
+            color: '#f89a80'
+        }
+    }, {
+        name: '海口榕达博益建材厂（普通合伙）',
+        value: 11.82,
+        itemStyle: {
+            color: '#f89a80'
+        }
+    }, {
+        name: '海口豫昌建材厂',
+        value: 37.83,
+        itemStyle: {
+            color: '#f89a80'
+        }
+    }, {
+        name: '海南赣昌新型建材有限公司',
+        value: 35.46,
+        itemStyle: {
+            color: '#f89a80'
+        }
+    }, {
+        name: '海南鑫旺建材有限公司',
+        value: 11.09,
+        itemStyle: {
+            color: '#f89a80'
+        }
+    }]
+}];
+
+option = {
+    backgroundColor:'#100C2A',
+    title: {
+        text: '合川区排放颗粒物前十行业对应企业',
+        textStyle: {
+            fontSize: 14,
+            align: 'center'
+        },
+        subtextStyle: {
+            align: 'center'
+        },
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {c}'
+    },
+    series: {
+        type: 'sunburst',
+        data: data,
+        label:{
+            normal:{
+                 show:true,
+                 formatter:function(params){
+                 return params.name+"\n"+params.value.toFixed(2)
+                          },
+                      },
+                  },
+        radius: [0, '95%'],
+        sort: null,
+        emphasis: {
+            focus: 'ancestor'
+        },
+        levels: [{}, {
+            r0: '15%',
+            r: '35%',
+            itemStyle: {
+                borderWidth: 2
+            },
+            label: {
+<!--                position: 'outside',-->
+                padding: 3,
+                silent: false
+            }
+        }, {
+            r0: '40%',
+            r: '72%',
+            label: {
+                position: 'outside',
+                padding: 3,
+                silent: false
+            },
+            itemStyle: {
+                borderWidth: 3
+            }
+        }]
+    }
+};
+        myChart.setOption(option)
+
+        </script>
+    </body>
+</html>
