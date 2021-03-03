@@ -4,7 +4,7 @@ from pyecharts import options as opts
 from pyecharts.charts import Graph
 
 
-with open("les-miserablesnozero.json", "r", encoding="utf-8") as f:
+with open("合川_颗粒物.json", "r", encoding="utf-8") as f:
     j = json.load(f)
     nodes = j["nodes"]
     links = j["links"]
@@ -25,9 +25,9 @@ c = (
         label_opts=opts.LabelOpts(position="right"),
     )
     .set_global_opts(
-        title_opts=opts.TitleOpts(title="海口市各区与各行业关系图"),
-        legend_opts=opts.LegendOpts(orient="vertical", pos_left="2%", pos_top="20%"),
+        title_opts=opts.TitleOpts(title="合川各乡镇与各行业颗粒物排放关系图"),
+        legend_opts=opts.LegendOpts(orient="vertical", pos_left="4%", pos_top="3%"),
     )
-    .render("海口市各区与各行业关系图.html")
+    .render("合川各乡镇与各行业颗粒物排放关系图.html")
 )
 c
