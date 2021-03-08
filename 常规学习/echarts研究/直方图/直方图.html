@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@1/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@1/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var girth = [
+        109,
+        128,
+        107,
+        111,
+        49,
+        65,
+        102,
+        50,
+        115,
+        129,
+        120,
+        51,
+        72,
+        90,
+        45,
+        75,
+        131,
+        106,
+        67,
+        48,
+        97,
+        125,
+        64,
+        92,
+        48,
+        47,
+        85,
+        116,
+        64,
+        62,
+        98,
+        66,
+        125,
+        77,
+        81,
+        68,
+        68,
+        102,
+        69,
+        76,
+        73,
+        90,
+        52,
+        81,
+        104,
+        108,
+        118,
+        121,
+        117,
+        126,
+        57,
+        128,
+        92,
+        84,
+        47,
+        95,
+        45,
+        100,
+        45,
+        63,
+        59,
+        110,
+        102,
+        95,
+        112,
+        119,
+        68,
+        107,
+        104,
+        55,
+        115,
+        128,
+        69,
+        97,
+
+        81,
+        46,
+        69,
+        92,
+        105,
+        77,
+        92,
+        129,
+        109,
+        117,
+        104,
+        72,
+        107,
+        52,
+        54,
+        95,
+        121,
+        89,
+        106,
+        125,
+        121,
+        127,
+        131,
+        90,
+        129,
+        67,
+        94,
+        123,
+        49,
+        79,
+        69,
+        89,
+        82,
+        75,
+        62,
+        82,
+        129,
+        88,
+        134,
+        133,
+        129,
+        89,
+        99,
+        90,
+        97,
+        74,
+        65,
+        56,
+        73,
+        74,
+        124,
+        68,
+        89,
+        62,
+        111,
+        65,
+        84,
+        80,
+        122,
+        48,
+        133,
+        72,
+        98,
+        124,
+        130,
+        82,
+        89,
+        75,
+        102,
+        119,
+        89,
+        105,
+        56,
+        130,
+        88,
+        69,
+        50,
+        107,
+        91,
+        79,
+        120,
+        60,
+        92,
+        47,
+        60,
+        88,
+        107,
+        62,
+        93,
+        91,
+        52,
+        81,
+        75,
+        105,
+        75,
+        63,
+        49,
+        69
+      ];
+
+      // See https://github.com/ecomfe/echarts-stat
+      var bins = ecStat.histogram(girth);
+
+      var interval;
+      var min = Infinity;
+      var max = -Infinity;
+
+      var data = echarts.util.map(bins.data, function(item, index) {
+        var x0 = bins.bins[index].x0;
+        var x1 = bins.bins[index].x1;
+        interval = x1 - x0;
+
+        min = Math.min(min, x0);
+        max = Math.max(max, x1);
+        return [x0, x1, item[1]];
+      });
+
+      function renderItem(params, api) {
+        var yValue = api.value(2);
+        var start = api.coord([api.value(0), yValue]);
+        var size = api.size([api.value(1) - api.value(0), yValue]);
+        var style = api.style();
+
+        return {
+          type: "rect",
+          shape: {
+            x: start[0] + 1,
+            y: start[1],
+            width: size[0] - 2,
+            height: size[1]
+          },
+          style: style
+        };
+      }
+
+option = {
+    color: ["rgba(133, 67, 224, 1)"],
+        grid: {
+          top: "8%",
+          left: "3%",
+          right: "3%",
+          bottom: "3%",
+          containLabel: true
+        },
+        dataZoom : [ {
+                startValue : 0
+            }, {
+                type : 'inside'
+            } ],
+        xAxis: [
+          {
+            type: "value",
+            splitLine: { show: false },
+            /*改变y轴颜色*/
+            axisLine: {
+              lineStyle: {
+                color: "#1982ff",
+                width: 1 //这里是为了突出显示加上的
+              }
+            },
+            axisLabel: {
+              //字体颜色
+              show: true,
+              textStyle: {
+                color: "#ff0536",
+                 fontSize : 50
+              }
+            },
+            min: min,
+            max: max,
+            interval: interval
+          }
+        ],
+        yAxis: [
+          {
+            type: "value",
+            splitLine: { show: false },
+            /*改变y轴颜色*/
+            axisLine: {
+              lineStyle: {
+                color: "#1982ff",
+                width: 1 //这里是为了突出显示加上的
+              }
+            },
+            axisLabel: {
+              //字体颜色
+              show: true,
+              textStyle: {
+                color: "#ff0536",
+                fontSize : 50
+              }
+            }
+          }
+        ],
+        tooltip: {
+          trigger: "item",
+          formatter: function(parms) {
+            //
+            var str =
+              "PM2.5范围分布统计" +
+              "</br>" +
+              "PM2.5：" +
+              "" +
+              parms.data[0] +
+              "~" +
+              parms.data[1] +
+              "μg/m3" +
+              "</br>" +
+              parms.data[2] +
+              "个" +
+              "</br>";
+            return str;
+          }
+        },
+        series: [
+          {
+            name: "height",
+            type: "custom",
+            label: {
+            show: true,
+            position: 'top',
+            fontSize : 50
+        },
+            renderItem: renderItem,
+            encode: {
+              x: [0, 1],
+              y: 2,
+              tooltip: 2,
+              label: 2
+            },
+            data: data
+          }
+        ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
