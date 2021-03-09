@@ -84,11 +84,11 @@ def area_roll_data():
 # 滚动计算每一天的时间累计特征雷达图
 def time_acc_data():
     color = []
-    file_dir = 'excelfile/合川.xlsx'
-    file_cen_dir = 'excelfile/合川中间.xls'
-    newfile_dir = 'excelfile/合川数据.xlsx'
-    newfile_acc_dir = 'excelfile/合川截取数据.xlsx'
-    my_datatime = pd.date_range('02/02/2021', '02/12/2021')
+    file_dir = 'excelfile/合川区数据.xlsx'
+    file_cen_dir = 'excelfile/合川区数据中间.xls'
+    newfile_dir = 'excelfile/合川区数据数据.xlsx'
+    newfile_acc_dir = 'excelfile/合川区数据截取数据.xlsx'
+    my_datatime = pd.date_range('01/01/2020', '12/31/2020')
     start_time = my_datatime[0].strftime('%Y-%m-%d')
     stop_time = my_datatime[-1].strftime('%Y-%m-%d')
     df = pd.read_excel(file_dir)
@@ -202,10 +202,10 @@ def area_hour_acc_data():
 
 
 
-# time_acc_data()
+time_acc_data()
 # area_roll_data()
 # area_data()
 # time_data()
 # time_roll_data()
-time_hour_acc_data()
+# time_hour_acc_data()
 # area_hour_acc_data()
