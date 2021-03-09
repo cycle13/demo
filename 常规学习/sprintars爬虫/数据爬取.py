@@ -10,8 +10,8 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36'
 }
 url = 'https://sprintars.riam.kyushu-u.ac.jp/forecast.html'
-url_pm25 = 'https://sprintars.riam.kyushu-u.ac.jp/forecast_movie_pm25_asia.html'
-url_pic = 'https://sprintars.riam.kyushu-u.ac.jp/images/pm25_asia_{}.png'
+url_pm25 = 'https://sprintars.riam.kyushu-u.ac.jp/forecast_movie_pm25_easia.html'
+url_pic = 'https://sprintars.riam.kyushu-u.ac.jp/images/pm25_easia_{}.png'
 res = session.get(url,headers = headers)
 res = session.get(url_pm25,headers=headers)
 now_data = datetime.strftime(datetime.now(), '%Y-%m-%d')
