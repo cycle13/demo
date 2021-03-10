@@ -55,7 +55,7 @@ var girth = [152, 167, 182, 176, 161, 151, 108, 97, 94, 44, 24, 38, 64, 90, 102,
       }
 
 option = {
-    color: ["rgba(133, 67, 224, 1)"],
+    color: ["#69A2D9"],
         grid: {
           top: "8%",
           left: "3%",
@@ -71,11 +71,12 @@ option = {
         xAxis: [
           {
             type: "value",
+            name:'μg/m3',
             splitLine: { show: false },
             /*改变y轴颜色*/
             axisLine: {
               lineStyle: {
-                color: "#1982ff",
+                color: "black",
                 width: 1 //这里是为了突出显示加上的
               }
             },
@@ -83,7 +84,7 @@ option = {
               //字体颜色
               show: true,
               textStyle: {
-                color: "#ff0536",
+                color: "black",
                  fontSize : 30
               }
             },
@@ -95,11 +96,12 @@ option = {
         yAxis: [
           {
             type: "value",
+            name:'天',
             splitLine: { show: false },
             /*改变y轴颜色*/
             axisLine: {
               lineStyle: {
-                color: "#1982ff",
+                color: "black",
                 width: 1 //这里是为了突出显示加上的
               }
             },
@@ -107,7 +109,7 @@ option = {
               //字体颜色
               show: true,
               textStyle: {
-                color: "#ff0536",
+                color: "black",
                 fontSize : 30
               }
             }
@@ -140,7 +142,8 @@ option = {
             label: {
             show: true,
             position: 'top',
-            fontSize : 50
+            fontSize : 30,
+            color: "red",
         },
             renderItem: renderItem,
             encode: {
