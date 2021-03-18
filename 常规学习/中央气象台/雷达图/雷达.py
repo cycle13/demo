@@ -13,7 +13,10 @@ headers = {
 }
 def chinaall():
     yestoday = (datetime.datetime.now() + datetime.timedelta(minutes=-10)).strftime("%Y/%m/%d/%H/%M")
-    yestodayl = (datetime.datetime.now() + datetime.timedelta(hours=-8)).strftime("%Y/%m/%d/%H")
+    if yestoday[-2:] == '54':
+        yestodayl = (datetime.datetime.now() + datetime.timedelta(hours=-9)).strftime("%Y/%m/%d/%H")
+    else:
+        yestodayl = (datetime.datetime.now() + datetime.timedelta(hours=-8)).strftime("%Y/%m/%d/%H")
     print(yestoday)
     url = chinaall_url.format(yestodayl[0:10],yestodayl.replace('/',''),yestoday[-2:])
     print(url)
