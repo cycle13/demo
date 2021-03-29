@@ -36,7 +36,7 @@ for i in range(ROW):
     lon.append(xl)
     lat.append(yl)
 
-numlevel = {'PM25':[0.00000000001,35,75,115,150,250,350],'PM10':[0.00000000001,50,150,250,350,420,500],'SO2':[0.00000000001,50,150,475,800,1600,2100],'NO2':[0.00000000001,40,80,180,280,565,750],'O3':[0.00000000001,100,160,215,265,800,5000]}
+numlevel = {'PM25':[0.00000000001,35,75,115,150,250,350],'PM10':[0.00000000001,50,150,250,350,420,500],'SO2':[0.00000000001,50,150,475,800,1600,2100],'NO2':[0.00000000001,40,80,180,280,565,750],'O3':[0.00000000001,100,160,215,265,800,1000]}
 
 
 level = ['PM25','PM10','SO2','NO2','O3']
@@ -52,7 +52,8 @@ for i in range(num):
         proj = ccrs.LambertConformal(central_latitude=37.75, central_longitude=112.35)
         fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(projection=proj))  # 建立页面
         ax.set_extent([110, 114.5, 34.5, 41], ccrs.PlateCarree())  # 设置经纬度范围
-        yestodayl = (datetime.datetime.now() + datetime.timedelta(hours=3*i)).strftime("%Y/%m/%d/%H/")
+        # yestodayl = (datetime.datetime.now() + datetime.timedelta(hours=3 * i)).strftime("%Y/%m/%d/%H/")
+        yestodayl = (datetime.datetime(2021,1,31) + datetime.timedelta(hours=3*i)).strftime("%Y/%m/%d/%H/")
         color1 = '#00E400'  # 优
         color2 = '#FFFF00'  # 良
         color3 = '#FF7E00'  # 轻
@@ -77,7 +78,7 @@ for i in range(num):
         cb=fig.colorbar(cf,ax=ax,pad=0.1)
         cb.set_label("单位："+r"$\rm \mu g \cdot m^{-3}$",fontsize=10)
         cb.ax.tick_params(direction='out',length=5)
-        plt.title('太原市'+yestodayl[0:4]+'年'+yestodayl[5:7]+'月'+yestodayl[8:10]+'日'+yestodayl[11:13]+'时'+'{}浓度'.format(xls),fontsize=12)
+        plt.title('山西省'+yestodayl[0:4]+'年'+yestodayl[5:7]+'月'+yestodayl[8:10]+'日'+yestodayl[11:13]+'时'+'{}浓度'.format(xls),fontsize=12)
             # clip = maskout.shp2clip(cf,ax,r'shanxi/shanxi.shp',1)
         shpname = r'shanxi3/Export_Output_5.shp'
         adm1_shapes=list(shpreader.Reader(shpname).geometries())
