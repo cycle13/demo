@@ -78,6 +78,7 @@ for i in range(num):
         cb=fig.colorbar(cf,ax=ax,pad=0.1)
         cb.set_label("单位："+r"$\rm \mu g \cdot m^{-3}$",fontsize=10)
         cb.ax.tick_params(direction='out',length=5)
+        fig.text(0.71, 0.30, '佳华科技生态环境研究院', fontsize=40, rotation=45, color='gray', ha='right', va='bottom', alpha=0.4)
         plt.title('山西省'+yestodayl[0:4]+'年'+yestodayl[5:7]+'月'+yestodayl[8:10]+'日'+yestodayl[11:13]+'时'+'{}浓度'.format(xls),fontsize=12)
             # clip = maskout.shp2clip(cf,ax,r'shanxi/shanxi.shp',1)
         shpname = r'shanxi3/Export_Output_5.shp'
