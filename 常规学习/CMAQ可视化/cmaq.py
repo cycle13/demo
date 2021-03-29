@@ -46,6 +46,9 @@ for i in range(num):
     for j in range(len(PM25)):
         pb = PM25[j]
         xls = level[j]
+        # 保存到csv
+        # ns = pd.DataFrame(pb)
+        # ns.to_csv(xls + '_' + str(i) + '.csv')
         maxx = np.max(PM25)
         minx = np.min(PM25)
         print(maxx)
