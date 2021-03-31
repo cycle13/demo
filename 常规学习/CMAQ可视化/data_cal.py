@@ -1,9 +1,9 @@
 from netCDF4 import Dataset
 
 
-def data(i):
-    aconc = Dataset(r'data/CCTM_ACONC_v531_gcc9.1.0_Bench_2020_SX_20210131.nc', mode='r')
-    apmdiag = Dataset(r'data/CCTM_APMDIAG_v531_gcc9.1.0_Bench_2020_SX_20210131.nc', mode='r')
+def data(i,dir1,dir2):
+    aconc = Dataset(dir1, mode='r')
+    apmdiag = Dataset(dir2, mode='r')
     #1、计算PM2.5浓度
     APOMI = aconc.variables['ALVPO1I'][i][0] + aconc.variables['ASVPO1I'][i][0] + aconc.variables['ASVPO2I'][i][0] + aconc.variables['APOCI'][i][0] +aconc.variables['APNCOMI'][i][0]
     APOMJ = aconc.variables['ALVPO1J'][i][0]+ aconc.variables['ASVPO1J'][i][0] + aconc.variables['ASVPO2J'][i][0] + aconc.variables['APOCJ'][i][0] +aconc.variables['ASVPO3J'][i][0] + aconc.variables['AIVPO1J'][i][0] + aconc.variables['APNCOMJ'][i][0]

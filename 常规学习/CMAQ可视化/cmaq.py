@@ -17,8 +17,11 @@ plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 
 
-
-data = Dataset(r'data/CCTM_APMDIAG_v531_gcc9.1.0_Bench_2020_SX_20210321.nc', mode='r')
+dt = "20210131"
+dir = r'data'
+dir1 = dir+r'/CCTM_ACONC_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
+dir2 = dir+r'/CCTM_APMDIAG_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
+data = Dataset(dir2, mode='r')
 data1 = pd.read_csv('data/Export_Output_7.csv',encoding='utf-8')
 ROW = data.dimensions['ROW'].size
 COL = data.dimensions['COL'].size
@@ -42,7 +45,7 @@ numlevel = {'PM25':[0.00000000001,35,75,115,150,250,350],'PM10':[0.00000000001,5
 level = ['PM25','PM10','SO2','NO2','O3']
 
 for i in range(num):
-    PM25 = data_cal.data(i)
+    PM25 = data_cal.data(i,dir1,dir2)
     for j in range(len(PM25)):
         pb = PM25[j]
         xls = level[j]
