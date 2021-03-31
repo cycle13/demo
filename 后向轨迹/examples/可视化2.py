@@ -3,7 +3,7 @@
 Basic Scatter Plotting and Advanced MapDesign
 =============================================
 
-In ``basic_plotting_example.py``, we learned how to quickly initialize
+In ``可视化1.py``, we learned how to quickly initialize
 matplotlib Basemaps with the ``MapDesign`` class and how to plot ``Trajectory``
 paths and color according to a single value.  Here, we'll get into more
 advanced usage of ``MapDesign`` and learn a couple of ways to scatter plot our
@@ -19,7 +19,7 @@ import numpy as np
 
 import pysplit
 
-trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/clippedtraj/colgatefeb*')
+trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/colgate/colgatefeb*')
 
 """
 Basemaps and Advanced MapDesign

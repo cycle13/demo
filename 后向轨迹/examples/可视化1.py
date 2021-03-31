@@ -7,14 +7,14 @@ How to quickly initialize a matplotlib Basemap with the ``MapDesign``
 class and plot ``Trajectory`` paths.
 
 For this example we'll initialize only the January trajectories created in
-``bulk_trajgen_example.py``.
+``计算.py``.
 
 """
 import pysplit
 import os
 import matplotlib.pyplot as plt
 
-trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/clippedtraj/colgatefeb*')
+trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/colgate/colgatefeb*')
 print(trajgroup)
 
 """
@@ -32,7 +32,7 @@ The ``standard_pm``, a list of standard parallels and meridians,
 may be passed as ``None``.
 
 """
-mapcorners =  [80, 15, 130, 45]
+mapcorners = [100, 30, 120, 50]
 standard_pm = None
 
 bmap_params = pysplit.MapDesign(mapcorners, standard_pm)

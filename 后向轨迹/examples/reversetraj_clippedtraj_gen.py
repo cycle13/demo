@@ -3,7 +3,7 @@
 Generating Reverse and Clipped Trajectories After Original Experiment
 =====================================================================
 
-In the example ``bulk_trajgen_example.py``, the basic PySPLIT procedure
+In the example ``计算.py``, the basic PySPLIT procedure
 for generating HYSPLIT trajectories was presented.  While generating
 bulk trajectories (``pysplit.generate_bulktraj()``), the user may choose
 to also output "clipped" trajectory files, which are copies of the original
@@ -24,19 +24,19 @@ Setup
 Below, we'll generate back trajectories from the University of Minnesota,
 forgoing the "reverse" and "clipped" trajectories (``get_reverse=False``,
 ``get_clipped=False``).  For a detailed explanation of this call, see
-``bulk_trajgen_example.py``.  Then, initialize a TrajectoryGroup.
+``计算.py``.  Then, initialize a TrajectoryGroup.
 
 """
 from __future__ import print_function
 import pysplit
 import matplotlib.pyplot as plt
 
-pysplit.generate_bulktraj('umn', r'../working',
-                          r'../HYSPLIT', r'../gdasdata', [2021],
-                          range(3,4), [6, 15, 18, 21], [1000], (44.97, -93.23),
+pysplit.generate_bulktraj('umn', r'D:/Program Files/pycharm/后向轨迹/working',
+                          r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/umn_example', r'D:/Program Files/pycharm/后向轨迹/gdasdata', [2021],
+                          range(2,2), [6, 15, 18, 21], [500], (37.82, 111.54),
                           -120, get_clipped=False,hysplit='../TrajStat/working/hyts_std.exe')
 
-trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/clippedtraj/colgatefeb*')
+trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/umn_example/*')
 
 """
 In the course of our analysis, we might decide that a subset of trajectories
@@ -44,6 +44,9 @@ is more appropriate for our purpose.  Let's create a new ``TrajectoryGroup``
 with all the trajectories with a temperature at t=0 of 0 degrees C and greater.
 
 """
+for traj in trajgroup:
+    print(traj.data.Temperature_C[0])
+
 warm_trajlist = [traj for traj in trajgroup if traj.data.Temperature_C[0] > 0.0]
 
 warm_trajgroup = pysplit.TrajectoryGroup(warm_trajlist)
@@ -82,7 +85,7 @@ created.
 
 """
 for traj in warm_trajgroup:
-    traj.generate_reversetraj(r'../working', r'../gdasdata',
+    traj.generate_reversetraj(r'D:/Program Files/pycharm/后向轨迹/working', r'D:/Program Files/pycharm/后向轨迹/gdasdata',
                               meteo_interval='weekly',
                               hysplit="'../TrajStat/working/hyts_std.exe'")
 
@@ -94,7 +97,7 @@ Loading and Mapping Reverse Trajectories
 Load the reverse trajectory data via ``Trajectory.load_reversetraj()``.
 
 For details on the sample basic plotting procedure, see
-``basic_plotting_example.py``.  The original trajectories are plotted in
+``可视化1.py``.  The original trajectories are plotted in
 gold and the reverse trajectories in maroon.  Ideally, the reverse
 trajectories will overlay the original trajectories.
 

@@ -24,21 +24,21 @@ distance between the original trajectory start and reverse trajectory end
 points, we can estimate absolute and relative integration error.
 
 First, reverse trajectories must be available.  For information on how to
-generate reverse trajectories with ``PySPLIT``, see ``bulk_trajgen_example.py``
+generate reverse trajectories with ``PySPLIT``, see ``计算.py``
 and ``reversetraj_clippedtraj_gen.py``.
 
 Setup
 -----
 
 Load the original and reverse trajectories.  This example uses the
-trajectories generated in ``bulk_trajgen_example.py``.
+trajectories generated in ``计算.py``.
 
 """
 from __future__ import print_function
 import numpy as np
 import pysplit
 
-trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/clippedtraj/colgatefeb*')
+trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/colgate/*')
 
 for traj in trajgroup:
     traj.load_reversetraj()

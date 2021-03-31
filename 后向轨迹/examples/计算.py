@@ -92,7 +92,7 @@ GDAS archive meteorology downloaded via FTP.
 """
 
 working_dir = r'../working'
-storage_dir = r'../HYSPLIT'
+storage_dir = r'../HYSPLIT/colgate'
 meteo_dir = r'../gdasdata'
 
 """
@@ -171,8 +171,8 @@ minutes to complete, depending on your system parameters.
 
 pysplit.generate_bulktraj(basename, working_dir, storage_dir, meteo_dir,
                           years, months, hours, altitudes, location, runtime,
-                          monthslice=slice(0, 32, 2), get_reverse=True,
-                          get_clipped=True,hysplit='../TrajStat/working/hyts_std.exe')
+                          monthslice=slice(0, 32, 2), get_reverse=False,
+                          get_clipped=False,hysplit='../TrajStat/working/hyts_std.exe')
 
 """
 When complete, ``storage_dir``, will contain 576 trajectory files, as well as two

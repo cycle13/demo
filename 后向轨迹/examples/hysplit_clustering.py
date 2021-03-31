@@ -26,7 +26,7 @@ If your trajectory files have multi-line timepoints, you must have
 'Clipped' files are identical to the original trajectory files, except
 they contain only path information, on which HYSPLIT clustering is based.
 For more information on 'clipped trajectories' and how to generate them using
-PySPLIT, see the examples ``bulk_trajgen_example.py``
+PySPLIT, see the examples ``计算.py``
 and ``reversetraj_clippedtraj_gen.py``.
 
 
@@ -35,7 +35,7 @@ Preparing for Clustering
 
 We begin by creating a ``TrajectoryGroup`` with the desired trajectories.
 In this example, we will use the back trajectories generated in
-``bulk_trajgen_example.py``.  For this experiment, we decide in advance to only
+``计算.py``.  For this experiment, we decide in advance to only
 use the August trajectories initialized at 1000 m above ground at noon.  
 
 """
@@ -46,7 +46,7 @@ import matplotlib.pyplot as plt
 import pysplit
 
 # We ignored Daylight Saving Time during generation.  EST is UTC-5
-trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/clippedtraj/colgatefeb*')
+trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/colgate/*')
 
 """
 Next, we create the list of trajectory files for HYSPLIT to cluster.  The 
@@ -56,6 +56,7 @@ this run.  By default, ``use_clippedpath=True``.  If clipped trajectories are
 not found then PySPLIT will output the paths of the original trajectory files.
 
 """
+
 trajgroup.make_infile(r'D:/Program Files/pycharm/后向轨迹/working')
 
 """
@@ -95,7 +96,7 @@ rather than a new ``Cluster``, since the latter are specifically defined by the
 clustering procedure.
 
 """
-traj_assignment = r'D:/Program Files/pycharm/后向轨迹/working/CLUSLIST'
+traj_assignment = r'D:/Program Files/pycharm/后向轨迹/working/CLUSLIST_7'
 clusterpath_dir = r'D:/Program Files/pycharm/后向轨迹/working'
 
 clusgroup = pysplit.spawn_clusters(trajgroup, traj_assignment, clusterpath_dir)
@@ -110,7 +111,7 @@ number of trajectories clustered.
 """
 colors = np.linspace(0, 0.95, 7)
 
-mapcorners =  [-150, 15, -50, 65]
+mapcorners = [-150, 15, -50, 65]
 standard_pm = None
 mapdesign0 = pysplit.MapDesign(mapcorners, standard_pm)
 mapdesign1 = pysplit.MapDesign(mapcorners, standard_pm, lon_labels=['bottom'])

@@ -11,14 +11,14 @@ Initializing the first ``TrajectoryGroup``
 ------------------------------------------
 The first ``TrajectoryGroup`` requires ``Trajectory`` objects to be
 initialized from trajectory files.  Here we initialize all of the trajectories
-created in ``bulk_trajgen_example.py``.
+created in ``计算.py``.
 
 """
 from __future__ import print_function
 
 import pysplit
 
-trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/colgatefeb0500winter2021020111')
+trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/colgate/*')
 
 """
 Workflow
