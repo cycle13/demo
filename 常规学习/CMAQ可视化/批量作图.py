@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import cartopy.io.shapereader as shpreader
 import cartopy.crs as ccrs
 import pandas as pd
+import os
 from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 import demo
 import matplotlib.cm as cm
@@ -16,9 +17,9 @@ import data_cal
 plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 
-for x in list(pd.date_range(start='2020-01-31', end='2021-01-31')):
+for x in list(pd.date_range(start='2021-01-31', end='2021-02-02')):
     dt = x.strftime('%Y%m%d')
-    # dir = '/disk/Build_WRF/CMAQ_DATA/output.'+dt
+    # dir = r'/disk/Build_WRF/CMAQ_DATA/output.'+dt
     dir = r'data'
     dir1 = dir+r'/CCTM_ACONC_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
     dir2 = dir+r'/CCTM_APMDIAG_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
@@ -92,9 +93,14 @@ for x in list(pd.date_range(start='2020-01-31', end='2021-01-31')):
             adm1_shapes=list(shpreader.Reader(shpname).geometries())
             ax.add_geometries(adm1_shapes[:],ccrs.PlateCarree(),edgecolor='k',facecolor='')
             # plt.show()
-            plt.savefig('pic/{0}/{1}.png'.format(xls,str(i)))
+            if not os.path.exists('pic/{0}/{1}'.format(xls,dt)):
+                os.makedirs('pic/{0}/{1}'.format(xls,dt))
+            plt.savefig('pic/{0}/{1}/{2}.png'.format(xls,dt,str(i)))
+            plt.close('all')
 
 
     for k in level:
-        img_names = ['pic/{}'.format(k)+'/'+str(i)+'.png' for i in range(0,num)]
-        make_pic.create_gif(img_names,'pic/山西省{}.gif'.format(k), duration=0.5)
+        img_names = ['pic/{0}/{1}'.format(k,dt)+'/'+str(i)+'.png' for i in range(0,num)]
+        if not os.path.exists('gif/{}'.format(k)):
+            os.makedirs('gif/{}'.format(k))
+        make_pic.create_gif(img_names,'gif/{}/山西省{}.gif'.format(k,dt), duration=0.5)
