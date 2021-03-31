@@ -49,5 +49,6 @@ def data(i,dir1,dir2):
     # return NO2
 
     # 5、计算O3浓度
+    # O3 = aconc.variables['O3'][i][0] * 48000 / 22.4
     O3 = aconc.variables['O3'][i][0]*1600/22.4
     return PM25,PM10,SO2,NO2,O3
