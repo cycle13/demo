@@ -24,7 +24,7 @@ for x in list(pd.date_range(start='2021-01-31', end='2021-02-02')):
     dir1 = dir+r'/CCTM_ACONC_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
     dir2 = dir+r'/CCTM_APMDIAG_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
     data = Dataset(dir2, mode='r')
-    data1 = pd.read_csv('data/Export_Output_7.csv',encoding='utf-8')
+    data1 = pd.read_csv('lonlat/Export_Output_7.csv',encoding='utf-8')
     ROW = data.dimensions['ROW'].size
     COL = data.dimensions['COL'].size
     num = len(data.variables['PM25AC'])
