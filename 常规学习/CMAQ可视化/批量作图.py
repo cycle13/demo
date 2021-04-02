@@ -14,6 +14,8 @@ import maskout
 import make_pic
 import data_cal
 # from moviepy.editor import ImageSequenceClip
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 
