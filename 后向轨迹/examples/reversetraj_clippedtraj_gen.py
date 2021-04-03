@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt
 
 pysplit.generate_bulktraj('umn', r'D:/Program Files/pycharm/后向轨迹/working',
                           r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/umn_example', r'D:/Program Files/pycharm/后向轨迹/gdasdata', [2021],
-                          range(2,2), [6, 15, 18, 21], [500], (37.82, 111.54),
+                          range(2,3), [6, 15, 18, 21], [500], (37.82, 111.54),
                           -120, get_clipped=False,hysplit='../TrajStat/working/hyts_std.exe')
 
 trajgroup = pysplit.make_trajectorygroup(r'D:/Program Files/pycharm/后向轨迹/HYSPLIT/umn_example/*')
