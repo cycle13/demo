@@ -6,7 +6,7 @@ Generating Reverse and Clipped Trajectories After Original Experiment
 In the example ``计算.py``, the basic PySPLIT procedure
 for generating HYSPLIT trajectories was presented.  While generating
 bulk trajectories (``pysplit.generate_bulktraj()``), the user may choose
-to also output "clipped" trajectory files, which are copies of the original
+to also output.nc "clipped" trajectory files, which are copies of the original
 trajectory files that contain only path information, and/or "reverse"
 trajectory files, which are newly calculated trajectories launched from
 the endpoint of the original trajectories in the opposite direction in time.

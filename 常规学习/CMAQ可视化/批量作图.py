@@ -23,7 +23,7 @@ for x in list(pd.date_range(start='2021-01-31', end='2021-02-10')):
     datax = []
     datex = []
     dt = x.strftime('%Y%m%d')
-    # dir = r'/disk/Build_WRF/CMAQ_DATA/output.'+dt
+    # dir = r'/disk/Build_WRF/CMAQ_DATA/output.nc.'+dt
     dir = r'data'
     dir1 = dir+r'/CCTM_ACONC_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
     dir2 = dir+r'/CCTM_APMDIAG_v531_gcc9.1.0_Bench_2020_SX_'+dt+'.nc'
@@ -65,7 +65,7 @@ for x in list(pd.date_range(start='2021-01-31', end='2021-02-10')):
             proj = ccrs.LambertConformal(central_latitude=37.75, central_longitude=112.35)
             fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(projection=proj))  # 建立页面
             ax.set_extent([110, 114.5, 34.5, 41], ccrs.PlateCarree())  # 设置经纬度范围
-            yestodayl = (datetime.datetime(int(dt[0:4]),int(dt[4:6]),int(dt[6:8])) + datetime.timedelta(hours=3*i)).strftime("%Y/%m/%d/%H/")
+            yestodayl = (datetime.datetime(int(dt[0:4]),int(dt[4:6]),int(dt[6:8])) + datetime.timedelta(hours=1*i)).strftime("%Y/%m/%d/%H/")
             datex.append(yestodayl)
             color1 = '#00E400'  # 优
             color2 = '#FFFF00'  # 良

@@ -1,6 +1,6 @@
 # coding=utf-8
 ###################################################################################################################################
-#####This module enables you to maskout the unneccessary data outside the interest region on a matplotlib-plotted output instance
+#####This module enables you to maskout the unneccessary data outside the interest region on a matplotlib-plotted output.nc instance
 ####################in an effecient way,You can use this script for free     ########################################################
 #####################################################################################################################################
 #####USAGE: INPUT  include           'originfig':the matplotlib instance##

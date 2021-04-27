@@ -3,7 +3,7 @@ server = ECMWFDataServer()
 server.retrieve({
     "class": "ei",
     "dataset": "interim",
-    "date": "2019-08-01/to/2019-08-31",
+    "date": "2019-08-01/to/2019-08-02",
     "expver": "1",
     "grid": "0.75/0.75",
     "levtype": "sfc",
@@ -12,5 +12,5 @@ server.retrieve({
     "stream": "oper",
     "time": "00:00:00",
     "type": "fc",
-    "target": "output",
+    "target": "output.nc",
 })

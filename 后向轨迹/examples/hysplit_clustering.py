@@ -22,7 +22,7 @@ Trajectory requirements
 
 If your trajectory files have multi-line timepoints, you must have
 'clipped trajectories' available.  Trajectory files will be multi-line if
-8 or 9 of 9 output meteorological variables are selected at time of generation.
+8 or 9 of 9 output.nc meteorological variables are selected at time of generation.
 'Clipped' files are identical to the original trajectory files, except
 they contain only path information, on which HYSPLIT clustering is based.
 For more information on 'clipped trajectories' and how to generate them using
@@ -53,7 +53,7 @@ Next, we create the list of trajectory files for HYSPLIT to cluster.  The
 required argument, ``infile_dir``, is the directory in which this 'INFILE'
 will be saved and in which HYSPLIT will place all new files associated with 
 this run.  By default, ``use_clippedpath=True``.  If clipped trajectories are
-not found then PySPLIT will output the paths of the original trajectory files.
+not found then PySPLIT will output.nc the paths of the original trajectory files.
 
 """
 

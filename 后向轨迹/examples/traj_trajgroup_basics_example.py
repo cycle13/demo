@@ -37,7 +37,7 @@ Let's create a new ``TrajectoryGroup`` with a list of some of the
 a group consisting only of trajectories with rainfall at timepoint 0.
 
 Note- this will only work as written if rainfall was selected as
-an output meteorological variable during trajectory generation.  Alternatively,
+an output.nc meteorological variable during trajectory generation.  Alternatively,
 ``Trajectory.set_rainstatus()`` can use humidity variables if those
 are available and if the appropriate kwargs are provided.
 

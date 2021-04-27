@@ -57,7 +57,7 @@ cbar.set_ticklabels(('24', '26', '27','28','29','30','31','32','32'))
 #add title
 plt.title('SST')
 
-#output
+#output.nc
 plt.savefig('pic/sst.png', dpi=100, bbox_inches='tight')
 
 plt.show()
