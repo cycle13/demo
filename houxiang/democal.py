@@ -10,8 +10,8 @@ os.chdir(workingDir)
 print('Current directory: ' + os.getcwd())
 
 # Set parameters
-lon = '112.56'
-lat = '37.82'
+lon = '113.01'
+lat = '40.72'
 shour = '00'
 heights = ['100.0', '500.0', '1000.0']
 hnum = len(heights)
@@ -25,7 +25,7 @@ fn = r'current7days.t00z'
 fns.append(fn)
 
 # Set start/end time
-stime = datetime.datetime(2021, 4, 26)
+stime = datetime.datetime(2021, 5, 5)
 
 # Write CONTROL file
 ctFile = './CONTROL'

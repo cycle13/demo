@@ -13,7 +13,7 @@ plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 
 
-fn = os.path.join('D:\Program Files\pycharm\houxiang\Temp\HYSPLIT', 'traj_20210426.txt')
+fn = os.path.join('D:\Program Files\pycharm\houxiang\Temp\HYSPLIT', 'traj_20210505.txt')
 fs = open(fn,'r')
 fl = fs.read()
 fl = fl.replace('  ',',')

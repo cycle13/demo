@@ -5,7 +5,7 @@ from metpy.cbook import get_test_data
 from metpy.plots import add_metpy_logo,SkewT
 from metpy.units import units
 import matplotlib.pyplot as plt
-df = pd.read_csv('data/54511_2019123012.csv')
+df = pd.read_csv('data/59265.csv')
 
 
 
@@ -13,16 +13,18 @@ df = pd.read_csv('data/54511_2019123012.csv')
 p = df['pressure'].values * units.hPa
 T = df['temperature'].values * units.degC
 Td = df['dewpoint'].values * units.degC
-wind_speed = df['speed'].values * units.knots
-wind_dir = df['direction'].values * units.degrees
-u,v = mpcalc.wind_components(wind_speed,wind_dir)
+# wind_speed = df['speed'].values * units.knots
+# wind_dir = df['direction'].values * units.degrees
+# u,v = mpcalc.wind_components(wind_speed,wind_dir)
+v = df['speed'].values * units.knots
+u = df['direction'].values * units.degrees
 
 fig = plt.figure(figsize=(9,9))
 skew = SkewT(fig,rotation=45)
 skew.plot(p,T,'r')
 skew.plot(p,Td,'g')
 skew.plot_barbs(p,u,v)
-skew.ax.set_ylim(1050,300)
+skew.ax.set_ylim(1050,100)
 skew.ax.set_xlim(-40,40)
 
 
