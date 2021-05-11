@@ -26,5 +26,6 @@ for k in df.keys():
     df['RH'] = df['RH'].astype("float")
     df['dewpoint'] = df.apply(lambda row:cal_lu(row['TMP'],row['RH']),axis=1)
     df.to_excel(writer,sheet_name=k)
-    print(df)
-writer.save()
+    print(k)
+    writer.save()
+    writer.close()
