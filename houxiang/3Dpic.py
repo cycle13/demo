@@ -23,7 +23,7 @@ plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 
 
-fn = os.path.join('D:\Program Files\pycharm\houxiang\Temp\HYSPLIT', 'traj_20210507.txt')
+fn = os.path.join('D:\Program Files\pycharm\houxiang\Temp\HYSPLIT', 'traj_20210512.txt')
 fs = open(fn,'r')
 fl = fs.read()
 fl = fl.replace('  ',',')
@@ -48,7 +48,7 @@ for i in range(len(f)):
     elif i%3==2:
         h1000 = pd.concat([h1000,x])
 
-fig = plt.figure()
+fig = plt.figure(figsize=(10,10))
 ax = fig.gca(projection='3d')
 ax.plot(h100['lon'],h100['lat'],h100['height'],'g',label = '100m')
 ax.plot(h500['lon'],h500['lat'],h500['height'],'b',label = '500m')
@@ -67,6 +67,11 @@ for shape_rec in china.shapeRecords():
     for k in shape_rec.shape.points:
         lon.append(k[0])
         lat.append(k[1])
-    ax.plot(lon,lat,'black')
+    ax.plot(lon,lat,'black',linewidth=0.2)
+
+ax.view_init(elev=45,    # 仰角
+             azim=-100    # 方位角
+            )
+plt.title(str(h100['year'][0])+'年'+str(h100['month'][0])+'月'+str(h100['day'][0])+'日'+str(h100['hour'][0])+'时的'+str(int(h1000['bac_hour'][len(f)-1]))+'小时后向轨迹图')
 plt.savefig('zaaa.png')
 plt.show()
