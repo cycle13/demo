@@ -346,8 +346,8 @@ def pre_county_air(name):
 # pre_county_air('淮阳区环境攻坚群')
 # pre_hn_air('淮阳区环境攻坚群')
 # yearleijisend('王彦军')
-# hoursend('王彦军')
-# hourleijisend('王彦军')
+hoursend('王彦军')
+hourleijisend('王彦军')
 # save_data()
 # image_file = 'image_file'
 # image_title = '淮阳区颗粒物0时至{}时折线图--测试'.format("l[0][0:2]")

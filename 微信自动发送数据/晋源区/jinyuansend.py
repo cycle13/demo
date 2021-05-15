@@ -87,4 +87,4 @@ def hoursend(name1,name2):
     send_excel(name2, excel_rank_insert1, excel_rank_insert2)
     print('表格数据发送成功！')
 
-# hoursend('王彦军','王彦军')
+hoursend('王彦军','王彦军')
