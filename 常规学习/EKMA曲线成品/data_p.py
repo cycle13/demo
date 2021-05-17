@@ -40,14 +40,12 @@ url = 'http://www.shodor.org/cgi-bin/ozip/ozip.pl'
 
 
 def reqpost(dat,head):
-    print('post')
     res1 = session.post(url, data=dat, headers=head)
     if res1.status_code != 200:
         reqpost(dat,head)
     return res1
 
 def reqget(url,head):
-    print('get')
     res1 = session.get(url,headers=head)
     if res1.status_code != 200:
         res1 = reqget(url,head)
@@ -61,7 +59,6 @@ def data_p(name):
     time.sleep(10)
     print('正在计算！')
     res1 = reqpost(data,headers)
-    print(res1.text)
     html = etree.HTML(res1.text)
     all_url = html.xpath('/html/body/li/a/@href')
     oziso_url = 'http://www.shodor.org' + all_url[1]

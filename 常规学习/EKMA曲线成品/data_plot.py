@@ -2,6 +2,8 @@ import requests
 import time
 from lxml import etree
 import json
+import re
+
 
 session = requests.Session()
 headers = {
@@ -40,21 +42,47 @@ url = 'http://www.shodor.org/cgi-bin/ozip/ozipeasy.pl'
 
 
 
+def reqpost(dat,head):
+    print('post')
+    res1 = session.post(url, data=dat, headers=head)
+    if res1.status_code != 200:
+        reqpost(dat,head)
+    return res1
+
+def reqget(url,head):
+    print('get')
+    res1 = session.get(url,headers=head)
+    if res1.status_code != 200:
+        res1 = reqget(url,head)
+    return res1
+
+
 def data_p(name):
-    with open('data_data/data2.json', encoding='utf-8') as f:
+    with open('data_data/data3.json', encoding='utf-8') as f:
         data = json.load(f)
     session.get(fir_url,headers = headers2)
     time.sleep(10)
     print('正在计算！')
-    res1 = session.post(url,data = data,headers = headers)
+    res1 = reqpost(data,headers)
+    print(res1.text)
     html = etree.HTML(res1.text)
     all_url = html.xpath('/html/body/li/a/@href')
+    print(all_url)
     oziso_url = 'http://www.shodor.org'+all_url[1]
     time.sleep(10)
     print('正在导出数据！')
-    res = session.get(oziso_url,headers = headers1)
-    txt = open('data/'+name+'.txt', 'w')
+    res = reqget(oziso_url, headers1)
+    txt = open('data/output1.txt', 'w')
     txt.write(res.text)
-    voc = data['basevoc']
-    nox = data['basenox']
-    return voc,nox
+    pattern = re.compile(r'the following simulations were done.(.*?)End time')
+    xl = pattern.findall(res.text)
+    print(xl)
+    # res = session.get(oziso_url,headers = headers1)
+    # txt = open('data/'+name+'.txt', 'w')
+    # txt.write(res.text)
+    # voc = data['basevoc']
+    # nox = data['basenox']
+    # return voc,nox
+
+
+data_p('name')

@@ -1,5 +1,6 @@
 #导入模块
 import data_p
+# import data_plot
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.colors as col
@@ -9,6 +10,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei']
 
 name = 'isopleth'
 data2 = data_p.data_p(name)
+# data2 = data_p.data_p(name)
 path = 'data/'+name+'.txt'
 data = open(path,'r').read()
 print('正在处理数据！')
@@ -66,9 +68,9 @@ Z = gaussian_filter(Z, sigma)
 cset = plt.contourf(X,Y,Z,20,cmap=cm.get_cmap('own2'))
 # 绘制等值线
 contour = plt.contour(X,Y,Z,20,colors='k')
-plt.plot([0,0.25*4], [0,0.25], '-r')
-plt.plot([0,2], [0,2/8], '-b')
-plt.plot([0,2], [0,2/15], '-g')
+# plt.plot([0,0.25*4], [0,0.25], '-r')
+# plt.plot([0,2], [0,2/8], '-b')
+# plt.plot([0,2], [0,2/15], '-g')
 plt.xlabel('VOCs/ppm')
 plt.ylabel('NOx/ppm')
 plt.clabel(contour,fontsize=10,colors='k')
@@ -76,6 +78,6 @@ cd = plt.colorbar(cset)
 cd.set_label("O3/ppm",size=10)
 plt.title("EKMA曲线图",y=1.06,size=10)
 # plt.text(2.0, 0, '佳华科技生态环境研究院', fontsize=30, rotation=45, color='gray', ha='right', va='bottom', alpha=0.4)
-plt.scatter(float(data2[0]),float(data2[1]),color = 'black', s=5)
+# plt.scatter(float(data2[0]),float(data2[1]),color = 'black', s=5)
 plt.savefig('pic/EKMA曲线.png',dpi=600)
 plt.show()
