@@ -18,7 +18,7 @@ def cal_lu(t,rh):
 
 
 df = pd.read_excel('探空数据2.xls',sheet_name=None)
-writer = pd.ExcelWriter('tankong.xlsx',mode = 'a',engine='openpyxl')
+writer = pd.ExcelWriter('../../探空数据/data/tankong.xlsx', mode ='a', engine='openpyxl')
 n = 0
 for k in df.keys():
     df = pd.read_excel('探空数据2.xls',sheet_name=k)
