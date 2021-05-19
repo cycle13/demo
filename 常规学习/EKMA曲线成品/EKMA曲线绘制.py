@@ -5,12 +5,20 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.colors as col
 import matplotlib.cm as cm
+import datetime
 from scipy.ndimage.filters import gaussian_filter
 plt.rcParams['font.sans-serif'] = ['SimHei']
 
+
+day1 = datetime.datetime(2021,5,22)
+day2 = datetime.datetime.now()
+d = (day1-day2).days
+if d < 0:
+    print('授权时间已过，授权无效！')
+    exit()
+print('授权还有{}天有效期！'.format(d))
 name = 'isopleth'
 data2 = data_p.data_p(name)
-# data2 = data_p.data_p(name)
 path = 'data/'+name+'.txt'
 data = open(path,'r').read()
 print('正在处理数据！')
@@ -54,7 +62,7 @@ for i in range(int(len(data['o3'])/step)):
     for j in range(len(data['o3'][i*step:(i+1)*step])):
         z.append(data['o3'][i*step+j])
     Z.append(z)
-print('正在绘图！')
+print('正在对导出数据进行绘图！')
 # 自定义色阶
 color1 = '#00E400'  # 优
 color2 = '#FFFF00'  # 良
