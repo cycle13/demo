@@ -25,7 +25,7 @@ fn = r'current7days.t00z'
 fns.append(fn)
 
 # Set start/end time
-stime = datetime.datetime(2021, 5, 12)
+stime = datetime.datetime(2021, 5, 20)
 
 # Write CONTROL file
 ctFile = './CONTROL'

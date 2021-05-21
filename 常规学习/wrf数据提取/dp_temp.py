@@ -33,6 +33,14 @@ def calrh(q,t,h):
     return rh
 
 
-calrh(0.00386,6.1069,91.82384)
-# temp2dptemp(20,100)
-# print(temp2dptempp(-20,100))
+def calpress(T,ps,h):
+    press = []
+    for i in range(len(ps)):
+        t = T[i]
+        try:
+            t12 = T[i-12]
+        except:
+            t12 = T[i]
+        tm=(t+t12)/2+h/400
+        press.append(ps[i]*math.pow(10,h/(18400*(1+tm/273))))
+    return press

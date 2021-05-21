@@ -7,6 +7,8 @@ import nearest_data
 import sele_station_data
 import data_cal
 import wrf_data
+import dp_temp
+
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
@@ -27,8 +29,8 @@ for date_time in result:
 
 temp = []
 temp_wrf = []
-dp_temp = []
-dp_temp_wrf = []
+dp_tem = []
+dp_tem_wrf = []
 press = []
 press_wrf = []
 U = []
@@ -38,8 +40,8 @@ V_wrf = []
 for i in range(len(station_data)):
     temp.append(station_data[i][0])
     temp_wrf.append(ind[i][0])
-    dp_temp.append(station_data[i][1])
-    dp_temp_wrf.append(ind[i][1])
+    dp_tem.append(station_data[i][1])
+    dp_tem_wrf.append(ind[i][1])
     press.append(station_data[i][2])
     press_wrf.append(ind[i][2])
     U.append(station_data[i][3])
@@ -49,7 +51,8 @@ for i in range(len(station_data)):
 for i in range(len(press)):
     if press[i]==-999.9:
         press[i]= None
-print(U)
+
+press_wrf = dp_temp.calpress(temp_wrf,press_wrf,1040)
 
 range_time = range(len(press))
 plt.figure(figsize=(20,20), dpi=100)
@@ -61,8 +64,8 @@ plt.plot(range_time,temp_wrf, color="black",linestyle = "--",label = '预测值�
 plt.ylabel('温度：℃')
 plt.legend(bbox_to_anchor = (1.01,0.55),loc=3,borderaxespad =0 )
 ax2 = plt.subplot(412)
-plt.plot(range_time,dp_temp,color="r",linestyle = "-",label = '监测值露点温度')
-plt.plot(range_time,dp_temp_wrf,color="black",linestyle = "-",label = '预测值露点温度')
+plt.plot(range_time,dp_tem,color="r",linestyle = "-",label = '监测值露点温度')
+plt.plot(range_time,dp_tem_wrf,color="black",linestyle = "-",label = '预测值露点温度')
 plt.ylabel('露点温度：℃')
 plt.legend(bbox_to_anchor = (1.01,0.55),loc=3,borderaxespad =0)
 ax3 = plt.subplot(413)
