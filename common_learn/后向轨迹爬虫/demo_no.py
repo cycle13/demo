@@ -9,8 +9,14 @@
 import requests
 import re
 import time
+import datetime
 
-
+day1 = datetime.datetime(2022,6,1)
+day2 = datetime.datetime.now()
+d = (day1-day2).days
+if d < 0:
+    print('授权已过期！')
+    exit()
 
 url1 = r'https://www.ready.noaa.gov/hypub-bin/trajsrc.pl'
 url2 = r'https://www.ready.noaa.gov/hypub-bin/trajsrcm.pl'
