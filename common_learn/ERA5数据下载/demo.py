@@ -3,15 +3,15 @@ import cdsapi
 c = cdsapi.Client()
 
 c.retrieve(
-    'derived-utci-historical',
+    'reanalysis-era5-pressure-levels',
     {
-        'format': 'zip',
-        'variable': [
-            'mean_radiant_temperature', 'universal_thermal_climate_index',
-        ],
-        'product_type': 'intermediate_dataset',
+        'product_type': 'reanalysis',
+        'format': 'netcdf',
+        'variable': 'specific_humidity',
+        'pressure_level': '1000',
         'year': '2021',
-        'month': '04',
-        'day': '01',
+        'month': '05',
+        'day': '26',
+        'time': '00:00',
     },
-    'download.zip')
+    'download.nc')

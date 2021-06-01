@@ -12,7 +12,7 @@ print('Current directory: ' + os.getcwd())
 # Set parameters
 lon = '112.35'
 lat = '37.75'
-shour = '00'
+shour = '12'
 heights = ['100.0', '500.0', '1000.0']
 hnum = len(heights)
 hours = '-48'
@@ -21,11 +21,11 @@ top = '10000.0'
 
 # Set meteorological data files
 fns = []
-fn = r'current7days.t00z'
+fn = r'current7days.t12z'
 fns.append(fn)
 
 # Set start/end time
-stime = datetime.datetime(2021, 5, 20)
+stime = datetime.datetime(2021, 5, 23)
 
 # Write CONTROL file
 ctFile = './CONTROL'

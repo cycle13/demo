@@ -1,5 +1,6 @@
 import numpy as np
 from datetime import datetime
+import datetime as datatime
 from netCDF4 import Dataset
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -12,8 +13,12 @@ import dp_temp
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
-l = sele_station_data.station_lon_lat('呼和浩特')
-my_datatime = pd.date_range('01/01/2020', '01/05/2020')
+l = sele_station_data.station_lon_lat('海口')
+start = '01/01/2020'
+end = '01/07/2020'
+my_datatime = pd.date_range(start, end)
+myy_datatime = pd.date_range(start, end,freq='H')
+resultt = (myy_datatime+ datatime.timedelta(hours=8)).strftime("%Y-%m-%d %H:00")
 result = my_datatime.strftime('%Y-%m-%d')
 station_data = []
 ind = []
@@ -23,8 +28,18 @@ for date_time in result:
     data = wrf_data.wrf_data(path)
     for i in nearest_data.nearest_position(float(l[1]) , float(l[2]),data[1], data[2],data[0]):
         ind.append(i)
-    for i in range(24):
-        station_data.append(data_cal.station(str(int(l[0])),year,str(int(month)),str(int(day)),str(i)))
+#新的
+for i in resultt:
+    station_data.append(data_cal.station_lp(i))
+    # exit()
+    # for i in range(24):
+    #     if i<10:
+    #         station_data.append(data_cal.station_l(year, month, day, '0'+str(i)))
+    #     else:
+    #         station_data.append(data_cal.station_l(year, month, day, str(i)))
+    #使用全国站点数据
+    # for i in range(3, 24, 6):
+    #     station_data.append(data_cal.station(str(int(l[0])),year,str(int(month)),str(int(day)),str(i)))
 
 
 temp = []
@@ -52,7 +67,7 @@ for i in range(len(press)):
     if press[i]==-999.9:
         press[i]= None
 
-press_wrf = dp_temp.calpress(temp_wrf,press_wrf,1040)
+press_wrf = dp_temp.calpress(temp_wrf,press_wrf,20)
 
 range_time = range(len(press))
 plt.figure(figsize=(20,20), dpi=100)
@@ -64,9 +79,12 @@ plt.plot(range_time,temp_wrf, color="black",linestyle = "--",label = '预测值�
 plt.ylabel('温度：℃')
 plt.legend(bbox_to_anchor = (1.01,0.55),loc=3,borderaxespad =0 )
 ax2 = plt.subplot(412)
-plt.plot(range_time,dp_tem,color="r",linestyle = "-",label = '监测值露点温度')
-plt.plot(range_time,dp_tem_wrf,color="black",linestyle = "-",label = '预测值露点温度')
-plt.ylabel('露点温度：℃')
+plt.plot(range_time,dp_tem,color="r",linestyle = "-",label = '监测值相对湿度')
+plt.plot(range_time,dp_tem_wrf,color="black",linestyle = "-",label = '预测值相对湿度')
+plt.ylabel('相对湿度：%')
+# plt.plot(range_time,dp_tem,color="r",linestyle = "-",label = '监测值露点温度')
+# plt.plot(range_time,dp_tem_wrf,color="black",linestyle = "-",label = '预测值露点温度')
+# plt.ylabel('露点温度：℃')
 plt.legend(bbox_to_anchor = (1.01,0.55),loc=3,borderaxespad =0)
 ax3 = plt.subplot(413)
 plt.scatter(range_time,press,color="r",linestyle = "-.",label = '监测值压强')
