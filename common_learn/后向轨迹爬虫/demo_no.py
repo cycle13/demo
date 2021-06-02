@@ -11,6 +11,7 @@ import os
 import re
 import time
 import datetime
+import shuiyin
 
 day1 = datetime.datetime(2022,6,1)
 day2 = datetime.datetime.now()
@@ -61,7 +62,7 @@ hgt2=input('请输入第一个高度，如：500：')
 hgt3=input('请输入第一个高度，如：1000：')
 lonew = 'E'
 latns = 'N'
-print('正在计算！')
+print('正在计算......')
 session = requests.Session()
 res1 = session.get(url1)
 data2 = {
@@ -141,3 +142,5 @@ with open('pic/picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]),'wb') as f:
     f.write(res6.content)
 print('计算完成！')
 
+shuiyin.shuiyin('picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]))
+print('添加水印完成！')
