@@ -53,13 +53,14 @@ lat = input('请输入纬度N：')
 
 metcyc = input('请输入气象预报周期，如：00 20210601：')
 start_year = input('请输入开始年，如：21：')
-start_month = input('请输入开始年，如：06：')
-start_day = input('请输入开始年，如：01：')
-start_hour = input('请输入开始年，如：4：')
+start_month = input('请输入开始月，如：06：')
+start_day = input('请输入开始日，如：01：')
+start_hour = input('请输入开始时，如：4：')
 duration = input('请输入预测时间长度，如：120，数值为小时：')
+source_hunit = input('请输入高度情况，相对地面高度请输入0，相对海拔高度请输入1：')
 hgt1=input('请输入第一个高度，如：100：')
-hgt2=input('请输入第一个高度，如：500：')
-hgt3=input('请输入第一个高度，如：1000：')
+hgt2=input('请输入第二个高度，如：500：')
+hgt3=input('请输入第三个高度，如：1000：')
 lonew = 'E'
 latns = 'N'
 print('正在计算......')
@@ -107,7 +108,7 @@ data4 = {
     'Source lon3': '',
     'Midlayer height':'No',
     'Source hgt1':hgt1,
-    'Source hunit':'0',
+    'Source hunit':source_hunit,
     'Source hgt2':hgt2,
     'Source hgt3':hgt3,
     'gis':'0',
