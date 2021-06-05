@@ -29,6 +29,9 @@ url6 = r'https://www.ready.noaa.gov/hypubout/{}_trj001.gif'
 urljs1 = 'https://www.ready.noaa.gov/hypub/hysplit.js'
 urljs2 = 'https://www.ready.noaa.gov/hypub/fnlmap.js'
 urljs3 = 'https://www.ready.noaa.gov/hypub/jquery-3.2.1.js'
+urlgis = 'https://www.ready.noaa.gov/hypubout/HYSPLITtraj_{}.kmz'
+urlgis1 = 'https://www.ready.noaa.gov/hypubout/gis_{}.zip'
+
 
 header = {
     'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -61,6 +64,7 @@ source_hunit = input('请输入高度情况，相对地面高度请输入0，相
 hgt1=input('请输入第一个高度，如：100：')
 hgt2=input('请输入第二个高度，如：500：')
 hgt3=input('请输入第三个高度，如：1000：')
+gis=input('是否输出gis文件，不输出请输入0，输出shape文件输入1，输出kmz文件输入3，如：3：')
 lonew = 'E'
 latns = 'N'
 print('正在计算......')
@@ -111,7 +115,7 @@ data4 = {
     'Source hunit':source_hunit,
     'Source hgt2':hgt2,
     'Source hgt3':hgt3,
-    'gis':'0',
+    'gis':gis,
     'gsize':'96',
     'Zoom Factor':'70',
     'projection':'0',
@@ -141,6 +145,14 @@ if not os.path.exists('pic'):
     os.makedirs('pic')
 with open('pic/picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]),'wb') as f:
     f.write(res6.content)
+if gis == '3':
+    resgis = session.get(urlgis.format(resu))
+    with open('pic/gis_{}_{}_{}.kmz'.format(lon, lat, metcyc[3:]), 'wb') as f:
+        f.write(resgis.content)
+if gis == '1':
+    resgis = session.get(urlgis1.format(resu))
+    with open('pic/gis_{}_{}_{}.zip'.format(lon, lat, metcyc[3:]), 'wb') as f:
+        f.write(resgis.content)
 print('计算完成！')
 
 shuiyin.shuiyin('picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]))
