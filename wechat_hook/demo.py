@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import wechat
 import county_aqi
+import taiyuan
 import os
 import json
 import time
@@ -37,6 +38,9 @@ def on_message(client_id, message_type, message_data):
                 print(message_data)
             time.sleep(10)
             del_files(r'D:\Program Files\pycharm\wechat_hook\county_image')
+        elif message_data["msg"] in ["金胜","坞城","南寨","桃园","巨轮","小店","尖草坪","上兰","晋源","西山","老军营"] :
+            l = taiyuan.station(message_data["msg"])
+            wechat_manager.send_text(client_id, message_data["from_wxid"], '{}站点SO2浓度：{}μg/m3,NO2浓度:{}μg/m3,PM10浓度：{}μg/m3,CO浓度：{}mg/m3,O3浓度：{}μg/m3,PM2.5浓度：{}μg/m3,AQI值：{}，空气质量等级：{}'.format(message_data["msg"],l[0],l[1],l[2],l[3],l[4],l[5],l[6],l[7]))
     else:
         return
 
