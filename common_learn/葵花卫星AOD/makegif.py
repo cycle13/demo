@@ -27,7 +27,7 @@ for x in list(pd.date_range(start='2021-05-06', end='2021-05-07',freq='H')):
         dir = r'NC_H08_{}_{}00_L2ARP030_FLDK.02401_02401.nc'.format(dt,d)
         dir1 = r'data/'+dir
         if dir in filelist:
-            fns.append('pic/{}_{}00.png'.format(dt,d))
+            fns.append('county_image/{}_{}00.png'.format(dt,d))
     except:
         pass
 print(fns)

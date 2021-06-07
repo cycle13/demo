@@ -87,7 +87,7 @@ font1={'family':'SimHei','size':8,'color':'black'}
 a.text(0.58,0.04,'南海诸岛',transform=a.transAxes,fontdict=font1,
        bbox=dict(boxstyle='square',ec='k',fc='w',pad=0.3))
 
-plt.savefig(r'pic\chn_etopo160.png',dpi=300,bbox_inches='tight') #存图
+plt.savefig(r'county_image\chn_etopo160.png',dpi=300,bbox_inches='tight') #存图
 plt.show()
 
 

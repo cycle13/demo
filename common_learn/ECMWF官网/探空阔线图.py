@@ -140,4 +140,4 @@ print(file_list)
 if not os.path.exists('pic/'):
     os.makedirs('pic/')
 img_names = ['tankong/2021/04/24/山西省/太原' + '/' + i for i in file_list]
-create_gif(img_names, 'pic/' + '探空动图.gif', duration=0.5)
+create_gif(img_names, 'county_image/' + '探空动图.gif', duration=0.5)

@@ -51,5 +51,5 @@ plt.xticks(rotation=90)
 plt.xlabel('时间')
 plt.ylabel('PM2.5浓度:μg/m3')
 plt.title('北京市未来7天PM2.5浓度预测折线图')
-plt.savefig('pic/'+begin[0:4]+"/"+begin[5:7]+'/'+str(int(begin[8:10])+1)+'pm25.png')
+plt.savefig('county_image/'+begin[0:4]+"/"+begin[5:7]+'/'+str(int(begin[8:10])+1)+'pm25.png')
 

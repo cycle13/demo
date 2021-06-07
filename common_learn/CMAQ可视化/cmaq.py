@@ -91,9 +91,9 @@ for i in range(num):
         adm1_shapes=list(shpreader.Reader(shpname).geometries())
         ax.add_geometries(adm1_shapes[:],ccrs.PlateCarree(),edgecolor='k',facecolor='')
         # plt.show()
-        plt.savefig('pic/{0}/{1}.png'.format(xls,str(i)))
+        plt.savefig('county_image/{0}/{1}.png'.format(xls,str(i)))
 
 
 for k in level:
-    img_names = ['pic/{}'.format(k)+'/'+str(i)+'.png' for i in range(0,num)]
-    make_pic.create_gif(img_names,'pic/山西省{}.gif'.format(k), duration=0.5)
+    img_names = ['county_image/{}'.format(k)+'/'+str(i)+'.png' for i in range(0,num)]
+    make_pic.create_gif(img_names,'county_image/山西省{}.gif'.format(k), duration=0.5)

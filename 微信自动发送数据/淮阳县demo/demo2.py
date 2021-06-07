@@ -251,7 +251,7 @@ def excel_catch_screen(excel_rank_insert,img_name=False):
     ws.Shapes(new_shape_name).Copy()  # 选择图片
     img = ImageGrab.grabclipboard()  # 获取剪贴板的图片数据
     # if not img_name:
-    #     img_name = r'pic\name' + ".png"
+    #     img_name = r'county_image\name' + ".png"
     # img.save(img_name)  # 保存图片
     wb.Close(SaveChanges=0)  # 关闭工作薄，不保存
     excel.Quit()  # 退出excel
@@ -284,15 +284,15 @@ def setImage(data):  # 写入剪切板
 
 
 def blend_two_images():
-    img1 = Image.open(r"pic\name.png")
+    img1 = Image.open(r"county_image\name.png")
     img1 = img1.resize((640, 930))
     img1 = img1.convert('RGBA')
-    img2 = Image.open(r"pic\ls.png")
+    img2 = Image.open(r"county_image\ls.png")
     img2 = img2.resize((640, 930))
     img2 = img2.convert('RGBA')
     img = Image.blend(img1, img2, 0.6)
     img.show()
-    img.save(r"pic\blend.png")
+    img.save(r"county_image\blend.png")
 
 # 复制文本到剪切板
 def setText(aString):

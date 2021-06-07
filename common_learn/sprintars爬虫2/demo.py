@@ -35,10 +35,10 @@ def create_gif(image_list, gif_name, duration = 1.0):
     return
 
 def makegif(name):
-    if not os.path.exists('pic/'+now_data[0:4]+'/'+now_data[5:7]+'/'+now_data[8:10]):
-            os.makedirs('pic/'+now_data[0:4]+'/'+now_data[5:7]+'/'+now_data[8:10])
+    if not os.path.exists('county_image/'+now_data[0:4]+'/'+now_data[5:7]+'/'+now_data[8:10]):
+            os.makedirs('county_image/'+now_data[0:4]+'/'+now_data[5:7]+'/'+now_data[8:10])
     img_names = ['data/'+now_data[0:4]+'/'+now_data[5:7]+'/'+now_data[8:10] + '/' + name+'/'+ str(i) + '.png' for i in range(1,65)]
-    create_gif(img_names,'pic/'+now_data[0:4]+'/'+now_data[5:7]+'/'+now_data[8:10] +'/'+name+'.gif', duration=1.0)
+    create_gif(img_names,'county_image/'+now_data[0:4]+'/'+now_data[5:7]+'/'+now_data[8:10] +'/'+name+'.gif', duration=1.0)
 
 
 

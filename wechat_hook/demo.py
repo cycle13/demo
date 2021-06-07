@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 import wechat
+import county_aqi
+import os
 import json
 import time
 from wechat import WeChatManager, MessageType
@@ -15,10 +17,28 @@ def on_connect(client_id):
     print('[on_connect] client_id: {0}'.format(client_id))
 
 
-@wechat.RECV_CALLBACK(in_class=False)
+@wechat.RECV_CALLBACK(in_class=True)
 def on_recv(client_id, message_type, message_data):
-    print('[on_recv] client_id: {0}, message_type: {1}, message:{2}'.format(client_id,
-                                                                            message_type, json.dumps(message_data)))
+    print('[on_recv] client_id: {0}, message_type: {1}, message:{2}'.format(client_id,message_type, json.dumps(message_data)))
+
+
+
+@wechat.RECV_CALLBACK(in_class=False)
+def on_message(client_id, message_type, message_data):
+    if message_data["from_wxid"] != 'wxid_pjni8giv9pg222':
+        print(message_data["msg"])
+        if message_data["msg"] == '环境公报':
+            # wechat_manager.send_text(client_id, message_data["from_wxid"], '该消息通过微信机器人接口发送')
+            county_aqi.real()
+            dir_list = os.listdir(r'D:\Program Files\pycharm\wechat_hook\county_image')
+            for i in dir_list:
+                path = r"D:\Program Files\pycharm\wechat_hook\county_image"+'\\'+i
+                wechat_manager.send_image(client_id, message_data["from_wxid"], path)
+                print(message_data)
+            time.sleep(10)
+            del_files(r'D:\Program Files\pycharm\wechat_hook\county_image')
+    else:
+        return
 
 
 @wechat.CLOSE_CALLBACK(in_class=False)
@@ -46,6 +66,17 @@ class LoginTipBot(wechat.CallbackHandler):
             wechat_manager.send_file(client_id, 'filehelper', r'E:\2.0app\app问题.docx')
 
 
+# 每发完一次删除文件夹下的图片
+def del_files(path_file):
+    ls = os.listdir(path_file)
+    for i in ls:
+        f_path = os.path.join(path_file, i)
+        # 判断是否是一个目录,若是,则递归删除
+        if os.path.isdir(f_path):
+            del_files(f_path)
+        else:
+            os.remove(f_path)
+
 if __name__ == "__main__":
     bot = LoginTipBot()
 
@@ -55,4 +86,4 @@ if __name__ == "__main__":
 
     # 阻塞主线程
     while True:
-        time.sleep(0.5)
+        time.sleep(2)

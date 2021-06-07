@@ -32,7 +32,7 @@ for i in range(0,24):
     shpname = r'lact/taiyuan.shp'
     adm1_shapes=list(shpreader.Reader(shpname).geometries())
     ax.add_geometries(adm1_shapes[:],ccrs.PlateCarree(),edgecolor='k',facecolor='')
-    plt.savefig('pic/{0}.png'.format(str(i)))
+    plt.savefig('county_image/{0}.png'.format(str(i)))
     # plt.show()
 
 def create_gif(image_list, gif_name, duration = 1.0):
@@ -50,6 +50,6 @@ def create_gif(image_list, gif_name, duration = 1.0):
     return
 
 
-img_names = ['pic/'+str(i)+'.png' for i in range(0,24)]
+img_names = ['county_image/'+str(i)+'.png' for i in range(0,24)]
 print(img_names)
-create_gif(img_names,'pic/太原市气压图.gif', duration=1.0)
+create_gif(img_names,'county_image/太原市气压图.gif', duration=1.0)

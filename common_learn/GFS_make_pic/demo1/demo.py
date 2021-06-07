@@ -98,7 +98,7 @@ cbar = fig.colorbar(contours,shrink=0.8)
 cbar.set_label('Relative Humidity(%)',fontsize=15)
 cbar.set_ticks(np.arange(0,101,5))
 ax.set_title('GFS_Relative Humidity_2m  valid at 2021-05-25T00:00:00(UTC)',fontsize=15)
-plt.savefig('pic/rh.png')
+plt.savefig('county_image/rh.png')
 plt.show()
 
 

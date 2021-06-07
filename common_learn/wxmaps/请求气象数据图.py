@@ -53,7 +53,7 @@ def qipic():
     print(lon+"_"+lat+"点位数据获取成功，请稍等！")
     time.sleep(10)
     print('正在输出图像，请稍等！')
-    urllib.request.urlretrieve(response.text,'pic/' + lon+"_"+lat+"_"+response.text[-20:-1])
+    urllib.request.urlretrieve(response.text,'county_image/' + lon+"_"+lat+"_"+response.text[-20:-1])
     print('输出完成！')
 
 def readquan(xulie):

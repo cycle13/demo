@@ -34,7 +34,7 @@ def create_gif(image_list, gif_name, duration = 1.0):
     imageio.mimsave(gif_name, frames, 'GIF', duration=duration)
     return
 
-if not os.path.exists('pic/'+now_data):
-    os.makedirs('pic/'+now_data)
+if not os.path.exists('county_image/'+now_data):
+    os.makedirs('county_image/'+now_data)
 img_names = ['data/'+ now_data +'/'+ str(i) + '.png' for i in range(1,65)]
-create_gif(img_names,'pic/'+ now_data +'/'+'PM25动图.gif', duration=1.0)
+create_gif(img_names,'county_image/'+ now_data +'/'+'PM25动图.gif', duration=1.0)

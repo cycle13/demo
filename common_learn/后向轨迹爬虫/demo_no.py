@@ -143,15 +143,15 @@ for i in range(2):
 res6 = session.get(url6.format(resu))
 if not os.path.exists('pic'):
     os.makedirs('pic')
-with open('pic/picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]),'wb') as f:
+with open('county_image/picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]),'wb') as f:
     f.write(res6.content)
 if gis == '3':
     resgis = session.get(urlgis.format(resu))
-    with open('pic/gis_{}_{}_{}.kmz'.format(lon, lat, metcyc[3:]), 'wb') as f:
+    with open('county_image/gis_{}_{}_{}.kmz'.format(lon, lat, metcyc[3:]), 'wb') as f:
         f.write(resgis.content)
 if gis == '1':
     resgis = session.get(urlgis1.format(resu))
-    with open('pic/gis_{}_{}_{}.zip'.format(lon, lat, metcyc[3:]), 'wb') as f:
+    with open('county_image/gis_{}_{}_{}.zip'.format(lon, lat, metcyc[3:]), 'wb') as f:
         f.write(resgis.content)
 print('计算完成！')
 

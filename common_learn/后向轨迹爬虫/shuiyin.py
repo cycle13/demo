@@ -10,7 +10,7 @@ from PIL import Image,ImageDraw,ImageFont
 
 
 def shuiyin(name):
-    imagefile = 'pic/'+name
+    imagefile = 'county_image/'+name
     imageinfo = Image.open(imagefile)
     font = ImageFont.truetype('C:\Windows\Fonts\simfang.ttf',20)
 

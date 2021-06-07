@@ -102,14 +102,14 @@ for x in list(pd.date_range(start='2021-01-31', end='2021-02-10')):
             adm1_shapes=list(shpreader.Reader(shpname).geometries())
             ax.add_geometries(adm1_shapes[:],ccrs.PlateCarree(),edgecolor='k',facecolor='')
             # plt.show()
-            if not os.path.exists('pic/{0}/{1}'.format(xls,dt)):
-                os.makedirs('pic/{0}/{1}'.format(xls,dt))
-            plt.savefig('pic/{0}/{1}/{2}.png'.format(xls,dt,str(i)))
+            if not os.path.exists('county_image/{0}/{1}'.format(xls,dt)):
+                os.makedirs('county_image/{0}/{1}'.format(xls,dt))
+            plt.savefig('county_image/{0}/{1}/{2}.png'.format(xls,dt,str(i)))
             plt.close('all')
 
 
     for k in level:
-        img_names = ['pic/{0}/{1}'.format(k,dt)+'/'+str(i)+'.png' for i in range(0,num)]
+        img_names = ['county_image/{0}/{1}'.format(k,dt)+'/'+str(i)+'.png' for i in range(0,num)]
         if not os.path.exists('gif/{}'.format(k)):
             os.makedirs('gif/{}'.format(k))
         make_pic.create_gif(img_names,'gif/{}/山西省{}.gif'.format(k,dt), duration=0.5)

@@ -33,5 +33,5 @@ plt.yticks(fontsize=5,rotation=360)
 sns_plot.tick_params(labelsize=10, direction='in')
 cb=sns_plot.figure.colorbar(sns_plot.collections[0]) #显示colorbar
 cb.ax.tick_params(labelsize=10) #设置colorbar刻度字体大小。
-savefig('picture/pic.png')
+savefig('picture/county_image.png')
 plt.show()

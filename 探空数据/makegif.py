@@ -21,7 +21,7 @@ def create_gif(image_list, gif_name, duration = 1.0):
 fns = []
 filelist = os.listdir(r'pic/')
 for i in filelist:
-    fns.append('pic/'+i)
+    fns.append('county_image/'+i)
 
 
 # fns = []
@@ -32,7 +32,7 @@ for i in filelist:
 #         dir = r'NC_H08_{}_{}00_L2ARP030_FLDK.02401_02401.nc'.format(dt,d)
 #         dir1 = r'data/'+dir
 #         if dir in filelist:
-#             fns.append('pic/{}_{}00.png'.format(dt,d))
+#             fns.append('county_image/{}_{}00.png'.format(dt,d))
 #     except:
 #         pass
 # print(fns)

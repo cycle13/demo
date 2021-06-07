@@ -50,7 +50,7 @@ for x in list(pd.date_range(start='2021-05-06', end='2021-05-07',freq='H')):
             shpname = r'lact/china1/中国.shp'
             adm1_shapes=list(shpreader.Reader(shpname).geometries())
             ax.add_geometries(adm1_shapes[:],ccrs.PlateCarree(),edgecolor='k',facecolor='')
-            plt.savefig('pic/'+'{}_{}{}.png'.format(dt,d,k))
+            plt.savefig('county_image/'+'{}_{}{}.png'.format(dt,d,k))
             plt.close('all')
             print('{}_{}{}.png绘制完成'.format(dt,d,k))
         except:
