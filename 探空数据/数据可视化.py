@@ -39,7 +39,7 @@ for k in df.keys():
         skew.plot_moist_adiabats()
         skew.plot_mixing_lines()
         plt.title(k)
-        plt.savefig('county_image/{0}.png'.format(k))
+        plt.savefig('pic/{0}.png'.format(k))
         print(k)
         plt.close('all')
     except:

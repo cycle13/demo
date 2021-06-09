@@ -10,7 +10,7 @@ headers = {
     'Remote Address': '135.125.6.123:443',
     'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
 }
-first_url= 'https://wxcharts.com/php/get_profile.php?lat=50.0&lon=111&database=00&model=gfs_profile'
+first_url= 'https://wxcharts.com/php/get_profile.php?lat=37.5&lon=112&database=00&model=gfs_profile'
 
 res = session.get(first_url,headers=headers,verify=False).text
 res = json.loads(res)
