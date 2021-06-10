@@ -7,6 +7,7 @@ import headings
 import pictur
 from head_foot import hed_fot
 import county_aqi
+import send_email
 
 
 document = Document()
@@ -27,3 +28,4 @@ hed_fot(document,headtext,footext)
 now_time = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H')
 
 document.save('file/{0}.docx'.format(now_time))
+send_email.sendemail('pumpsim@163.com',r'file/{0}.docx'.format(now_time),"这是全国气象公报，附件有文档，请查收!")

@@ -22,7 +22,7 @@ def sendemail(to_email,file_name,text):
     #构造附件1
     att1=MIMEText(open(file_name, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
-    att1["Content-Disposition"] = 'attachment; filename={}'.format(file_name)    #这里的filename可以任意写，写什么名字，邮件中显示什么名字
+    att1["Content-Disposition"] = 'attachment; filename="file.docx"'   #这里的filename可以任意写，写什么名字，邮件中显示什么名字
     msg.attach(att1)
     try:
         server = smtplib.SMTP_SSL('smtp.qq.com')      #构造邮件传输服务
@@ -34,6 +34,3 @@ def sendemail(to_email,file_name,text):
     except Exception as e:
         print(str(e))
     exit()
-
-
-sendemail('pumpsim@163.com',"output.pdf","这是正文内容，附件有图，请查收")
