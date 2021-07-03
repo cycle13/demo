@@ -6,9 +6,9 @@ import datetime
 
 ftp= FTP('ftp.ptree.jaxa.jp')
 ftp.login('pumpsim_163.com','SP+wari8')
-localdir = r'D:\Program Files\pycharm\常规学习\葵花卫星AOD\data'
+localdir = r'D:\Program Files\pycharm\common_learn\葵花卫星AOD\data'
 ln = ['00','10','20','30','40','50']
-for x in list(pd.date_range(start='2021-05-22', end='2021-05-24',freq='H')):
+for x in list(pd.date_range(start='2021-07-02', end='2021-07-02',freq='H')):
     fns = []
     dt = x.strftime('%Y%m%d')
     dll = x.strftime('%Y%m')

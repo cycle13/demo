@@ -16,7 +16,7 @@ plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文
 plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
 # import maskout
 ln = ['00','10','20','30','40','50']
-for x in list(pd.date_range(start='2021-05-06', end='2021-05-07',freq='H')):
+for x in list(pd.date_range(start='2021-07-02', end='2021-07-02',freq='H')):
     fns = []
     dt = x.strftime('%Y%m%d')
     d = x.strftime('%H')
