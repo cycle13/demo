@@ -106,7 +106,7 @@ plt.xlabel('距排气筒水平距离(km)')
 plt.text(9, 0, '佳华科技生态环境研究院', fontsize=30, rotation=45, color='gray', ha='right', va='bottom', alpha=0.4)
 plt.title('基于高斯分布的点源污染扩散')
 plt.ylabel('浓度 (mmg/m3)')
-plt.savefig('county_image/aaa.png')
+plt.savefig('pic/aaa.png')
 plt.show()
 
 print(data)

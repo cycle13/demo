@@ -38,7 +38,7 @@ def get_file_path(root_path, file_list, dir_list):
             file_list.append(dir_file_path)
 
 
-root_path = r"E:\煲耳机噪音(白噪音和粉噪音)\11"
+root_path = r"data"
 file_list = []
 dir_list = []
 get_file_path(root_path, file_list, dir_list)
