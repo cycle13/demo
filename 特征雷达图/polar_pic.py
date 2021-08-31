@@ -293,11 +293,57 @@ def time_hour_acc_data1():
             data_visual.plot_radar_time_hour(newfile_dir, k, name[0])
 
 
+# 滚动计算每一天的特征雷达图
+def time_roll_data1():
+    start_time = '12/10/2020'
+    stop_time = '12/31/2020'
+    my_datatime = pd.date_range(start_time, stop_time)
+    result = my_datatime.strftime('%Y-%m-%d')
+    for result in my_datatime:
+        print(result.strftime('%Y-%m-%d'))
+        yestoday = (result + datatime.timedelta(days=-31)).strftime("%Y-%m-%d")
+        print(yestoday)
+        file_dir = 'excelfile/淮阳县整年数据.xls'
+        file_cen_dir = 'excelfile/淮阳县整年数据中间.xls'
+        newfile_dir = 'excelfile/淮阳县整年数据.xlsx'
+        df = pd.read_excel(file_dir)
+        df.index = df['时间']
+        df = df[yestoday:result.strftime('%Y-%m-%d')]
+        df.to_excel(file_cen_dir,index=False)
+        name = data_opt.tezheng(file_cen_dir,newfile_dir,result.strftime('%Y-%m-%d'))
+        data_visual.plot_radar_time(newfile_dir,result.strftime('%Y-%m-%d'),name[0])
+
+
+
+# 滚动计算每一天的区域特征雷达图
+def area_roll_data1():
+    start_time = '01/11/2020'
+    stop_time = '12/31/2020'
+    area_name = '淮阳县'
+    my_datatime = pd.date_range(start_time, stop_time)
+    result = my_datatime.strftime('%Y-%m-%d')
+    for result in my_datatime:
+        print(result.strftime('%Y-%m-%d'))
+        yestoday = (result + datatime.timedelta(days=-31)).strftime("%Y-%m-%d")
+        print(yestoday)
+        file_dir = 'excelfile/周口市2020年区县全年日数据 .xls'
+        file_cen_dir = 'excelfile/周口市2020年区县全年日数据中间.xls'
+        newfile_dir = 'excelfile/周口市2020年区县全年日数据.xlsx'
+        df = pd.read_excel(file_dir)
+        df.index = df['时间']
+        df = df[yestoday:result.strftime('%Y-%m-%d')]
+        df.to_excel(file_cen_dir)
+        name = data_opt.tezheng_area(file_cen_dir,newfile_dir,result.strftime('%Y-%m-%d'),area_name)
+        data_visual.plot_radar_time(newfile_dir,result.strftime('%Y-%m-%d'),name[0])
+
+
 # time_acc_data()
 # area_roll_data()
 # area_data()
 # time_data()
 # time_roll_data()
+# time_roll_data1()
+area_roll_data1()
 # time_hour_acc_data()
 # area_hour_acc_data1()
-time_hour_acc_data1()
+# time_hour_acc_data1()
