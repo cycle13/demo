@@ -221,14 +221,22 @@ def area_hour_acc_data1():
         df1 = pd.read_excel(file_dir,sheet_name='Sheet1')
         df1.index = df1['时间']
         df1 = df1[start_date:end_date]
-        if datetime.strptime(end_date_time, '%Y-%m-%d %H:%M:%S')>=datetime.strptime(date_time.strftime('%Y-%m-%d')+' 23:00:00', '%Y-%m-%d %H:%M:%S'):
-            if datetime.strptime(start_date_time, '%Y-%m-%d %H:%M:%S')>=datetime.strptime(date_time.strftime('%Y-%m-%d %H:%M:%S'), '%Y-%m-%d %H:%M:%S'):
+        if datetime.strptime(end_date_time, '%Y-%m-%d %H:%M:%S') >= datetime.strptime(
+                date_time.strftime('%Y-%m-%d') + ' 23:00:00', '%Y-%m-%d %H:%M:%S'):
+            if datetime.strptime(start_date_time, '%Y-%m-%d %H:%M:%S') >= datetime.strptime(
+                    date_time.strftime('%Y-%m-%d %H:%M:%S'), '%Y-%m-%d %H:%M:%S'):
                 my_datatime = pd.date_range(start_date_time,
                                             date_time.strftime('%Y-%m-%d') + ' 23:00:00', freq='h')
             else:
-                my_datatime = pd.date_range(date_time.strftime('%Y-%m-%d %H:%M:%S'), date_time.strftime('%Y-%m-%d')+' 23:00:00', freq='h')
+                my_datatime = pd.date_range(date_time.strftime('%Y-%m-%d %H:%M:%S'),
+                                            date_time.strftime('%Y-%m-%d') + ' 23:00:00', freq='h')
         else:
-            my_datatime = pd.date_range(date_time.strftime('%Y-%m-%d %H:%M:%S'), end_date_time, freq='h')
+            if datetime.strptime(start_date_time, '%Y-%m-%d %H:%M:%S') >= datetime.strptime(
+                    date_time.strftime('%Y-%m-%d %H:%M:%S'), '%Y-%m-%d %H:%M:%S'):
+                my_datatime = pd.date_range(start_date_time,
+                                            end_date_time, freq='h')
+            else:
+                my_datatime = pd.date_range(date_time.strftime('%Y-%m-%d %H:%M:%S'), end_date_time, freq='h')
         df2 = pd.read_excel(file_dir, sheet_name='Sheet2')
         df2.index = df2['时间']
         df4 = df2[my_datatime[0].strftime('%Y-%m-%d %H:%M:%S'):my_datatime[-1].strftime('%Y-%m-%d %H:%M:%S')]
@@ -277,7 +285,13 @@ def time_hour_acc_data1():
                 my_datatime = pd.date_range(date_time.strftime('%Y-%m-%d %H:%M:%S'),
                                             date_time.strftime('%Y-%m-%d') + ' 23:00:00', freq='h')
         else:
-            my_datatime = pd.date_range(date_time.strftime('%Y-%m-%d %H:%M:%S'), end_date_time, freq='h')
+            if datetime.strptime(start_date_time, '%Y-%m-%d %H:%M:%S') >= datetime.strptime(
+                    date_time.strftime('%Y-%m-%d %H:%M:%S'), '%Y-%m-%d %H:%M:%S'):
+                my_datatime = pd.date_range(start_date_time,
+                                            end_date_time, freq='h')
+            else:
+                my_datatime = pd.date_range(date_time.strftime('%Y-%m-%d %H:%M:%S'), end_date_time, freq='h')
+
         df2 = pd.read_excel(file_dir, sheet_name='Sheet2')
         df2.index = df2['时间']
         df4 = df2[my_datatime[0].strftime('%Y-%m-%d %H:%M:%S'):my_datatime[-1].strftime('%Y-%m-%d %H:%M:%S')]
@@ -295,8 +309,8 @@ def time_hour_acc_data1():
 
 # 滚动计算每一天的特征雷达图
 def time_roll_data1():
-    start_time = '12/10/2020'
-    stop_time = '12/31/2020'
+    start_time = '2020-12-10'
+    stop_time = '2020-12-31'
     my_datatime = pd.date_range(start_time, stop_time)
     result = my_datatime.strftime('%Y-%m-%d')
     for result in my_datatime:
@@ -317,8 +331,8 @@ def time_roll_data1():
 
 # 滚动计算每一天的区域特征雷达图
 def area_roll_data1():
-    start_time = '01/11/2020'
-    stop_time = '12/31/2020'
+    start_time = '2020-01-11'
+    stop_time = '2020-12-31'
     area_name = '淮阳县'
     my_datatime = pd.date_range(start_time, stop_time)
     result = my_datatime.strftime('%Y-%m-%d')
@@ -342,8 +356,8 @@ def area_roll_data1():
 # area_data()
 # time_data()
 # time_roll_data()
+# time_hour_acc_data()
 # time_roll_data1()
 area_roll_data1()
-# time_hour_acc_data()
 # area_hour_acc_data1()
 # time_hour_acc_data1()

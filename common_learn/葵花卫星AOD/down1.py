@@ -87,4 +87,4 @@ def main(save_path, sdate, edate, tstep, product, username, password, debug):
 
 # 下载Cloud Property (CLP)产品
 if __name__ == '__main__':
-    main('./data','2020-08-01_11:00','2020-08-12_11:30',10,'ARP','pumpsim_163.com','SP+wari8',1)
+    main('./data','2021-07-02_00:00','2021-07-02_23:50',10,'ARP','pumpsim_163.com','SP+wari8',1)

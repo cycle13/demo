@@ -50,21 +50,38 @@ header = {
     'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
 }
 
-direction = input('请输入前向轨迹还是后向轨迹，前向：Forward，后向：Backward：')
-lon = input('请输入经度E：')
-lat = input('请输入纬度N：')
+direction = 'Backward'
+lon = '113.373073'
+lat = '40.093069'
 
-metcyc = input('请输入气象预报周期，如：00 20210601：')
-start_year = input('请输入开始年，如：21：')
-start_month = input('请输入开始月，如：06：')
-start_day = input('请输入开始日，如：01：')
-start_hour = input('请输入开始时，如：4：')
-duration = input('请输入预测时间长度，如：120，数值为小时：')
-source_hunit = input('请输入高度情况，相对地面高度请输入0，相对海拔高度请输入1：')
-hgt1=input('请输入第一个高度，如：100：')
-hgt2=input('请输入第二个高度，如：500：')
-hgt3=input('请输入第三个高度，如：1000：')
-gis=input('是否输出gis文件，不输出请输入0，输出shape文件输入1，输出kmz文件输入3，如：3：')
+metcyc = '00 20210814'
+start_year = '21'
+start_month = '08'
+start_day = '14'
+start_hour = '0'
+duration = '100'
+source_hunit = '0'
+hgt1='100'
+hgt2='500'
+hgt3='1000'
+gis='3'
+
+#
+# direction = input('请输入前向轨迹还是后向轨迹，前向：Forward，后向：Backward：')
+# lon = input('请输入经度E：')
+# lat = input('请输入纬度N：')
+#
+# metcyc = input('请输入气象预报周期，如：00 20210601：')
+# start_year = input('请输入开始年，如：21：')
+# start_month = input('请输入开始月，如：06：')
+# start_day = input('请输入开始日，如：01：')
+# start_hour = input('请输入开始时，如：4：')
+# duration = input('请输入预测时间长度，如：120，数值为小时：')
+# source_hunit = input('请输入高度情况，相对地面高度请输入0，相对海拔高度请输入1：')
+# hgt1=input('请输入第一个高度，如：100：')
+# hgt2=input('请输入第二个高度，如：500：')
+# hgt3=input('请输入第三个高度，如：1000：')
+# gis=input('是否输出gis文件，不输出请输入0，输出shape文件输入1，输出kmz文件输入3，如：3：')
 lonew = 'E'
 latns = 'N'
 print('正在计算......')
@@ -155,5 +172,5 @@ if gis == '1':
         f.write(resgis.content)
 print('计算完成！')
 
-shuiyin.shuiyin('picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]))
-print('添加水印完成！')
+# shuiyin.shuiyin('picture_{}_{}_{}.png'.format(lon,lat,metcyc[3:]))
+# print('添加水印完成！')

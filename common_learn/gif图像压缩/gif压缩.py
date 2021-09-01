@@ -8,4 +8,4 @@
 
 
 from pygifsicle import optimize
-optimize('gif/探空图.gif', "gif/optimized.gif",colors = 64)
+optimize('gif/demo.gif', "gif/demo1.gif",colors = 20)

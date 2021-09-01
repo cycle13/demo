@@ -12,7 +12,7 @@ norm = colors.BoundaryNorm(bounds, cmap.N)
 data = pd.read_excel("data/t.xlsx",header=None)
 data.index = [16,17,18,19,20,21,22,23,24,25,26]
 data.columns = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
-sns_plot=sns.heatmap(data, cmap=cmap, norm=norm, linecolor='k', linewidths = 0.1, annot=True,fmt='.20g',annot_kws={'size':10,'weight':'bold', 'color':'blue'}, cbar=False)
+sns_plot=sns.heatmap(data, cmap=cmap, norm=norm, linecolor='k', linewidths = 0.1, annot=True,fmt='.20g',annot_kws={'size':8,'weight':'bold', 'color':'blue'}, cbar=False)
 
 u = pd.read_excel("data/u.xlsx",header=None)
 v = pd.read_excel("data/v.xlsx",header=None)

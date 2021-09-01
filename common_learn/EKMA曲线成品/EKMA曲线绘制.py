@@ -10,7 +10,7 @@ from scipy.ndimage.filters import gaussian_filter
 plt.rcParams['font.sans-serif'] = ['SimHei']
 
 
-day1 = datetime.datetime(2021,5,22)
+day1 = datetime.datetime(2021,10,22)
 day2 = datetime.datetime.now()
 d = (day1-day2).days
 if d < 0:
